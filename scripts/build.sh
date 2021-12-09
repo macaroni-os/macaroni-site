@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-BASE_URL="${BASE_URL:-https://www.macaroni.funtoo.org/}"
+BASE_URL="${BASE_URL:-https://funtoo.github.io/macaroni-site/}"
 
 binpath="${ROOT_DIR}/bin"
 sitepath="${ROOT_DIR}/site"
