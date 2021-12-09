@@ -1,0 +1,6 @@
+*.swp
+*.swo
+bin/
+site/public
+site/themes/hugo-book/
+site/themes/timer-hugo/exampleSite/
