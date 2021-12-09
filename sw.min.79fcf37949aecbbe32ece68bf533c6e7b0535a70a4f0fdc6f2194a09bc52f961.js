@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/macaroni-site/sw.js",{scope:"/macaroni-site/"})
