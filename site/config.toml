@@ -1,0 +1,177 @@
+baseURL = "https://macaroni.funtoo.org"
+languageCode = "en-us"
+title = "Macaroni Linux OS"
+theme = "timer-hugo"
+enableRobotsTXT = true
+
+
+# Navbar Menus
+[[menu.main]]
+name    = "Home"
+url     = "/"
+weight  = 1
+[[menu.main]]
+name    = "Documentation"
+url     = "docs"
+weight  = 2
+[[menu.main]]
+name    = "Contact"
+url     = "https://bugs.funtoo.org/projects/MAC/issues"
+weight  = 5
+#[[menu.main]]
+#name    = "Blog"
+#url     = "blog"
+#weight  = 4
+
+# Site Params
+[params.banner]
+enable  = true
+#bgImage = "images/slider.jpg"
+bgImage = "images/home.jpg"
+heading = "MACARONI LINUX OS"
+description = "Desktop and Server Linux Distro"
+# button
+btn     = true
+btnText = "Getting Started"
+btnURL  = "docs/getting-started/"
+
+# flip text
+[[params.banner.flipText]]
+title   = "Customizable Distro at Runtime"
+[[params.banner.flipText]]
+title   = "Funtoo Powered"
+[[params.banner.flipText]]
+title   = "Binaries Distro"
+
+# Homepage About Section
+[params.about]
+enable  = true
+title   = "MISSION"
+content = "Supply a binaries based Linux OS easy to install and customize for both Desktop and Server solutions. </br> LXD optimized distribution to permits the best ingration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella and is developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni is related to the pinguin specie found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
+image   = "images/about/about.png"
+
+# Call to Action
+[params.cta]
+enable  = true
+title   = "SO WHAT YOU THINK ?"
+content = "Do you think that I could integrate some more features?"
+btnText = "Contact with me"
+btnURL     = "https://bugs.funtoo.org/projects/MAC/issues"
+
+[[params.socialIcon]]
+icon = "ion-social-github"
+url = "https://github.com/funtoo/macaroni-funtoo"
+
+
+#[[params.socialIcon]]
+#icon = "ion-social-slack"
+#url = ""
+
+# Configuration of the Book theme
+# Book configuration
+disablePathToLower = true
+enableGitInfo = true
+
+
+# Needed for mermaid/katex shortcodes
+[markup]
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  startLevel = 1
+
+# Multi-lingual mode config
+# There are different options to translate files
+# See https://gohugo.io/content-management/multilingual/#translation-by-filename
+# And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+[languages]
+[languages.en]
+  languageName = 'English'
+  contentDir = 'content'
+  weight = 1
+
+[menu]
+# [[menu.before]]
+[[menu.after]]
+  name = "Github"
+  url = "https://github.com/funtoo"
+  weight = 10
+
+
+[params]
+  home = "Home"
+  logo = "images/logo.png"
+  title = "Macarani OS"
+  dateFormat = "6 January 2006"
+# Meta data
+  description = "Macaroni"
+  author = "Geaaru"
+# Google Analitycs
+  googleAnalitycsID = "Your ID"
+# contact form action
+  contactFormAction = "#" # contact form works with https://formspree.io
+  copyright = "Daniele Rondina"
+
+
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'light'
+
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = false
+
+  # (Optional, default none) Set the path to a logo for the book. If the logo is
+  # /static/logo.png then the path would be logo.png
+  # BookLogo = 'logo.png'
+
+  # (Optional, default none) Set leaf bundle to render as side menu
+  # When not specified file structure and weights will be used
+  BookMenuBundle = '/menu'
+
+  # (Optional, default docs) Specify root page to render child pages as menu.
+  # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/
+  # For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
+  BookSection = 'docs'
+
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo = 'https://github.com/funtoo/macaroni-site'
+
+  # Enable "Edit this page" links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Edit path must point to root directory of repo.
+  BookEditPath = 'edit/master/site'
+
+  # Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  BookDateFormat = 'January 2, 2006'
+
+  # (Optional, default true) Enables search function with flexsearch,
+  # Index is built on fly, therefore it might slowdown your website.
+  # Configuration for indexing can be adjusted in i18n folder per language.
+  BookSearch = true
+
+  # (Optional, default true) Enables comments template on pages
+  # By default partals/docs/comments.html includes Disqus template
+  # See https://gohugo.io/content-management/comments/#configure-disqus
+  # Can be overwritten by same param in page frontmatter
+  BookComments = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
+  # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
+  # Theme will print warning if page referenced in markdown does not exists.
+  BookPortableLinks = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
+  BookServiceWorker = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
+  BookTranslatedOnly = false
+
