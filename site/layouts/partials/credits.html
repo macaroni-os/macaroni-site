@@ -1,0 +1,16 @@
+{{ if .Site.Params.credits.enable }}
+{{ "<!-- About Section Start -->" | safeHTML }}
+<section id="credits">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+					{{ with .Site.Params.credits.title }}<h2>{{ . }}</h2>{{ end }}
+					{{ with .Site.Params.credits.content }}<p>{{ . | safeHTML }}</p>{{ end }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{{ "<!-- About Section End -->" | safeHTML }}
+{{ end }}

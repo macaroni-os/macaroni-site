@@ -50,6 +50,13 @@ title   = "MISSION"
 content = "Supply a binaries based Linux OS easy to install and customize for both Desktop and Server solutions. </br> LXD optimized distribution to permits the best ingration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella and is developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni is related to the pinguin specie found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
 image   = "images/about/about.png"
 
+# Credits About Section
+[params.credits]
+enable  = true
+title   = "CREDITS"
+content = "This distribution is here thanks the support of the <a href='https://funtoo.org/'>Funtoo Foundation</a> and to Daniel Robbins aka <a href='https://www.funtoo.org/User:Drobbins'>drobbins</a>.</br>Many many thanks."
+
+
 # Call to Action
 [params.cta]
 enable  = true
