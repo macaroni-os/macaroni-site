@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://funtoo.github.io/macaroni-site/categories/</loc>
+    <loc>https://www.macaroni.funtoo.org/categories/</loc>
   </url><url>
-    <loc>https://funtoo.github.io/macaroni-site/docs/getting-started/</loc>
+    <loc>https://www.macaroni.funtoo.org/docs/getting-started/</loc>
   </url><url>
-    <loc>https://funtoo.github.io/macaroni-site/</loc>
+    <loc>https://www.macaroni.funtoo.org/</loc>
   </url><url>
-    <loc>https://funtoo.github.io/macaroni-site/docs/</loc>
+    <loc>https://www.macaroni.funtoo.org/docs/</loc>
   </url><url>
-    <loc>https://funtoo.github.io/macaroni-site/tags/</loc>
+    <loc>https://www.macaroni.funtoo.org/tags/</loc>
   </url>
 </urlset>

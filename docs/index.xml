@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Macaroni Linux OS</title>
-    <link>https://funtoo.github.io/macaroni-site/docs/</link>
+    <link>https://www.macaroni.funtoo.org/docs/</link>
     <description>Recent content on Macaroni Linux OS</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://funtoo.github.io/macaroni-site/docs/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://www.macaroni.funtoo.org/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started</title>
-      <link>https://funtoo.github.io/macaroni-site/docs/getting-started/</link>
+      <link>https://www.macaroni.funtoo.org/docs/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://funtoo.github.io/macaroni-site/docs/getting-started/</guid>
+      <guid>https://www.macaroni.funtoo.org/docs/getting-started/</guid>
       <description>Getting Started #  Prerequisites #  Macaroni OS Linux support only AMD64 at the moment.
 Get Macaroni OS ISOs #  WIP
 Installation #  WIP
