@@ -13,9 +13,8 @@
       
       <guid>https://www.macaroni.funtoo.org/docs/getting-started/</guid>
       <description>Getting Started #  Prerequisites #  Macaroni OS Linux support only AMD64 at the moment.
-Get Macaroni OS ISOs #  WIP
-Installation #  WIP
-Upgrade #  WIP</description>
+Get Macaroni OS #  To begin playing with Macaroni you have different ways but before share the different possibilities, i will try to supply some information about the available releases.
+   Release Description     Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system.   Macaroni Funtoo Systemd A Funtoo SystemD release.</description>
     </item>
     
   </channel>

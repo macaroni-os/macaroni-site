@@ -72,9 +72,8 @@
 
 <link rel="stylesheet" href="https://www.macaroni.funtoo.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
 <meta property="og:description" content="Getting Started #  Prerequisites #  Macaroni OS Linux support only AMD64 at the moment.
-Get Macaroni OS ISOs #  WIP
-Installation #  WIP
-Upgrade #  WIP" />
+Get Macaroni OS #  To begin playing with Macaroni you have different ways but before share the different possibilities, i will try to supply some information about the available releases.
+   Release Description     Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system.   Macaroni Funtoo Systemd A Funtoo SystemD release." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaroni.funtoo.org/docs/getting-started/" /><meta property="article:section" content="docs" />
 
@@ -84,7 +83,7 @@ Upgrade #  WIP" />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.134ac409233c86367a40ec78ad725926f2c8dae3cb8e9bb44ad2b98c878423e8.css" integrity="sha256-E0rECSM8hjZ6QOx4rXJZJvLI2uPLjpu0StK5jIeEI&#43;g=">
-<script defer src="/en.search.min.f4b3d6fb54cffff3649a6016ae42591a0128027a5751354b7dd0a4bcaf8716e9.js" integrity="sha256-9LPW&#43;1TP//NkmmAWrkJZGgEoAnpXUTVLfdCkvK&#43;HFuk="></script>
+<script defer src="/en.search.min.fa39f7203994fba14c3b64b8e3158172486eb8fd29123a92a010f6bbc5e619e3.js" integrity="sha256-&#43;jn3IDmU&#43;6FMO2S44xWBckhuuP0pEjqSoBD2u8XmGeM="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -236,22 +235,220 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#prerequisites">#</a>
 </h2>
 <p><code>Macaroni OS Linux</code> support only AMD64 at the moment.</p>
-<h2 id="get-macaroni-os-isos">
-  Get Macaroni OS ISOs
-  <a class="anchor" href="#get-macaroni-os-isos">#</a>
+<h2 id="get-macaroni-os">
+  Get Macaroni OS
+  <a class="anchor" href="#get-macaroni-os">#</a>
 </h2>
-<p>WIP</p>
-<h4 id="installation">
-  Installation
-  <a class="anchor" href="#installation">#</a>
+<p>To begin playing with <code>Macaroni</code> you have different ways but before share the different possibilities,
+i will try to supply some information about the available releases.</p>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Macaroni Funtoo</td>
+<td>The core release based on OpenRC/SysVinit Funtoo system.</td>
+</tr>
+<tr>
+<td>Macaroni Funtoo Systemd</td>
+<td>A Funtoo SystemD release.  The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files.</td>
+</tr>
+</tbody>
+</table>
+<p>Respect the Gentoo/Funtoo world, Macaroni tries to reduce the complexity of the others PMS and
+it doesn&rsquo;t manage the SLOTs or better the SLOT is added as postfix of the category.
+For example the package <code>sys-devel/gcc:9.2.0</code> is mapped as <code>sys-devel-9.2.0/gcc</code>.</p>
+<h4 id="using-docker-container">
+  Using docker container
+  <a class="anchor" href="#using-docker-container">#</a>
 </h4>
-<p>WIP</p>
-<h4 id="upgrade">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; docker run --rm -ti macaronios/funtoo-minimal
+4e02286e61d3 / <span style="color:#75715e"># luet repo update</span>
+⠈ Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded tree.tar.gz of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded repository.meta.yaml.tar.gz of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+🏠  Repository geaaru-repo-index revision: <span style="color:#ae81ff">1</span> - 2021-12-12 20:42:48 +0000 UTC
+ℹ️  Repository: geaaru-repo-index Priority: <span style="color:#ae81ff">1</span> Type: http Revision: <span style="color:#ae81ff">1</span>
+Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded tree.tar.zst of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded repository.meta.yaml.tar.zst of 5.57 MB <span style="color:#f92672">(</span> 2.48 MiB/s <span style="color:#f92672">)</span>
+🏠  Repository macaroni-commons revision: <span style="color:#ae81ff">23</span> - 2022-01-11 16:08:20 +0000 UTC
+ℹ️  Repository: macaroni-commons Priority: <span style="color:#ae81ff">2</span> Type: http Revision: <span style="color:#ae81ff">23</span>
+Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded tree.tar.zst of 0.53 MB <span style="color:#f92672">(</span> 0.44 MiB/s <span style="color:#f92672">)</span>
+Downloaded repository.meta.yaml.tar.zst of 6.04 MB <span style="color:#f92672">(</span> 6.78 MiB/s <span style="color:#f92672">)</span>
+🏠  Repository macaroni-funtoo revision: <span style="color:#ae81ff">77</span> - 2022-01-16 08:09:51 +0000 UTC
+ℹ️  Repository: macaroni-funtoo Priority: <span style="color:#ae81ff">2</span> Type: http Revision: <span style="color:#ae81ff">77</span>
+Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+Downloaded tree.tar.zst of 0.00 MB <span style="color:#f92672">(</span> 0.01 MiB/s <span style="color:#f92672">)</span>
+Downloaded repository.meta.yaml.tar.zst of 0.27 MB <span style="color:#f92672">(</span> 0.67 MiB/s <span style="color:#f92672">)</span>
+🏠  Repository mottainai-stable revision: <span style="color:#ae81ff">1</span> - 2022-01-14 15:54:04 +0000 UTC
+ℹ️  Repository: mottainai-stable Priority: <span style="color:#ae81ff">1</span> Type: http Revision: <span style="color:#ae81ff">1</span>
+
+4e02286e61d3 / <span style="color:#75715e"># luet search pci</span>
+sys-apps/pciutils-3.6.2+3
+x11-libs/libpciaccess-0.16+3
+
+4e02286e61d3 / <span style="color:#75715e"># luet i sys-apps/pciutils</span>
+...
+4e02286e61d3 / <span style="color:#75715e"># luet cleanup</span>
+Cleaned:  <span style="color:#ae81ff">5</span> packages.
+
+</code></pre></div><h4 id="using-an-lxd-container">
+  Using an LXD container
+  <a class="anchor" href="#using-an-lxd-container">#</a>
+</h4>
+<p>The Funtoo &amp; Macaroni teams supply their LXD images over an Simplestreams Server.
+To configure the LXD <code>remote</code> just run this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc remote add macaroni https://images.macaroni.funtoo.org/lxd-images --protocol simplestreams --public
+</code></pre></div><p>and then check the available images:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc image list macaroni:
+</code></pre></div><h4 id="download-the-macaroni-iso">
+  Download the Macaroni ISO
+  <a class="anchor" href="#download-the-macaroni-iso">#</a>
+</h4>
+<p>The ISOs of Macaroni OS could be downloaded from 
+  <a href="https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/">Funtoo CDN</a>.</p>
+<p>All the ISOs use 
+  <a href="https://calamares.io/docs/users-guide/">Calamares</a> as Installer.</p>
+<h3 id="knows-issues">
+  Knows Issues
+  <a class="anchor" href="#knows-issues">#</a>
+</h3>
+<p>The current status of the Macaroni OS is related to his PMS that is under heavy development
+process and it doesn&rsquo;t support yet very well the requirements needed for a Desktop
+environment and a good stability.</p>
+<p>The main issue is that the current upgrade process execute an uninstall of all packages
+to upgrade before to begin the installation of the new packages and without check
+if there are changes. This generate some issue with X sometime.</p>
+<p>So, for the moment, I suggest to upgrade a Desktop environment from
+terminal (just switch with CTRL+ALT+F1).</p>
+<p>Instead, if it&rsquo;s used in a Container environment could be a valid and stable
+solution. In a container, is less important the upgrade process because usually,
+the container is dropped and created from a new image. In this condition you
+could create a very optimized container thanks to the <code>subsets</code> feature available
+in the fork release of luet.</p>
+<p>Macaroni doesn&rsquo;t use the Funtoo ebuild in the installation phase, this means that
+the post-install scripts must be managed from the <code>luet</code> finalizer. In particular,
+is been created the 
+  <a href="https://github.com/geaaru/whip">whip</a> tool to help in this job.
+In particular, is been created the 
+  <a href="https://github.com/geaaru/whip-catalog/">whip-catalog</a>
+to store all hooks to call. For the Desktop environment the post-install hooks could
+be configured correctly in all packages.</p>
+<p>The <code>whip</code> tool is usable and the catalog could be used with this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; whip list --table
++-----------+---------------------+-----------------------------------------------------------------------+
+|   FILE    |        NAME         |                              DESCRIPTION                              |
++-----------+---------------------+-----------------------------------------------------------------------+
+| gtk       | mime_update_db      | Update mime cache.                                                    |
+| gtk       | gtk_update_icons    | Update Gnome icons cache.                                             |
+| gtk       | glib_update_schemas | Update Glib Schemas.                                                  |
+| texlive   | texlive_postinst    | Setup texlive files.                                                  |
+|           |                     |                                                                       |
+| texlive   | texlive_rebuild_fmt | Rebuild TeX formats.                                                  |
+|           |                     |                                                                       |
+| dbus      | dbus_gen_machineid  | Setup /etc/machine-id.                                                |
+| eudev     | eudev_setup         | Validate Eudev setup.                                                 |
+|           |                     |                                                                       |
+| fonts     | create_scale        | Create fonts.scale file, used by the old server-side fonts subsystem. |
+| fonts     | create_fonts_dir    | Create fonts.dir file, used by the old server-side fonts subsystem.   |
+|           |                     |                                                                       |
+| fonts     | setup_all_fonts     | Setup fonts.                                                          |
+|           |                     |                                                                       |
+| openrc    | openrc_setup        | Setup core OpenRC services.                                           |
+|           |                     |                                                                       |
+| perl      | postinst            | Setup perl binaries links.                                            |
+|           |                     |                                                                       |
+| polkit    | polkit_setup        | Setup env <span style="color:#66d9ef">for</span> polkitd.                                                |
+|           |                     |                                                                       |
+| eclass_db | db_cleanup          | Clean libdb* links and includes.                                      |
+|           |                     |                                                                       |
+| eclass_db | db_fix_so           | Fix links of /usr/include/db.h and .so                                |
+|           |                     |                                                                       |
+| elogind   | elogind_setup       | Check elogind setup.                                                  |
+|           |                     |                                                                       |
+| gdb       | setup               | Setup gdm files.                                                      |
++-----------+---------------------+-----------------------------------------------------------------------+
+</code></pre></div><p>An hook is callable with the <code>hook</code> subcommand:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; whip hook gtk.gtk_update_icons gtk.glib_update_schemas
+</code></pre></div><h3 id="upgrade">
   Upgrade
   <a class="anchor" href="#upgrade">#</a>
-</h4>
-<p>WIP</p>
-</article>
+</h3>
+<p>Just:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet repo update
+$&gt; luet upgrade
+</code></pre></div><p><code>luet</code> follow the same Funtoo/Gentoo idea about the configuration files, in particolar,
+if the file to install is related to a proctect directory and the file is already present
+then <code>luet</code> creates the file <code>_cfg0001_&lt;file&gt;</code> that could be merged with the classic
+<code>etc-update</code> or other similar software.</p>
+<h3 id="search-packages">
+  Search Packages
+  <a class="anchor" href="#search-packages">#</a>
+</h3>
+<p>The current search engine uses a regex to the <em>category</em>/<em>name</em> string.
+The subcommand is callable with <code>search</code> or <code>s</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet search lxd-compose
+app-emulation/lxd-compose-0.16.3
+</code></pre></div><p>or as a table:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet s lxd-compose --table
++---------------------------+---------+------------------+---------+
+| PACKAGE                   | VERSION | REPOSITORY       | LICENSE |
++---------------------------+---------+------------------+---------+
+| app-emulation/lxd-compose | 0.16.3  | mottainai-stable | GPL-3.0 |
++---------------------------+---------+------------------+---------+
+</code></pre></div><p>or as a JSON with metadata:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet s lxd-compose -o json | jq
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;packages&#34;</span>: <span style="color:#f92672">[</span>
+    <span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;License&#34;</span>: <span style="color:#e6db74">&#34;GPL-3.0&#34;</span>,
+      <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;app-emulation&#34;</span>,
+      <span style="color:#e6db74">&#34;files&#34;</span>: <span style="color:#f92672">[</span>
+        <span style="color:#e6db74">&#34;usr/bin/lxd-compose&#34;</span>
+      <span style="color:#f92672">]</span>,
+      <span style="color:#e6db74">&#34;hidden&#34;</span>: false,
+      <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;lxd-compose&#34;</span>,
+      <span style="color:#e6db74">&#34;repository&#34;</span>: <span style="color:#e6db74">&#34;mottainai-stable&#34;</span>,
+      <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+      <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.16.3&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">]</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>or search between installed packages:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet s lxd --installed
+</code></pre></div><h3 id="install-a-package">
+  Install a package
+  <a class="anchor" href="#install-a-package">#</a>
+</h3>
+<p>The subcommand is callable with <code>install</code> or <code>i</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet i app-emulation/lxd-compose
+</code></pre></div><h3 id="uninstall-a-package">
+  Uninstall a package
+  <a class="anchor" href="#uninstall-a-package">#</a>
+</h3>
+<p>The subcommand is callable with <code>uninstall</code> or <code>rm</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet rm app-emulation/lxd-compose
+</code></pre></div><h3 id="show-files-of-a-package">
+  Show files of a package
+  <a class="anchor" href="#show-files-of-a-package">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet q files app-emulation/lxd-compose
+usr/bin/lxd-compose
+</code></pre></div><p>or as JSON array:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet q files app-emulation/lxd-compose -o json
+<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;usr/bin/lxd-compose&#34;</span><span style="color:#f92672">]</span>
+</code></pre></div><p>or as YAML:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet q files app-emulation/lxd-compose -o yaml
+- usr/bin/lxd-compose
+
+</code></pre></div></article>
  
       
 
