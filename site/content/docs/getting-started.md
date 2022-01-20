@@ -82,6 +82,8 @@ The ISOs of Macaroni OS could be downloaded from [Funtoo CDN](https://cdn.macaro
 
 All the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
 
+The password of the `macaroni` user is `macaroni`.
+
 ### Knows Issues
 
 The current status of the Macaroni OS is related to his PMS that is under heavy development
