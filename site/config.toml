@@ -41,13 +41,13 @@ title   = "Customizable Distro at Runtime"
 [[params.banner.flipText]]
 title   = "Funtoo Powered"
 [[params.banner.flipText]]
-title   = "Binaries Distro"
+title   = "Binary Distro"
 
 # Homepage About Section
 [params.about]
 enable  = true
 title   = "MISSION"
-content = "Supply a binaries based Linux OS easy to install and customize for both Desktop and Server solutions. </br> LXD optimized distribution to permits the best ingration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella and is developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni is related to the pinguin specie found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
+content = "Supply a binary Linux OS that is easy to install and customize for both Desktop and Server. </br> LXD optimized distribution to permit the best ingration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella and is developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
 image   = "images/about/about.png"
 
 # Credits About Section
@@ -60,9 +60,9 @@ content = "This distribution is here thanks the support of the <a href='https://
 # Call to Action
 [params.cta]
 enable  = true
-title   = "SO WHAT YOU THINK ?"
-content = "Do you think that I could integrate some more features?"
-btnText = "Contact with me"
+title   = "WHAT DO YOU THINK?"
+content = "Do you think I could integrate more features?"
+btnText = "Contact us"
 btnURL     = "https://bugs.funtoo.org/projects/MAC/issues"
 
 [[params.socialIcon]]
