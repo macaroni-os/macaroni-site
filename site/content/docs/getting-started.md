@@ -7,12 +7,12 @@ type: docs
 
 ## Prerequisites
 
-`Macaroni OS Linux` support only AMD64 at the moment.
+`Macaroni OS Linux` only supports AMD64 at the moment.
 
 ## Get Macaroni OS
 
-To begin playing with `Macaroni` you have different ways but before share the different possibilities,
-i will try to supply some information about the available releases.
+To begin playing with `Macaroni` you have a few options but before we get into the different possibilities,
+Here is some information about the available releases.
 
 
 | Release   |  Description  |
@@ -63,7 +63,7 @@ Cleaned:  5 packages.
 
 #### Using an LXD container
 
-The Funtoo & Macaroni teams supply their LXD images over an Simplestreams Server.
+The Funtoo & Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD `remote` just run this command:
 
 ```shell
@@ -78,39 +78,39 @@ $> lxc image list macaroni:
 
 #### Download the Macaroni ISO
 
-The ISOs of Macaroni OS could be downloaded from [Funtoo CDN](https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/).
+Macaroni OS ISOs can be downloaded from [Funtoo CDN](https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/).
 
-All the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
+All of the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
 
 The password of the `macaroni` user is `macaroni`.
 
 ### Knows Issues
 
-The current status of the Macaroni OS is related to his PMS that is under heavy development
-process and it doesn't support yet very well the requirements needed for a Desktop
-environment and a good stability.
+The current status of the Macaroni OS is related to its PMS that is under heavy development
+and it doesn't yet support the requirements needed for a Desktop environment 
+very well and is unstable.
 
-The main issue is that the current upgrade process execute an uninstall of all packages
-to upgrade before to begin the installation of the new packages and without check
-if there are changes. This generate some issue with X sometime.
+The main issue is that the current upgrade process executes an uninstall of all packages
+to upgrade before beginning the installation of the new packages and without checking 
+if there are changes. This may sometimes generate issues with X.
 
-So, for the moment, I suggest to upgrade a Desktop environment from
+So, for the moment, we suggest that you upgrade a Desktop environment from
 terminal (just switch with CTRL+ALT+F1).
 
-Instead, if it's used in a Container environment could be a valid and stable
-solution. In a container, is less important the upgrade process because usually,
-the container is dropped and created from a new image. In this condition you
+If used in a Container environment instead, that could be a valid and stable
+solution. In a container, the upgrade process is less important because, usually,
+the container is dropped and recreated from a new image. In this condition you
 could create a very optimized container thanks to the `subsets` feature available
 in the fork release of luet.
 
 Macaroni doesn't use the Funtoo ebuild in the installation phase, this means that
 the post-install scripts must be managed from the `luet` finalizer. In particular,
-is been created the [whip](https://github.com/geaaru/whip) tool to help in this job.
-In particular, is been created the [whip-catalog](https://github.com/geaaru/whip-catalog/)
-to store all hooks to call. For the Desktop environment the post-install hooks could
-be configured correctly in all packages.
+the [whip](https://github.com/geaaru/whip) tool has been created to help in this job,
+and the [whip-catalog](https://github.com/geaaru/whip-catalog/) to store all the hooks to call.
+For any Desktop environment, the post-install hooks could
+be configured to run correctly in all packages.
 
-The `whip` tool is usable and the catalog could be used with this command:
+The `whip` tool can be run and the catalog can be displayed with this command:
 
 ```shell
 $> whip list --table
@@ -148,7 +148,7 @@ $> whip list --table
 +-----------+---------------------+-----------------------------------------------------------------------+
 ```
 
-An hook is callable with the `hook` subcommand:
+A hook is callable with the `hook` subcommand:
 
 ```shell
 $> whip hook gtk.gtk_update_icons gtk.glib_update_schemas
@@ -171,7 +171,7 @@ then `luet` creates the file `_cfg0001_<file>` that could be merged with the cla
 
 ### Search Packages
 
-The current search engine uses a regex to the *category*/*name* string.
+The current search engine uses regex to find the *category*/*name* string.
 The subcommand is callable with `search` or `s`.
 
 ```shell
