@@ -71,8 +71,8 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaroni.funtoo.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="Getting Started #  Prerequisites #  Macaroni OS Linux support only AMD64 at the moment.
-Get Macaroni OS #  To begin playing with Macaroni you have different ways but before share the different possibilities, i will try to supply some information about the available releases.
+<meta property="og:description" content="Getting Started #  Prerequisites #  Macaroni OS Linux only supports AMD64 at the moment.
+Get Macaroni OS #  To begin playing with Macaroni you have a few options but before we get into the different possibilities, Here is some information about the available releases.
    Release Description     Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system.   Macaroni Funtoo Systemd A Funtoo SystemD release." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaroni.funtoo.org/docs/getting-started/" /><meta property="article:section" content="docs" />
@@ -83,7 +83,7 @@ Get Macaroni OS #  To begin playing with Macaroni you have different ways but be
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.134ac409233c86367a40ec78ad725926f2c8dae3cb8e9bb44ad2b98c878423e8.css" integrity="sha256-E0rECSM8hjZ6QOx4rXJZJvLI2uPLjpu0StK5jIeEI&#43;g=">
-<script defer src="/en.search.min.f20f239ff2a4a2fdb4ed79b9049003cf72a4afd76992c47665454b463da1b56a.js" integrity="sha256-8g8jn/Kkov207Xm5BJADz3Kkr9dpksR2ZUVLRj2htWo="></script>
+<script defer src="/en.search.min.5c00c392c8bb2d6260d0fb9c53d9c74fc5539f4422ac59b58d72339c59dd1268.js" integrity="sha256-XADDksi7LWJg0PucU9nHT8VTn0QirFm1jXIznFndEmg="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -234,13 +234,13 @@ https://github.com/alex-shpak/hugo-book
   Prerequisites
   <a class="anchor" href="#prerequisites">#</a>
 </h2>
-<p><code>Macaroni OS Linux</code> support only AMD64 at the moment.</p>
+<p><code>Macaroni OS Linux</code> only supports AMD64 at the moment.</p>
 <h2 id="get-macaroni-os">
   Get Macaroni OS
   <a class="anchor" href="#get-macaroni-os">#</a>
 </h2>
-<p>To begin playing with <code>Macaroni</code> you have different ways but before share the different possibilities,
-i will try to supply some information about the available releases.</p>
+<p>To begin playing with <code>Macaroni</code> you have a few options but before we get into the different possibilities,
+Here is some information about the available releases.</p>
 <table>
 <thead>
 <tr>
@@ -302,7 +302,7 @@ Cleaned:  <span style="color:#ae81ff">5</span> packages.
   Using an LXD container
   <a class="anchor" href="#using-an-lxd-container">#</a>
 </h4>
-<p>The Funtoo &amp; Macaroni teams supply their LXD images over an Simplestreams Server.
+<p>The Funtoo &amp; Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD <code>remote</code> just run this command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc remote add macaroni https://images.macaroni.funtoo.org/lxd-images --protocol simplestreams --public
 </code></pre></div><p>and then check the available images:</p>
@@ -311,37 +311,37 @@ To configure the LXD <code>remote</code> just run this command:</p>
   Download the Macaroni ISO
   <a class="anchor" href="#download-the-macaroni-iso">#</a>
 </h4>
-<p>The ISOs of Macaroni OS could be downloaded from 
+<p>Macaroni OS ISOs can be downloaded from 
   <a href="https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/">Funtoo CDN</a>.</p>
-<p>All the ISOs use 
+<p>All of the ISOs use 
   <a href="https://calamares.io/docs/users-guide/">Calamares</a> as Installer.</p>
 <p>The password of the <code>macaroni</code> user is <code>macaroni</code>.</p>
 <h3 id="knows-issues">
   Knows Issues
   <a class="anchor" href="#knows-issues">#</a>
 </h3>
-<p>The current status of the Macaroni OS is related to his PMS that is under heavy development
-process and it doesn&rsquo;t support yet very well the requirements needed for a Desktop
-environment and a good stability.</p>
-<p>The main issue is that the current upgrade process execute an uninstall of all packages
-to upgrade before to begin the installation of the new packages and without check
-if there are changes. This generate some issue with X sometime.</p>
-<p>So, for the moment, I suggest to upgrade a Desktop environment from
+<p>The current status of the Macaroni OS is related to its PMS that is under heavy development
+and it doesn&rsquo;t yet support the requirements needed for a Desktop environment
+very well and is unstable.</p>
+<p>The main issue is that the current upgrade process executes an uninstall of all packages
+to upgrade before beginning the installation of the new packages and without checking
+if there are changes. This may sometimes generate issues with X.</p>
+<p>So, for the moment, we suggest that you upgrade a Desktop environment from
 terminal (just switch with CTRL+ALT+F1).</p>
-<p>Instead, if it&rsquo;s used in a Container environment could be a valid and stable
-solution. In a container, is less important the upgrade process because usually,
-the container is dropped and created from a new image. In this condition you
+<p>If used in a Container environment instead, that could be a valid and stable
+solution. In a container, the upgrade process is less important because, usually,
+the container is dropped and recreated from a new image. In this condition you
 could create a very optimized container thanks to the <code>subsets</code> feature available
 in the fork release of luet.</p>
 <p>Macaroni doesn&rsquo;t use the Funtoo ebuild in the installation phase, this means that
 the post-install scripts must be managed from the <code>luet</code> finalizer. In particular,
-is been created the 
-  <a href="https://github.com/geaaru/whip">whip</a> tool to help in this job.
-In particular, is been created the 
-  <a href="https://github.com/geaaru/whip-catalog/">whip-catalog</a>
-to store all hooks to call. For the Desktop environment the post-install hooks could
-be configured correctly in all packages.</p>
-<p>The <code>whip</code> tool is usable and the catalog could be used with this command:</p>
+the 
+  <a href="https://github.com/geaaru/whip">whip</a> tool has been created to help in this job,
+and the 
+  <a href="https://github.com/geaaru/whip-catalog/">whip-catalog</a> to store all the hooks to call.
+For any Desktop environment, the post-install hooks could
+be configured to run correctly in all packages.</p>
+<p>The <code>whip</code> tool can be run and the catalog can be displayed with this command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; whip list --table
 +-----------+---------------------+-----------------------------------------------------------------------+
 |   FILE    |        NAME         |                              DESCRIPTION                              |
@@ -375,7 +375,7 @@ be configured correctly in all packages.</p>
 |           |                     |                                                                       |
 | gdb       | setup               | Setup gdm files.                                                      |
 +-----------+---------------------+-----------------------------------------------------------------------+
-</code></pre></div><p>An hook is callable with the <code>hook</code> subcommand:</p>
+</code></pre></div><p>A hook is callable with the <code>hook</code> subcommand:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; whip hook gtk.gtk_update_icons gtk.glib_update_schemas
 </code></pre></div><h3 id="upgrade">
   Upgrade
@@ -392,7 +392,7 @@ then <code>luet</code> creates the file <code>_cfg0001_&lt;file&gt;</code> that 
   Search Packages
   <a class="anchor" href="#search-packages">#</a>
 </h3>
-<p>The current search engine uses a regex to the <em>category</em>/<em>name</em> string.
+<p>The current search engine uses regex to find the <em>category</em>/<em>name</em> string.
 The subcommand is callable with <code>search</code> or <code>s</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; luet search lxd-compose
 app-emulation/lxd-compose-0.16.3
