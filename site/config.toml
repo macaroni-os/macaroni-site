@@ -28,7 +28,7 @@ weight  = 5
 enable  = true
 #bgImage = "images/slider.jpg"
 bgImage = "images/home.jpg"
-heading = "MACARONI LINUX OS"
+heading = "MACARONI OS"
 description = "Desktop and Server Linux Distro"
 # button
 btn     = true
