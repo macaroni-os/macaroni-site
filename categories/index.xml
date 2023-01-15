@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Macaroni Linux OS</title>
-    <link>https://www.macaroni.funtoo.org/categories/</link>
+    <link>https://www.macaronios.org/categories/</link>
     <description>Recent content in Categories on Macaroni Linux OS</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.macaroni.funtoo.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://www.macaronios.org/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
