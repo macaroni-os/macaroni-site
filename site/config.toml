@@ -1,4 +1,4 @@
-baseURL = "https://macaroni.funtoo.org"
+baseURL = "https://macaronios.org"
 languageCode = "en-us"
 title = "Macaroni Linux OS"
 theme = "timer-hugo"
@@ -67,7 +67,7 @@ btnURL     = "https://bugs.funtoo.org/projects/MAC/issues"
 
 [[params.socialIcon]]
 icon = "ion-social-github"
-url = "https://github.com/funtoo/macaroni-funtoo"
+url = "https://github.com/macaroni-os/macaroni-funtoo"
 
 
 #[[params.socialIcon]]
@@ -102,7 +102,7 @@ enableGitInfo = true
 # [[menu.before]]
 [[menu.after]]
   name = "Github"
-  url = "https://github.com/funtoo"
+  url = "https://github.com/macaroni-os"
   weight = 10
 
 
@@ -145,7 +145,7 @@ enableGitInfo = true
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/funtoo/macaroni-site'
+  BookRepo = 'https://github.com/macaroni-os/macaroni-site'
 
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
