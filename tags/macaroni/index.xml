@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macaroni on Macaroni OS</title>
+    <link>https://www.macaronios.org/tags/macaroni/</link>
+    <description>Recent content in macaroni on Macaroni OS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macaronios.org is here!</title>
+      <link>https://www.macaronios.org/blog/new-domain/</link>
+      <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/new-domain/</guid>
+      <description>After 1 year of incubation under the Funtoo Foundation, the Macaroni OS has now its domain macaronios.org and its infrastructure. Really, thanks to the Funtoo Foundation and Daniel Robbins for its support that helped to Macaroni OS to be here today.
+From the infrastructure aspect nothing is changed, all compilation tasks are executed over MottainaiCI cluster but with less resource power for now.
+We hope that the community will help us to maintain the infrastructure costs with donations over our Github Sponsor or with VMs donations for compilation.</description>
+    </item>
+    
+  </channel>
+</rss>

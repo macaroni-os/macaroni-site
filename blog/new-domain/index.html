@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.81.0" />
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>macaronios.org is here!</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><body><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/new-domain/">Macaroni OS new domain!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="global-page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>macaronios.org is here!</h2>
+					<div class="portfolio-meta">
+						<span>Friday, Jan 20, 2023</span>|
+						<span> Tags:
+							macaroni
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="single-post">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="post-content">
+					<p>After 1 year of incubation under the Funtoo Foundation, the Macaroni OS has now
+its domain <code>macaronios.org</code> and its infrastructure. Really, <em>thanks to the Funtoo
+Foundation and Daniel Robbins for its support that helped to Macaroni OS to be here today</em>.</p>
+<p>From the infrastructure aspect nothing is changed, all compilation tasks are executed
+over MottainaiCI cluster but with less resource power for now.</p>
+<p>We hope that the community will help us to maintain the infrastructure costs
+with donations over our Github <a href="https://github.com/sponsors/geaaru">Sponsor</a> or
+with VMs donations for compilation.</p>
+<h1 id="new-github-organization">New Github Organization</h1>
+<p>With the review of the Macaroni OS domain, it&rsquo;s been created a new and independent
+GitHub organization <a href="https://github.com/macaroni-os/">macaroni-os</a> and migrated all
+Git repositories there.</p>
+<h1 id="domain-migration-and-users-impacts">Domain migration and users impacts</h1>
+<p>The old domain <code>*.macaroni.funtoo.org</code> will expire soon, the existing users
+that are yet with the repository <code>geaaru-repo-index</code> configured with the
+Github URL will receive automatically the upgrade of the <code>repository/*</code> packages.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$# luet repo update
+ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
+ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
+ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
+ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
+
+$# luet upgrade
+ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
+ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
+ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
+ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
+🤔  Computing upgrade, please hang tight... 💤 
+🌏 Using solver implementation  solverv2 .
+🌎 Completed compute upgrade analysis in <span style="color:#ae81ff">23323842</span> µs.
++-------------------------------------+-------------+-------------+-------------------+---------+
+| PACKAGE                             | NEW VERSION | OLD VERSION | REPOSITORY        | LICENSE |
++-------------------------------------+-------------+-------------+-------------------+---------+
+| repository/geaaru-repo-index        | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220819</span>    | geaaru-repo-index |         |
+| repository/macaroni-commons         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
+| repository/macaroni-funtoo          | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
+| repository/mottainai-stable         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220318</span>    | geaaru-repo-index |         |
++-------------------------------------+-------------+-------------+-------------------+---------+
+By going forward, you are also accepting the licenses of the packages that you are going to install in your system.
+Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
+
+</code></pre></div><p>Instead, the users with the new configuration could receive the new repositories address on change
+the content of the the <code>/etc/luet/luet.yaml</code> (if the geaaru-repo-index is configured inline and not through
+the repository config file or editing the file <code>/etc/luet/repos.conf.d/geaaru-repo-index.yml</code> with
+this content:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;geaaru-repo-index&#34;</span>
+  <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Geaaru Repository index&#34;</span>
+  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;http&#34;</span>
+  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+  <span style="color:#f92672">cached</span>: <span style="color:#66d9ef">true</span>
+  <span style="color:#f92672">priority</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">urls</span>:
+  - <span style="color:#e6db74">&#34;https://cdn.macaronios.org/mottainai/geaaru-repo-index&#34;</span>
+  - <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/geaaru/repo-index/gh-pages&#34;</span>
+</code></pre></div><p>After that to get the new updates just run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$# macaronictl etc-update
+</code></pre></div><p>The map with the changes of the URL is available <a href="https://github.com/macaroni-os/macaroni-funtoo#news">here</a>.</p>
+<h1 id="what-next">What next?</h1>
+<p>Hereinafter, our hot points for the near future:</p>
+<ol>
+<li>
+<p>We working to complete the review of the <code>luet</code> installer and his algorithms
+to reduce the memory usage, rewrite the solver and introduce the
+packages mask concept. This will permit us to begin on working a Macaroni
+release for ARM (Banana PI, Raspberry).</p>
+</li>
+<li>
+<p>The <code>terragon</code> release will drop the support to Python 3.7 to leave
+active only Python 3.9.</p>
+</li>
+<li>
+<p>Create a full and clear documentation of all Macaroni features.</p>
+</li>
+<li>
+<p>When the first two points will be reached will start the integration
+of <code>macaroni-ffs</code> project related to the Funtoo FFS technology and permit
+users to have easy the toolchains for compilation</p>
+</li>
+</ol>
+<p>A lot of things are in our plan, stay tuned!</p>
+<h1 id="additional-thanks">Additional thanks</h1>
+<p>On setup of the new infrastructure, I want to thank the all people who helped me in
+setting up the Cloudflare services in about two days. Really, thanks.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Call To Action Section Start -->
+<section id="call-to-action">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h2 class="title wow fadeInDown" data-wow-delay=".3s"
+            data-wow-duration="500ms">WHAT DO YOU THINK?</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+              Do you think I could integrate more features?</p>
+            <a href="https://www.macaronios.org/contact" class="btn btn-default btn-contact wow fadeInDown"
+              data-wow-delay=".7s" data-wow-duration="500ms">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call To Action Section End -->
+
+
+
+<!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/cwnu2P5N"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>

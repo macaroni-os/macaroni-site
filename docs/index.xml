@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Macaroni Linux OS</title>
+    <title>Macaroni Linux OS on Macaroni OS</title>
     <link>https://www.macaronios.org/docs/</link>
-    <description>Recent content on Macaroni Linux OS</description>
+    <description>Recent content in Macaroni Linux OS on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://www.macaronios.org/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>

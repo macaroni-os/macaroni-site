@@ -2,14 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.macaronios.org/blog/new-domain/</loc>
+    <lastmod>2023-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.macaronios.org/blog/</loc>
+    <lastmod>2023-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.macaronios.org/tags/macaroni/</loc>
+    <lastmod>2023-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.macaronios.org/</loc>
+    <lastmod>2023-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.macaronios.org/tags/</loc>
+    <lastmod>2023-01-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.macaronios.org/categories/</loc>
+  </url><url>
+    <loc>https://www.macaronios.org/contact/</loc>
+  </url><url>
+    <loc>https://www.macaronios.org/contact/main/</loc>
   </url><url>
     <loc>https://www.macaronios.org/docs/getting-started/</loc>
   </url><url>
-    <loc>https://www.macaronios.org/</loc>
-  </url><url>
     <loc>https://www.macaronios.org/docs/</loc>
-  </url><url>
-    <loc>https://www.macaronios.org/tags/</loc>
   </url>
 </urlset>

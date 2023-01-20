@@ -1,6 +1,6 @@
 {
-  "name": "Macaroni Linux OS",
-  "short_name": "Macaroni Linux OS",
+  "name": "Macaroni OS",
+  "short_name": "Macaroni OS",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
