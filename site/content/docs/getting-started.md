@@ -78,7 +78,9 @@ $> lxc image list macaroni:
 
 #### Download the Macaroni ISO
 
-Macaroni OS ISOs can be downloaded from [Funtoo CDN](https://images.macaronios.org/mottainai/macaroni-iso/).
+Macaroni OS ISOs can be downloaded from [Cloudflare CDN](https://images.macaronios.org/mottainai/macaroni-iso/).
+At the moment the ISOs and LXD images bigger aren't cached by our CDN profile so could slow the
+download. I hope to resolve soon this issue.
 
 All of the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
 
