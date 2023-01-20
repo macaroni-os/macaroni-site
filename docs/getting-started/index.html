@@ -83,7 +83,7 @@ Get Macaroni OS #  To begin playing with Macaroni you have a few options but bef
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.134ac409233c86367a40ec78ad725926f2c8dae3cb8e9bb44ad2b98c878423e8.css" integrity="sha256-E0rECSM8hjZ6QOx4rXJZJvLI2uPLjpu0StK5jIeEI&#43;g=">
-<script defer src="/en.search.min.116cc0c5838bec526b89fb1b390fe761755969bc26f7bba16b8ae05b0f522165.js" integrity="sha256-EWzAxYOL7FJrifsbOQ/nYXVZabwm97uha4rgWw9SIWU="></script>
+<script defer src="/en.search.min.bb107124527a1e5afda0da84bf6491fe8c0e824bc3e2b434ae4a8f3b7b16a88f.js" integrity="sha256-uxBxJFJ6Hlr9oNqEv2SR/owOgkvD4rQ0rkqPO3sWqI8="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -324,7 +324,7 @@ Cleaned:  <span style="color:#ae81ff">5</span> packages.
 </h4>
 <p>The Funtoo &amp; Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD <code>remote</code> just run this command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc remote add macaroni https://images.macaroni.funtoo.org/lxd-images --protocol simplestreams --public
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
 </code></pre></div><p>and then check the available images:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$&gt; lxc image list macaroni:
 </code></pre></div><h4 id="download-the-macaroni-iso">
@@ -332,7 +332,7 @@ To configure the LXD <code>remote</code> just run this command:</p>
   <a class="anchor" href="#download-the-macaroni-iso">#</a>
 </h4>
 <p>Macaroni OS ISOs can be downloaded from 
-  <a href="https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/">Funtoo CDN</a>.</p>
+  <a href="https://images.macaronios.org/mottainai/macaroni-iso/">Funtoo CDN</a>.</p>
 <p>All of the ISOs use 
   <a href="https://calamares.io/docs/users-guide/">Calamares</a> as Installer.</p>
 <p>The password of the <code>macaroni</code> user is <code>macaroni</code>.</p>
@@ -356,9 +356,9 @@ in the fork release of luet.</p>
 <p>Macaroni doesn&rsquo;t use the Funtoo ebuild in the installation phase, this means that
 the post-install scripts must be managed from the <code>luet</code> finalizer. In particular,
 the 
-  <a href="https://github.com/geaaru/whip">whip</a> tool has been created to help in this job,
+  <a href="https://github.com/macaroni-os/whip">whip</a> tool has been created to help in this job,
 and the 
-  <a href="https://github.com/geaaru/whip-catalog/">whip-catalog</a> to store all the hooks to call.
+  <a href="https://github.com/macaroni-os/whip-catalog/">whip-catalog</a> to store all the hooks to call.
 For any Desktop environment, the post-install hooks could
 be configured to run correctly in all packages.</p>
 <p>The <code>whip</code> tool can be run and the catalog can be displayed with this command:</p>
