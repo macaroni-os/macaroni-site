@@ -67,7 +67,7 @@ The Funtoo & Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD `remote` just run this command:
 
 ```shell
-$> lxc remote add macaroni https://images.macaroni.funtoo.org/lxd-images --protocol simplestreams --public
+$> lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
 ```
 
 and then check the available images:
@@ -78,7 +78,7 @@ $> lxc image list macaroni:
 
 #### Download the Macaroni ISO
 
-Macaroni OS ISOs can be downloaded from [Funtoo CDN](https://cdn.macaroni.funtoo.org/mottainai/macaroni-iso/).
+Macaroni OS ISOs can be downloaded from [Funtoo CDN](https://images.macaronios.org/mottainai/macaroni-iso/).
 
 All of the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
 
@@ -105,8 +105,8 @@ in the fork release of luet.
 
 Macaroni doesn't use the Funtoo ebuild in the installation phase, this means that
 the post-install scripts must be managed from the `luet` finalizer. In particular,
-the [whip](https://github.com/geaaru/whip) tool has been created to help in this job,
-and the [whip-catalog](https://github.com/geaaru/whip-catalog/) to store all the hooks to call.
+the [whip](https://github.com/macaroni-os/whip) tool has been created to help in this job,
+and the [whip-catalog](https://github.com/macaroni-os/whip-catalog/) to store all the hooks to call.
 For any Desktop environment, the post-install hooks could
 be configured to run correctly in all packages.
 
