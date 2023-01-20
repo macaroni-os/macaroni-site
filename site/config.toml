@@ -1,6 +1,6 @@
 baseURL = "https://macaronios.org"
 languageCode = "en-us"
-title = "Macaroni Linux OS"
+title = "Macaroni OS"
 theme = "timer-hugo"
 enableRobotsTXT = true
 
@@ -13,15 +13,16 @@ weight  = 1
 [[menu.main]]
 name    = "Documentation"
 url     = "docs"
-weight  = 2
+weight  = 6
 [[menu.main]]
-name    = "Contact"
-url     = "https://bugs.funtoo.org/projects/MAC/issues"
+enable  = true
+name    = "Contacts"
+url     = "contact"
 weight  = 5
-#[[menu.main]]
-#name    = "Blog"
-#url     = "blog"
-#weight  = 4
+[[menu.main]]
+name    = "Blog"
+url     = "blog"
+weight  = 4
 
 # Site Params
 [params.banner]
@@ -29,7 +30,8 @@ enable  = true
 #bgImage = "images/slider.jpg"
 bgImage = "images/home.jpg"
 heading = "MACARONI OS"
-description = "Desktop and Server Linux Distro"
+description = ""
+#description = "Linux Distro for Container, Desktop and Server"
 # button
 btn     = true
 btnText = "Getting Started"
@@ -47,15 +49,20 @@ title   = "Binary Distro"
 [params.about]
 enable  = true
 title   = "MISSION"
-content = "Supply a binary Linux OS that is easy to install and customize for both Desktop and Server. </br> LXD optimized distribution to permit the best ingration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella and is developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
+content = "Supply a binary Linux OS that is easy to install and customize for the Desktop, Server and for the Container world (LXD, Docker, Singularity/Apptainer). </br>In particular, with an eye on optimize LXD technology and setup to permit the best integration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution born as an incubation project under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella for one year and now it's grow and has his domain and infra. </br>It's developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
 image   = "images/about/about.png"
 
 # Credits About Section
 [params.credits]
 enable  = true
 title   = "CREDITS"
-content = "This distribution is here thanks the support of the <a href='https://funtoo.org/'>Funtoo Foundation</a> and to Daniel Robbins aka <a href='https://www.funtoo.org/User:Drobbins'>drobbins</a>.</br>Many many thanks."
+content = "This distribution is here thanks the initial support of the <a href='https://funtoo.org/'>Funtoo Foundation</a> and to Daniel Robbins aka <a href='https://www.funtoo.org/User:Drobbins'>drobbins</a> and now thanks to donations.</br>Many many thanks."
 
+# Credits About Section
+[params.support]
+enable  = true
+title   = "SUPPORT US"
+content = "If you want to help us on support the infra costs you can donate over the our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a>."
 
 # Call to Action
 [params.cta]
@@ -63,12 +70,14 @@ enable  = true
 title   = "WHAT DO YOU THINK?"
 content = "Do you think I could integrate more features?"
 btnText = "Contact us"
-btnURL     = "https://bugs.funtoo.org/projects/MAC/issues"
+btnURL  = "https://www.macaronios.org/contact"
 
 [[params.socialIcon]]
 icon = "ion-social-github"
-url = "https://github.com/macaroni-os/macaroni-funtoo"
-
+url = "https://github.com/macaroni-os"
+[[params.socialIcon]]
+icon = "ion-chatbox"
+url = "https://discord.gg/cwnu2P5N"
 
 #[[params.socialIcon]]
 #icon = "ion-social-slack"
@@ -104,7 +113,6 @@ enableGitInfo = true
   name = "Github"
   url = "https://github.com/macaroni-os"
   weight = 10
-
 
 [params]
   home = "Home"

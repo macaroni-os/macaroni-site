@@ -117,6 +117,14 @@ a:hover {
   right: 0;
 }
 
+pre {
+ # Override boostrap
+	display: block;
+	font-size: 87.5%;
+	color: #212529;
+	padding: 13px;
+}
+
 .fancybox-prev span {
   background: url("../images/icons/left.png") no-repeat scroll center center #009ee3;
   height: 50px;
@@ -322,12 +330,13 @@ a:hover {
 }
 
 #hero-area h2 {
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 22px;
+  font-weight: bolder;
   margin-bottom: 38px;
   line-height: 27px;
   text-transform: uppercase;
-  color: #666;
+  text-shadow: 3px 2px 3px #ecd519;
+  color: #373131;
   font-family: 'Roboto', sans-serif;
   margin-top: 25px;
 }
@@ -397,7 +406,7 @@ a:hover {
 }
 
 #about {
-  padding: 110px 0;
+  padding: 30px 0;
 }
 
 #about .block {

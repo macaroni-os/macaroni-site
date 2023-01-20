@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<section id="blog-full-width">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+					<div class="blog-content">
+            <!-- work single Content -->
+            {{- .Content }}
+          </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{{ end }}
