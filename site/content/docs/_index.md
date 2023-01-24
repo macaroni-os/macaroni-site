@@ -15,6 +15,8 @@ resolve the problems fast.
 In the middle of the story, `Macaroni OS` wants to be an optimized
 distro for LXD containers, docker and singularity.
 
+
+
 So, in summary, these are the core targets of the **Macaroni OS Linux**:
 
 {{< columns >}}

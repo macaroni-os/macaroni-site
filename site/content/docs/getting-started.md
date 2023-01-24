@@ -78,7 +78,19 @@ $> lxc image list macaroni:
 
 #### Download the Macaroni ISO
 
-Macaroni OS ISOs can be downloaded from [Cloudflare CDN](https://images.macaronios.org/mottainai/macaroni-iso/).
+Due to the migration to the new infrastructure and new domain, we have temporarily
+stopped the weekly ISOs, and we will review the links package in the near future.
+
+For now, I will share only the last release and their ISOs. Hereinafter, the links:
+
+|ISO Name|Description|Size|Sha256|
+|--------|-----------|----|------|
+[Macaroni-Funtoo-Phoenix-Gnome-23.01.iso](https://mega.nz/file/hMJDDRgZ#akMdG6JArPpxIKMG8dFoS9Y8FRhFue2SSb00T60cLSY)| Gnome thin ISO to use as recovery ISO, to install Macaroni Funtoo Stable with Calamares. | 1.774 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-23.01/Macaroni-Funtoo-Phoenix-Gnome-23.01.iso.sha256) |
+[Macaroni-Funtoo-Phoenix-Server-23.01.iso](https://mega.nz/file/JRAEWT6Y#h_rrJC7glESZu_3NN2iP9dNDCF0PpW74jnhJCE_qFc8)| Macaroni Server release. Start automatically Calamares to permit the Macaroni installation. | 1.459 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-server-23.01/Macaroni-Funtoo-Phoenix-Server-23.01.iso.sha256) |
+[Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso](https://mega.nz/file/hI5jALqJ#Mi2jRZa7SIBfxSKk4WnFgokW4dy719fr4pm7-umUO1k)| Macaroni Funtoo Gnome with subsets `portage` and `devel` enabled. Users that want to use Emerge with caution must be use this. | 1.85 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-devel-23.01/Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso.sha256) |
+[Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso](https://mega.nz/file/YBRXiSpI#p7nBvV0NoDG5EBm0UevUUJAGUE3fN2wKbJrX--9JiPM)| Macaroni Server version with subsets `portage` and devel` enabled. | 1.524 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-server-devel-23.01/Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso.sha256) |
+[Macaroni-Funtoo-Phoenix-Xfce-23.01.iso](https://mega.nz/file/1NhGjbSL#uoX6ekPJddh1uJzN9bkIk0_17ntoFnjGCU7_OuYWNtw)| Macaroni XFCE ISO Release. | 1.622 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-xfce-23.01/Macaroni-Funtoo-Phoenix-Xfce-23.01.iso.sha256) |
+
 At the moment the ISOs and LXD images bigger aren't cached by our CDN profile so could slow the
 download. I hope to resolve soon this issue.
 
