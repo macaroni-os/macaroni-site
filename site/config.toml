@@ -77,7 +77,7 @@ icon = "ion-social-github"
 url = "https://github.com/macaroni-os"
 [[params.socialIcon]]
 icon = "ion-chatbox"
-url = "https://discord.gg/EjJZzR3b"
+url = "https://discord.gg/AMuVCRZEvG"
 
 #[[params.socialIcon]]
 #icon = "ion-social-slack"

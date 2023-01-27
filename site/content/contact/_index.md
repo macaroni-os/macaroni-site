@@ -5,7 +5,7 @@ type: contact
 
 ## Discord
 
-You can reach us in our [Discord Server](https://discord.gg/cwnu2P5N) or
+You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG) or
 through the [Funtoo Discord Server](https://discord.gg/BNUSpUU).
 
 ## Issues Tracker
