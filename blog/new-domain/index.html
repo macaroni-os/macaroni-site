@@ -6,7 +6,7 @@
   
   <meta name="description" content="Macaroni">
   <meta name="author" content="Geaaru">
-  <meta name="generator" content="Hugo 0.81.0" />
+  <meta name="generator" content="Hugo 0.110.0">
   
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -133,47 +133,46 @@ Git repositories there.</p>
 <p>The old domain <code>*.macaroni.funtoo.org</code> will expire soon, the existing users
 that are yet with the repository <code>geaaru-repo-index</code> configured with the
 Github URL will receive automatically the upgrade of the <code>repository/*</code> packages.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$# luet repo update
-ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
-ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
-ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
-ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
-
-$# luet upgrade
-ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
-ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
-ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
-ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
-🤔  Computing upgrade, please hang tight... 💤 
-🌏 Using solver implementation  solverv2 .
-🌎 Completed compute upgrade analysis in <span style="color:#ae81ff">23323842</span> µs.
-+-------------------------------------+-------------+-------------+-------------------+---------+
-| PACKAGE                             | NEW VERSION | OLD VERSION | REPOSITORY        | LICENSE |
-+-------------------------------------+-------------+-------------+-------------------+---------+
-| repository/geaaru-repo-index        | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220819</span>    | geaaru-repo-index |         |
-| repository/macaroni-commons         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
-| repository/macaroni-funtoo          | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
-| repository/mottainai-stable         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220318</span>    | geaaru-repo-index |         |
-+-------------------------------------+-------------+-------------+-------------------+---------+
-By going forward, you are also accepting the licenses of the packages that you are going to install in your system.
-Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
-
-</code></pre></div><p>Instead, the users with the new configuration could receive the new repositories address on change
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$# luet repo update
+</span></span><span style="display:flex;"><span>ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$# luet upgrade
+</span></span><span style="display:flex;"><span>ℹ️  Repository:              geaaru-repo-index Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:   <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:               macaroni-commons Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">117</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:                macaroni-funtoo Priority:   <span style="color:#ae81ff">2</span> Type:  http Revision: <span style="color:#ae81ff">620</span>
+</span></span><span style="display:flex;"><span>ℹ️  Repository:               mottainai-stable Priority:   <span style="color:#ae81ff">1</span> Type:  http Revision:  <span style="color:#ae81ff">55</span>
+</span></span><span style="display:flex;"><span>🤔  Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🌏 Using solver implementation  solverv2 .
+</span></span><span style="display:flex;"><span>🌎 Completed compute upgrade analysis in <span style="color:#ae81ff">23323842</span> µs.
+</span></span><span style="display:flex;"><span>+-------------------------------------+-------------+-------------+-------------------+---------+
+</span></span><span style="display:flex;"><span>| PACKAGE                             | NEW VERSION | OLD VERSION | REPOSITORY        | LICENSE |
+</span></span><span style="display:flex;"><span>+-------------------------------------+-------------+-------------+-------------------+---------+
+</span></span><span style="display:flex;"><span>| repository/geaaru-repo-index        | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220819</span>    | geaaru-repo-index |         |
+</span></span><span style="display:flex;"><span>| repository/macaroni-commons         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
+</span></span><span style="display:flex;"><span>| repository/macaroni-funtoo          | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20211210</span>    | geaaru-repo-index |         |
+</span></span><span style="display:flex;"><span>| repository/mottainai-stable         | <span style="color:#ae81ff">20230118</span>    | <span style="color:#ae81ff">20220318</span>    | geaaru-repo-index |         |
+</span></span><span style="display:flex;"><span>+-------------------------------------+-------------+-------------+-------------------+---------+
+</span></span><span style="display:flex;"><span>By going forward, you are also accepting the licenses of the packages that you are going to install in your system.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
+</span></span></code></pre></div><p>Instead, the users with the new configuration could receive the new repositories address on change
 the content of the the <code>/etc/luet/luet.yaml</code> (if the geaaru-repo-index is configured inline and not through
 the repository config file or editing the file <code>/etc/luet/repos.conf.d/geaaru-repo-index.yml</code> with
 this content:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;geaaru-repo-index&#34;</span>
-  <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Geaaru Repository index&#34;</span>
-  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;http&#34;</span>
-  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">cached</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">priority</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">urls</span>:
-  - <span style="color:#e6db74">&#34;https://cdn.macaronios.org/mottainai/geaaru-repo-index&#34;</span>
-  - <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/geaaru/repo-index/gh-pages&#34;</span>
-</code></pre></div><p>After that to get the new updates just run:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$# macaronictl etc-update
-</code></pre></div><p>The map with the changes of the URL is available <a href="https://github.com/macaroni-os/macaroni-funtoo#news">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;geaaru-repo-index&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Geaaru Repository index&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;http&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cached</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">priority</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;https://cdn.macaronios.org/mottainai/geaaru-repo-index&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/geaaru/repo-index/gh-pages&#34;</span>
+</span></span></code></pre></div><p>After that to get the new updates just run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$# macaronictl etc-update
+</span></span></code></pre></div><p>The map with the changes of the URL is available <a href="https://github.com/macaroni-os/macaroni-funtoo#news">here</a>.</p>
 <h1 id="what-next">What next?</h1>
 <p>Hereinafter, our hot points for the near future:</p>
 <ol>
@@ -248,7 +247,7 @@ setting up the Cloudflare services in about two days. Really, thanks.</p>
           
           <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
           
-          <li><a href="https://discord.gg/EjJZzR3b"><i class="ion-chatbox"></i></a></li>
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
           
         </ul>
       </div>

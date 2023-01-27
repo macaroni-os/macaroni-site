@@ -33,9 +33,9 @@ We hope that the community will help us to maintain the infrastructure costs wit
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/getting-started/</guid>
-      <description>Getting Started #  Prerequisites #  Macaroni OS Linux only supports AMD64 at the moment.
-Get Macaroni OS #  To begin playing with Macaroni you have a few options but before we get into the different possibilities, Here is some information about the available releases.
-   Release Description     Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system.   Macaroni Funtoo Systemd A Funtoo SystemD release.</description>
+      <description>Getting Started # Prerequisites # Macaroni OS Linux only supports AMD64 at the moment.
+Get Macaroni OS # To begin playing with Macaroni you have a few options but before we get into the different possibilities, Here is some information about the available releases.
+Release Description Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system. Macaroni Funtoo Systemd A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files.</description>
     </item>
     
   </channel>
