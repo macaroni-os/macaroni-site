@@ -22,3 +22,20 @@ item    :
       Mottainai CD/CI or through lxd-compose
       and could be customized from users easily.
 
+  - icon  : ion-code-working
+    title : Multiple Releases
+    description: >
+      Macaroni OS supplies different releases for different requirements
+      and others are on the way.
+
+  - icon  : ion-edit
+    title: Customize packages to install at runtime
+    description: >
+      Through the subsets you can choose what files install and
+      reduce the spaces used on your rootfs.
+
+  - icon  : ion-lock-combination
+    title: Validate installation
+    description: >
+      We working on tools that permit to validation of the hashes of
+      the installed files and catch corrupted modified by an attack.

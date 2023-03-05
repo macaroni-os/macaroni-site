@@ -13,12 +13,12 @@ weight  = 1
 [[menu.main]]
 name    = "Documentation"
 url     = "docs"
-weight  = 6
+weight  = 10
 [[menu.main]]
 enable  = true
 name    = "Contacts"
 url     = "contact"
-weight  = 5
+weight  = 2
 [[menu.main]]
 name    = "Blog"
 url     = "blog"
@@ -49,20 +49,27 @@ title   = "Binary Distro"
 [params.about]
 enable  = true
 title   = "MISSION"
-content = "Supply a binary Linux OS that is easy to install and customize for the Desktop, Server and for the Container world (LXD, Docker, Singularity/Apptainer). </br>In particular, with an eye on optimize LXD technology and setup to permit the best integration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution born as an incubation project under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella for one year and now it's grow and has his domain and infra. </br>It's developed and evolved primarily by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
+content = "Supply a binary Linux OS that is easy to install and customize for the Desktop, Server and for the Container world (LXD, Docker, Singularity/Apptainer). </br>In particular, with an eye on optimize LXD technology and setup to permit the best integration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a young distribution born as an incubation project under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella for one year and now it's grow and has his domain and infra. </br>It's been created by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
 image   = "images/about/about.png"
 
 # Credits About Section
 [params.credits]
 enable  = true
 title   = "CREDITS"
-content = "This distribution is here thanks the initial support of the <a href='https://funtoo.org/'>Funtoo Foundation</a> and to Daniel Robbins aka <a href='https://www.funtoo.org/User:Drobbins'>drobbins</a> and now thanks to donations.</br>Many many thanks."
+content = "This distribution is here thanks the initial support of the <a href='https://funtoo.org/'>Funtoo Foundation</a> and to Daniel Robbins aka <a href='https://www.funtoo.org/User:Drobbins'>drobbins</a>, thanks to our partners and thanks to donations.</br>Many many thanks."
 
 # Credits About Section
 [params.support]
 enable  = true
 title   = "SUPPORT US"
 content = "If you want to help us on support the infra costs you can donate over the our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a>."
+
+# Portfolio Section On Homepage
+[params.portfolio]
+enable  = true
+title   = "Our Partners"
+subtitle= "Maintaining a distro is hard and we really love all consortiums and people that help us with this."
+
 
 # Call to Action
 [params.cta]
