@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.acab2174e00b4cce829c4f10c70787bce39fc833c6477ca6d324744085d7bc88.css" integrity="sha256-rKshdOALTM6CnE8QxweHvOOfyDPGR3ym0yR0QIXXvIg=">
-<script defer src="/en.search.min.14d39230e4f46c445a75c7c4f40ced4d340cce7aa6bcf121295c0c2c6f10f441.js" integrity="sha256-FNOSMOT0bERadcfE9AztTTQMznqmvPEhKVwMLG8Q9EE="></script>
+<script defer src="/en.search.min.dd87032e66b6906ff45578336085fd0c5b749dbd3122f5d7151b005bd1452bb9.js" integrity="sha256-3YcDLma2kG/0VXgzYIX9DFt0nb0xIvXXFRsAW9FFK7k="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/index.xml" title="Macaroni OS" />
@@ -181,7 +181,21 @@ https://github.com/alex-shpak/hugo-book
 
   <ul>
 <li>
-  <a href="/docs/"class=active><strong>The Project</strong></a></li>
+  <a href="/docs/"class=active><strong>The Project</strong></a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-releases">Macaroni Releases</a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-os-phoenix">Phoenix</a></li>
+<li>
+  <a href="/docs/#macaroni-os-eagle">Eagle</a></li>
+<li>
+  <a href="/docs/#macaroni-os-terragon">Terragon</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>
   <a href="/docs/getting-started/"><strong>Getting Started</strong></a>
 <br /></li>
@@ -286,6 +300,128 @@ the synergy of the Funtoo Team.
   
 </div>
 
+<h1 id="macaroni-releases">
+  Macaroni Releases
+  <a class="anchor" href="#macaroni-releases">#</a>
+</h1>
+<p>Following the core targets just described in Macaroni there are
+different releases:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Release Codename</th>
+<th style="text-align:center">Funtoo Release</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>Phoenix</em></td>
+<td style="text-align:center">1.4-prime</td>
+<td style="text-align:left">The core release based on OpenRC/SysVinit for Server and Desktop</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>Eagle</em></td>
+<td style="text-align:center">1.4-prime + patches</td>
+<td style="text-align:left">A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services.</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>Terragon</em></td>
+<td style="text-align:center">next</td>
+<td style="text-align:left">The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags.</td>
+</tr>
+</tbody>
+</table>
+<p>Major differences about GCC, Python</p>
+<h2 id="macaroni-os-phoenix">
+  Macaroni OS Phoenix
+  <a class="anchor" href="#macaroni-os-phoenix">#</a>
+</h2>
+<p>The <strong>Phoenix</strong> release is the first release created and the only release
+at the moment for the Desktop.
+The codename <em>phoenix</em> is related to the immortal bird associated with
+Greek mythology that cyclically regenerates or is otherwise born again.
+Associated with the sun, a phoenix obtains new life by rising from the
+ashes of its predecessor. This is the reason I choose this name: to describe
+a new beginning and to remember us that also when others try to stop a
+dream, with the commitment it&rsquo;s possible reborn and goes ahead.</p>
+<p>In <strong>phoenix</strong> it&rsquo;s used the OpenRC as an init system, it&rsquo;s based on
+Funtoo 1.4-prime and so:</p>
+<pre><code>* GCC 9.2.0
+* Glibc 2.33
+* Python 3.7 (2.7 is available but will be dropped in the near future)
+* LLVM 11
+</code></pre>
+<p>The desktop environments available in this release are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Desktop Environment</th>
+<th style="text-align:center">Version</th>
+<th style="text-align:left">Status</th>
+<th style="text-align:center">ISO Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Gnome</td>
+<td style="text-align:center">3.36</td>
+<td style="text-align:left"><em>stable</em></td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">XFCE</td>
+<td style="text-align:center">4.16</td>
+<td style="text-align:left"><em>stable</em></td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Enlightenment</td>
+<td style="text-align:center">0.25.4</td>
+<td style="text-align:left"><em>experimental</em></td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">KDE</td>
+<td style="text-align:center">5.22</td>
+<td style="text-align:left"><em>experimental</em></td>
+<td style="text-align:center">no</td>
+</tr>
+</tbody>
+</table>
+<p>As the first release a lot of things could be improved but it&rsquo;s also true
+that the Desktop is something complex that requires a lot of effort and
+computing. We will work to clean up things and speed up the building
+phase that now it&rsquo;s very expensive, in particular for the build of the
+<em>funtoo-base</em> seed based on Gnome Funtoo stage3.</p>
+<h2 id="macaroni-os-eagle">
+  Macaroni OS Eagle
+  <a class="anchor" href="#macaroni-os-eagle">#</a>
+</h2>
+<p>The <strong>Eagle</strong> release is born to be used in container, it&rsquo;s based on
+Funtoo 1.4-prime with patches to integrate SystemD as an init system.</p>
+<p>Without the need to support the Desktop, the release is been compiled
+with server-oriented and X-less use flags. This permits to have core
+packages fewer dependencies and more optimized for containers.</p>
+<p>Like <em>phoenix</em> also <em>eagle</em> is based on Funtoo 1.4-prime and so:</p>
+<pre><code>* GCC 9.2.0
+* Glibc 2.33
+* Python 3.7 (2.7 is available but will be dropped in the near future)
+* LLVM 11
+</code></pre>
+<h2 id="macaroni-os-terragon">
+  Macaroni OS Terragon
+  <a class="anchor" href="#macaroni-os-terragon">#</a>
+</h2>
+<p>The <strong>Terragon</strong> release is born to be used in container and it&rsquo;s based
+on Funtoo Next that is the more innovative release of Funtoo.</p>
+<p>Like for <em>eagle</em> release the <em>terragon</em> release is been compiled with
+server-oriented and X-less use flags.</p>
+<p>Based on Funtoo Next some core packages are:</p>
+<pre><code>* GCC 11.3.0
+* Glibc 2.33
+* Python 3.9
+</code></pre>
 </article>
  
       
