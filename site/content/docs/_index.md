@@ -56,8 +56,6 @@ different releases:
 | *Eagle*   | 1.4-prime + patches | A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
 | *Terragon* | next | The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags. |
 
-Major differences about GCC, Python
-
 ## Macaroni OS Phoenix
 
 The **Phoenix** release is the first release created and the only release

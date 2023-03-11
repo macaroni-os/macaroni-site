@@ -3,8 +3,6 @@
 author: "Daniele Rondina"
 date: 2023-01-20
 linktitle: Macaroni OS new domain!
-menu:
-  main:
 next: /tutorials/github-pages-blog
 prev: /tutorials/automated-deployments
 title: macaronios.org is here!
