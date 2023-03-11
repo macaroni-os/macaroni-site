@@ -159,7 +159,7 @@ gets more power:
    next release.
 
 2. `macaronictl` tool has a new `etc-update` command written in Golang
-   the uses the same `/etc/etc-update.conf` config and it implements
+   that uses the same `/etc/etc-update.conf` config and it implements
    a similar logic to the Portage `etc-update` command.
 
 3. `macaronictl` tool has a new `kernel availables` command that
