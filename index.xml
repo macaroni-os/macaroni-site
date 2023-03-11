@@ -6,7 +6,18 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Jan 2023 11:06:54 +0600</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macaroni OS Phoenix 23.03 is out!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.03/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.03/</guid>
+      <description>Finally, after two months of hard work, the release Phoenix 23.03 is out and is the first Desktop release under the new macaronios.org domain.
+In these two months, we had to follow infrastructure issues (broken hard disks) and create the new Macaroni network. This is one of the reasons we have skipped the release of February.
+We want to thank again the GARR consortium that is now our primary mirror under our CDN and this will permit in the next weeks to expose again the ISOs download page and our LXD images.</description>
+    </item>
+    
     <item>
       <title>macaronios.org is here!</title>
       <link>https://www.macaronios.org/blog/new-domain/</link>
