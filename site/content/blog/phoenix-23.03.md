@@ -2,10 +2,6 @@
 author: "Daniele Rondina"
 date: 2023-03-11
 linktitle: Phoenix 23.03 is out!
-menu:
-  main:
-next: /tutorials/github-pages-blog
-prev: /tutorials/automated-deployments
 title: Macaroni OS Phoenix 23.03 is out!
 tags:
   - macaroni
@@ -240,6 +236,8 @@ This new release has some interesting updates:
 
 - All kernels modules are been renamed following the naming convention: `kernel-<kernel-branch>` as
   category. This will help searching and `macaronictl` integration.
+  Always related to the kernel, the string `LTS` is been removed from kernel
+  packages. The LTS information is now available over the package annotations.
 
 - See the [release](https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.03-phoenix) page for the detail of all updates.
 
