@@ -42,6 +42,85 @@ a:hover {
   text-decoration: none;
 }
 
+.badge-blue {
+  color: #fff !important;
+  background-color: RGBA(13,110,253,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-orange {
+  color: #000 !important;
+  background-color: RGBA(255,193,7,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-services {
+  color: #fff !important;
+  background-color: RGBA(232,112,25,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-funtoo {
+  color: #fff !important;
+  background-color: RGBA(198,22,198,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-blue-light {
+  color: #000 !important;
+  background-color: RGBA(13,202,240,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-green {
+  color: #fff !important;
+  background-color: RGBA(25,135,84,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: 0.375rem;
+}
+
+.badge-label {
+  display: inline-block;
+  padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+  font-size: var(--bs-badge-font-size);
+  font-weight: var(--bs-badge-font-weight);
+  line-height: 1;
+  color: var(--bs-badge-color);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--bs-badge-border-radius)
+}
+
 .slick-slide:focus {
   outline: 0;
 }
