@@ -5,24 +5,6 @@ type: docs
 
 # Getting Started
 
-## Prerequisites
-
-`Macaroni OS Linux` only supports AMD64 at the moment.
-
-## Get Macaroni OS
-
-To begin playing with `Macaroni` you have a few options but before we get into the different possibilities,
-Here is some information about the available releases.
-
-
-| Release   |  Description  |
-| --- | --- |
-| Macaroni Funtoo | The core release based on OpenRC/SysVinit Funtoo system. |
-| Macaroni Funtoo Systemd | A Funtoo SystemD release.  The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. |
-
-Respect the Gentoo/Funtoo world, Macaroni tries to reduce the complexity of the others PMS and
-it doesn't manage the SLOTs or better the SLOT is added as postfix of the category.
-For example the package `sys-devel/gcc:9.2.0` is mapped as `sys-devel-9.2.0/gcc`.
 
 #### Using docker container
 
@@ -67,7 +49,7 @@ The Funtoo & Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD `remote` just run this command:
 
 ```shell
-$> lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+$> lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 ```
 
 and then check the available images:
@@ -75,29 +57,6 @@ and then check the available images:
 ```shell
 $> lxc image list macaroni:
 ```
-
-#### Download the Macaroni ISO
-
-Due to the migration to the new infrastructure and new domain, we have temporarily
-stopped the weekly ISOs, and we will review the links package in the near future.
-
-For now, I will share only the last release and their ISOs. Hereinafter, the links:
-
-|ISO Name|Description|Size|Sha256|
-|--------|-----------|----|------|
-[Macaroni-Funtoo-Phoenix-Gnome-23.01.iso](https://mega.nz/file/hMJDDRgZ#akMdG6JArPpxIKMG8dFoS9Y8FRhFue2SSb00T60cLSY)| Gnome thin ISO to use as recovery ISO, to install Macaroni Funtoo Stable with Calamares. | 1.774 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-23.01/Macaroni-Funtoo-Phoenix-Gnome-23.01.iso.sha256) |
-[Macaroni-Funtoo-Phoenix-Server-23.01.iso](https://mega.nz/file/JRAEWT6Y#h_rrJC7glESZu_3NN2iP9dNDCF0PpW74jnhJCE_qFc8)| Macaroni Server release. Start automatically Calamares to permit the Macaroni installation. | 1.459 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-server-23.01/Macaroni-Funtoo-Phoenix-Server-23.01.iso.sha256) |
-[Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso](https://mega.nz/file/hI5jALqJ#Mi2jRZa7SIBfxSKk4WnFgokW4dy719fr4pm7-umUO1k)| Macaroni Funtoo Gnome with subsets `portage` and `devel` enabled. Users that want to use Emerge with caution must be use this. | 1.85 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-devel-23.01/Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso.sha256) |
-[Macaroni-Funtoo-Phoenix-Gnome-Live-23.01.iso](https://mega.nz/file/FAwSHQyQ#Qs8Yq096RSVOj3DLxrPokXvQS-rDkbJ8oTiA09hQbfY)| Ready to use ISO with different tools for Office/School/Graphic that could be installed too. | 2.88 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-live-23.01/Macaroni-Funtoo-Phoenix-Gnome-Live-23.01.iso.sha256) |
-[Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso](https://mega.nz/file/YBRXiSpI#p7nBvV0NoDG5EBm0UevUUJAGUE3fN2wKbJrX--9JiPM)| Macaroni Server version with subsets `portage` and devel` enabled. | 1.524 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-server-devel-23.01/Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso.sha256) |
-[Macaroni-Funtoo-Phoenix-Xfce-23.01.iso](https://mega.nz/file/1NhGjbSL#uoX6ekPJddh1uJzN9bkIk0_17ntoFnjGCU7_OuYWNtw)| Macaroni XFCE ISO Release. | 1.622 GB | [Sha256](https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-xfce-23.01/Macaroni-Funtoo-Phoenix-Xfce-23.01.iso.sha256) |
-
-At the moment the ISOs and LXD images bigger aren't cached by our CDN profile so could slow the
-download. I hope to resolve soon this issue.
-
-All of the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
-
-The password of the `macaroni` user is `macaroni`.
 
 ### Knows Issues
 
