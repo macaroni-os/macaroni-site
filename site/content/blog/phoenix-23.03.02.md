@@ -30,6 +30,8 @@ that will permit to reduce the outgoing traffic when it's used
 Macaroni for CD/CI and for us, to test stable repository before
 sync it to master.
 
+All ISOs will be with ZRAM enabled by default.
+
 Sorry for this issue.
 
 Behind this fix, I fixed the URL reported in the Calamares installer
