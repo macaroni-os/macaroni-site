@@ -32,6 +32,9 @@ sync it to master.
 
 Sorry for this issue.
 
+Behind this fix, I fixed the URL reported in the Calamares installer
+that was yet with the old domain `macaroni.funtoo.org`.
+
 See [previous](https://www.macaronios.org/blog/phoenix-23.03.01/) post for the
 details about changes.
 
