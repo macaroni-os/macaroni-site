@@ -22,6 +22,7 @@ Without the patch the default installation fails on setup grub because it\u0026r
 The new ISOs will be available in two days.
 Unlucky, to build the ISOs with the stable repositories at the moment we need to wait that the stable repositories to be synced to our CDN and main mirror.
 We have planned to integrate the repetitors feature to luet that will permit to reduce the outgoing traffic when it\u0026rsquo;s used Macaroni for CD/CI and for us, to test stable repository before sync it to master.
+All ISOs will be with ZRAM enabled by default.
 Sorry for this issue.
 Behind this fix, I fixed the URL reported in the Calamares installer that was yet with the old domain macaroni.funtoo.org.
 See previous post for the details about changes.
