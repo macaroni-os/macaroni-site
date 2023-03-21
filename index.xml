@@ -6,7 +6,16 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macaroni OS Phoenix 23.03.01 is out!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.03.01/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.03.01/</guid>
+      <description>While we have worked on preparing the new ISOs for the release 23.03 we have figured out that was better to bump a new release with the changes of the Calamares plugin to migrate our ISOs to kernel 6.1. In particular, the ISOs for Desktops have now the kernel 6.1.18 with built-in integration with new Realtek wifi cards. Unluckily not yet the cards 8852b e 8852be that will be available on branch 6.</description>
+    </item>
+    
     <item>
       <title>Macaroni OS Phoenix 23.03 is out!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.03/</link>
@@ -54,9 +63,7 @@ GARR network is designed and managed by Consortium GARR, a non-profit associatio
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/getting-started/</guid>
-      <description>Getting Started # Prerequisites # Macaroni OS Linux only supports AMD64 at the moment.
-Get Macaroni OS # To begin playing with Macaroni you have a few options but before we get into the different possibilities, Here is some information about the available releases.
-Release Description Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system. Macaroni Funtoo Systemd A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files.</description>
+      <description>Getting Started # Using docker container # $&amp;gt; docker run --rm -ti macaronios/funtoo-minimal 4e02286e61d3 / # luet repo update ⠈ Downloaded repository.yaml of 0.00 MB ( 0.00 MiB/s ) Downloaded tree.tar.gz of 0.00 MB ( 0.00 MiB/s ) Downloaded repository.meta.yaml.tar.gz of 0.00 MB ( 0.00 MiB/s ) 🏠 Repository geaaru-repo-index revision: 1 - 2021-12-12 20:42:48 +0000 UTC ℹ️ Repository: geaaru-repo-index Priority: 1 Type: http Revision: 1 Downloaded repository.yaml of 0.</description>
     </item>
     
   </channel>

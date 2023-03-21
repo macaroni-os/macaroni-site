@@ -71,9 +71,7 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="Getting Started # Prerequisites # Macaroni OS Linux only supports AMD64 at the moment.
-Get Macaroni OS # To begin playing with Macaroni you have a few options but before we get into the different possibilities, Here is some information about the available releases.
-Release Description Macaroni Funtoo The core release based on OpenRC/SysVinit Funtoo system. Macaroni Funtoo Systemd A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files." />
+<meta property="og:description" content="Getting Started # Using docker container # $&gt; docker run --rm -ti macaronios/funtoo-minimal 4e02286e61d3 / # luet repo update ⠈ Downloaded repository.yaml of 0.00 MB ( 0.00 MiB/s ) Downloaded tree.tar.gz of 0.00 MB ( 0.00 MiB/s ) Downloaded repository.meta.yaml.tar.gz of 0.00 MB ( 0.00 MiB/s ) 🏠 Repository geaaru-repo-index revision: 1 - 2021-12-12 20:42:48 &#43;0000 UTC ℹ️ Repository: geaaru-repo-index Priority: 1 Type: http Revision: 1 Downloaded repository.yaml of 0." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaronios.org/docs/getting-started/" /><meta property="article:section" content="docs" />
 
@@ -82,7 +80,7 @@ Release Description Macaroni Funtoo The core release based on OpenRC/SysVinit Fu
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.acab2174e00b4cce829c4f10c70787bce39fc833c6477ca6d324744085d7bc88.css" integrity="sha256-rKshdOALTM6CnE8QxweHvOOfyDPGR3ym0yR0QIXXvIg=">
-<script defer src="/en.search.min.243c6aa237e1b23bb517e649c25db4e5afdcf505f5d9534448bbe4feb56c86a3.js" integrity="sha256-JDxqojfhsju1F&#43;ZJwl205a/c9QX12VNESLvk/rVshqM="></script>
+<script defer src="/en.search.min.607eb70dcc0fe24a449d0a27b421d62933b72ee133c07e29a407df108187e71d.js" integrity="sha256-YH63DcwP4kpEnQontCHWKTO3LuEzwH4ppAffEIGH5x0="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -137,7 +135,14 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/blog/phoenix-23.03/">Phoenix 23.03 is out!</a>
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.03.01/">Phoenix 23.03.01 is out!</a>
 							</li>
 							
 							
@@ -270,38 +275,6 @@ https://github.com/alex-shpak/hugo-book
   Getting Started
   <a class="anchor" href="#getting-started">#</a>
 </h1>
-<h2 id="prerequisites">
-  Prerequisites
-  <a class="anchor" href="#prerequisites">#</a>
-</h2>
-<p><code>Macaroni OS Linux</code> only supports AMD64 at the moment.</p>
-<h2 id="get-macaroni-os">
-  Get Macaroni OS
-  <a class="anchor" href="#get-macaroni-os">#</a>
-</h2>
-<p>To begin playing with <code>Macaroni</code> you have a few options but before we get into the different possibilities,
-Here is some information about the available releases.</p>
-<table>
-<thead>
-<tr>
-<th>Release</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Macaroni Funtoo</td>
-<td>The core release based on OpenRC/SysVinit Funtoo system.</td>
-</tr>
-<tr>
-<td>Macaroni Funtoo Systemd</td>
-<td>A Funtoo SystemD release.  The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files.</td>
-</tr>
-</tbody>
-</table>
-<p>Respect the Gentoo/Funtoo world, Macaroni tries to reduce the complexity of the others PMS and
-it doesn&rsquo;t manage the SLOTs or better the SLOT is added as postfix of the category.
-For example the package <code>sys-devel/gcc:9.2.0</code> is mapped as <code>sys-devel-9.2.0/gcc</code>.</p>
 <h4 id="using-docker-container">
   Using docker container
   <a class="anchor" href="#using-docker-container">#</a>
@@ -343,82 +316,10 @@ For example the package <code>sys-devel/gcc:9.2.0</code> is mapped as <code>sys-
 </h4>
 <p>The Funtoo &amp; Macaroni teams supply their LXD images over a Simplestreams Server.
 To configure the LXD <code>remote</code> just run this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>and then check the available images:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
-</span></span></code></pre></div><h4 id="download-the-macaroni-iso">
-  Download the Macaroni ISO
-  <a class="anchor" href="#download-the-macaroni-iso">#</a>
-</h4>
-<p>Due to the migration to the new infrastructure and new domain, we have temporarily
-stopped the weekly ISOs, and we will review the links package in the near future.</p>
-<p>For now, I will share only the last release and their ISOs. Hereinafter, the links:</p>
-<table>
-<thead>
-<tr>
-<th>ISO Name</th>
-<th>Description</th>
-<th>Size</th>
-<th>Sha256</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-  <a href="https://mega.nz/file/hMJDDRgZ#akMdG6JArPpxIKMG8dFoS9Y8FRhFue2SSb00T60cLSY">Macaroni-Funtoo-Phoenix-Gnome-23.01.iso</a></td>
-<td>Gnome thin ISO to use as recovery ISO, to install Macaroni Funtoo Stable with Calamares.</td>
-<td>1.774 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-23.01/Macaroni-Funtoo-Phoenix-Gnome-23.01.iso.sha256">Sha256</a></td>
-</tr>
-<tr>
-<td>
-  <a href="https://mega.nz/file/JRAEWT6Y#h_rrJC7glESZu_3NN2iP9dNDCF0PpW74jnhJCE_qFc8">Macaroni-Funtoo-Phoenix-Server-23.01.iso</a></td>
-<td>Macaroni Server release. Start automatically Calamares to permit the Macaroni installation.</td>
-<td>1.459 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-server-23.01/Macaroni-Funtoo-Phoenix-Server-23.01.iso.sha256">Sha256</a></td>
-</tr>
-<tr>
-<td>
-  <a href="https://mega.nz/file/hI5jALqJ#Mi2jRZa7SIBfxSKk4WnFgokW4dy719fr4pm7-umUO1k">Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso</a></td>
-<td>Macaroni Funtoo Gnome with subsets <code>portage</code> and <code>devel</code> enabled. Users that want to use Emerge with caution must be use this.</td>
-<td>1.85 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-devel-23.01/Macaroni-Funtoo-Phoenix-Gnome-Devel-23.01.iso.sha256">Sha256</a></td>
-</tr>
-<tr>
-<td>
-  <a href="https://mega.nz/file/FAwSHQyQ#Qs8Yq096RSVOj3DLxrPokXvQS-rDkbJ8oTiA09hQbfY">Macaroni-Funtoo-Phoenix-Gnome-Live-23.01.iso</a></td>
-<td>Ready to use ISO with different tools for Office/School/Graphic that could be installed too.</td>
-<td>2.88 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-live-23.01/Macaroni-Funtoo-Phoenix-Gnome-Live-23.01.iso.sha256">Sha256</a></td>
-</tr>
-<tr>
-<td>
-  <a href="https://mega.nz/file/YBRXiSpI#p7nBvV0NoDG5EBm0UevUUJAGUE3fN2wKbJrX--9JiPM">Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso</a></td>
-<td>Macaroni Server version with subsets <code>portage</code> and devel` enabled.</td>
-<td>1.524 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-server-devel-23.01/Macaroni-Funtoo-Phoenix-Server-Devel-23.01.iso.sha256">Sha256</a></td>
-</tr>
-<tr>
-<td>
-  <a href="https://mega.nz/file/1NhGjbSL#uoX6ekPJddh1uJzN9bkIk0_17ntoFnjGCU7_OuYWNtw">Macaroni-Funtoo-Phoenix-Xfce-23.01.iso</a></td>
-<td>Macaroni XFCE ISO Release.</td>
-<td>1.622 GB</td>
-<td>
-  <a href="https://cdn2.macaronios.org/mottainai/iso-macaroni-funtoo-xfce-23.01/Macaroni-Funtoo-Phoenix-Xfce-23.01.iso.sha256">Sha256</a></td>
-</tr>
-</tbody>
-</table>
-<p>At the moment the ISOs and LXD images bigger aren&rsquo;t cached by our CDN profile so could slow the
-download. I hope to resolve soon this issue.</p>
-<p>All of the ISOs use 
-  <a href="https://calamares.io/docs/users-guide/">Calamares</a> as Installer.</p>
-<p>The password of the <code>macaroni</code> user is <code>macaroni</code>.</p>
-<h3 id="knows-issues">
+</span></span></code></pre></div><h3 id="knows-issues">
   Knows Issues
   <a class="anchor" href="#knows-issues">#</a>
 </h3>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Macaroni OS Phoenix 23.03.01 is out!</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><body><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/faq/">FAQ</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.03.01/">Phoenix 23.03.01 is out!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="global-page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Macaroni OS Phoenix 23.03.01 is out!</h2>
+					<div class="portfolio-meta">
+						<span>Monday, Mar 20, 2023</span>|
+						<span> Tags:
+							macaroni, release, phoenix
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="single-post">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="post-content">
+					<p>While we have worked on preparing the new ISOs for the release
+23.03 we have figured out that was better to bump a new release
+with the changes of the Calamares plugin to migrate our ISOs
+to kernel 6.1.
+In particular, the ISOs for Desktops have now the kernel 6.1.18
+with built-in integration with new Realtek wifi cards. Unluckily
+not yet the cards 8852b e 8852be that will be available on branch
+6.2. We will try to support it on kernel 6.1 with an external
+driver in the next release.</p>
+<p>The Server ISOs maintain the kernel 5.10 LTS.</p>
+<p>This is the reason for this delay and this micro-release.</p>
+<p>We share in addition, that testing the Firefox release 1.109.0.1
+that is been released on release 23.01 has figured out that
+there are some issues with NVIDIA cards. The Firefox windows
+were stalled often and only disabling hardware acceleration
+fixed this issue. So, please, if users have some similar
+experience with release 111 open an issue.</p>
+<h1 id="the-new-download-page">The new Download page</h1>
+<p>We are very happy to share finally the new Download page where
+retrieve the new ISOs is now available.
+Inside the Download page we have tried to use a labels view that
+we hope will help users to choose the right ISOs for their
+requirements. Any feedback about this will help, thanks.</p>
+<h1 id="macaronictl-gets-again-power">macaronictl gets again power!</h1>
+<p>After receive tons of requests about integrate a <code>switch</code> command
+to upgrade the kernel release, we are happy to share that the
+time is arrived&hellip;</p>
+<p>The <code>macaronictl</code> release <code>0.8.0</code> contains these new commands and improvements:</p>
+<h2 id="macaronictl-kernel-switch">macaronictl kernel switch</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#&gt; macaronictl k switch macaroni@6.1</span>
+</span></span><span style="display:flex;"><span>Found kernel candidate kernel-6.1/macaroni-full-6.1.12...
+</span></span><span style="display:flex;"><span>Modules extra to install:
+</span></span><span style="display:flex;"><span>- kernel-6.1/lkrg-0.9.6
+</span></span></code></pre></div><p>In summary this command search for all extra kernel modules
+installed in the system and it tries to install the selected
+kernel with all extra modules installed.</p>
+<h2 id="macaronictl-kernel-modules">macaronictl kernel modules</h2>
+<p>When the local repositories are synced this command permits
+to retrieve all extra kernel modules availables in all kernel
+branches:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> $ macaronictl kernel modules
+</span></span><span style="display:flex;"><span>|                PACKAGE                 | PACKAGE VERSION | KERNEL BRANCH | KERNEL VERSION |   REPOSITORY    |
+</span></span><span style="display:flex;"><span>|----------------------------------------|-----------------|---------------|----------------|-----------------|
+</span></span><span style="display:flex;"><span>| kernel-5.10/lkrg                       | 0.9.6+1         |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/nvidia-kernel-modules      | 525.85.05+3     |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/rtw89                      | 0.20220824+15   |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/virtualbox-guest-additions | 7.0.6.155176+3  |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/virtualbox-modules         | 7.0.6.155176+2  |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/zfs-kmod                   | 2.1.9+2         |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.15/nvidia-kernel-modules      | 525.85.05+2     |          5.15 | 5.15.102       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.15/rtw89                      | 0.20220824+11   |          5.15 | 5.15.102       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.15/virtualbox-modules         | 7.0.6.155176+2  |          5.15 | 5.15.102       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.4/nvidia-kernel-modules       | 525.85.05+2     |           5.4 | 5.4.236        | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.4/rtw89                       | 0.20220824+11   |           5.4 | 5.4.236        | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.4/virtualbox-modules          | 7.0.6.155176+2  |           5.4 | 5.4.236        | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.4/zfs-kmod                    | 2.1.9+2         |           5.4 | 5.4.236        | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-6.1/lkrg                        | 0.9.6+2         |           6.1 | 6.1.18         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-6.1/nvidia-kernel-modules       | 525.85.05+2     |           6.1 | 6.1.18         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-6.1/virtualbox-guest-additions  | 7.0.6.155176+2  |           6.1 | 6.1.18         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-6.1/virtualbox-modules          | 7.0.6.155176+2  |           6.1 | 6.1.18         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-6.1/zfs-kmod                    | 2.1.9+2         |           6.1 | 6.1.18         | macaroni-funtoo |
+</span></span></code></pre></div><p>or for a specific kernel branch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> $ macaronictl kernel modules -b 5.10
+</span></span><span style="display:flex;"><span>|                PACKAGE                 | PACKAGE VERSION | KERNEL BRANCH | KERNEL VERSION |   REPOSITORY    |
+</span></span><span style="display:flex;"><span>|----------------------------------------|-----------------|---------------|----------------|-----------------|
+</span></span><span style="display:flex;"><span>| kernel-5.10/lkrg                       | 0.9.6+1         |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/nvidia-kernel-modules      | 525.85.05+3     |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/rtw89                      | 0.20220824+15   |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/virtualbox-guest-additions | 7.0.6.155176+3  |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/virtualbox-modules         | 7.0.6.155176+2  |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| kernel-5.10/zfs-kmod                   | 2.1.9+2         |          5.10 | 5.10.174       | macaroni-funtoo |
+</span></span></code></pre></div><h2 id="macaronictl-kernel-available">macaronictl kernel available</h2>
+<p>Running this command with root privileged now permits us to see the installed kernel in bold.</p>
+<h1 id="whip-power">Whip power!</h1>
+<p>With little steps, we improve our knife swiss that is used to post-install
+hooks and for validation.
+In this release, we have added new important hooks to the whip catalog:</p>
+<ol>
+<li>
+<p><code>linking.check</code>: This hook permit to validation of existing installation
+and search for libraries or binary with a broken link. So, if you find some
+issue with running this in a clean installation, please, open an issue.</p>
+<p>For example, on Eagle release I found this issue that permits to be fixed
+very fast until the fix will be available on the repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; whip h linking.check
+</span></span><span style="display:flex;"><span>Checking directory /usr/lib64...
+</span></span><span style="display:flex;"><span>Checking directory /usr/lib...
+</span></span><span style="display:flex;"><span>Checking directory /usr/bin...
+</span></span><span style="display:flex;"><span>/usr/bin/rsync
+</span></span><span style="display:flex;"><span>Checking directory /bin...
+</span></span><span style="display:flex;"><span>Checking directory /usr/sbin...
+</span></span><span style="display:flex;"><span>Checking directory /usr/libexec...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>linking.check<span style="color:#f92672">]</span> Completed correctly.
+</span></span></code></pre></div><p>The <code>rsync</code> binary seems broken:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; ldd /usr/bin/rsync
+</span></span><span style="display:flex;"><span>     linux-vdso.so.1 <span style="color:#f92672">(</span>0x00007ffcb294f000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libacl.so.1 <span style="color:#f92672">=</span>&gt; /lib64/libacl.so.1 <span style="color:#f92672">(</span>0x00007f9571d29000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libpopt.so.0 <span style="color:#f92672">=</span>&gt; not found
+</span></span><span style="display:flex;"><span>     libcrypto.so.1.1 <span style="color:#f92672">=</span>&gt; /usr/lib64/libcrypto.so.1.1 <span style="color:#f92672">(</span>0x00007f9571a00000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libc.so.6 <span style="color:#f92672">=</span>&gt; /lib64/libc.so.6 <span style="color:#f92672">(</span>0x00007f9571846000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libz.so.1 <span style="color:#f92672">=</span>&gt; /lib64/libz.so.1 <span style="color:#f92672">(</span>0x00007f9571d0f000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libdl.so.2 <span style="color:#f92672">=</span>&gt; /lib64/libdl.so.2 <span style="color:#f92672">(</span>0x00007f9571d0a000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     libpthread.so.0 <span style="color:#f92672">=</span>&gt; /lib64/libpthread.so.0 <span style="color:#f92672">(</span>0x00007f9571ce9000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>     /lib64/ld-linux-x86-64.so.2 <span style="color:#f92672">(</span>0x00007f9571dd6000<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>and then it&rsquo;s very easy find the missing RDEPEND that must be fixed in the
+Macaroni repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet q belongs libpopt.so.0
+</span></span><span style="display:flex;"><span>dev-libs/popt-1.16
+</span></span></code></pre></div><p>In this case the library <code>popt</code> is missing on runtime_deps and you need
+to install it directly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet i dev-libs/popt 
+</span></span><span style="display:flex;"><span>🚀 Luet 0.35.1-geaaru-g2d63605bff9ddee0171f4769c4e956317b910b56 2023-03-17 03:07:06 UTC - go1.20.2
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:    macaroni-funtoo-systemd-dev Revision: <span style="color:#ae81ff">451</span> - 2023-02-13 09:25:49 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">80</span> - 2023-03-17 21:34:59 +0000 UTC
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/popt::macaroni-funtoo-systemd-dev                    - 1.16
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">285</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">1</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> dev-libs/popt::macaroni-funtoo-systemd-dev                        - 1.16            <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">1</span> packages operations...
+</span></span><span style="display:flex;"><span>🍻 Executing <span style="color:#ae81ff">1</span> packages operations...
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> dev-libs/popt::macaroni-funtoo-systemd-dev                        - 1.16            <span style="color:#75715e"># installed ✔ </span>
+</span></span></code></pre></div><p>And then no more issues available:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; whip h linking.check
+</span></span><span style="display:flex;"><span>Checking directory /usr/lib64...
+</span></span><span style="display:flex;"><span>Checking directory /usr/lib...
+</span></span><span style="display:flex;"><span>Checking directory /usr/bin...
+</span></span><span style="display:flex;"><span>Checking directory /bin...
+</span></span><span style="display:flex;"><span>Checking directory /usr/sbin...
+</span></span><span style="display:flex;"><span>Checking directory /usr/libexec...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>linking.check<span style="color:#f92672">]</span> Completed correctly.
+</span></span></code></pre></div></li>
+<li>
+<p><code>postgresql.postgres_setup</code>: this hook permit to setup Postgres SQL setup
+with the SLOT selected. It&rsquo;s available on <code>lxd-compose-galaxy</code> a project
+that set up a standalone Postgresql server based on configuration variables
+that will be described very soon on the LXD Compose website.</p>
+</li>
+</ol>
+<p>The <a href="https://github.com/macaroni-os/whip-catalog">whip-catalog</a> is a YAML files catalog
+with bash/sh commands. If you find something missing or you have some idea about new hooks,
+please open a PR.</p>
+<h1 id="what-next">What next?</h1>
+<p>Well, few is changed after the release <code>23.03</code> so, the open points are
+the same but we will push forward with a major priority the documentation.
+I hope that we will cover a good documentation part for the next release.
+Stay tuned!</p>
+<h1 id="we-waiting-for-you">We waiting for you</h1>
+<p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
+<h1 id="thanks">Thanks</h1>
+<p>Many thanks to all Funtoo devs that are the sap of all this and to all
+people that helps us with testing and donations.</p>
+<h1 id="support-us">Support Us</h1>
+<p>Any user that wants to support our work for Macaroni could do this through the
+Github <a href="https://github.com/sponsors/geaaru">Sponsor</a>.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Call To Action Section Start -->
+<section id="call-to-action">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h2 class="title wow fadeInDown" data-wow-delay=".3s"
+            data-wow-duration="500ms">WHAT DO YOU THINK?</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+              Do you think I could integrate more features?</p>
+            <a href="https://www.macaronios.org/contact" class="btn btn-default btn-contact wow fadeInDown"
+              data-wow-delay=".7s" data-wow-duration="500ms">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call To Action Section End -->
+
+
+
+<!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>

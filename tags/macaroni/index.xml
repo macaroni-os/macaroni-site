@@ -6,7 +6,16 @@
     <description>Recent content in macaroni on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macaroni OS Phoenix 23.03.01 is out!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.03.01/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.03.01/</guid>
+      <description>While we have worked on preparing the new ISOs for the release 23.03 we have figured out that was better to bump a new release with the changes of the Calamares plugin to migrate our ISOs to kernel 6.1. In particular, the ISOs for Desktops have now the kernel 6.1.18 with built-in integration with new Realtek wifi cards. Unluckily not yet the cards 8852b e 8852be that will be available on branch 6.</description>
+    </item>
+    
     <item>
       <title>Macaroni OS Phoenix 23.03 is out!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.03/</link>
