@@ -27,12 +27,12 @@ The Server ISOs maintain the kernel 5.10 LTS.
 
 This is the reason for this delay and this micro-release.
 
-We share in addition, that testing the Firefox release 1.109.0.1
+We share in addition, that testing the Firefox release 109.0.1
 that is been released on release 23.01 has figured out that
 there are some issues with NVIDIA cards. The Firefox windows
 were stalled often and only disabling hardware acceleration
 fixed this issue. So, please, if users have some similar
-experience with release 111 open an issue.
+experience with release 111.0 open an issue.
 
 # The new Download page
 
@@ -41,6 +41,7 @@ retrieve the new ISOs is now available.
 Inside the Download page we have tried to use a labels view that
 we hope will help users to choose the right ISOs for their
 requirements. Any feedback about this will help, thanks.
+
 
 # macaronictl gets again power!
 
