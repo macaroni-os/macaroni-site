@@ -15,5 +15,16 @@
       <description>Getting Started # Using docker container # $&amp;gt; docker run --rm -ti macaronios/funtoo-minimal 4e02286e61d3 / # luet repo update ⠈ Downloaded repository.yaml of 0.00 MB ( 0.00 MiB/s ) Downloaded tree.tar.gz of 0.00 MB ( 0.00 MiB/s ) Downloaded repository.meta.yaml.tar.gz of 0.00 MB ( 0.00 MiB/s ) 🏠 Repository geaaru-repo-index revision: 1 - 2021-12-12 20:42:48 +0000 UTC ℹ️ Repository: geaaru-repo-index Priority: 1 Type: http Revision: 1 Downloaded repository.yaml of 0.</description>
     </item>
     
+    <item>
+      <title>The Story</title>
+      <link>https://www.macaronios.org/docs/story/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/story/</guid>
+      <description>I write this article because I think that it&amp;rsquo;s needed to understand the story to improve things and instead follow the original choices when they make sense.
+The Origins # After a lot of years working with opensource packages, I can for sure to said that there are so many possibilities to configure our systems that it isn&amp;rsquo;t sufficient one life to test all combinations.
+But the power to choose is one of the more powerful things that the open-source world gift and the same packages often are created with the possibility to compile and build them in different ways.</description>
+    </item>
+    
   </channel>
 </rss>
