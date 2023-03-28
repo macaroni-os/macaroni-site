@@ -107,7 +107,6 @@ Like *phoenix* also *eagle* is based on Funtoo 1.4-prime and so:
     * LLVM 11
 
 
-
 ## Macaroni OS Terragon
 
 The **Terragon** release is born to be used in container and it's based
@@ -121,3 +120,117 @@ Based on Funtoo Next some core packages are:
     * GCC 11.3.0
     * Glibc 2.33
     * Python 3.9
+
+# Macaroni Repositories
+
+We have three different repositories for any release: a stable repository, a
+testing repository and, a development repository.
+
+Hereinafter, a summary of our repositories and the packages related.
+
+| <div style="width:200px">Repository</div>  | Stable | Testing | Development |
+| ---------- |  :---: | :---: | :---: |
+| *macaroni-commons* | repository/macaroni-commons | repository/macaroni-commons-testing | repository/macaroni-commons-dev |
+| *mottainai* | repository/mottainai-stable | repository/mottainai-testing | repository/mottainai-dev |
+| *macaroni-funtoo* | repository/macaroni-funtoo | repository/macaroni-funtoo-testing | repository/macaroni-funtoo-dev |
+| *macaroni-funtoo-systemd* | repository/macaroni-funtoo-systemd | repository/macaroni-funtoo-systemd-testing | repository/macaroni-funtoo-systemd-dev |
+| *macaroni-terragon* | repository/macaroni-terragon | repository/macaroni-terragon-testing | repository/macaroni-terragon-dev |
+
+**NOTE:** The development repositories must be used only by the Staff and are
+      attached to the Macaroni/Mottainai CD/CI flows. The origin server has limited
+      bandwidth so please, use them only for emergencies and/or in
+      collaboration with the Macaroni Team.
+
+#### Macaroni Commons
+
+The **macaroni-commons** repository contains the specs for building the
+Macaroni OS packages common to all releases and all packages compiled
+without Portage integration.
+
+In particular, in this repository are maintained the Macaroni Kernels.
+
+Normally, this repository is installed by default and present in all
+Macaroni releases.
+
+#### Mottainai
+
+The Macaroni Team supports the [MottainaiCI](https://github.com/MottainaiCI/)
+organization and the **mottainai-stable** repository is used to supply the
+Mottainai tools and `luet`.
+
+The `luet` PMS could be used inside other distributions and it makes sense
+to avoid having a `macaroni-commons` repository to install and upgrade it.
+This is the reason we have left our PMS in an independent repository.
+
+Normally, this repository is installed by default.
+
+#### Macaroni Funtoo
+
+The **macaroni-funtoo** repository is the repository of the **Phoenix**
+release.
+
+Normally, this repository is installed by default in all Phoenix installation.
+
+#### Macaroni Funtoo SystemD
+
+The **macaroni-funtoo-systemd** repository is the repository of the **Eagle**
+release.
+
+Normally, this repository is installed by default in all Eagle installation.
+
+#### Macaroni Terragon
+
+The **macaroni-terragon** repository is the repository of the **Terragon**
+release.
+
+Normally, this repository is installed by default in all Terragon installation.
+
+# Macaroni Tags
+
+In Macaroni the **tag** means that a specific release is been promoted for
+the stable repository. Every stable repository contains only a tagged release.
+There are very few exceptions where I pushed packages in the stable repository
+that was not related to a tag, and this is been happen for emergency fixes
+that are been follow soon by a new minor tag.
+
+So, we could consider Macaroni as a rolling release distribution with periodic
+tags and upgrades.
+
+This choice has pros and cons:
+1. A user that using stable release could easier integration their package
+   based on known packages version and use the specific tree fetched by the
+   tag of the macaroni-funtoo repository to build additional packages.
+   Executing a backup of the Macaroni repository for a specific tag permits
+   him to have a reproducible way to upgrade, install and build packages
+   from a fixed point.
+
+2. Having a static list of the package version for a specific tag helps IT
+   Teams with the auditing of security issues to have uniform environments
+   controllable.
+
+3. Wait for a new tag for a security issue could be not an optimal condition,
+   but from my experience, it's often more the time to wait for a fix than
+   the time to release a new tag. By the way, to fix this issue the idea
+   could be to prepare a `macaroni-security` repository to use in these
+   emergency cases without waiting for a new tag that could be require more
+   time if a build cycle is in progress.
+
+4. In the Production environment I think that it's better to supply services
+   over container LXD, Docker, or Singularity and thus ensure a more rapid
+   fix of the security issues. In general, the releases Macaroni Terragon
+   and Macaroni Eagle have a more fast build cycle and this permits us to
+   push a more fast fix.
+
+We want to try to follow these periodic tags on our Releases:
+
+| Release | <div style="width:200px">Rolling Tags<div> |
+| :--- |  :---:  |
+| *Macaroni OS Phoenix* | every 2 months  |
+| *Macaroni OS Terragon* | monthly |
+| *Macaroni OS Eagle* | monthly |
+
+It's also possible that minor releases will be tagged in addition to the
+scheduled tags. The *Phoenix* for the Desktop requires a lot of effort
+and testing, this is the reason why the release will be less frequent.
+We're working to reorganize the tree to speed up the build cycle but this
+is the job of the next months.
