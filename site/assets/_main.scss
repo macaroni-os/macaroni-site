@@ -156,6 +156,7 @@ ul.pagination {
 
 .book-header {
   display: none;
+  margin-top: 46px;
   margin-bottom: $padding-16;
 
   label {
@@ -293,8 +294,11 @@ ul.pagination {
   padding: $padding-16;
 }
 
+.book-menu-content {
+  margin-top: 46px;
+}
+
 // Responsive styles
-.book-menu-content,
 .book-toc-content,
 .book-page,
 .book-header aside,
