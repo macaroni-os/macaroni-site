@@ -13,6 +13,7 @@ headless: true
 - [**The Story**]({{< relref "/docs/story" >}})
 - [**Getting Started**]({{< relref "/docs/getting-started" >}})
   - [Install Macaroni ISO]({{< relref "/docs/getting-started#install-macaroni-iso" >}})
+  - [Install Macaroni LXD Containers]({{< relref "/docs/getting-started#install-macaroni-lxd-containers" >}})
 <br />
 
 <br />

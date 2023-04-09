@@ -103,7 +103,7 @@ menu visible hereinafter:
 
 ![Syslinux Menu](../../images/install/isolinux.png)
 
-</div>a
+</div>
 
 The ISOLinux menu normally is available for not-EFI systems.
 
@@ -410,3 +410,22 @@ with the prompt where insert the passphrase to mount *home* partition:
 ![Grub Password](../../images/install/dracut-boot-enc-home.png)
 
 </div>
+
+# Install Macaroni LXD Containers
+
+Macaroni OS supply their LXD images over a Simplestreams Server with help of the
+[simplestreams-builder](https://github.com/MottainaiCI/simplestreams-builder) tool.
+
+To configure your LXD system to download Macaroni OS images you need to add the `macaroni` remote:
+
+```shell
+$> lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+```
+
+The images are visible with the command:
+
+```shell
+$> lxc image list macaroni:
+```
+
+
