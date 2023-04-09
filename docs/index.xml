@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Macaroni Linux OS on Macaroni OS</title>
+    <title>Macaroni OS</title>
     <link>https://www.macaronios.org/docs/</link>
-    <description>Recent content in Macaroni Linux OS on Macaroni OS</description>
+    <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://www.macaronios.org/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,7 +12,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/getting-started/</guid>
-      <description>Getting Started # Using docker container # $&amp;gt; docker run --rm -ti macaronios/funtoo-minimal 4e02286e61d3 / # luet repo update ⠈ Downloaded repository.yaml of 0.00 MB ( 0.00 MiB/s ) Downloaded tree.tar.gz of 0.00 MB ( 0.00 MiB/s ) Downloaded repository.meta.yaml.tar.gz of 0.00 MB ( 0.00 MiB/s ) 🏠 Repository geaaru-repo-index revision: 1 - 2021-12-12 20:42:48 +0000 UTC ℹ️ Repository: geaaru-repo-index Priority: 1 Type: http Revision: 1 Downloaded repository.yaml of 0.</description>
+      <description>Getting Started # Install Macaroni ISO # Choice the right ISO for your requirements from our Download page.
+1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw our SHA256 hash:
+$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
+Until the issue #7 will be fixed you need to compare the sha256 manually.</description>
     </item>
     
     <item>

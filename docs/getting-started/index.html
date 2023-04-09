@@ -71,7 +71,10 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="Getting Started # Using docker container # $&gt; docker run --rm -ti macaronios/funtoo-minimal 4e02286e61d3 / # luet repo update ⠈ Downloaded repository.yaml of 0.00 MB ( 0.00 MiB/s ) Downloaded tree.tar.gz of 0.00 MB ( 0.00 MiB/s ) Downloaded repository.meta.yaml.tar.gz of 0.00 MB ( 0.00 MiB/s ) 🏠 Repository geaaru-repo-index revision: 1 - 2021-12-12 20:42:48 &#43;0000 UTC ℹ️ Repository: geaaru-repo-index Priority: 1 Type: http Revision: 1 Downloaded repository.yaml of 0." />
+<meta property="og:description" content="Getting Started # Install Macaroni ISO # Choice the right ISO for your requirements from our Download page.
+1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw our SHA256 hash:
+$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
+Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaronios.org/docs/getting-started/" /><meta property="article:section" content="docs" />
 
@@ -79,8 +82,8 @@
 <title>Getting Started | Macaroni OS</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.acab2174e00b4cce829c4f10c70787bce39fc833c6477ca6d324744085d7bc88.css" integrity="sha256-rKshdOALTM6CnE8QxweHvOOfyDPGR3ym0yR0QIXXvIg=">
-<script defer src="/en.search.min.a00b9e2d5a62abadb534e68e31492f452302e1da983e844fd7cf81f78f10e72e.js" integrity="sha256-oAueLVpiq621NOaOMUkvRSMC4dqYPoRP18&#43;B948Q5y4="></script>
+<link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
+<script defer src="/en.search.min.cb4f9a3a914df08876b5ddc5a2f3acd56216e473c9b87a0bf68a150cb8bcb9db.js" integrity="sha256-y0&#43;aOpFN8Ih2td3FovOs1WIW5HPJuHoL9ooVDLi8uds="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -212,7 +215,12 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/story/"><strong>The Story</strong></a></li>
 <li>
   <a href="/docs/getting-started/"class=active><strong>Getting Started</strong></a>
+<ul>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a>
 <br /></li>
+</ul>
+</li>
 </ul>
 <br />
 
@@ -281,182 +289,328 @@ https://github.com/alex-shpak/hugo-book
   Getting Started
   <a class="anchor" href="#getting-started">#</a>
 </h1>
-<h4 id="using-docker-container">
-  Using docker container
-  <a class="anchor" href="#using-docker-container">#</a>
-</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; docker run --rm -ti macaronios/funtoo-minimal
-</span></span><span style="display:flex;"><span>4e02286e61d3 / <span style="color:#75715e"># luet repo update</span>
-</span></span><span style="display:flex;"><span>⠈ Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded tree.tar.gz of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.meta.yaml.tar.gz of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>🏠  Repository geaaru-repo-index revision: <span style="color:#ae81ff">1</span> - 2021-12-12 20:42:48 +0000 UTC
-</span></span><span style="display:flex;"><span>ℹ️  Repository: geaaru-repo-index Priority: <span style="color:#ae81ff">1</span> Type: http Revision: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded tree.tar.zst of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.meta.yaml.tar.zst of 5.57 MB <span style="color:#f92672">(</span> 2.48 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>🏠  Repository macaroni-commons revision: <span style="color:#ae81ff">23</span> - 2022-01-11 16:08:20 +0000 UTC
-</span></span><span style="display:flex;"><span>ℹ️  Repository: macaroni-commons Priority: <span style="color:#ae81ff">2</span> Type: http Revision: <span style="color:#ae81ff">23</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded tree.tar.zst of 0.53 MB <span style="color:#f92672">(</span> 0.44 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.meta.yaml.tar.zst of 6.04 MB <span style="color:#f92672">(</span> 6.78 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>🏠  Repository macaroni-funtoo revision: <span style="color:#ae81ff">77</span> - 2022-01-16 08:09:51 +0000 UTC
-</span></span><span style="display:flex;"><span>ℹ️  Repository: macaroni-funtoo Priority: <span style="color:#ae81ff">2</span> Type: http Revision: <span style="color:#ae81ff">77</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded tree.tar.zst of 0.00 MB <span style="color:#f92672">(</span> 0.01 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Downloaded repository.meta.yaml.tar.zst of 0.27 MB <span style="color:#f92672">(</span> 0.67 MiB/s <span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>🏠  Repository mottainai-stable revision: <span style="color:#ae81ff">1</span> - 2022-01-14 15:54:04 +0000 UTC
-</span></span><span style="display:flex;"><span>ℹ️  Repository: mottainai-stable Priority: <span style="color:#ae81ff">1</span> Type: http Revision: <span style="color:#ae81ff">1</span>
+<h1 id="install-macaroni-iso">
+  Install Macaroni ISO
+  <a class="anchor" href="#install-macaroni-iso">#</a>
+</h1>
+<p>Choice the right ISO for your requirements from our 
+  <a href="https://www.macaronios.org/iso/">Download</a> page.</p>
+<h2 id="1validate-downloaded-iso">
+  1.Validate downloaded ISO
+  <a class="anchor" href="#1validate-downloaded-iso">#</a>
+</h2>
+<p>After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw
+our SHA256 hash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso
+</span></span><span style="display:flex;"><span>8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>4e02286e61d3 / <span style="color:#75715e"># luet search pci</span>
-</span></span><span style="display:flex;"><span>sys-apps/pciutils-3.6.2+3
-</span></span><span style="display:flex;"><span>x11-libs/libpciaccess-0.16+3
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>4e02286e61d3 / <span style="color:#75715e"># luet i sys-apps/pciutils</span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>4e02286e61d3 / <span style="color:#75715e"># luet cleanup</span>
-</span></span><span style="display:flex;"><span>Cleaned:  <span style="color:#ae81ff">5</span> packages.
-</span></span></code></pre></div><h4 id="using-an-lxd-container">
-  Using an LXD container
-  <a class="anchor" href="#using-an-lxd-container">#</a>
+</span></span><span style="display:flex;"><span>$ cat  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 
+</span></span><span style="display:flex;"><span>8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54
+</span></span></code></pre></div><p>If the download is correct the hash will be the same.</p>
+<p>Until the issue 
+  <a href="https://github.com/macaroni-os/macaroni-funtoo/issues/7">#7</a> will be fixed
+you need to compare the sha256 manually.</p>
+<h2 id="2flash-your-usb-drive">
+  2.Flash your USB drive
+  <a class="anchor" href="#2flash-your-usb-drive">#</a>
+</h2>
+<p>To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool
+
+  <a href="https://etcher.download/">Balena Etcher</a> that validate the written bytes before share the result.</p>
+<p><strong>NOTE</strong>: At the moment the <code>ventoy</code> USB Solution is not supported.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/etcher2.png" alt="Balena Etcher" /></p>
+</div>
+<h2 id="3check-your-bios">
+  3.Check your BIOS
+  <a class="anchor" href="#3check-your-bios">#</a>
+</h2>
+<p>At the moment, the Macaroni ISOs don&rsquo;t support an EFI-signed bootstrap.
+So, before bootstrapping your USB drive just check and disable EFI security
+check.</p>
+<p>Hereinafter is an example of how setup the right options:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/bios1.jpg" alt="ASUS T300 Bios" /></p>
+</div>
+<p>Normally, based on device there are different way to enter on BIOS,
+through <code>F10</code>, <code>Canc</code>, <code>F2</code>. You need to check your device manual.</p>
+<h2 id="4boot-the-iso">
+  4.Boot the ISO
+  <a class="anchor" href="#4boot-the-iso">#</a>
+</h2>
+<p>When the Menu is visible could be possible customize boot options with
+<code>E</code> keyboard button. After push to <code>E</code> keyboard button compares in the foot
+the default command line options where you can add every kernel options.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/isomenu-efi.png" alt="EFI ISO Menu" /></p>
+</div>
+<h4 id="disable-nouveau-driver">
+  Disable Nouveau driver
+  <a class="anchor" href="#disable-nouveau-driver">#</a>
 </h4>
-<p>The Funtoo &amp; Macaroni teams supply their LXD images over a Simplestreams Server.
-To configure the LXD <code>remote</code> just run this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
-</span></span></code></pre></div><p>and then check the available images:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
-</span></span></code></pre></div><h3 id="knows-issues">
-  Knows Issues
-  <a class="anchor" href="#knows-issues">#</a>
-</h3>
-<p>The current status of the Macaroni OS is related to its PMS that is under heavy development
-and it doesn&rsquo;t yet support the requirements needed for a Desktop environment
-very well and is unstable.</p>
-<p>The main issue is that the current upgrade process executes an uninstall of all packages
-to upgrade before beginning the installation of the new packages and without checking
-if there are changes. This may sometimes generate issues with X.</p>
-<p>So, for the moment, we suggest that you upgrade a Desktop environment from
-terminal (just switch with CTRL+ALT+F1).</p>
-<p>If used in a Container environment instead, that could be a valid and stable
-solution. In a container, the upgrade process is less important because, usually,
-the container is dropped and recreated from a new image. In this condition you
-could create a very optimized container thanks to the <code>subsets</code> feature available
-in the fork release of luet.</p>
-<p>Macaroni doesn&rsquo;t use the Funtoo ebuild in the installation phase, this means that
-the post-install scripts must be managed from the <code>luet</code> finalizer. In particular,
-the 
-  <a href="https://github.com/macaroni-os/whip">whip</a> tool has been created to help in this job,
-and the 
-  <a href="https://github.com/macaroni-os/whip-catalog/">whip-catalog</a> to store all the hooks to call.
-For any Desktop environment, the post-install hooks could
-be configured to run correctly in all packages.</p>
-<p>The <code>whip</code> tool can be run and the catalog can be displayed with this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; whip list --table
-</span></span><span style="display:flex;"><span>+-----------+---------------------+-----------------------------------------------------------------------+
-</span></span><span style="display:flex;"><span>|   FILE    |        NAME         |                              DESCRIPTION                              |
-</span></span><span style="display:flex;"><span>+-----------+---------------------+-----------------------------------------------------------------------+
-</span></span><span style="display:flex;"><span>| gtk       | mime_update_db      | Update mime cache.                                                    |
-</span></span><span style="display:flex;"><span>| gtk       | gtk_update_icons    | Update Gnome icons cache.                                             |
-</span></span><span style="display:flex;"><span>| gtk       | glib_update_schemas | Update Glib Schemas.                                                  |
-</span></span><span style="display:flex;"><span>| texlive   | texlive_postinst    | Setup texlive files.                                                  |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| texlive   | texlive_rebuild_fmt | Rebuild TeX formats.                                                  |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| dbus      | dbus_gen_machineid  | Setup /etc/machine-id.                                                |
-</span></span><span style="display:flex;"><span>| eudev     | eudev_setup         | Validate Eudev setup.                                                 |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| fonts     | create_scale        | Create fonts.scale file, used by the old server-side fonts subsystem. |
-</span></span><span style="display:flex;"><span>| fonts     | create_fonts_dir    | Create fonts.dir file, used by the old server-side fonts subsystem.   |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| fonts     | setup_all_fonts     | Setup fonts.                                                          |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| openrc    | openrc_setup        | Setup core OpenRC services.                                           |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| perl      | postinst            | Setup perl binaries links.                                            |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| polkit    | polkit_setup        | Setup env <span style="color:#66d9ef">for</span> polkitd.                                                |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| eclass_db | db_cleanup          | Clean libdb* links and includes.                                      |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| eclass_db | db_fix_so           | Fix links of /usr/include/db.h and .so                                |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| elogind   | elogind_setup       | Check elogind setup.                                                  |
-</span></span><span style="display:flex;"><span>|           |                     |                                                                       |
-</span></span><span style="display:flex;"><span>| gdb       | setup               | Setup gdm files.                                                      |
-</span></span><span style="display:flex;"><span>+-----------+---------------------+-----------------------------------------------------------------------+
-</span></span></code></pre></div><p>A hook is callable with the <code>hook</code> subcommand:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; whip hook gtk.gtk_update_icons gtk.glib_update_schemas
-</span></span></code></pre></div><h3 id="upgrade">
-  Upgrade
-  <a class="anchor" href="#upgrade">#</a>
-</h3>
-<p>Just:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet repo update
-</span></span><span style="display:flex;"><span>$&gt; luet upgrade
-</span></span></code></pre></div><p><code>luet</code> follow the same Funtoo/Gentoo idea about the configuration files, in particolar,
-if the file to install is related to a proctect directory and the file is already present
-then <code>luet</code> creates the file <code>_cfg0001_&lt;file&gt;</code> that could be merged with the classic
-<code>etc-update</code> or other similar software.</p>
-<h3 id="search-packages">
-  Search Packages
-  <a class="anchor" href="#search-packages">#</a>
-</h3>
-<p>The current search engine uses regex to find the <em>category</em>/<em>name</em> string.
-The subcommand is callable with <code>search</code> or <code>s</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet search lxd-compose
-</span></span><span style="display:flex;"><span>app-emulation/lxd-compose-0.16.3
-</span></span></code></pre></div><p>or as a table:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet s lxd-compose --table
-</span></span><span style="display:flex;"><span>+---------------------------+---------+------------------+---------+
-</span></span><span style="display:flex;"><span>| PACKAGE                   | VERSION | REPOSITORY       | LICENSE |
-</span></span><span style="display:flex;"><span>+---------------------------+---------+------------------+---------+
-</span></span><span style="display:flex;"><span>| app-emulation/lxd-compose | 0.16.3  | mottainai-stable | GPL-3.0 |
-</span></span><span style="display:flex;"><span>+---------------------------+---------+------------------+---------+
-</span></span></code></pre></div><p>or as a JSON with metadata:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet s lxd-compose -o json | jq
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;packages&#34;</span>: <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;License&#34;</span>: <span style="color:#e6db74">&#34;GPL-3.0&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;app-emulation&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;files&#34;</span>: <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;usr/bin/lxd-compose&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">]</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;hidden&#34;</span>: false,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;lxd-compose&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;repository&#34;</span>: <span style="color:#e6db74">&#34;mottainai-stable&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.16.3&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>or search between installed packages:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet s lxd --installed
-</span></span></code></pre></div><h3 id="install-a-package">
-  Install a package
-  <a class="anchor" href="#install-a-package">#</a>
-</h3>
-<p>The subcommand is callable with <code>install</code> or <code>i</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet i app-emulation/lxd-compose
-</span></span></code></pre></div><h3 id="uninstall-a-package">
-  Uninstall a package
-  <a class="anchor" href="#uninstall-a-package">#</a>
-</h3>
-<p>The subcommand is callable with <code>uninstall</code> or <code>rm</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet rm app-emulation/lxd-compose
-</span></span></code></pre></div><h3 id="show-files-of-a-package">
-  Show files of a package
-  <a class="anchor" href="#show-files-of-a-package">#</a>
-</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet q files app-emulation/lxd-compose
-</span></span><span style="display:flex;"><span>usr/bin/lxd-compose
-</span></span></code></pre></div><p>or as JSON array:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet q files app-emulation/lxd-compose -o json
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;usr/bin/lxd-compose&#34;</span><span style="color:#f92672">]</span>
-</span></span></code></pre></div><p>or as YAML:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet q files app-emulation/lxd-compose -o yaml
-</span></span><span style="display:flex;"><span>- usr/bin/lxd-compose
-</span></span></code></pre></div></article>
+<p>By default we prefer using nouveau driver for the NVIDIA cards on bootstrap
+our live ISOs. But it&rsquo;s possible that some new cards could be not be
+yet supported.</p>
+<p>To force the loading of the NVIDIA kernel module you can add this
+option:</p>
+<pre tabindex="0"><code>modprobe.blacklist=nouveau
+</code></pre><h4 id="enter-in-the-iso-bootstrap-shell">
+  Enter in the ISO bootstrap shell
+  <a class="anchor" href="#enter-in-the-iso-bootstrap-shell">#</a>
+</h4>
+<p>If there are issues on bootstrap correctly the Macaroni ISOs you can
+enter in the initrd shell and to recover informations about your
+system and help us to check what happens.</p>
+<p>To enter in the shell before the probing of the ISO squashfs to debug
+the probing phase and the switch root command you need to add <code>shell=1</code> as
+option.</p>
+<h4 id="isolinux-bootstrap">
+  ISOLinux bootstrap
+  <a class="anchor" href="#isolinux-bootstrap">#</a>
+</h4>
+<p>The described option at the moment are not available in the ISOLinux
+menu visible hereinafter:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/isolinux.png" alt="Syslinux Menu" /></p>
+</div>a
+<p>The ISOLinux menu normally is available for not-EFI systems.</p>
+<h2 id="5-start-installer">
+  5. Start Installer
+  <a class="anchor" href="#5-start-installer">#</a>
+</h2>
+<p>All our ISOs are configured with <em>Network Manager</em> by default which is better
+integrated with the Calamares installer. You are free to disable and change it
+later when the system is installed.</p>
+<p>The default user of Macaroni ISO is <code>macaroni</code> with password <code>macaroni</code>.</p>
+<h4 id="server-iso">
+  Server ISO
+  <a class="anchor" href="#server-iso">#</a>
+</h4>
+<p>The Server ISO automatically starts an X server with Calamares without
+a Desktop Environment.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-server.png" alt="Calamares Server" /></p>
+</div>
+<p>The X server available with the Server ISO is limited. If you don&rsquo;t have
+a network with DHCP you can change the <code>tty</code> and using <code>nmtui</code> to setup
+Networking correctly.</p>
+<h4 id="xfce-iso">
+  XFCE ISO
+  <a class="anchor" href="#xfce-iso">#</a>
+</h4>
+<p>To start the Macaroni Installer click to <em>Install System</em> from
+<em>Applications</em> → <em>System</em> → <em>Install System</em>.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/xfce-menu-install.png" alt="Install System XFCE" /></p>
+</div>
+<h4 id="gnome-iso">
+  Gnome ISO
+  <a class="anchor" href="#gnome-iso">#</a>
+</h4>
+<p>To start the Macaroni installer you need to enter on Applications dashboard
+and search for <em>install</em>:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/install-gnome.png" alt="Install System Gnome" /></p>
+</div>
+<h2 id="6-follow-installer-workflow">
+  6. Follow Installer workflow
+  <a class="anchor" href="#6-follow-installer-workflow">#</a>
+</h2>
+<h4 id="61-welcome-select-language">
+  6.1 Welcome: Select Language
+  <a class="anchor" href="#61-welcome-select-language">#</a>
+</h4>
+<p>In this page if the installer detects correctly at least one hard drive
+is present the first choice of the user: the select of the language.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-language.png" alt="Installer Language" /></p>
+</div>
+<p>At the moment the tested languages are English and Italian but other languages are available.
+If you find some problem with the other languages open an issue.</p>
+<h4 id="62-location-select-region-and-zone">
+  6.2 Location: Select Region and Zone
+  <a class="anchor" href="#62-location-select-region-and-zone">#</a>
+</h4>
+<p>The second page of the installer permits to configure the Region and the timzone.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-region.png" alt="Installer Region" /></p>
+</div>
+<p>Choice the right value from the map and go ahead.</p>
+<h4 id="63-keyboard-select-keyboard-model-and-language">
+  6.3 Keyboard: Select Keyboard Model and Language
+  <a class="anchor" href="#63-keyboard-select-keyboard-model-and-language">#</a>
+</h4>
+<p>The third page of the installer permits to configure the Keyboard Model and the langauge.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-keyboard.png" alt="Installer Keyboard" /></p>
+</div>
+<h4 id="64-partitions-select-storage-device-and-partitions">
+  6.4 Partitions: Select storage device and Partitions
+  <a class="anchor" href="#64-partitions-select-storage-device-and-partitions">#</a>
+</h4>
+<p>In this page you need to select the storage device from the menu and choice how the installer will prepare the partitions.</p>
+<p>If the selected this is empty the installer will propose only two voices: <em>Erase disk</em> and <em>Manual partitioning</em>.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-partitions-erase.png" alt="Installer Partitions" /></p>
+</div>
+<p>If you try to reinstall Macaroni OS to an existing system and/or replace existing partitions you can select the
+voice <em>Replace a partition</em>:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-replace.png" alt="Installer Partitions and Replace" /></p>
+</div>
+<p>If you are a newbie, my suggestion is to use the self partitioning mode from the Macaroni Installer that automatically
+define three main parititions: efi boot (if you are in EFI env), Swap partition and a Root partition for all data.</p>
+<h4 id="encrypt-full-disk">
+  <em>Encrypt Full Disk</em>
+  <a class="anchor" href="#encrypt-full-disk">#</a>
+</h4>
+<p>Macaroni support Encryption of full system, the only partition left in clear is the EFI partition.</p>
+<p>To enable the encryption you need to flag <em>Encrypt system</em> and write the passphrase as visible in the screenshot hereinafter:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-partitions-encrypt.png" alt="Installer Partition Encrypted" /></p>
+</div>
+<p>With the set <em>Encrypt System</em> also the <em>swap</em> partition will be encrypted. The passphrase will be ask on GRUB before
+to print the Menu.</p>
+<h4 id="manual-partitioning">
+  <em>Manual Partitioning</em>
+  <a class="anchor" href="#manual-partitioning">#</a>
+</h4>
+<p>An expert user could create his custom installation with different partitions, for example, to divide <code>/var/</code> from <code>/</code>,
+etc.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-parts-manual.png" alt="Installer Partitions Manual" /></p>
+</div>
+<h4 id="encrypt-home-partition-only">
+  <em>Encrypt Home Partition Only</em>
+  <a class="anchor" href="#encrypt-home-partition-only">#</a>
+</h4>
+<p>Personally, I think that could be a good compromise to have the rootfs without encryption, this takes things easier
+on restoring a broken system and instead encrypt the <code>home</code> with user data.</p>
+<p>This is possible from <em>Manual Partioning</em> on creating an encrypted partition.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/part-home-encrypt.png" alt="Installer Partition Home Encrypted" /></p>
+</div>
+<p>To this it&rsquo;s only needed after selecting the File System type (in the screenshot <em>ext4</em>),
+to set the <em>Encrypt</em> flag and set the passphrase.</p>
+<p><strong>NOTE: On setup, with a configuration with there are single partitions encrypted you
+need to do some manual operations when the installation is completed or at the first boot.
+Unfortunately, at the moment the configuration of a single encrypted partition is not
+handled correctly and automatically by the Calamares installer. So, these
+steps will be described later.</strong></p>
+<h4 id="65-users-define-user-and-passwords">
+  6.5 Users: Define User and Passwords
+  <a class="anchor" href="#65-users-define-user-and-passwords">#</a>
+</h4>
+<p>It&rsquo;s now time to define the user of your system, write your name and the name of your computer
+and choice your password.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-users.png" alt="Installer Users" /></p>
+</div>
+<p>Normally, the defined user will be the admin user and the same password will be
+used for <code>root</code>. If you want a different password for root, you need to disable the
+flag related to the option: <em>Use the same password for the administrator account</em>.</p>
+<h4 id="66-summary-show-configured-options">
+  6.6 Summary: Show configured options
+  <a class="anchor" href="#66-summary-show-configured-options">#</a>
+</h4>
+<p>At this point, you are near to starting the installation of your Macaroni OS system.</p>
+<p>Just check the selected options before starting the installation.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer-summary.png" alt="Installer Summary" /></p>
+</div>
+<p>If all is ok, go ahead with <em>Install</em> button.</p>
+<h4 id="67-install-the-installation-is-started">
+  6.7 Install: The Installation is started
+  <a class="anchor" href="#67-install-the-installation-is-started">#</a>
+</h4>
+<p>Finally, the Macaroni Installer begins to write your hard drive. The time needed
+depends on your hardware and the speed of the hard drive.</p>
+<h4 id="68-finish-the-installation-is-completed">
+  6.8 Finish: The Installation is completed
+  <a class="anchor" href="#68-finish-the-installation-is-completed">#</a>
+</h4>
+<p>Wohoo! Your Macaroni system is ready!</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/installer_done.png" alt="Installer Summary" /></p>
+</div>
+<p>Set the <em>Restart now</em> flag to reboot your computer and to start your Macaroni OS.</p>
+<h4 id="69-the-first-boot">
+  6.9 The First boot
+  <a class="anchor" href="#69-the-first-boot">#</a>
+</h4>
+<h4 id="full-encrypted-disk">
+  <em>Full Encrypted Disk</em>
+  <a class="anchor" href="#full-encrypted-disk">#</a>
+</h4>
+<p>If you have choice to encrypt the full disk on bootstrap the GRUB will
+ask for the passphrase inserted in installation phase before display
+the GRUB menu and go ahead with the bootstrap of your system.</p>
+<p>Hereinafter, an example of what could be happens:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/grub-passphrase.png" alt="Grub Password" /></p>
+</div>
+<h4 id="complete-the-setup-of-homes-encrypted-partition">
+  <em>Complete the setup of Home&rsquo;s encrypted partition</em>
+  <a class="anchor" href="#complete-the-setup-of-homes-encrypted-partition">#</a>
+</h4>
+<p>If you have encrypted only the home partition or any other partition with the
+workflow described before to have the installation correctly working you need
+to execute few steps.</p>
+<p>a. <strong>Retrieve the LUKS filesystem Id</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># cat /etc/fstab </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /etc/fstab: static file system information.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use &#39;blkid&#39; to print the universally unique identifier for a device; this may</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># be used with UUID= as a more robust way to name devices that works even if</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># disks are added and removed. See fstab(5).</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &lt;file system&gt;             &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt;  &lt;pass&gt;</span>
+</span></span><span style="display:flex;"><span>UUID<span style="color:#f92672">=</span>ABF5-91D0                                        /boot/efi      vfat    defaults,noatime <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>UUID<span style="color:#f92672">=</span>f202c1d1-b131-45f5-8973-8f82cb63d688             /              ext4    defaults,noatime <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>/dev/mapper/luks-f1504aa0-2594-4221-b741-7ba315b47de0 /home          ext4    defaults,noatime <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>In this case the needed value is <code>f1504aa0-2594-4221-b741-7ba315b47de0</code>.</p>
+<p>b. <strong>Editing the GRUB configuration file <code>/etc/default/grub</code> and add this option:</strong></p>
+<pre tabindex="0"><code>GRUB_CMDLINE_LINUX=&#34;rd.luks.uuid=f1504aa0-2594-4221-b741-7ba315b47de0&#34;
+</code></pre><p>Where it&rsquo;s used the LUKS filesystem ID with the option <code>rd.luks.uuid</code> that
+say to <code>dracut</code> to manage the prompt on Plymouth for uncrypt the home partition
+before start X.</p>
+<p>c. <strong>Rebuild the <em>initramfs</em> image with <code>macaronictl</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; macaronictl kernel gi --all --grub 
+</span></span><span style="display:flex;"><span>Creating initrd image /boot/initramfs-vanilla-x86_64-6.1.18-macaroni...DONE
+</span></span><span style="display:flex;"><span>Creating grub config file /boot/grub/grub.cfg...
+</span></span><span style="display:flex;"><span>Generating grub configuration file ...
+</span></span><span style="display:flex;"><span>Found linux image: /boot/kernel-vanilla-x86_64-6.1.18-macaroni
+</span></span><span style="display:flex;"><span>Found initrd image: /boot/initramfs-vanilla-x86_64-6.1.18-macaroni
+</span></span><span style="display:flex;"><span>fgrep: warning: fgrep is obsolescent; using /bin/grep -F
+</span></span><span style="display:flex;"><span>  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>d. <strong>Reboot your system.</strong></p>
+<p>If all is been configured correctly on bootstrap you will see the Plymouth page
+with the prompt where insert the passphrase to mount <em>home</em> partition:</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/install/dracut-boot-enc-home.png" alt="Grub Password" /></p>
+</div>
+</article>
  
       
 
