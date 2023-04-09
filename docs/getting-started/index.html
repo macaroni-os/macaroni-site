@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.cb4f9a3a914df08876b5ddc5a2f3acd56216e473c9b87a0bf68a150cb8bcb9db.js" integrity="sha256-y0&#43;aOpFN8Ih2td3FovOs1WIW5HPJuHoL9ooVDLi8uds="></script>
+<script defer src="/en.search.min.9c82dadb662923d8c044689d161d85dc56a5b612ab0aba49a2e8687f356c9946.js" integrity="sha256-nILa22YpI9jARGidFh2F3FalthKrCrpJouhofzVsmUY="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -603,7 +603,23 @@ before start X.</p>
 </span></span><span style="display:flex;"><span>fgrep: warning: fgrep is obsolescent; using /bin/grep -F
 </span></span><span style="display:flex;"><span>  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><p>d. <strong>Reboot your system.</strong></p>
+</span></span></code></pre></div><p>d. <strong>Check dmcrypt service</strong></p>
+<p>Ensure that the <code>dmcrypt</code> service is enabled on boot runlevel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; rc-update show
+</span></span><span style="display:flex;"><span>       NetworkManager |      default                           
+</span></span><span style="display:flex;"><span>         avahi-daemon |      default                           
+</span></span><span style="display:flex;"><span>               binfmt | boot                                   
+</span></span><span style="display:flex;"><span>            bluetooth |      default                           
+</span></span><span style="display:flex;"><span>             bootmisc | boot                                   
+</span></span><span style="display:flex;"><span>              cgroups |                                 sysinit
+</span></span><span style="display:flex;"><span>                 dbus | boot                                   
+</span></span><span style="display:flex;"><span>                devfs |                                 sysinit
+</span></span><span style="display:flex;"><span>        device-mapper |                                 sysinit
+</span></span><span style="display:flex;"><span>              dmcrypt | boot                                   
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Enable it if it&rsquo;s not available with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; rc-update add dmcrypt boot
+</span></span></code></pre></div><p>e. <strong>Reboot your system.</strong></p>
 <p>If all is been configured correctly on bootstrap you will see the Plymouth page
 with the prompt where insert the passphrase to mount <em>home</em> partition:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
