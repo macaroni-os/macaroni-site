@@ -12,6 +12,7 @@ headless: true
   - [Macaroni Tags]({{< relref "/docs/#macaroni-tags" >}})
 - [**The Story**]({{< relref "/docs/story" >}})
 - [**Getting Started**]({{< relref "/docs/getting-started" >}})
+  - [Install Macaroni ISO]({{< relref "/docs/getting-started#install-macaroni-iso" >}})
 <br />
 
 <br />
