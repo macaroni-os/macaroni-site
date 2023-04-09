@@ -1,5 +1,5 @@
 ---
-title: "Macaroni Linux OS"
+title: "Macaroni OS"
 type: docs
 ---
 
@@ -13,7 +13,7 @@ You know, the world is buggy, it's better to have a way to check and
 resolve the problems fast.
 
 In the middle of the story, `Macaroni OS` wants to be an optimized
-distro for LXD containers, docker and singularity.
+distro for LXD containers, Docker and Singularity.
 
 
 
