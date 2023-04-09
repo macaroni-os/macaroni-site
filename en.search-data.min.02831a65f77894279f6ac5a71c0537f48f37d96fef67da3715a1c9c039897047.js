@@ -156,7 +156,7 @@ To force the loading of the NVIDIA kernel module you can add this option:
 modprobe.blacklist=nouveau Enter in the ISO bootstrap shell # If there are issues on bootstrap correctly the Macaroni ISOs you can enter in the initrd shell and to recover informations about your system and help us to check what happens.
 To enter in the shell before the probing of the ISO squashfs to debug the probing phase and the switch root command you need to add shell=1 as option.
 ISOLinux bootstrap # The described option at the moment are not available in the ISOLinux menu visible hereinafter:
-a The ISOLinux menu normally is available for not-EFI systems.
+The ISOLinux menu normally is available for not-EFI systems.
 5. Start Installer # All our ISOs are configured with Network Manager by default which is better integrated with the Calamares installer. You are free to disable and change it later when the system is installed.
 The default user of Macaroni ISO is macaroni with password macaroni.
 Server ISO # The Server ISO automatically starts an X server with Calamares without a Desktop Environment.
@@ -201,7 +201,10 @@ Ensure that the dmcrypt service is enabled on boot runlevel:
 $\u0026gt; rc-update show NetworkManager | default avahi-daemon | default binfmt | boot bluetooth | default bootmisc | boot cgroups | sysinit dbus | boot devfs | sysinit device-mapper | sysinit dmcrypt | boot ... Enable it if it\u0026rsquo;s not available with:
 $\u0026gt; rc-update add dmcrypt boot e. Reboot your system.
 If all is been configured correctly on bootstrap you will see the Plymouth page with the prompt where insert the passphrase to mount home partition:
-`}),e.add({id:9,href:"/docs/",title:"Macaroni OS",section:"Macaroni OS",content:` Why Macaroni OS? # Supply a binary distro that follow the Sabayon OS ideas and permit to convert the rootfs to a pure Funtoo rootfs in a fast way if it\u0026rsquo;s needed for specific customizations or to help the distro fix issues.
+Install Macaroni LXD Containers # Macaroni OS supply their LXD images over a Simplestreams Server with help of the simplestreams-builder tool.
+To configure your LXD system to download Macaroni OS images you need to add the macaroni remote:
+$\u0026gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public The images are visible with the command:
+$\u0026gt; lxc image list macaroni: `}),e.add({id:9,href:"/docs/",title:"Macaroni OS",section:"Macaroni OS",content:` Why Macaroni OS? # Supply a binary distro that follow the Sabayon OS ideas and permit to convert the rootfs to a pure Funtoo rootfs in a fast way if it\u0026rsquo;s needed for specific customizations or to help the distro fix issues.
 You know, the world is buggy, it\u0026rsquo;s better to have a way to check and resolve the problems fast.
 In the middle of the story, Macaroni OS wants to be an optimized distro for LXD containers, Docker and Singularity.
 So, in summary, these are the core targets of the Macaroni OS Linux:
