@@ -374,7 +374,33 @@ fgrep: warning: fgrep is obsolescent; using /bin/grep -F
 done
 ```
 
-d. **Reboot your system.**
+d. **Check dmcrypt service**
+
+Ensure that the `dmcrypt` service is enabled on boot runlevel:
+
+```shell
+$> rc-update show
+       NetworkManager |      default                           
+         avahi-daemon |      default                           
+               binfmt | boot                                   
+            bluetooth |      default                           
+             bootmisc | boot                                   
+              cgroups |                                 sysinit
+                 dbus | boot                                   
+                devfs |                                 sysinit
+        device-mapper |                                 sysinit
+              dmcrypt | boot                                   
+...
+
+```
+
+Enable it if it's not available with:
+
+```shell
+$> rc-update add dmcrypt boot
+```
+
+e. **Reboot your system.**
 
 If all is been configured correctly on bootstrap you will see the Plymouth page
 with the prompt where insert the passphrase to mount *home* partition:
