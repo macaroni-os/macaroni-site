@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.7cd9d2cd1becd24779737022bd991ef3aa15f124b2bcab0850defa8d625b32e7.js" integrity="sha256-fNnSzRvs0kd5c3AivZke86oV8SSyvKsIUN76jWJbMuc="></script>
+<script defer src="/en.search.min.8e9d355863d82e0a974a33d1bffb0fcb688f0440c9a25046f86399d974463f94.js" integrity="sha256-jp01WGPYLgqXSjPRv/sPy2iPBEDJolBG&#43;GOZ2XRGP5Q="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -219,7 +219,9 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
 <li>
-  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a>
+  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a>
 <br /></li>
 </ul>
 </li>
@@ -639,6 +641,52 @@ with the prompt where insert the passphrase to mount <em>home</em> partition:</p
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>The images are visible with the command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
+</span></span></code></pre></div><h1 id="install-macaroni-docker-containers">
+  Install Macaroni Docker Containers
+  <a class="anchor" href="#install-macaroni-docker-containers">#</a>
+</h1>
+<p>The official Docker Hub user is 
+  <a href="https://hub.docker.com/repositories/macaronios">macaronios</a>.</p>
+<p>To play with Macaroni just create your container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; docker run --rm -ti macaronios/terragon-minimal:latest-amd64
+</span></span></code></pre></div><p>And then install your packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>e9c4457e2ce7 / <span style="color:#75715e"># luet repo update</span>
+</span></span><span style="display:flex;"><span>🏠 Repository:               mottainai-stable Revision:  <span style="color:#ae81ff">85</span> - 2023-04-06 21:04:23 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:               macaroni-commons Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:              macaroni-terragon Revision: <span style="color:#ae81ff">176</span> - 2023-04-01 08:45:41 +0000 UTC
+</span></span><span style="display:flex;"><span>e9c4457e2ce7 / <span style="color:#75715e"># luet i vim vim-core htop</span>
+</span></span><span style="display:flex;"><span>🚀 Luet 0.34.2-geaaru-g39b17f43958ab2df8c20f19410df612640428708 2023-03-15 06:03:31 UTC - go1.20.1
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:               macaroni-commons Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:              macaroni-terragon Revision: <span style="color:#ae81ff">176</span> - 2023-04-01 08:45:41 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:               mottainai-stable Revision:  <span style="color:#ae81ff">85</span> - 2023-04-06 21:04:23 +0000 UTC
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-admin/eselect::macaroni-terragon                          - 1.4.14+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-arch/xz-utils::macaroni-terragon                          - 5.4.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-editors/vim::macaroni-terragon                            - 9.0.1425
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-editors/vim-core::macaroni-terragon                       - 9.0.1425
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-eselect/eselect-vi::macaroni-terragon                     - 1.1.9
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-misc/mime-types::macaroni-terragon                        - <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-db-3/sqlite::macaroni-terragon                            - 3.41.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-lang-2/python-exec::macaroni-terragon                     - 2.4.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-lang-3.9/python::macaroni-terragon                        - 3.9.16
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs-3/libnl::macaroni-terragon                           - 3.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libffi::macaroni-terragon                            - 3.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/openssl::macaroni-terragon                           - 1.1.1q
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/setuptools::macaroni-terragon                      - 67.6.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/cscope::macaroni-terragon                            - 15.9
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-apps/file::macaroni-terragon                              - 5.44+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-apps/util-linux::macaroni-terragon                        - 2.38.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-libs/gdbm::macaroni-terragon                              - 1.23
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-libs/gpm::macaroni-terragon                               - 1.20.7
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-libs/libcap-ng::macaroni-terragon                         - 0.7.9+2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-libs/libunwind::macaroni-terragon                         - 1.6.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-process/htop::macaroni-terragon                           - 3.2.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  22<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/libc::macaroni-terragon                               - <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">820170</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
 </span></span></code></pre></div></article>
  
       
