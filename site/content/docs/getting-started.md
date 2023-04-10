@@ -428,4 +428,54 @@ The images are visible with the command:
 $> lxc image list macaroni:
 ```
 
+# Install Macaroni Docker Containers
 
+The official Docker Hub user is [macaronios](https://hub.docker.com/repositories/macaronios).
+
+To play with Macaroni just create your container:
+
+```shell
+$> docker run --rm -ti macaronios/terragon-minimal:latest-amd64
+```
+
+And then install your packages:
+
+```shell
+e9c4457e2ce7 / # luet repo update
+🏠 Repository:               mottainai-stable Revision:  85 - 2023-04-06 21:04:23 +0000 UTC
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:               macaroni-commons Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:              macaroni-terragon Revision: 176 - 2023-04-01 08:45:41 +0000 UTC
+e9c4457e2ce7 / # luet i vim vim-core htop
+🚀 Luet 0.34.2-geaaru-g39b17f43958ab2df8c20f19410df612640428708 2023-03-15 06:03:31 UTC - go1.20.1
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:               macaroni-commons Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:              macaroni-terragon Revision: 176 - 2023-04-01 08:45:41 +0000 UTC
+🏠 Repository:               mottainai-stable Revision:  85 - 2023-04-06 21:04:23 +0000 UTC
+🧠 Solving install tree...
+🍦 [  1 of  22] [N] app-admin/eselect::macaroni-terragon                          - 1.4.14+1
+🍦 [  2 of  22] [N] app-arch/xz-utils::macaroni-terragon                          - 5.4.2
+🍦 [  3 of  22] [N] app-editors/vim::macaroni-terragon                            - 9.0.1425
+🍦 [  4 of  22] [N] app-editors/vim-core::macaroni-terragon                       - 9.0.1425
+🍦 [  5 of  22] [N] app-eselect/eselect-vi::macaroni-terragon                     - 1.1.9
+🍦 [  6 of  22] [N] app-misc/mime-types::macaroni-terragon                        - 9
+🍦 [  7 of  22] [N] dev-db-3/sqlite::macaroni-terragon                            - 3.41.2
+🍦 [  8 of  22] [N] dev-lang-2/python-exec::macaroni-terragon                     - 2.4.6
+🍦 [  9 of  22] [N] dev-lang-3.9/python::macaroni-terragon                        - 3.9.16
+🍦 [ 10 of  22] [N] dev-libs-3/libnl::macaroni-terragon                           - 3.4.0
+🍦 [ 11 of  22] [N] dev-libs/libffi::macaroni-terragon                            - 3.3
+🍦 [ 12 of  22] [N] dev-libs/openssl::macaroni-terragon                           - 1.1.1q
+🍦 [ 13 of  22] [N] dev-python/setuptools::macaroni-terragon                      - 67.6.1
+🍦 [ 14 of  22] [N] dev-util/cscope::macaroni-terragon                            - 15.9
+🍦 [ 15 of  22] [N] sys-apps/file::macaroni-terragon                              - 5.44+1
+🍦 [ 16 of  22] [N] sys-apps/util-linux::macaroni-terragon                        - 2.38.1+1
+🍦 [ 17 of  22] [N] sys-libs/gdbm::macaroni-terragon                              - 1.23
+🍦 [ 18 of  22] [N] sys-libs/gpm::macaroni-terragon                               - 1.20.7
+🍦 [ 19 of  22] [N] sys-libs/libcap-ng::macaroni-terragon                         - 0.7.9+2
+🍦 [ 20 of  22] [N] sys-libs/libunwind::macaroni-terragon                         - 1.6.2
+🍦 [ 21 of  22] [N] sys-process/htop::macaroni-terragon                           - 3.2.2
+🍦 [ 22 of  22] [N] virtual/libc::macaroni-terragon                               - 1
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 820170 µs).
+Do you want to continue with this operation? [y/N]: 
+```

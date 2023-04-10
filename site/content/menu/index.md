@@ -14,6 +14,7 @@ headless: true
 - [**Getting Started**]({{< relref "/docs/getting-started" >}})
   - [Install Macaroni ISO]({{< relref "/docs/getting-started#install-macaroni-iso" >}})
   - [Install Macaroni LXD Containers]({{< relref "/docs/getting-started#install-macaroni-lxd-containers" >}})
+  - [Install Macaroni Docker Containers]({{< relref "/docs/getting-started#install-macaroni-docker-containers" >}})
 <br />
 
 <br />
