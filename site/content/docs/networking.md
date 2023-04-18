@@ -263,5 +263,13 @@ Name=eth0
 UseDomains=true
 ```
 
+After the editing and/or creation of the files under `/etc/systemd/network`
+to apply the configuration is needed following the commands:
+
+```shell
+#> systemctl daemon-reload
+#> systemctl restart systemd-networkd
+```
+
 The complete description of all availables options is present on
 the [Freedesktop Website](https://www.freedesktop.org/software/systemd/man/systemd.network.html).
