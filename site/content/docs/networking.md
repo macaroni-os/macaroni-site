@@ -59,7 +59,7 @@ The `nmcli` tool is parte of the `network-manager` package and could be used
 to check the status of the setup of the Network Manager from the terminal.
 
 ```shell
-# nmcli --help
+$> nmcli --help
 Usage: nmcli [OPTIONS] OBJECT { COMMAND | help }
 
 OPTIONS
@@ -90,7 +90,7 @@ OBJECT
 To check the connectivity status:
 
 ```shell
-# nmcli g
+$> nmcli g
 STATE      CONNECTIVITY  WIFI-HW  WIFI      WWAN-HW  WWAN
 connected  full          enabled  disabled  enabled  enabled
 ```
@@ -98,7 +98,7 @@ connected  full          enabled  disabled  enabled  enabled
 List the connections configured on Network Manager:
 
 ```shell
- # nmcli c
+$> nmcli c
 NAME      UUID                                  TYPE      DEVICE
 VLAN 50   441acd87-ce63-4af5-bde7-7ce4aec765fd  vlan      vlan50
 UP-Empty  c3b0c6d6-5a62-3e4f-9ec8-44526a3f5aba  ethernet  eth0
@@ -107,7 +107,7 @@ UP-Empty  c3b0c6d6-5a62-3e4f-9ec8-44526a3f5aba  ethernet  eth0
 Or retrieve the list of the network interfaces availables:
 
 ```shell
-# nmcli d
+$> nmcli d
 DEVICE        TYPE      STATE        CONNECTION 
 vlan50        vlan      connected    VLAN 50    
 eth0          ethernet  connected    UP-Empty   
@@ -210,10 +210,10 @@ etc/netif.d/wpa_supplicant
 These the steps to setup the interface `eth0` with the DHCP.
 
 ```shell
-root # cd /etc/init.d
-root # ln -s netif.tmpl netif.eth0
-root # rc-update add netif.eth0 default
-root # echo template=dhcpcd > /etc/conf.d/netif.eth0
+root $> cd /etc/init.d
+root $> ln -s netif.tmpl netif.eth0
+root $> rc-update add netif.eth0 default
+root $> echo template=dhcpcd > /etc/conf.d/netif.eth0
 ```
 
 #### Setup an interface with a static IP
@@ -222,9 +222,9 @@ To configure an interface with a static IP it's used the `interface`
 template that could be configured with this steps:
 
 ```shell
-root # cd /etc/init.d
-root # ln -s netif.tmpl netif.eth0
-root # rc-update add netif.eth0 default
+root $> cd /etc/init.d
+root $> ln -s netif.tmpl netif.eth0
+root $> rc-update add netif.eth0 default
 ```
 
 and then editing the file `/etc/conf.d/netif.eth0` with this content:
@@ -267,8 +267,8 @@ After the editing and/or creation of the files under `/etc/systemd/network`
 to apply the configuration is needed following the commands:
 
 ```shell
-#> systemctl daemon-reload
-#> systemctl restart systemd-networkd
+$> systemctl daemon-reload
+$> systemctl restart systemd-networkd
 ```
 
 The complete description of all availables options is present on
