@@ -82,7 +82,7 @@ Technology Release Phoenix Release Terragon Release Eagle Network Manager Yes Ye
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.57466a555206ac4fa22e72bcb27cfac6edb423592932a15de77d7e33209bf1bb.js" integrity="sha256-V0ZqVVIGrE&#43;iLnK8snz6xu20I1kpMqFd531&#43;MyCb8bs="></script>
+<script defer src="/en.search.min.eaf8f1d5d76ecd7fd773987edbffe662d4109d74fcc226405682dd4c479aaa19.js" integrity="sha256-6vjx1dduzX/Xc5h&#43;2//mYtQQnXT8wiZAVoLdTEeaqhk="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -365,7 +365,7 @@ directory when there are a lot of profiles configured.</p>
 </h4>
 <p>The <code>nmcli</code> tool is parte of the <code>network-manager</code> package and could be used
 to check the status of the setup of the Network Manager from the terminal.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli --help</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; nmcli --help
 </span></span><span style="display:flex;"><span>Usage: nmcli <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> OBJECT <span style="color:#f92672">{</span> COMMAND | help <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>OPTIONS
@@ -392,16 +392,16 @@ to check the status of the setup of the Network Manager from the terminal.</p>
 </span></span><span style="display:flex;"><span>  a<span style="color:#f92672">[</span>gent<span style="color:#f92672">]</span>         NetworkManager secret agent or polkit agent
 </span></span><span style="display:flex;"><span>  m<span style="color:#f92672">[</span>onitor<span style="color:#f92672">]</span>       monitor NetworkManager changes
 </span></span></code></pre></div><p>To check the connectivity status:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; nmcli g
 </span></span><span style="display:flex;"><span>STATE      CONNECTIVITY  WIFI-HW  WIFI      WWAN-HW  WWAN
 </span></span><span style="display:flex;"><span>connected  full          enabled  disabled  enabled  enabled
 </span></span></code></pre></div><p>List the connections configured on Network Manager:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#75715e"># nmcli c</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; nmcli c
 </span></span><span style="display:flex;"><span>NAME      UUID                                  TYPE      DEVICE
 </span></span><span style="display:flex;"><span>VLAN <span style="color:#ae81ff">50</span>   441acd87-ce63-4af5-bde7-7ce4aec765fd  vlan      vlan50
 </span></span><span style="display:flex;"><span>UP-Empty  c3b0c6d6-5a62-3e4f-9ec8-44526a3f5aba  ethernet  eth0
 </span></span></code></pre></div><p>Or retrieve the list of the network interfaces availables:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli d</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; nmcli d
 </span></span><span style="display:flex;"><span>DEVICE        TYPE      STATE        CONNECTION 
 </span></span><span style="display:flex;"><span>vlan50        vlan      connected    VLAN <span style="color:#ae81ff">50</span>    
 </span></span><span style="display:flex;"><span>eth0          ethernet  connected    UP-Empty   
@@ -490,19 +490,19 @@ and in this moment are these:</p>
   <a class="anchor" href="#setup-a-dhcp-interface-using-the-dhcpd-template">#</a>
 </h4>
 <p>These the steps to setup the interface <code>eth0</code> with the DHCP.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root <span style="color:#75715e"># cd /etc/init.d</span>
-</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># ln -s netif.tmpl netif.eth0</span>
-</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># rc-update add netif.eth0 default</span>
-</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># echo template=dhcpcd &gt; /etc/conf.d/netif.eth0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root $&gt; cd /etc/init.d
+</span></span><span style="display:flex;"><span>root $&gt; ln -s netif.tmpl netif.eth0
+</span></span><span style="display:flex;"><span>root $&gt; rc-update add netif.eth0 default
+</span></span><span style="display:flex;"><span>root $&gt; echo template<span style="color:#f92672">=</span>dhcpcd &gt; /etc/conf.d/netif.eth0
 </span></span></code></pre></div><h4 id="setup-an-interface-with-a-static-ip">
   Setup an interface with a static IP
   <a class="anchor" href="#setup-an-interface-with-a-static-ip">#</a>
 </h4>
 <p>To configure an interface with a static IP it&rsquo;s used the <code>interface</code>
 template that could be configured with this steps:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root <span style="color:#75715e"># cd /etc/init.d</span>
-</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># ln -s netif.tmpl netif.eth0</span>
-</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># rc-update add netif.eth0 default</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root $&gt; cd /etc/init.d
+</span></span><span style="display:flex;"><span>root $&gt; ln -s netif.tmpl netif.eth0
+</span></span><span style="display:flex;"><span>root $&gt; rc-update add netif.eth0 default
 </span></span></code></pre></div><p>and then editing the file <code>/etc/conf.d/netif.eth0</code> with this content:</p>
 <pre tabindex="0"><code>template=&#34;interface&#34;
 ipaddr=&#34;10.0.1.200/24&#34;
@@ -533,8 +533,8 @@ Name=eth0
 UseDomains=true
 </code></pre><p>After the editing and/or creation of the files under <code>/etc/systemd/network</code>
 to apply the configuration is needed following the commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#&gt; systemctl daemon-reload</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; systemctl restart systemd-networkd</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; systemctl daemon-reload
+</span></span><span style="display:flex;"><span>$&gt; systemctl restart systemd-networkd
 </span></span></code></pre></div><p>The complete description of all availables options is present on
 the 
   <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">Freedesktop Website</a>.</p>
