@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Networking</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><head>
+  <meta name="generator" content="Hugo 0.110.0">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networking</title>
+<link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+<!-- Twitter Bootstrs CSS -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+<!-- Ionicons Fonts Css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+<!-- animate css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+<!-- Hero area slider css-->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+<!-- slick slider -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+<!-- hover -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+<!-- template main css file -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+
+  
+<!-- Custom stylesheet - for your changes -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Networking" />
+<meta property="og:description" content="Networking # Macaroni OS inherits all network configuration ways from Funtoo. In particular, every release could contain one or more ways and/or technologies.
+Hereinafter, a table with the different technologies and the availability in the Macaroni releases.
+Technology Release Phoenix Release Terragon Release Eagle Network Manager Yes Yes Yes Core Network Yes Yes No SystemD Networkd No No Yes In our ISOs, we use Network Manager that is which seems better integrated with Calamares Installer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.macaronios.org/docs/networking/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="Macarani OS" />
+<title>Networking | Macaroni OS</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
+<script defer src="/en.search.min.81233dd6a70120b7cdee628863ca69145ec65299ddde0f86452d2c5b7e2e0bf5.js" integrity="sha256-gSM91qcBILfN7mKIY8ppFF7GUpnd3g&#43;GRS0sW34uC/U="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/faq/">FAQ</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.03.02/">Phoenix 23.03.02 is out!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section><body dir="ltr">
+
+  <div style="margin-top: 60px;">
+
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/"><strong>The Project</strong></a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-releases">Macaroni Releases</a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-os-phoenix">Phoenix</a></li>
+<li>
+  <a href="/docs/#macaroni-os-eagle">Eagle</a></li>
+<li>
+  <a href="/docs/#macaroni-os-terragon">Terragon</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/#macaroni-repositories">Macaroni Repositories</a></li>
+<li>
+  <a href="/docs/#macaroni-tags">Macaroni Tags</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/story/"><strong>The Story</strong></a></li>
+<li>
+  <a href="/docs/getting-started/"><strong>Getting Started</strong></a>
+<ul>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a></li>
+<li>
+  <a href="/docs/networking/"class=active>Networking</a>
+<br /></li>
+</ul>
+</li>
+</ul>
+<br />
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/blog/" >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/macaroni-os" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page" >
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Networking</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="networking">
+  Networking
+  <a class="anchor" href="#networking">#</a>
+</h1>
+<p>Macaroni OS inherits all network configuration ways from
+Funtoo. In particular, every release could contain one or
+more ways and/or technologies.</p>
+<p>Hereinafter, a table with the different technologies and the
+availability in the Macaroni releases.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Technology</th>
+<th style="text-align:center">Release Phoenix</th>
+<th style="text-align:center">Release Terragon</th>
+<th style="text-align:center">Release Eagle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">
+  <a href="https://networkmanager.dev/">Network Manager</a></td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">
+  <a href="https://www.funtoo.org/Funtoo:Networking/Configuration">Core Network</a></td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td style="text-align:left">
+  <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">SystemD Networkd</a></td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>In our ISOs, we use <strong>Network Manager</strong> that is which seems better integrated with
+Calamares Installer.</p>
+<p>For Server ISO our suggestion is to disable Network Manager when the installation is
+done and to use the <em>core network</em> scripts.</p>
+<h2 id="1-network-manager">
+  1. Network Manager
+  <a class="anchor" href="#1-network-manager">#</a>
+</h2>
+<p>NetworkManager is the standard Linux network configuration tool suite that
+in the years is been integrated over different desktop environments.
+It&rsquo;s the default service used by Gnome and could be configured in the different way.</p>
+<p>If the service is active, normally, the default configuration automatically
+uses DHCP protocol on the enabled network interfaces.</p>
+<p>From terminal could be used the <code>nmtui</code> tool and <code>nmcli</code> to configure the network.</p>
+<p>The package that supplies this service is <code>net-misc/networkmanager</code> and could be
+extended with extra plugins.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; luet s networkmanager --table
+</span></span><span style="display:flex;"><span>|              PACKAGE               |     VERSION      |   REPOSITORY    |
+</span></span><span style="display:flex;"><span>|------------------------------------|------------------|-----------------|
+</span></span><span style="display:flex;"><span>| kde-frameworks-5/networkmanager-qt | 5.85.0+2         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| net-misc/networkmanager            | 1.26.0+3         | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| net-vpn/networkmanager-openconnect | 1.2.6.20200831+2 | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>| net-vpn/networkmanager-vpnc        | 1.2.6+3          | macaroni-funtoo |
+</span></span><span style="display:flex;"><span>$&gt;
+</span></span></code></pre></div><p>The Network Manager configurations are stored under the directory
+<em>/etc/NetworkManager/</em> and could be a good idea to do a backup of this
+directory when there are a lot of profiles configured.</p>
+<h4 id="nmcli">
+  nmcli
+  <a class="anchor" href="#nmcli">#</a>
+</h4>
+<p>The <code>nmcli</code> tool is parte of the <code>network-manager</code> package and could be used
+to check the status of the setup of the Network Manager from the terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli --help</span>
+</span></span><span style="display:flex;"><span>Usage: nmcli <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> OBJECT <span style="color:#f92672">{</span> COMMAND | help <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>OPTIONS
+</span></span><span style="display:flex;"><span>  -a, --ask                                ask <span style="color:#66d9ef">for</span> missing parameters
+</span></span><span style="display:flex;"><span>  -c, --colors auto|yes|no                 whether to use colors in output
+</span></span><span style="display:flex;"><span>  -e, --escape yes|no                      escape columns separators in values
+</span></span><span style="display:flex;"><span>  -f, --fields &lt;field,...&gt;|all|common      specify fields to output
+</span></span><span style="display:flex;"><span>  -g, --get-values &lt;field,...&gt;|all|common  shortcut <span style="color:#66d9ef">for</span> -m tabular -t -f
+</span></span><span style="display:flex;"><span>  -h, --help                               print this help
+</span></span><span style="display:flex;"><span>  -m, --mode tabular|multiline             output mode
+</span></span><span style="display:flex;"><span>  -o, --overview                           overview mode
+</span></span><span style="display:flex;"><span>  -p, --pretty                             pretty output
+</span></span><span style="display:flex;"><span>  -s, --show-secrets                       allow displaying passwords
+</span></span><span style="display:flex;"><span>  -t, --terse                              terse output
+</span></span><span style="display:flex;"><span>  -v, --version                            show program version
+</span></span><span style="display:flex;"><span>  -w, --wait &lt;seconds&gt;                     set timeout waiting <span style="color:#66d9ef">for</span> finishing operations
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>OBJECT
+</span></span><span style="display:flex;"><span>  g<span style="color:#f92672">[</span>eneral<span style="color:#f92672">]</span>       NetworkManager<span style="color:#e6db74">&#39;s general status and operations
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  n[etworking]    overall networking control
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  r[adio]         NetworkManager radio switches
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  c[onnection]    NetworkManager&#39;</span>s connections
+</span></span><span style="display:flex;"><span>  d<span style="color:#f92672">[</span>evice<span style="color:#f92672">]</span>        devices managed by NetworkManager
+</span></span><span style="display:flex;"><span>  a<span style="color:#f92672">[</span>gent<span style="color:#f92672">]</span>         NetworkManager secret agent or polkit agent
+</span></span><span style="display:flex;"><span>  m<span style="color:#f92672">[</span>onitor<span style="color:#f92672">]</span>       monitor NetworkManager changes
+</span></span></code></pre></div><p>To check the connectivity status:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli g</span>
+</span></span><span style="display:flex;"><span>STATE      CONNECTIVITY  WIFI-HW  WIFI      WWAN-HW  WWAN
+</span></span><span style="display:flex;"><span>connected  full          enabled  disabled  enabled  enabled
+</span></span></code></pre></div><p>List the connections configured on Network Manager:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#75715e"># nmcli c</span>
+</span></span><span style="display:flex;"><span>NAME      UUID                                  TYPE      DEVICE
+</span></span><span style="display:flex;"><span>VLAN <span style="color:#ae81ff">50</span>   441acd87-ce63-4af5-bde7-7ce4aec765fd  vlan      vlan50
+</span></span><span style="display:flex;"><span>UP-Empty  c3b0c6d6-5a62-3e4f-9ec8-44526a3f5aba  ethernet  eth0
+</span></span></code></pre></div><p>Or retrieve the list of the network interfaces availables:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nmcli d</span>
+</span></span><span style="display:flex;"><span>DEVICE        TYPE      STATE        CONNECTION 
+</span></span><span style="display:flex;"><span>vlan50        vlan      connected    VLAN <span style="color:#ae81ff">50</span>    
+</span></span><span style="display:flex;"><span>eth0          ethernet  connected    UP-Empty   
+</span></span><span style="display:flex;"><span>wlan0         wifi      unavailable  --         
+</span></span><span style="display:flex;"><span>mottainai0    bridge    unmanaged    --         
+</span></span><span style="display:flex;"><span>veth0e8d2a56  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>veth0fda5989  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>veth4d3fd438  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>veth7df4c34c  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>vetha71fd414  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>vethbb8d7925  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>vethf25b2272  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>vethfb55205d  ethernet  unmanaged    --         
+</span></span><span style="display:flex;"><span>lo            loopback  unmanaged    --         
+</span></span></code></pre></div><p>Run <code>man nmcli</code> to a more complete description of all available
+commands.</p>
+<h4 id="nmtui">
+  nmtui
+  <a class="anchor" href="#nmtui">#</a>
+</h4>
+<p>The <strong>nmtui</strong> tool is part of the <code>network-manager</code> package and supply
+a terminal interface based on ncurses library to configure the connections.</p>
+<div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
+<p>
+  <img src="../../images/networking/nmtui1.png" alt="NMTUI" /></p>
+</div>
+<h4 id="network-manager-and-lxd">
+  Network Manager and LXD
+  <a class="anchor" href="#network-manager-and-lxd">#</a>
+</h4>
+<p>By default Network Manager automatically tries to configure and enable
+every new interface added to the system and this could be correct when
+LXD is used.</p>
+<p>It&rsquo;s possible to disable this behavior for specific interfaces with the
+creation of the the file <code>/etc/NetworkManager/NetworkManager.conf</code> or
+editing it if it&rsquo;s already present and to add the <em>keyfile</em> plugin as
+reported hereinafter:</p>
+<pre tabindex="0"><code>[main]
+plugins=keyfile
+
+#[logging]
+#domains=ALL:TRACE
+
+[keyfile]
+unmanaged-devices=interface-name:veth*,interface-name:mottainai0,interface-name:br-int0,interface-name:ovs*
+</code></pre><p>In the example, the interfaces starting with <code>veth</code> or <code>ovs</code> and the interfaces
+<code>mottainai0</code> and <code>br-int0</code> are ignored by NM.</p>
+<h1 id="2-core-network">
+  2. Core Network
+  <a class="anchor" href="#2-core-network">#</a>
+</h1>
+<p>Inherit from Funtoo for the OpenRC systems, so for both Phoenix and Terragon
+releases the <strong>corenetwork</strong> package contains the Funtoo scripts to use for
+configure the network interfaces on boot.</p>
+<p>The concept about the interfaces configuration is that for every interface
+it&rsquo;s needed create under the directory <code>/etc/init.d</code> the link in the format
+<code>netif.&lt;iface-name&gt;</code> to the <code>netif.templ</code> file with and then to create the
+related file under the directory <code>/etc/conf.d/</code> with the naming convention
+<code>netif.&lt;iface-name&gt;</code>.</p>
+<p>The <em>corenetwork</em> package supplies different templates to use different
+technologies and/or for different targets. For example, the DHCP could be
+managed with the tool <code>dhcpd</code> or with <code>dhclient</code>. Every specific template
+as specific configuration options.</p>
+<p>The supported templates are available under the directory <code>/etc/netif.d</code>
+and in this moment are these:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># luet q files corenetwork | grep netif.d</span>
+</span></span><span style="display:flex;"><span>etc/netif.d/bond
+</span></span><span style="display:flex;"><span>etc/netif.d/bridge
+</span></span><span style="display:flex;"><span>etc/netif.d/bridge-dhcpcd
+</span></span><span style="display:flex;"><span>etc/netif.d/bridge-openvswitch
+</span></span><span style="display:flex;"><span>etc/netif.d/dhclient
+</span></span><span style="display:flex;"><span>etc/netif.d/dhcpcd
+</span></span><span style="display:flex;"><span>etc/netif.d/hostapd
+</span></span><span style="display:flex;"><span>etc/netif.d/interface
+</span></span><span style="display:flex;"><span>etc/netif.d/interface-noip
+</span></span><span style="display:flex;"><span>etc/netif.d/ipv6-tunnel
+</span></span><span style="display:flex;"><span>etc/netif.d/macvlan
+</span></span><span style="display:flex;"><span>etc/netif.d/macvtap
+</span></span><span style="display:flex;"><span>etc/netif.d/pppd
+</span></span><span style="display:flex;"><span>etc/netif.d/tap
+</span></span><span style="display:flex;"><span>etc/netif.d/tunnel
+</span></span><span style="display:flex;"><span>etc/netif.d/wireguard
+</span></span><span style="display:flex;"><span>etc/netif.d/wpa_supplicant
+</span></span></code></pre></div><h4 id="setup-a-dhcp-interface-using-the-dhcpd-template">
+  Setup a DHCP interface using the dhcpd template
+  <a class="anchor" href="#setup-a-dhcp-interface-using-the-dhcpd-template">#</a>
+</h4>
+<p>These the steps to setup the interface <code>eth0</code> with the DHCP.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root <span style="color:#75715e"># cd /etc/init.d</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># ln -s netif.tmpl netif.eth0</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># rc-update add netif.eth0 default</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># echo template=dhcpcd &gt; /etc/conf.d/netif.eth0</span>
+</span></span></code></pre></div><h4 id="setup-an-interface-with-a-static-ip">
+  Setup an interface with a static IP
+  <a class="anchor" href="#setup-an-interface-with-a-static-ip">#</a>
+</h4>
+<p>To configure an interface with a static IP it&rsquo;s used the <code>interface</code>
+template that could be configured with this steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root <span style="color:#75715e"># cd /etc/init.d</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># ln -s netif.tmpl netif.eth0</span>
+</span></span><span style="display:flex;"><span>root <span style="color:#75715e"># rc-update add netif.eth0 default</span>
+</span></span></code></pre></div><p>and then editing the file <code>/etc/conf.d/netif.eth0</code> with this content:</p>
+<pre tabindex="0"><code>template=&#34;interface&#34;
+ipaddr=&#34;10.0.1.200/24&#34;
+gateway=&#34;10.0.1.1&#34;
+nameservers=&#34;1.1.1.1 8.8.8.8&#34;
+domain=&#34;mottainai.local&#34;
+</code></pre><p>A more completed documentation is available directly from the
+
+  <a href="https://www.funtoo.org/Funtoo:Networking/Configuration">Funtoo wiki</a>.</p>
+<h1 id="3-systemd-networkd">
+  3. Systemd Networkd
+  <a class="anchor" href="#3-systemd-networkd">#</a>
+</h1>
+<p>In the only Eagle release where it&rsquo;s used Systemd could be used
+the <code>systemd-networkd</code> service for the network configuration.</p>
+<p>The configuration files are available under the directory
+<code>/etc/systemd/network</code> with the extension <em>.network</em>.</p>
+<p>For example to configure DHCP on interface <code>eth0</code> it&rsquo;s possible to
+create the file <code>/etc/systemd/network/default_dhcp.network</code> with
+the following content:</p>
+<pre tabindex="0"><code>[Network]
+DHCP=ipv4
+
+[Match]
+Name=eth0
+
+[DHCP]
+UseDomains=true
+</code></pre><p>The complete description of all availables options is present on
+the 
+  <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">Freedesktop Website</a>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/macaroni-os/macaroni-site/edit/master/site/content/docs/networking.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span></span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+
+  </div><!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

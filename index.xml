@@ -81,6 +81,17 @@ Until the issue #7 will be fixed you need to compare the sha256 manually.</descr
     </item>
     
     <item>
+      <title>Networking</title>
+      <link>https://www.macaronios.org/docs/networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/networking/</guid>
+      <description>Networking # Macaroni OS inherits all network configuration ways from Funtoo. In particular, every release could contain one or more ways and/or technologies.
+Hereinafter, a table with the different technologies and the availability in the Macaroni releases.
+Technology Release Phoenix Release Terragon Release Eagle Network Manager Yes Yes Yes Core Network Yes Yes No SystemD Networkd No No Yes In our ISOs, we use Network Manager that is which seems better integrated with Calamares Installer.</description>
+    </item>
+    
+    <item>
       <title>The Story</title>
       <link>https://www.macaronios.org/docs/story/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
