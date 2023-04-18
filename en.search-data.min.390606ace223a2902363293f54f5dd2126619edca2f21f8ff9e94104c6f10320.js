@@ -275,7 +275,8 @@ template=\u0026#34;interface\u0026#34; ipaddr=\u0026#34;10.0.1.200/24\u0026#34; 
 3. Systemd Networkd # In the only Eagle release where it\u0026rsquo;s used Systemd could be used the systemd-networkd service for the network configuration.
 The configuration files are available under the directory /etc/systemd/network with the extension .network.
 For example to configure DHCP on interface eth0 it\u0026rsquo;s possible to create the file /etc/systemd/network/default_dhcp.network with the following content:
-[Network] DHCP=ipv4 [Match] Name=eth0 [DHCP] UseDomains=true The complete description of all availables options is present on the Freedesktop Website.
+[Network] DHCP=ipv4 [Match] Name=eth0 [DHCP] UseDomains=true After the editing and/or creation of the files under /etc/systemd/network to apply the configuration is needed following the commands:
+#\u0026gt; systemctl daemon-reload #\u0026gt; systemctl restart systemd-networkd The complete description of all availables options is present on the Freedesktop Website.
 `}),e.add({id:11,href:"/docs/story/",title:"The Story",section:"Macaroni OS",content:`I write this article because I think that it\u0026rsquo;s needed to understand the story to improve things and instead follow the original choices when they make sense.
 The Origins # After a lot of years working with opensource packages, I can for sure to said that there are so many possibilities to configure our systems that it isn\u0026rsquo;t sufficient one life to test all combinations.
 But the power to choose is one of the more powerful things that the open-source world gift and the same packages often are created with the possibility to compile and build them in different ways. Also, the compiler used to compile and build a package supplies a lot of options to compile, optimize and validate the code (for example using -O2 or -O3 options) and this introduces again others combinations.
