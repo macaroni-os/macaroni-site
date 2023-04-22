@@ -53,6 +53,11 @@ The Network Manager configurations are stored under the directory
 */etc/NetworkManager/* and could be a good idea to do a backup of this
 directory when there are a lot of profiles configured.
 
+The Gnome and XFCE DE have their configuration interface that permits
+configuring the Network Manager service.
+
+The upstream documentation is available over their [site](https://networkmanager.dev/docs/).
+
 #### nmcli
 
 The `nmcli` tool is parte of the `network-manager` package and could be used
