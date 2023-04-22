@@ -479,3 +479,21 @@ e9c4457e2ce7 / # luet i vim vim-core htop
 ✔️  No conflicts found (executed in 820170 µs).
 Do you want to continue with this operation? [y/N]: 
 ```
+
+Hereinafter, the list of the official Macaroni Docker images
+available:
+
+| Image | Release | Description |
+| :--- | :---: | :--- |
+| macaronios/phoenix-minimal | *Phoenix* | The minimal image of the Phoenix release without subets. |
+| macaronios/phoenix-minimal-devel | *Phoenix* | The minimal image of the Phoenix release with *portage* and *devel* subsets. |
+| macaronios/phoenix-testing-minimal | *Phoenix* | The minimal image of the Phoenix release with testing repositories. |
+| macaronios/phoenix-dev-minimal | *Phoenix* | The minimal image of the Phoenix release with develop repositories. |
+| macaronios/eagle-minimal | *Eagle* | The minimal image of the Eagle release without subsets. |
+| macaronios/eagle-minimal-devel | *Eagle* | The minimal image of the Eagle release with *portage* and *devel* subsets. |
+| macaronios/eagle-testing-minimal | *Eagle* | The minimal image of the Eagle release with testing repositories. |
+| macaronios/eagle-dev-minimal | *Eagle* | The minimal image of the Eagle release with develop repositories. |
+| macaronios/eagle-dev-minimal-devel | *Eagle* | The minimal image of the Eagle release with develop repositories and with *portage* and *devel* subsets. |
+| macaronios/terragon-minimal | *Terragon* | The minimal image of the Terragon release without subsets. |
+| macaronios/terragon-minimal-devel | *Terragon* | The minimal image of the Terragon release with *portage* and *devel* subsets. |
+| macaronios/terragon-dev-minimal | *Terragon* | The minimal image of the Terragon release with develop repositories. |
