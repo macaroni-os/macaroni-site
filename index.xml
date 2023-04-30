@@ -92,6 +92,17 @@ Technology Release Phoenix Release Terragon Release Eagle Network Manager Yes Ye
     </item>
     
     <item>
+      <title>Package Manager System</title>
+      <link>https://www.macaronios.org/docs/pms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/pms/</guid>
+      <description>Package Manager System # The Package Manager System of the Macaroni OS is luet. It&amp;rsquo;s written in Golang and it has zero dependencies and permits to prepare environments &amp;ldquo;from scratch&amp;rdquo;.
+It was initially based on branch 0.16 of the Mocaccino OS&amp;rsquo;s PMS but later is totally rewritten.
+It&amp;rsquo;s composed of two different binary: the luet binary is the PMS client used by users to install packages and the luet-build binary is used to build packages and bump a new repository revision.</description>
+    </item>
+    
+    <item>
       <title>The Story</title>
       <link>https://www.macaronios.org/docs/story/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

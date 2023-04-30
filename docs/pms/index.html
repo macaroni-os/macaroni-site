@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Package Manager System</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><head>
+  <meta name="generator" content="Hugo 0.110.0">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package Manager System</title>
+<link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+<!-- Twitter Bootstrs CSS -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+<!-- Ionicons Fonts Css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+<!-- animate css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+<!-- Hero area slider css-->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+<!-- slick slider -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+<!-- hover -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+<!-- template main css file -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+
+  
+<!-- Custom stylesheet - for your changes -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Package Manager System" />
+<meta property="og:description" content="Package Manager System # The Package Manager System of the Macaroni OS is luet. It&rsquo;s written in Golang and it has zero dependencies and permits to prepare environments &ldquo;from scratch&rdquo;.
+It was initially based on branch 0.16 of the Mocaccino OS&rsquo;s PMS but later is totally rewritten.
+It&rsquo;s composed of two different binary: the luet binary is the PMS client used by users to install packages and the luet-build binary is used to build packages and bump a new repository revision." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.macaronios.org/docs/pms/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="Macarani OS" />
+<title>Package Manager System | Macaroni OS</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
+<script defer src="/en.search.min.208a5b3d5c02bfed78f75ac38be1961d1b467ca870b9e1dfe0cf1cae039f8155.js" integrity="sha256-IIpbPVwCv&#43;1491rDi&#43;GWHRtGfKhwueHf4M8crgOfgVU="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/faq/">FAQ</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.03.02/">Phoenix 23.03.02 is out!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section><body dir="ltr">
+
+  <div style="margin-top: 60px;">
+
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/"><strong>The Project</strong></a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-releases">Macaroni Releases</a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-os-phoenix">Phoenix</a></li>
+<li>
+  <a href="/docs/#macaroni-os-eagle">Eagle</a></li>
+<li>
+  <a href="/docs/#macaroni-os-terragon">Terragon</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/#macaroni-repositories">Macaroni Repositories</a></li>
+<li>
+  <a href="/docs/#macaroni-tags">Macaroni Tags</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/story/"><strong>The Story</strong></a></li>
+<li>
+  <a href="/docs/getting-started/"><strong>Getting Started</strong></a>
+<ul>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a></li>
+<li>
+  <a href="/docs/networking/">Networking</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/pms/"class=active><strong>Package Manager System</strong></a>
+<ul>
+<li>
+  <a href="/docs/pms/#1repositories-or-wagons">Repositories or Wagons</a>
+<br /></li>
+</ul>
+</li>
+</ul>
+<br />
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/blog/" >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/macaroni-os" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page" >
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Package Manager System</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="package-manager-system">
+  Package Manager System
+  <a class="anchor" href="#package-manager-system">#</a>
+</h1>
+<p>The Package Manager System of the Macaroni OS is
+
+  <a href="https://github.com/geaaru/luet/">luet</a>. It&rsquo;s written
+in Golang and it has zero dependencies and permits to
+prepare environments &ldquo;from scratch&rdquo;.</p>
+<p>It was initially based on branch 0.16 of the Mocaccino OS&rsquo;s
+PMS but later is totally rewritten.</p>
+<p>It&rsquo;s composed of two different binary: the <code>luet</code> binary is
+the PMS client used by users to install packages and the
+<code>luet-build</code> binary is used to build packages and bump a
+new repository revision.</p>
+<p>It will be rebranding soon in <code>anise</code>.</p>
+<h1 id="luet">
+  Luet
+  <a class="anchor" href="#luet">#</a>
+</h1>
+<h2 id="1repositories-or-wagons">
+  1.Repositories or Wagons
+  <a class="anchor" href="#1repositories-or-wagons">#</a>
+</h2>
+<p>In computer science in general, the term <code>repository</code> describes the place
+where is available a list of packages.</p>
+<p>I saw often in my life that mapping computer science&rsquo;s terms with real entities
+helps users to create relationships in their minds.
+So, playing with the term, a synonym of <code>repository</code> is also <code>coal/salt's mine or gold mine</code>. Following this concept in <code>Luet</code> a repository is a <code>wagon</code> where
+the stones are the packages that a user could require that are got from the gold mine.</p>
+<p>The <code>wagon identity</code> is the card that describes the specific wagon: the name,
+the revision id, the date when the wagon is been prepared, and the URLs are
+the mine tracks used to get the stones. In addition, for every wagon identity
+there are different <code>wagon document</code> that contains:</p>
+<ol>
+<li>
+<p>the metafile <code>repository.meta.yaml.tar[.gz|.zstd]</code>: this file is deprecated and will be
+removed soon. It contains metadata of all stones available in the wagon.
+Will be soon removed because having a big file with all metadata together
+consumes a lot of memory resources in the sync phase. It&rsquo;s better to have
+a tarball with multiple files with the right directories tree.</p>
+</li>
+<li>
+<p>the tree tarball <code>tree.tar[.gz|.zstd]</code>: this file contains the packages
+specs (<em>definition.yaml</em>) of the packages present on the source repository
+when the repository is been bumped.</p>
+</li>
+<li>
+<p>the compiler tree tarball <code>compilertree.tar[.gz|.zstd]</code>: this file contains
+the build specs (<em>build.yaml</em>) of the packages present of the source repository
+when the repository is been bumped.</p>
+</li>
+</ol>
+<p>The wagon documents are validated with a checksum through the first repository
+file <code>repository.yaml</code> that is been created with a limited number of pieces of
+information to speed up the checks of the updates.</p>
+<p>Hereinafter, an example of the files downloaded in the repo sync phase:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo update --debug mottainai-stable
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>root.go:#51:github.com/geaaru/luet/cmd.LoadConfig<span style="color:#f92672">)</span> Using config file: /etc/luet/luet.yaml
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>loader.go:#38:github.com/geaaru/luet/pkg/repository.LoadRepositories<span style="color:#f92672">)</span> Parsing Repository Directory /etc/luet/repos.conf.d ...
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon.go:#155:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonRepository<span style="color:#f92672">)</span>.Sync<span style="color:#f92672">)</span> Sync of the repository mottainai-stable in progress...
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#243:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloading https://dl.macaronios.org/repos/mottainai/repository.yaml
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#255:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloaded repository.yaml of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#243:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloading https://dl.macaronios.org/repos/mottainai/tree.tar.zst
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#255:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloaded tree.tar.zst of 0.00 MB <span style="color:#f92672">(</span> 0.00 MiB/s <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon.go:#207:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonRepository<span style="color:#f92672">)</span>.Sync<span style="color:#f92672">)</span> Tree tarball <span style="color:#66d9ef">for</span> the repository mottainai-stable downloaded correctly.
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#243:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloading https://dl.macaronios.org/repos/mottainai/repository.meta.yaml.tar.zst
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>http.go:#255:github.com/geaaru/luet/pkg/v2/repository/client.<span style="color:#f92672">(</span>*HttpClient<span style="color:#f92672">)</span>.DownloadFile<span style="color:#f92672">)</span> Downloaded repository.meta.yaml.tar.zst of 0.30 MB <span style="color:#f92672">(</span> 0.17 MiB/s <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon.go:#215:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonRepository<span style="color:#f92672">)</span>.Sync<span style="color:#f92672">)</span> Metadata tarball <span style="color:#66d9ef">for</span> the repository mottainai-stable downloaded correctly.
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon.go:#228:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonRepository<span style="color:#f92672">)</span>.Sync<span style="color:#f92672">)</span> Decompress tree of the repository mottainai-stable...
+</span></span><span style="display:flex;"><span>🏠 Repository:               mottainai-stable Revision:  <span style="color:#ae81ff">88</span> - 2023-04-21 16:15:48 +0000 UTC
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon.go:#289:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonRepository<span style="color:#f92672">)</span>.ExplodeMetadata<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span>🏠 Repository:               mottainai-stable unpacking metadata. 
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon_stones.go:#1100:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonStones<span style="color:#f92672">)</span>.LoadCatalog<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>mottainai-stable<span style="color:#f92672">]</span> Found metafile /var/cache/luet/repos/mottainai-stable/metafs/repository.meta.yaml
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">(</span>wagon_stones.go:#1122:github.com/geaaru/luet/pkg/v2/repository.<span style="color:#f92672">(</span>*WagonStones<span style="color:#f92672">)</span>.LoadCatalog<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>mottainai-stable<span style="color:#f92672">]</span> metadata loaded in <span style="color:#ae81ff">199480</span> µs.
+</span></span></code></pre></div><p>In particolar, the sync process download first the <code>repository.yaml</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; curl https://dl.macaronios.org/repos/mottainai/repository.yaml
+</span></span><span style="display:flex;"><span>name: mottainai-stable
+</span></span><span style="display:flex;"><span>description: MottainaiCI Official Repository
+</span></span><span style="display:flex;"><span>urls:
+</span></span><span style="display:flex;"><span>- http://localhost:8000
+</span></span><span style="display:flex;"><span>type: http
+</span></span><span style="display:flex;"><span>enable: true
+</span></span><span style="display:flex;"><span>revision: <span style="color:#ae81ff">88</span>
+</span></span><span style="display:flex;"><span>last_update: <span style="color:#e6db74">&#34;1682093748&#34;</span>
+</span></span><span style="display:flex;"><span>index: <span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>repo_files:
+</span></span><span style="display:flex;"><span>  compilertree:
+</span></span><span style="display:flex;"><span>    filename: compilertree.tar.gz
+</span></span><span style="display:flex;"><span>    compressiontype: gzip
+</span></span><span style="display:flex;"><span>    checksums:
+</span></span><span style="display:flex;"><span>      sha256: 3e9827097fd8e046c0d74f44c25e8c474204e3bda2a7ca91f20c81965c2001bb
+</span></span><span style="display:flex;"><span>  meta:
+</span></span><span style="display:flex;"><span>    filename: repository.meta.yaml.tar.zst
+</span></span><span style="display:flex;"><span>    compressiontype: zstd
+</span></span><span style="display:flex;"><span>    checksums:
+</span></span><span style="display:flex;"><span>      sha256: c0305b0e757827f8538da003cbe6cf03d88fd8636313739892a2dc26cfaa46e3
+</span></span><span style="display:flex;"><span>  tree:
+</span></span><span style="display:flex;"><span>    filename: tree.tar.zst
+</span></span><span style="display:flex;"><span>    compressiontype: zstd
+</span></span><span style="display:flex;"><span>    checksums:
+</span></span><span style="display:flex;"><span>      sha256: 1fe37e7bf858bd8dd3f9c3d1c968081218d6dee8a12c0e3c26cd2c9109159b8e
+</span></span></code></pre></div><p>and compare the <code>revision</code> and <code>last_update</code> fields to understand
+if it&rsquo;s needed go ahead with the download of the wagon document&rsquo;s files.</p>
+<p>The <code>urls</code> attribute of the <code>repository.yaml</code> is not used at the moment and
+it sets with value used locally. It possible that will be removed in the near future
+or used in validation phase.</p>
+<p>The stones could be uncompressed, so shared as simple tar files, or compressed
+in different formats: gzip or zstd.</p>
+<p>The wagons used are based on YAML files that are installed under the directory
+<code>/etc/luet/repos.conf.d</code> by default. Additional directories where read the
+repositories YAML files could be added through the <code>luet.yaml</code> configuration
+file. In particular, the directories are defined through the attribute
+<code>repos_confdir</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Define the list of directories where luet</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># try for files with .yml extension that define</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># luet repositories.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">repos_confdir</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">/etc/luet/repos.conf.d</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">/my-repos/</span>
+</span></span></code></pre></div><p>The location where the repositories metadata are unpacked depends on the
+configuration parameter <code>system.database_path</code> that has the default value
+equal to <em>/var/cache/luet</em>.</p>
+<p>In particular, under the directory <em>/var/cache/luet</em> is present the <code>luet.db</code> file
+that contains the local BoltDB database where are registered the installed packages,
+the files of the installed packages, and the <code>finalize</code> of the packages when present.</p>
+<p>At the moment the only supported database is BoltDB, but will be added the support
+of new databases soon.</p>
+<p>Under the directory <em>/var/cache/luet</em> there are two directories:</p>
+<ul>
+<li>
+<p><code>packages</code>: under this directory have stored the tarballs downloaded before
+executing the installation.</p>
+</li>
+<li>
+<p><code>repos</code>: under this directory are created the directories for every repository
+synced locally.</p>
+</li>
+</ul>
+<p>So, for every repository under the local repository are unpacked the metadata
+tarballs, in particular:</p>
+<ul>
+<li>
+<p><code>metafs</code>: under the directory <em>metafs</em> is present the file <em>repository.meta.yaml</em>
+that contains the metadata of all packages. This directory will be removed in
+the next release of luet.</p>
+</li>
+<li>
+<p><code>repository.yaml</code>: the <em>repository.yaml</em> contains the local data with the
+wagon identity data.</p>
+</li>
+<li>
+<p><code>treefs</code>: under the directory <em>treefs</em> is unpacked the tree of the repository
+with the following pattern: <code>&lt;package-category&gt;/&lt;package-name&gt;/&lt;package-version&gt;/</code>.
+Under the package directory are present:</p>
+<ul>
+<li>
+<p><code>definition.yaml</code>: the file from the repository sources with the main
+package metadata</p>
+</li>
+<li>
+<p><code>metadata.yaml</code>: this file is generated from client-side when
+a repository is synced. Will be generated by <code>luet-build</code> soon or
+just replaced only by the <em>metadata.json</em> file.</p>
+</li>
+<li>
+<p><code>metadata.json</code>: this file is generated from the client-side when a
+repository is synced. Will be generated by <code>luet-build</code> soon.
+It&rsquo;s used the JSON file instead of YAML because to elaborate
+the JSON file is faster than YAML.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>provides.yaml</code>: to speed up the solver logic under the directory <code>treefs</code> is
+generated the file <em>provides.yaml</em> the contains a map of the packages with
+<em>provides</em>. Will be generated by <code>luet-build</code> soon.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; ls  /var/cache/luet/repos/macaroni-eagle/treefs/
+</span></span><span style="display:flex;"><span>app-accessibility-2  dev-db           dev-libs       media-libs      provides.yaml    sys-libs-4.8
+</span></span><span style="display:flex;"><span>app-admin            dev-db-10.5      dev-libs-1     media-libs-1.0  sci-libs         sys-power
+</span></span><span style="display:flex;"><span>app-arch             dev-db-11        dev-libs-2     media-libs-2    seed             sys-process
+</span></span><span style="display:flex;"><span>app-crypt            dev-db-13        dev-libs-3     net-analyzer    sys-apps         system
+</span></span><span style="display:flex;"><span>app-crypt-1          dev-db-3         dev-lisp       net-dialup      sys-auth         toolchain
+</span></span><span style="display:flex;"><span>app-doc              dev-db-8.0       dev-lisp-2     net-dns         sys-block        virtual
+</span></span><span style="display:flex;"><span>app-editors          dev-go           dev-perl       net-firewall    sys-cluster      virtual-1
+</span></span><span style="display:flex;"><span>app-emulation        dev-java-11      dev-php        net-ftp         sys-devel        virtual-11
+</span></span><span style="display:flex;"><span>app-eselect          dev-java-17      dev-python     net-libs        sys-devel-1.16   virtual-17
+</span></span><span style="display:flex;"><span>app-metrics          dev-java-18      dev-python-3   net-libs-1.1    sys-devel-11     virtual-18
+</span></span><span style="display:flex;"><span>app-misc             dev-java-2       dev-scheme-12  net-mail        sys-devel-2      virtual-entities
+</span></span><span style="display:flex;"><span>app-portage          dev-java-3.6     dev-tex        net-misc        sys-devel-2.36   www-apps
+</span></span><span style="display:flex;"><span>app-shells           dev-java-8       dev-texlive    net-nds         sys-devel-2.69   www-client
+</span></span><span style="display:flex;"><span>app-text             dev-lang         dev-util       net-p2p         sys-devel-9.2.0  www-servers
+</span></span><span style="display:flex;"><span>app-text-3.0         dev-lang-2       dev-util-3     net-print       sys-fs           www-servers-2
+</span></span><span style="display:flex;"><span>app-text-4.1.2       dev-lang-2.7     dev-vcs        net-proxy       sys-fs-3         x11-apps
+</span></span><span style="display:flex;"><span>app-text-4.2         dev-lang-3.7     gnome-extra    net-vpn         sys-kernel       x11-base
+</span></span><span style="display:flex;"><span>app-text-4.3         dev-lang-7.4     mail-mta       net-wireless    sys-libs         x11-libs
+</span></span><span style="display:flex;"><span>app-text-4.5         dev-lang-8.1     media-fonts    perl-core       sys-libs-18.1    x11-misc
+</span></span><span style="display:flex;"><span>dev-cpp              dev-lang-stable  media-gfx      pkglist         sys-libs-2.2     x11-proto
+</span></span></code></pre></div><p>Hereinafter, an example of a package directory:</p>
+<pre tabindex="0"><code>$&gt; ls  /var/cache/luet/repos/macaroni-eagle/treefs/sys-devel-9.2.0/gcc/9.2.0+1/
+definition.yaml  metadata.json  metadata.yaml
+</code></pre><h3 id="11-show-repositories">
+  1.1 Show repositories
+  <a class="anchor" href="#11-show-repositories">#</a>
+</h3>
+<p>This command permits to see all installed repositories. In particular,
+the enabled repositories are colored on green and instead the
+disabled repositories are in red.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo list --help
+</span></span><span style="display:flex;"><span>List of the configured repositories.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  luet repo list <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>      --disabled      Show only disabled repositories.
+</span></span><span style="display:flex;"><span>      --enabled       Show only enabled repositories.
+</span></span><span style="display:flex;"><span>  -h, --help          help <span style="color:#66d9ef">for</span> list
+</span></span><span style="display:flex;"><span>  -q, --quiet         Show only name of the repositories.
+</span></span><span style="display:flex;"><span>  -t, --type string   Filter repositories of a specific type
+</span></span><span style="display:flex;"><span>  -u, --urls          Show URLs of the repository. <span style="color:#f92672">(</span>only in normal mode<span style="color:#f92672">)</span>.
+</span></span></code></pre></div><p>The availables options are:</p>
+<ul>
+<li>
+<p><code>--urls</code>: Show the repositories URLs</p>
+</li>
+<li>
+<p><code>--enabled</code>: Show only the enabled repositories</p>
+</li>
+<li>
+<p><code>--disabled</code>: Show only the disabled repositories</p>
+</li>
+<li>
+<p><code>--type &lt;type&gt;</code>: Filter for repositories of type specified.
+The types are: &lsquo;http&rsquo;, &lsquo;docker&rsquo;, &lsquo;disk&rsquo;.</p>
+</li>
+<li>
+<p><code>--quiet</code>: Show only name of the repositories.</p>
+</li>
+</ul>
+<h3 id="12-enable-one-or-more-repositories">
+  1.2 Enable one or more repositories
+  <a class="anchor" href="#12-enable-one-or-more-repositories">#</a>
+</h3>
+<p>This command permits to enable repositories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo enable --help
+</span></span><span style="display:flex;"><span>Enable one or more repositories.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  luet repo enable &lt;repo1&gt; ... &lt;repoN&gt; <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -h, --help   help <span style="color:#66d9ef">for</span> enable
+</span></span></code></pre></div><h3 id="13-disable-one-or-more-repositories">
+  1.3 Disable one or more repositories
+  <a class="anchor" href="#13-disable-one-or-more-repositories">#</a>
+</h3>
+<p>This command permits to disable repositories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo disable --help
+</span></span><span style="display:flex;"><span>Disable one or more repositories.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  luet repo disable &lt;repo1&gt; ... &lt;repoN&gt; <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -h, --help   help <span style="color:#66d9ef">for</span> disable
+</span></span></code></pre></div><h3 id="14-update--sync-one-or-more-repositories">
+  1.4 Update / Sync one or more repositories
+  <a class="anchor" href="#14-update--sync-one-or-more-repositories">#</a>
+</h3>
+<p>This command permits to sync repositories metadata locally. When the repository
+is not defined it tries to sync all enabled repositories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># luet repo update --help</span>
+</span></span><span style="display:flex;"><span>Update a specific cached repository or all cached repositories.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  luet repo update <span style="color:#f92672">[</span>repo1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>repo2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Aliases:
+</span></span><span style="display:flex;"><span>  update, up
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Examples:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update all cached repositories:</span>
+</span></span><span style="display:flex;"><span>$&gt; luet repo update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update only repo1 and repo2</span>
+</span></span><span style="display:flex;"><span>$&gt; luet repo update repo1 repo2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -f, --force           Force resync.
+</span></span><span style="display:flex;"><span>  -h, --help            help <span style="color:#66d9ef">for</span> update
+</span></span><span style="display:flex;"><span>  -i, --ignore-errors   Ignore errors on sync repositories.
+</span></span></code></pre></div><ul>
+<li>
+<p><code>--force|-f</code> option permits to force updates of the local trees also when
+the revision is the same. This is needed for example when a new luet release
+introduces new local logics.</p>
+</li>
+<li>
+<p><code>--ignore-errors|-i</code> option permits to ignore errors on sync. In this
+case, luet exiting always with zero.</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/macaroni-os/macaroni-site/edit/master/site/content/docs/pms.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span></span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+
+  </div><!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
