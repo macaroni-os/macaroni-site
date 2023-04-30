@@ -17,7 +17,8 @@ headless: true
   - [Install Macaroni Docker Containers]({{< relref "/docs/getting-started#install-macaroni-docker-containers" >}})
   - [Networking]({{< relref "/docs/networking" >}})
 - [**Package Manager System**]({{< relref "/docs/pms" >}})
-    - [Repositories or Wagons]({{< relref "/docs/pms#1repositories-or-wagons" >}})
+    - [Repositories or Wagons]({{< relref "/docs/pms#1-repositories-or-wagons" >}})
+    - [Subsets]({{< relref "/docs/pms#2-subsets" >}})
 <br />
 
 <br />

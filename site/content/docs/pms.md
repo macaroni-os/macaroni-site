@@ -22,7 +22,7 @@ It will be rebranding soon in `anise`.
 
 # Luet
 
-## 1.Repositories or Wagons
+## 1. Repositories or Wagons
 
 In computer science in general, the term `repository` describes the place
 where is available a list of packages.
@@ -221,7 +221,7 @@ This command permits to see all installed repositories. In particular,
 the enabled repositories are colored on green and instead the
 disabled repositories are in red.
 
-```bash
+```
 $> luet repo list --help
 List of the configured repositories.
 
@@ -254,7 +254,7 @@ The availables options are:
 
 This command permits to enable repositories.
 
-```bash
+```
 $> luet repo enable --help
 Enable one or more repositories.
 
@@ -269,7 +269,7 @@ Flags:
 
 This command permits to disable repositories.
 
-```bash
+```
 $> luet repo disable --help
 Disable one or more repositories.
 
@@ -285,7 +285,7 @@ Flags:
 This command permits to sync repositories metadata locally. When the repository
 is not defined it tries to sync all enabled repositories.
 
-```bash
+```
 # luet repo update --help
 Update a specific cached repository or all cached repositories.
 
@@ -316,3 +316,242 @@ Flags:
 
 * `--ignore-errors|-i` option permits to ignore errors on sync. In this
   case, luet exiting always with zero.
+
+## 2. Subsets
+
+The *subsets* is the feature available in `luet` that permits to filter the
+file to install from a binary. This permits to choice a runtime what files
+will be installed and what not.
+
+The subsets's rules could be defined with multple strings regexes.
+
+The definition of the *subsets* could be defined directly on the
+package specs in the *definition.yaml* file or at runtime through
+subsets definition files.
+
+The packages generate from Funtoo are with two subsets rules directly
+from the *definition.yaml*:
+
+```yaml
+annotations:
+  subsets:
+    rules:
+      devel:
+      - ^/usr/include/
+      portage:
+      - ^/var/db/pkg/
+```
+
+with the *subsets* `devel` and `portage`.
+
+The default directory where to define subsets's definitions is
+`/etc/luet/subsets.def.d` but could be modified by the
+luet configuration option `subsets_defdir` in the `luet.yaml`
+file:
+
+```yaml
+subsets_defdir:
+- /etc/luet/subsets.def.d
+```
+
+The definition of subsets under the */etc/luet/subsets.def.d* doesn't
+use the same format of the `annotations`. The key of the map describe
+the name of the subset that is also defined in the `name` attribute.
+The specified rules could be applied in this order:
+
+1. rules defined inside the package definition
+
+2. rules defined by a local definition for the category of the package.
+   These rules can be used to override the package definition.
+
+3. rules defined by a local definition for the package
+
+NOTE: When is present a rule for the package the categories rules are
+      ignored.
+
+At the moment there isn't a wildcard key to use for every package, so
+to define a specific rule for every package you need to define all the
+possible categories.
+
+The logic applied from `luet` with the subsets rules works in reverse,
+when are defined the rules, these rules are configured, thanks to the
+`tar-formers` library as ignore rules when the subset mapped to the rules
+is not enabled.
+
+To clarify the behavior I sharing an example. In Sabayon the `gcc`
+package was split into the `sys-devel/base-gcc` package and `sys-deve/gcc`
+to permit to have the core libraries linked to a lot of packages that
+are compiled with the GCC package without the need to have the compiler too.
+
+Thanks to the subsets, instead of split the package a way to reach
+the same result is to define a subset definition like this:
+
+```bash
+$> echo "
+subsets_def:
+gcc-devel:
+  description: \"Split gcc compiler stuff\"
+  name: \"gcc-devel\"
+  rules:
+  - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
+  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
+  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
+  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
+  - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
+  - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
+  - ^/usr/bin/
+  packages:
+  - sys-devel-9.2.0/gcc
+" > /etc/luet/subsets.def.d/00-gcc.yaml
+```
+
+With this definition, `luet` will install all files that don't match
+with the rules defined when the subsets `gcc-devel` is not enabled.
+In the example, the definition is strictly mapped to the package
+`sys-devel-9.2.0/gcc`.
+
+Normally, the `gcc` package is installed by default because it's
+a require of a lot of packages. This means that if the definition
+is added later to be applied must reinstalled the package.
+
+To do this job the better solution is to use the low-level command
+`luet miner reinstall-package`:
+
+```bash
+$> luet miner ri sys-devel-9.2.0/gcc
+```
+
+The list of the subsets enabled could be configured in two ways.
+On configuring the list of the subsets in the configuration file
+`luet.yaml`:
+
+```yaml
+subsets:
+  enabled:
+    - portage
+    - devel
+subsets_confdir:
+  - /etc/luet/subsets.conf.d
+
+```
+
+or through specific files under the directories defined in
+the attribute `subsets_confdir`.
+
+The files under the directory `/etc/luet/subsets.conf.d` are in
+the format:
+
+```yaml
+enabled:
+    - gcc-devel
+```
+
+### 2.1. Subsets list
+
+This command permits to show the list of subsets enabled.
+
+```
+$ luet subsets list --help
+List of subsets enabled.
+
+Usage:
+  luet subsets list [OPTIONS] [flags]
+
+Flags:
+  -h, --help    help for list
+  -q, --quiet   Show only name of the repositories.
+```
+
+In particular, the description of the subsets `devel` and `portage`
+are visible by default also if the definition is not present.
+
+```bash
+$> luet subsets list
+🍨 Subsets enabled:
+ * portage
+   Portage metadata and files.
+
+ * devel
+   Includes and devel files. Needed for compilation.
+```
+
+* `--quiet`: show only the name of the subset enabled.
+
+### 2.2. Enable one or more subsets
+
+This command permits to enable one or more subsets.
+
+```
+$> luet subsets enable --help
+Enable one or more subsets as subsets config file.
+
+	$> luet subsets enable devel portage mysubset
+
+	$> luet subsets enable -f my devel portage mysubset
+
+The filename is used to write/update the file under the first
+directory defined on subsets_confdir option (for example /etc/luet/subsets.conf.d/my.yml else main.yml is used).
+
+Usage:
+  luet subsets enable [OPTIONS] <subset1> ... <subsetN> [flags]
+
+Flags:
+  -f, --file string   Define the filename without extension where enable the subsets.
+  -h, --help          help for enable
+
+```
+
+By default this command add the *subsets* to the *main.yml* or to
+the file defined by the `-f` option:
+
+```bash
+$> luet subsets enable gcc-devel
+Subsets gcc-devel enabled ✔ .
+```
+
+That generates this content:
+
+```bash
+$> cat /etc/luet/subsets.conf.d/main.yml 
+enabled:
+    - gcc-devel
+```
+
+Instead to enable the `gcc-devel` subset under the *gcc.yml* file:
+
+```bash
+$> luet subsets enable -f gcc gcc-devel
+Subsets gcc-devel enabled ✔ .
+```
+
+With this output:
+
+```bash
+$> cat /etc/luet/subsets.conf.d/gcc.yml
+enabled:
+    - gcc-devel
+```
+
+### 2.3. Disable one or more subsets
+
+This command permits to disable one or more subsets.
+
+```
+$> luet subsets disable --help
+Disable one or more subsets as subsets config file.
+
+	$> luet subsets disable devel portage mysubset
+
+	$> luet subsets disable -f my devel portage mysubset
+
+The filename is used to write/update the file under the first
+directory defined on subsets_confdir option (for example
+/etc/luet/subsets.conf.d/my.yml else main.yml is used).
+
+Usage:
+  luet subsets disable [OPTIONS] <subset1> ... <subsetN> [flags]
+
+Flags:
+  -f, --file string   Define the filename without extension where enable the subsets.
+  -h, --help          help for disable
+```
