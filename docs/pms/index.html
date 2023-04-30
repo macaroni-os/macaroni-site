@@ -82,7 +82,7 @@ It&rsquo;s composed of two different binary: the luet binary is the PMS client u
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.208a5b3d5c02bfed78f75ac38be1961d1b467ca870b9e1dfe0cf1cae039f8155.js" integrity="sha256-IIpbPVwCv&#43;1491rDi&#43;GWHRtGfKhwueHf4M8crgOfgVU="></script>
+<script defer src="/en.search.min.beb959e6edf717e68e82076f72524049a168e512d1e8816f5014d317045ab5d0.js" integrity="sha256-vrlZ5u33F&#43;aOggdvclJASaFo5RLR6IFvUBTTFwRatdA="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -229,7 +229,9 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/pms/"class=active><strong>Package Manager System</strong></a>
 <ul>
 <li>
-  <a href="/docs/pms/#1repositories-or-wagons">Repositories or Wagons</a>
+  <a href="/docs/pms/#1-repositories-or-wagons">Repositories or Wagons</a></li>
+<li>
+  <a href="/docs/pms/#2-subsets">Subsets</a>
 <br /></li>
 </ul>
 </li>
@@ -317,9 +319,9 @@ new repository revision.</p>
   Luet
   <a class="anchor" href="#luet">#</a>
 </h1>
-<h2 id="1repositories-or-wagons">
-  1.Repositories or Wagons
-  <a class="anchor" href="#1repositories-or-wagons">#</a>
+<h2 id="1-repositories-or-wagons">
+  1. Repositories or Wagons
+  <a class="anchor" href="#1-repositories-or-wagons">#</a>
 </h2>
 <p>In computer science in general, the term <code>repository</code> describes the place
 where is available a list of packages.</p>
@@ -507,20 +509,20 @@ definition.yaml  metadata.json  metadata.yaml
 <p>This command permits to see all installed repositories. In particular,
 the enabled repositories are colored on green and instead the
 disabled repositories are in red.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo list --help
-</span></span><span style="display:flex;"><span>List of the configured repositories.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  luet repo list <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>      --disabled      Show only disabled repositories.
-</span></span><span style="display:flex;"><span>      --enabled       Show only enabled repositories.
-</span></span><span style="display:flex;"><span>  -h, --help          help <span style="color:#66d9ef">for</span> list
-</span></span><span style="display:flex;"><span>  -q, --quiet         Show only name of the repositories.
-</span></span><span style="display:flex;"><span>  -t, --type string   Filter repositories of a specific type
-</span></span><span style="display:flex;"><span>  -u, --urls          Show URLs of the repository. <span style="color:#f92672">(</span>only in normal mode<span style="color:#f92672">)</span>.
-</span></span></code></pre></div><p>The availables options are:</p>
+<pre tabindex="0"><code>$&gt; luet repo list --help
+List of the configured repositories.
+
+Usage:
+  luet repo list [OPTIONS] [flags]
+
+Flags:
+      --disabled      Show only disabled repositories.
+      --enabled       Show only enabled repositories.
+  -h, --help          help for list
+  -q, --quiet         Show only name of the repositories.
+  -t, --type string   Filter repositories of a specific type
+  -u, --urls          Show URLs of the repository. (only in normal mode).
+</code></pre><p>The availables options are:</p>
 <ul>
 <li>
 <p><code>--urls</code>: Show the repositories URLs</p>
@@ -544,56 +546,56 @@ The types are: &lsquo;http&rsquo;, &lsquo;docker&rsquo;, &lsquo;disk&rsquo;.</p>
   <a class="anchor" href="#12-enable-one-or-more-repositories">#</a>
 </h3>
 <p>This command permits to enable repositories.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo enable --help
-</span></span><span style="display:flex;"><span>Enable one or more repositories.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  luet repo enable &lt;repo1&gt; ... &lt;repoN&gt; <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>  -h, --help   help <span style="color:#66d9ef">for</span> enable
-</span></span></code></pre></div><h3 id="13-disable-one-or-more-repositories">
+<pre tabindex="0"><code>$&gt; luet repo enable --help
+Enable one or more repositories.
+
+Usage:
+  luet repo enable &lt;repo1&gt; ... &lt;repoN&gt; [flags]
+
+Flags:
+  -h, --help   help for enable
+</code></pre><h3 id="13-disable-one-or-more-repositories">
   1.3 Disable one or more repositories
   <a class="anchor" href="#13-disable-one-or-more-repositories">#</a>
 </h3>
 <p>This command permits to disable repositories.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet repo disable --help
-</span></span><span style="display:flex;"><span>Disable one or more repositories.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  luet repo disable &lt;repo1&gt; ... &lt;repoN&gt; <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>  -h, --help   help <span style="color:#66d9ef">for</span> disable
-</span></span></code></pre></div><h3 id="14-update--sync-one-or-more-repositories">
+<pre tabindex="0"><code>$&gt; luet repo disable --help
+Disable one or more repositories.
+
+Usage:
+  luet repo disable &lt;repo1&gt; ... &lt;repoN&gt; [flags]
+
+Flags:
+  -h, --help   help for disable
+</code></pre><h3 id="14-update--sync-one-or-more-repositories">
   1.4 Update / Sync one or more repositories
   <a class="anchor" href="#14-update--sync-one-or-more-repositories">#</a>
 </h3>
 <p>This command permits to sync repositories metadata locally. When the repository
 is not defined it tries to sync all enabled repositories.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># luet repo update --help</span>
-</span></span><span style="display:flex;"><span>Update a specific cached repository or all cached repositories.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  luet repo update <span style="color:#f92672">[</span>repo1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>repo2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Aliases:
-</span></span><span style="display:flex;"><span>  update, up
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Examples:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update all cached repositories:</span>
-</span></span><span style="display:flex;"><span>$&gt; luet repo update
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update only repo1 and repo2</span>
-</span></span><span style="display:flex;"><span>$&gt; luet repo update repo1 repo2
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>  -f, --force           Force resync.
-</span></span><span style="display:flex;"><span>  -h, --help            help <span style="color:#66d9ef">for</span> update
-</span></span><span style="display:flex;"><span>  -i, --ignore-errors   Ignore errors on sync repositories.
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code># luet repo update --help
+Update a specific cached repository or all cached repositories.
+
+Usage:
+  luet repo update [repo1] [repo2] [OPTIONS] [flags]
+
+Aliases:
+  update, up
+
+Examples:
+
+# Update all cached repositories:
+$&gt; luet repo update
+
+# Update only repo1 and repo2
+$&gt; luet repo update repo1 repo2
+
+
+Flags:
+  -f, --force           Force resync.
+  -h, --help            help for update
+  -i, --ignore-errors   Ignore errors on sync repositories.
+</code></pre><ul>
 <li>
 <p><code>--force|-f</code> option permits to force updates of the local trees also when
 the revision is the same. This is needed for example when a new luet release
@@ -604,7 +606,190 @@ introduces new local logics.</p>
 case, luet exiting always with zero.</p>
 </li>
 </ul>
-</article>
+<h2 id="2-subsets">
+  2. Subsets
+  <a class="anchor" href="#2-subsets">#</a>
+</h2>
+<p>The <em>subsets</em> is the feature available in <code>luet</code> that permits to filter the
+file to install from a binary. This permits to choice a runtime what files
+will be installed and what not.</p>
+<p>The subsets&rsquo;s rules could be defined with multple strings regexes.</p>
+<p>The definition of the <em>subsets</em> could be defined directly on the
+package specs in the <em>definition.yaml</em> file or at runtime through
+subsets definition files.</p>
+<p>The packages generate from Funtoo are with two subsets rules directly
+from the <em>definition.yaml</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">subsets</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">devel</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">^/usr/include/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">portage</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">^/var/db/pkg/</span>
+</span></span></code></pre></div><p>with the <em>subsets</em> <code>devel</code> and <code>portage</code>.</p>
+<p>The default directory where to define subsets&rsquo;s definitions is
+<code>/etc/luet/subsets.def.d</code> but could be modified by the
+luet configuration option <code>subsets_defdir</code> in the <code>luet.yaml</code>
+file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">subsets_defdir</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">/etc/luet/subsets.def.d</span>
+</span></span></code></pre></div><p>The definition of subsets under the <em>/etc/luet/subsets.def.d</em> doesn&rsquo;t
+use the same format of the <code>annotations</code>. The key of the map describe
+the name of the subset that is also defined in the <code>name</code> attribute.
+The specified rules could be applied in this order:</p>
+<ol>
+<li>
+<p>rules defined inside the package definition</p>
+</li>
+<li>
+<p>rules defined by a local definition for the category of the package.
+These rules can be used to override the package definition.</p>
+</li>
+<li>
+<p>rules defined by a local definition for the package</p>
+</li>
+</ol>
+<p>NOTE: When is present a rule for the package the categories rules are
+ignored.</p>
+<p>At the moment there isn&rsquo;t a wildcard key to use for every package, so
+to define a specific rule for every package you need to define all the
+possible categories.</p>
+<p>The logic applied from <code>luet</code> with the subsets rules works in reverse,
+when are defined the rules, these rules are configured, thanks to the
+<code>tar-formers</code> library as ignore rules when the subset mapped to the rules
+is not enabled.</p>
+<p>To clarify the behavior I sharing an example. In Sabayon the <code>gcc</code>
+package was split into the <code>sys-devel/base-gcc</code> package and <code>sys-deve/gcc</code>
+to permit to have the core libraries linked to a lot of packages that
+are compiled with the GCC package without the need to have the compiler too.</p>
+<p>Thanks to the subsets, instead of split the package a way to reach
+the same result is to define a subset definition like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; echo <span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">subsets_def:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gcc-devel:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  description: \&#34;Split gcc compiler stuff\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: \&#34;gcc-devel\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  rules:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/bin/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  packages:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - sys-devel-9.2.0/gcc
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> &gt; /etc/luet/subsets.def.d/00-gcc.yaml
+</span></span></code></pre></div><p>With this definition, <code>luet</code> will install all files that don&rsquo;t match
+with the rules defined when the subsets <code>gcc-devel</code> is not enabled.
+In the example, the definition is strictly mapped to the package
+<code>sys-devel-9.2.0/gcc</code>.</p>
+<p>Normally, the <code>gcc</code> package is installed by default because it&rsquo;s
+a require of a lot of packages. This means that if the definition
+is added later to be applied must reinstalled the package.</p>
+<p>To do this job the better solution is to use the low-level command
+<code>luet miner reinstall-package</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet miner ri sys-devel-9.2.0/gcc
+</span></span></code></pre></div><p>The list of the subsets enabled could be configured in two ways.
+On configuring the list of the subsets in the configuration file
+<code>luet.yaml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">subsets</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">portage</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">devel</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subsets_confdir</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">/etc/luet/subsets.conf.d</span>
+</span></span></code></pre></div><p>or through specific files under the directories defined in
+the attribute <code>subsets_confdir</code>.</p>
+<p>The files under the directory <code>/etc/luet/subsets.conf.d</code> are in
+the format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">enabled</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">gcc-devel</span>
+</span></span></code></pre></div><h3 id="21-subsets-list">
+  2.1. Subsets list
+  <a class="anchor" href="#21-subsets-list">#</a>
+</h3>
+<p>This command permits to show the list of subsets enabled.</p>
+<pre tabindex="0"><code>$ luet subsets list --help
+List of subsets enabled.
+
+Usage:
+  luet subsets list [OPTIONS] [flags]
+
+Flags:
+  -h, --help    help for list
+  -q, --quiet   Show only name of the repositories.
+</code></pre><p>In particular, the description of the subsets <code>devel</code> and <code>portage</code>
+are visible by default also if the definition is not present.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet subsets list
+</span></span><span style="display:flex;"><span>🍨 Subsets enabled:
+</span></span><span style="display:flex;"><span> * portage
+</span></span><span style="display:flex;"><span>   Portage metadata and files.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> * devel
+</span></span><span style="display:flex;"><span>   Includes and devel files. Needed <span style="color:#66d9ef">for</span> compilation.
+</span></span></code></pre></div><ul>
+<li><code>--quiet</code>: show only the name of the subset enabled.</li>
+</ul>
+<h3 id="22-enable-one-or-more-subsets">
+  2.2. Enable one or more subsets
+  <a class="anchor" href="#22-enable-one-or-more-subsets">#</a>
+</h3>
+<p>This command permits to enable one or more subsets.</p>
+<pre tabindex="0"><code>$&gt; luet subsets enable --help
+Enable one or more subsets as subsets config file.
+
+	$&gt; luet subsets enable devel portage mysubset
+
+	$&gt; luet subsets enable -f my devel portage mysubset
+
+The filename is used to write/update the file under the first
+directory defined on subsets_confdir option (for example /etc/luet/subsets.conf.d/my.yml else main.yml is used).
+
+Usage:
+  luet subsets enable [OPTIONS] &lt;subset1&gt; ... &lt;subsetN&gt; [flags]
+
+Flags:
+  -f, --file string   Define the filename without extension where enable the subsets.
+  -h, --help          help for enable
+</code></pre><p>By default this command add the <em>subsets</em> to the <em>main.yml</em> or to
+the file defined by the <code>-f</code> option:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet subsets enable gcc-devel
+</span></span><span style="display:flex;"><span>Subsets gcc-devel enabled ✔ .
+</span></span></code></pre></div><p>That generates this content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cat /etc/luet/subsets.conf.d/main.yml 
+</span></span><span style="display:flex;"><span>enabled:
+</span></span><span style="display:flex;"><span>    - gcc-devel
+</span></span></code></pre></div><p>Instead to enable the <code>gcc-devel</code> subset under the <em>gcc.yml</em> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet subsets enable -f gcc gcc-devel
+</span></span><span style="display:flex;"><span>Subsets gcc-devel enabled ✔ .
+</span></span></code></pre></div><p>With this output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cat /etc/luet/subsets.conf.d/gcc.yml
+</span></span><span style="display:flex;"><span>enabled:
+</span></span><span style="display:flex;"><span>    - gcc-devel
+</span></span></code></pre></div><h3 id="23-disable-one-or-more-subsets">
+  2.3. Disable one or more subsets
+  <a class="anchor" href="#23-disable-one-or-more-subsets">#</a>
+</h3>
+<p>This command permits to disable one or more subsets.</p>
+<pre tabindex="0"><code>$&gt; luet subsets disable --help
+Disable one or more subsets as subsets config file.
+
+	$&gt; luet subsets disable devel portage mysubset
+
+	$&gt; luet subsets disable -f my devel portage mysubset
+
+The filename is used to write/update the file under the first
+directory defined on subsets_confdir option (for example
+/etc/luet/subsets.conf.d/my.yml else main.yml is used).
+
+Usage:
+  luet subsets disable [OPTIONS] &lt;subset1&gt; ... &lt;subsetN&gt; [flags]
+
+Flags:
+  -f, --file string   Define the filename without extension where enable the subsets.
+  -h, --help          help for disable
+</code></pre></article>
  
       
 
