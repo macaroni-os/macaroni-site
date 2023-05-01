@@ -82,7 +82,7 @@ It&rsquo;s composed of two different binary: the luet binary is the PMS client u
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.beb959e6edf717e68e82076f72524049a168e512d1e8816f5014d317045ab5d0.js" integrity="sha256-vrlZ5u33F&#43;aOggdvclJASaFo5RLR6IFvUBTTFwRatdA="></script>
+<script defer src="/en.search.min.76c74e6da547a5042911aa8ff6936ef44dc3c6a85ddeb5d9d554ed780f470e02.js" integrity="sha256-dsdObaVHpQQpEaqP9pNu9E3Dxqhd3rXZ1VTteA9HDgI="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -231,7 +231,23 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/pms/#1-repositories-or-wagons">Repositories or Wagons</a></li>
 <li>
-  <a href="/docs/pms/#2-subsets">Subsets</a>
+  <a href="/docs/pms/#2-subsets">Subsets</a></li>
+<li>
+  <a href="/docs/pms/#3-search-packages">Search Packages</a></li>
+<li>
+  <a href="/docs/pms/#4-install-packages">Install Packages</a></li>
+<li>
+  <a href="/docs/pms/#6-uninstall-packages">Uninstall Packages</a></li>
+<li>
+  <a href="/docs/pms/#7-upgrade-the-system">Upgrade System</a></li>
+<li>
+  <a href="/docs/pms/#91-show-files-owned-by-a-specific-package">Show files owned by a specific package</a></li>
+<li>
+  <a href="/docs/pms/#92-resolve-what-package-a-file-belongs-to">Resolve what package a file belongs to</a></li>
+<li>
+  <a href="/docs/pms/#93-show-orphans-packages">Show orphans Packages</a></li>
+<li>
+  <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a>
 <br /></li>
 </ul>
 </li>
@@ -319,10 +335,10 @@ new repository revision.</p>
   Luet
   <a class="anchor" href="#luet">#</a>
 </h1>
-<h2 id="1-repositories-or-wagons">
+<h3 id="1-repositories-or-wagons">
   1. Repositories or Wagons
   <a class="anchor" href="#1-repositories-or-wagons">#</a>
-</h2>
+</h3>
 <p>In computer science in general, the term <code>repository</code> describes the place
 where is available a list of packages.</p>
 <p>I saw often in my life that mapping computer science&rsquo;s terms with real entities
@@ -502,10 +518,10 @@ generated the file <em>provides.yaml</em> the contains a map of the packages wit
 </span></span></code></pre></div><p>Hereinafter, an example of a package directory:</p>
 <pre tabindex="0"><code>$&gt; ls  /var/cache/luet/repos/macaroni-eagle/treefs/sys-devel-9.2.0/gcc/9.2.0+1/
 definition.yaml  metadata.json  metadata.yaml
-</code></pre><h3 id="11-show-repositories">
+</code></pre><h4 id="11-show-repositories">
   1.1 Show repositories
   <a class="anchor" href="#11-show-repositories">#</a>
-</h3>
+</h4>
 <p>This command permits to see all installed repositories. In particular,
 the enabled repositories are colored on green and instead the
 disabled repositories are in red.</p>
@@ -541,10 +557,10 @@ The types are: &lsquo;http&rsquo;, &lsquo;docker&rsquo;, &lsquo;disk&rsquo;.</p>
 <p><code>--quiet</code>: Show only name of the repositories.</p>
 </li>
 </ul>
-<h3 id="12-enable-one-or-more-repositories">
+<h4 id="12-enable-one-or-more-repositories">
   1.2 Enable one or more repositories
   <a class="anchor" href="#12-enable-one-or-more-repositories">#</a>
-</h3>
+</h4>
 <p>This command permits to enable repositories.</p>
 <pre tabindex="0"><code>$&gt; luet repo enable --help
 Enable one or more repositories.
@@ -554,10 +570,10 @@ Usage:
 
 Flags:
   -h, --help   help for enable
-</code></pre><h3 id="13-disable-one-or-more-repositories">
+</code></pre><h4 id="13-disable-one-or-more-repositories">
   1.3 Disable one or more repositories
   <a class="anchor" href="#13-disable-one-or-more-repositories">#</a>
-</h3>
+</h4>
 <p>This command permits to disable repositories.</p>
 <pre tabindex="0"><code>$&gt; luet repo disable --help
 Disable one or more repositories.
@@ -567,10 +583,10 @@ Usage:
 
 Flags:
   -h, --help   help for disable
-</code></pre><h3 id="14-update--sync-one-or-more-repositories">
+</code></pre><h4 id="14-update--sync-one-or-more-repositories">
   1.4 Update / Sync one or more repositories
   <a class="anchor" href="#14-update--sync-one-or-more-repositories">#</a>
-</h3>
+</h4>
 <p>This command permits to sync repositories metadata locally. When the repository
 is not defined it tries to sync all enabled repositories.</p>
 <pre tabindex="0"><code># luet repo update --help
@@ -606,10 +622,10 @@ introduces new local logics.</p>
 case, luet exiting always with zero.</p>
 </li>
 </ul>
-<h2 id="2-subsets">
+<h3 id="2-subsets">
   2. Subsets
   <a class="anchor" href="#2-subsets">#</a>
-</h2>
+</h3>
 <p>The <em>subsets</em> is the feature available in <code>luet</code> that permits to filter the
 file to install from a binary. This permits to choice a runtime what files
 will be installed and what not.</p>
@@ -666,19 +682,19 @@ are compiled with the GCC package without the need to have the compiler too.</p>
 the same result is to define a subset definition like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; echo <span style="color:#e6db74">&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">subsets_def:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gcc-devel:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  description: \&#34;Split gcc compiler stuff\&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name: \&#34;gcc-devel\&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  rules:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - ^/usr/bin/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  packages:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - sys-devel-9.2.0/gcc
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    gcc-devel:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      description: \&#34;Split gcc compiler stuff\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      name: \&#34;gcc-devel\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      rules:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - ^/usr/bin/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      packages:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - sys-devel-9.2.0/gcc
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> &gt; /etc/luet/subsets.def.d/00-gcc.yaml
 </span></span></code></pre></div><p>With this definition, <code>luet</code> will install all files that don&rsquo;t match
 with the rules defined when the subsets <code>gcc-devel</code> is not enabled.
@@ -705,10 +721,12 @@ the attribute <code>subsets_confdir</code>.</p>
 the format:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">enabled</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">gcc-devel</span>
-</span></span></code></pre></div><h3 id="21-subsets-list">
+</span></span></code></pre></div><p>At the moment, <code>luet</code> doesn&rsquo;t supply commands to iterate with
+<em>subsets definition</em> but new commands are in our backlog.</p>
+<h4 id="21-subsets-list">
   2.1. Subsets list
   <a class="anchor" href="#21-subsets-list">#</a>
-</h3>
+</h4>
 <p>This command permits to show the list of subsets enabled.</p>
 <pre tabindex="0"><code>$ luet subsets list --help
 List of subsets enabled.
@@ -731,10 +749,10 @@ are visible by default also if the definition is not present.</p>
 </span></span></code></pre></div><ul>
 <li><code>--quiet</code>: show only the name of the subset enabled.</li>
 </ul>
-<h3 id="22-enable-one-or-more-subsets">
+<h4 id="22-enable-one-or-more-subsets">
   2.2. Enable one or more subsets
   <a class="anchor" href="#22-enable-one-or-more-subsets">#</a>
-</h3>
+</h4>
 <p>This command permits to enable one or more subsets.</p>
 <pre tabindex="0"><code>$&gt; luet subsets enable --help
 Enable one or more subsets as subsets config file.
@@ -767,10 +785,10 @@ the file defined by the <code>-f</code> option:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cat /etc/luet/subsets.conf.d/gcc.yml
 </span></span><span style="display:flex;"><span>enabled:
 </span></span><span style="display:flex;"><span>    - gcc-devel
-</span></span></code></pre></div><h3 id="23-disable-one-or-more-subsets">
+</span></span></code></pre></div><h4 id="23-disable-one-or-more-subsets">
   2.3. Disable one or more subsets
   <a class="anchor" href="#23-disable-one-or-more-subsets">#</a>
-</h3>
+</h4>
 <p>This command permits to disable one or more subsets.</p>
 <pre tabindex="0"><code>$&gt; luet subsets disable --help
 Disable one or more subsets as subsets config file.
@@ -789,6 +807,680 @@ Usage:
 Flags:
   -f, --file string   Define the filename without extension where enable the subsets.
   -h, --help          help for disable
+</code></pre><h3 id="3-search-packages">
+  3. Search packages
+  <a class="anchor" href="#3-search-packages">#</a>
+</h3>
+<p>This command permits to search packages available in the configured
+repositories or between installed packages.</p>
+<pre tabindex="0"><code>$ luet s --help
+Search for installed and available packages
+		
+	To search a package in the repositories:
+
+		$ luet search &lt;regex1&gt; ... &lt;regexN&gt;
+
+	To search a package and display results in a table (wide screens):
+
+		$ luet search --table &lt;regex&gt;
+
+	To look into the installed packages:
+
+		$ luet search --installed &lt;regex&gt;
+
+	Note: the regex argument is optional, if omitted implies &#34;all&#34;
+
+	To search a package by label:
+
+		$ luet search --label &lt;label1&gt;,&lt;label2&gt;...,&lt;labelN&gt;
+
+	or by regex against the label:
+
+		$ luet search --rlabel &lt;regex-label1&gt;,..,&lt;regex-labelN&gt;
+
+	or by categories:
+
+		$ luet search --category &lt;cat1&gt;,..,&lt;catN&gt;
+
+	or by names:
+
+		$ luet search --name|-n &lt;name1&gt;,..,&lt;nameN&gt;
+
+	or by annotations:
+
+		$ luet search --annotation &lt;annotation1&gt;,..,&lt;annotationN&gt;
+
+	or by package (used only category and package name for name in the format cat/foo)
+
+		$ luet search -p &lt;cat/foo&gt;,&lt;cat/foo2&gt;
+
+	Search can also return results in the terminal in different ways: as terminal output, as json or as yaml.
+
+		$ luet search -o json &lt;regex&gt; # JSON output
+		$ luet search -o yaml &lt;regex&gt; # YAML output
+
+Usage:
+  luet search &lt;term&gt; [flags]
+
+Aliases:
+  search, s
+
+Flags:
+  -a, --annotation strings     Search packages through one or more annotations.
+      --category strings       Search packages through one or more categories regex.
+      --condition-or           The searching options are managed in OR between the searching types.
+      --files                  Show package files on YAML/JSON output.
+      --full                   Show full informations.
+  -h, --help                   help for search
+      --hidden                 Include hidden packages
+      --ignore-masks           Ignore packages masked.
+      --installed              Search between system packages
+      --label strings          Search packages through one or more labels.
+  -n, --name strings           Search packages matching the package name string.
+  -o, --output string          Output format ( Defaults: terminal, available: json,yaml ) (default &#34;terminal&#34;)
+  -p, --package strings        Search packages matching the package string cat/name.
+      --quiet                  show output as list without version
+      --rlabel strings         Search packages through one or more labels regex.
+      --system-dbpath string   System db path
+      --system-engine string   System DB engine
+      --system-target string   System rootpath
+      --table                  show output in a table (wider screens)
+      --with-rootfs-prefix     Add prefix of the configured rootfs path. (default true)
+</code></pre><h3 id="4-install-packages">
+  4. Install packages
+  <a class="anchor" href="#4-install-packages">#</a>
+</h3>
+<p>This command permits to install packages from the configured repositories.</p>
+<pre tabindex="0"><code>$  luet i --help
+Installs one or more packages without asking questions:
+
+	$ luet install -y utils/busybox utils/yq ...
+	
+To install only deps of a package:
+	
+	$ luet install --onlydeps utils/busybox ...
+	
+To not install deps of a package:
+	
+	$ luet install --nodeps utils/busybox ...
+
+To force install a package:
+	
+	$ luet install --force utils/busybox ...
+
+Usage:
+  luet install &lt;pkg1&gt; &lt;pkg2&gt; ... [flags]
+
+Aliases:
+  install, i
+
+Flags:
+      --download-only                  Download only
+      --finalizer-env stringArray      Set finalizer environment in the format key=value.
+      --force                          Skip errors and keep going (potentially harmful)
+  -h, --help                           help for install
+      --ignore-conflicts               Don&#39;t consider package conflicts (harmful!)
+      --ignore-masks                   Ignore packages masked.
+      --nodeps                         Don&#39;t consider package dependencies (harmful!)
+      --overwrite-existing-dir-perms   Overwrite exiting directories permissions.
+      --preserve-system-essentials     Preserve system luet files (default true)
+  -p, --pretend                        simply display what *would* have been installed if --pretend weren&#39;t used
+      --show-install-order             In additional of the package to install, show the installation order and exit.
+      --skip-check-system              Skip conflicts check with existing rootfs.
+      --skip-finalizers                Skip the execution of the finalizers.
+      --sync-repos                     Sync repositories before install. Note: If there are in memory repositories then the sync is done always.
+  -y, --yes                            Don&#39;t ask questions
+</code></pre><h4 id="41-show-packages-candidates-to-install">
+  4.1. Show packages candidates to install
+  <a class="anchor" href="#41-show-packages-candidates-to-install">#</a>
+</h4>
+<p>This command permit to see what packages are candidates for the selected packages to install.</p>
+<p>In particular, the option <code>--pretend|-p</code> shows the list of the packages selected from the solver
+to install in alphabetic order.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet i xdg-utils --pretend
+</span></span><span style="display:flex;"><span>🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:             macaroni-eagle-dev Revision: <span style="color:#ae81ff">480</span> - 2023-04-13 01:14:59 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                  mottainai-dev Revision:  <span style="color:#ae81ff">88</span> - 2023-04-21 16:15:48 +0000 UTC
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/libelf::macaroni-eagle-dev                            - <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">5966</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>🎊 All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>Usually, it&rsquo;s better to see the packages in alphabetic order, this help research
+and pre-install checks.</p>
+<p>There are use cases, that could help to see what will be the install order, for
+example, to validate the solver. In this case, it&rsquo;s possible to use the option
+<code>--show-install-order</code> that will share the order of the operations after the download of
+the packages.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># luet i xdg-utils --show-install-order </span>
+</span></span><span style="display:flex;"><span>🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:             macaroni-eagle-dev Revision: <span style="color:#ae81ff">480</span> - 2023-04-13 01:14:59 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                  mottainai-dev Revision:  <span style="color:#ae81ff">88</span> - 2023-04-21 16:15:48 +0000 UTC
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/libelf::macaroni-eagle-dev                            - <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">6343</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">36</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  36<span style="color:#f92672">]</span> x11-misc/xdg-utils::macaroni-eagle-dev                            - 1.1.3           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  36<span style="color:#f92672">]</span> x11-libs/libX11::macaroni-eagle-dev                               - 1.8.2           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  36<span style="color:#f92672">]</span> x11-libs/xtrans::macaroni-eagle-dev                               - 1.4.0           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  36<span style="color:#f92672">]</span> x11-libs/libSM::macaroni-eagle-dev                                - 1.2.3           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  36<span style="color:#f92672">]</span> x11-libs/libXt::macaroni-eagle-dev                                - 1.2.0           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  36<span style="color:#f92672">]</span> x11-base/xorg-proto::macaroni-eagle-dev                           - 2019.2          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  36<span style="color:#f92672">]</span> virtual/perl-Scalar-List-Utils::macaroni-eagle-dev                - 1.550.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  36<span style="color:#f92672">]</span> virtual/perl-MIME-Base64::macaroni-eagle-dev                      - 3.150.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  36<span style="color:#f92672">]</span> x11-misc/shared-mime-info::macaroni-eagle-dev                     - 1.10            <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  36<span style="color:#f92672">]</span> dev-util/desktop-file-utils::macaroni-eagle-dev                   - 0.23            <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  36<span style="color:#f92672">]</span> virtual/perl-Carp::macaroni-eagle-dev                             - 1.500.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  36<span style="color:#f92672">]</span> dev-perl/File-BaseDir::macaroni-eagle-dev                         - 0.70.0          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  36<span style="color:#f92672">]</span> virtual/perl-Encode::macaroni-eagle-dev                           - 3.60.0          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  36<span style="color:#f92672">]</span> x11-libs/libXmu::macaroni-eagle-dev                               - 1.1.3           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  36<span style="color:#f92672">]</span> x11-apps/xset::macaroni-eagle-dev                                 - 1.2.4           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  36<span style="color:#f92672">]</span> virtual/perl-Data-Dumper::macaroni-eagle-dev                      - 2.174.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  36<span style="color:#f92672">]</span> dev-perl/File-MimeInfo::macaroni-eagle-dev                        - 0.280.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  36<span style="color:#f92672">]</span> x11-libs/libXau::macaroni-eagle-dev                               - 1.0.9           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  36<span style="color:#f92672">]</span> x11-libs/libXext::macaroni-eagle-dev                              - 1.3.4           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  36<span style="color:#f92672">]</span> dev-util/gdbus-codegen::macaroni-eagle-dev                        - 2.70.0          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  36<span style="color:#f92672">]</span> dev-libs/libpthread-stubs::macaroni-eagle-dev                     - 0.4             <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  36<span style="color:#f92672">]</span> x11-libs/libxcb::macaroni-eagle-dev                               - 1.14+1          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  36<span style="color:#f92672">]</span> virtual/perl-File-Spec::macaroni-eagle-dev                        - 3.780.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  36<span style="color:#f92672">]</span> dev-perl/URI::macaroni-eagle-dev                                  - 1.730.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  36<span style="color:#f92672">]</span> virtual/perl-File-Path::macaroni-eagle-dev                        - 2.160.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  36<span style="color:#f92672">]</span> dev-perl/File-DesktopEntry::macaroni-eagle-dev                    - 0.220.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  36<span style="color:#f92672">]</span> dev-perl/IPC-System-Simple::macaroni-eagle-dev                    - 1.250.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  36<span style="color:#f92672">]</span> x11-libs/libXdmcp::macaroni-eagle-dev                             - 1.1.3           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  36<span style="color:#f92672">]</span> x11-libs/libICE::macaroni-eagle-dev                               - 1.0.10          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  36<span style="color:#f92672">]</span> x11-apps/xprop::macaroni-eagle-dev                                - 1.2.4           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  36<span style="color:#f92672">]</span> virtual/perl-libnet::macaroni-eagle-dev                           - 3.110.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  36<span style="color:#f92672">]</span> virtual/perl-parent::macaroni-eagle-dev                           - 0.238.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  36<span style="color:#f92672">]</span> virtual/libelf::macaroni-eagle-dev                                - <span style="color:#ae81ff">3</span>               <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  36<span style="color:#f92672">]</span> dev-libs-2/glib::macaroni-eagle-dev                               - 2.70.0          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  36<span style="color:#f92672">]</span> virtual/perl-Exporter::macaroni-eagle-dev                         - 5.740.0         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  36<span style="color:#f92672">]</span> x11-misc/compose-tables::macaroni-eagle-dev                       - 1.8.1           <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">36</span> packages operations...
+</span></span><span style="display:flex;"><span>🧠 Install order:
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/libelf::macaroni-eagle-dev                            - <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  36<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+</span></span><span style="display:flex;"><span>🎊 All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><h3 id="5-cleanup-local-cache">
+  5. Cleanup local cache
+  <a class="anchor" href="#5-cleanup-local-cache">#</a>
+</h3>
+<p>The tree of the installed repositories installed under the
+directory <code>/var/cache/luet/repos</code> are not mandatory when the
+user had installed the packages.</p>
+<p>Through the <code>cleanup</code> command it&rsquo;s possible clean the cache
+of the downloaded files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet cleanup
+</span></span><span style="display:flex;"><span>Cleaned:  <span style="color:#ae81ff">36</span> packages.
+</span></span></code></pre></div><p>and to clean all the repositories under the directory
+<code>/var/cache/luet/repos</code> with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet cleanup --purge-repos
+</span></span><span style="display:flex;"><span>Cleaned:  <span style="color:#ae81ff">0</span> packages.
+</span></span><span style="display:flex;"><span>Repos Cleaned:  <span style="color:#ae81ff">17</span>
+</span></span></code></pre></div><h3 id="6-uninstall-packages">
+  6. Uninstall packages
+  <a class="anchor" href="#6-uninstall-packages">#</a>
+</h3>
+<p>The command <code>uninstall</code> or <code>rm</code> permits to uninstall installed packages.</p>
+<pre tabindex="0"><code>$&gt; luet uninstall --help
+
+Remove one or more package and his dependencies recursively
+
+	$ luet uninstall cat/foo1 ... cat/foo2
+
+Remove one or more packages without dependencies
+
+	$ luet uninstall cat/foo1 ... --nodeps
+
+Remove one or more packages and skip errors
+
+	$ luet uninstall cat/foo1 ... --force
+
+Remove one or more packages without ask confirm
+
+	$ luet uninstall cat/foo1 ... --yes
+
+Remove one or more packages without ask confirm and skip execution
+of the finalizers.
+
+	$ luet uninstall cat/foo1 ... --yes --skip-finalizers
+
+Usage:
+  luet uninstall &lt;pkg&gt; &lt;pkg2&gt; ... [flags]
+
+Aliases:
+  uninstall, rm, un
+
+Flags:
+      --finalizer-env stringArray    Set finalizer environment in the format key=value.
+      --force                        Force uninstall
+  -h, --help                         help for uninstall
+  -k, --keep-protected-files         Keep package protected files around
+      --nodeps                       Don&#39;t consider package dependencies (harmful! overrides checkconflicts and full!)
+      --preserve-system-essentials   Preserve system luet files (default true)
+      --skip-finalizers              Skip the execution of the finalizers.
+  -y, --yes                          Don&#39;t ask questions
+</code></pre><p>By default the selected packages are removed with all packages that depend on
+the candidates in reverse order. To avoid the dependencies could be used the
+<code>--nodeps</code> option.</p>
+<ul>
+<li>
+<p><code>--yes|-y</code>: skip the confirm phase.</p>
+</li>
+<li>
+<p><code>--force</code>: ignore errors and for uninstall of the selected packages.</p>
+</li>
+<li>
+<p><code>--keep-protected-files|-k</code>: keep the protected files.</p>
+</li>
+<li>
+<p><code>--nodeps</code>: ignore dependencies on uninstall selected packages.</p>
+</li>
+<li>
+<p><code>--finalizer-env &lt;key=value&gt;</code>: define one or more environment variables to use on finalizer</p>
+</li>
+</ul>
+<h3 id="7-upgrade-the-system">
+  7. Upgrade the system
+  <a class="anchor" href="#7-upgrade-the-system">#</a>
+</h3>
+<p>The upgrade of the existing system is possible through the <code>upgrade</code>
+command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet upgrade
+</span></span><span style="display:flex;"><span>🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:             macaroni-eagle-dev Revision: <span style="color:#ae81ff">480</span> - 2023-04-13 01:14:59 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                  mottainai-dev Revision:  <span style="color:#ae81ff">88</span> - 2023-04-21 16:15:48 +0000 UTC
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 <span style="color:#f92672">[</span>0.35.4::mottainai-stable<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">40018</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
+</span></span></code></pre></div><ul>
+<li>
+<p><code>--show-upgrade-order</code>: Show the order of the packages to upgrade</p>
+</li>
+<li>
+<p><code>--sync-repos</code>: On upgrade the system, sync the repository before execute
+the solver.</p>
+</li>
+<li>
+<p><code>--yes|y</code>: Skip the confirm question</p>
+</li>
+<li>
+<p><code>--ignore-masks</code>: Ignores the masks</p>
+</li>
+<li>
+<p><code>--ignore-conflicts</code>: Ignore the conflicts</p>
+</li>
+<li>
+<p><code>--pretend</code>: Show the candidates for the upgrade</p>
+</li>
+<li>
+<p><code>--show-upgrade-order</code>: Show the order of the packages to upgrade</p>
+</li>
+<li>
+<p><code>--skip-finalizers</code>: Skip finalizers</p>
+</li>
+<li>
+<p><code>--force</code>: Ignore errors and force installation of all candidates packages.</p>
+</li>
+<li>
+<p><code>--download-only</code>: Download only the packages candidates.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet upgrade --show-upgrade-order
+</span></span><span style="display:flex;"><span>🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">5</span> - 2023-03-18 10:12:28 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision: <span style="color:#ae81ff">137</span> - 2023-03-19 11:49:39 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:             macaroni-eagle-dev Revision: <span style="color:#ae81ff">480</span> - 2023-04-13 01:14:59 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                  mottainai-dev Revision:  <span style="color:#ae81ff">88</span> - 2023-04-21 16:15:48 +0000 UTC
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 <span style="color:#f92672">[</span>0.35.4::mottainai-stable<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">107</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">1</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-dev                         - 0.35.5          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">2</span> packages operations...
+</span></span><span style="display:flex;"><span>🧠 Upgrade order:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 <span style="color:#f92672">[</span>0.35.4::mottainai-stable<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="8-show-luet-configuration">
+  8. Show luet configuration
+  <a class="anchor" href="#8-show-luet-configuration">#</a>
+</h3>
+<p>The command <code>config</code> permits to see the configuration parameters active
+in <code>luet</code>.</p>
+<pre tabindex="0"><code># luet config --help
+Show luet configuration
+
+Usage:
+  luet config [flags]
+
+Aliases:
+  config, c
+
+Flags:
+  -h, --help   help for config
+</code></pre><h3 id="9-queries-tools">
+  9. Queries tools
+  <a class="anchor" href="#9-queries-tools">#</a>
+</h3>
+<p><code>luet</code> supplies different commands to analyze the repositories and the
+installed packages.</p>
+<pre tabindex="0"><code># luet query --help
+Repository query tools.
+
+Usage:
+  luet query [command]
+
+Aliases:
+  query, q
+
+Available Commands:
+  belongs     Resolve what package a file belongs to.
+  files       Show files owned by a specific package.
+  orphans     Show orphans packages.
+
+Flags:
+  -h, --help   help for query
+</code></pre><h4 id="91-show-files-owned-by-a-specific-package">
+  9.1. Show files owned by a specific package
+  <a class="anchor" href="#91-show-files-owned-by-a-specific-package">#</a>
+</h4>
+<p>This command permits to show the files owned by a specific package.</p>
+<pre tabindex="0"><code>$&gt; luet q files --help
+Show files owned by a specific package.
+
+Usage:
+  luet query files &lt;pkg1&gt; ... &lt;pkgN&gt; [OPTIONS] [flags]
+
+Aliases:
+  files, fi, f
+
+Flags:
+  -h, --help                 help for files
+      --installed            Search between system packages
+  -o, --output string        Output format ( Defaults: terminal, available: json,yaml ) (default &#34;terminal&#34;)
+      --with-rootfs-prefix   Add prefix of the configured rootfs path. (default true)
+</code></pre><p>It&rsquo;s possible to see the list of files in JSON or YAML format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet q files lxd-compose -o json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/usr/bin/lxd-compose&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><h4 id="92-resolve-what-package-a-file-belongs-to">
+  9.2. Resolve what package a file belongs to
+  <a class="anchor" href="#92-resolve-what-package-a-file-belongs-to">#</a>
+</h4>
+<p>This command permits to search the packages that contains the file specified.</p>
+<pre tabindex="0"><code>$&gt; luet q belongs  --help
+Resolve what package a file belongs to.
+
+Usage:
+  luet query belongs &lt;file1&gt; ... &lt;fileN&gt; [OPTIONS] [flags]
+
+Aliases:
+  belongs, be, b
+
+Flags:
+  -h, --help            help for belongs
+      --installed       Search between system packages
+  -o, --output string   Output format ( Defaults: terminal, available: json,yaml ) (default &#34;terminal&#34;)
+      --quiet           show output as list without version
+      --table           show output in a table (wider screens)
+</code></pre><ul>
+<li>
+<p><code>--quiet</code>: show the list of the packages without the version</p>
+</li>
+<li>
+<p><code>--output|-o string</code>: show the package list in JSON, or YAML format. Default as string.</p>
+</li>
+<li>
+<p><code>--installed</code>: search only between the installed packages. It uses the local database.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet q belongs /usr/bin/lxd-compose
+</span></span><span style="display:flex;"><span>app-emulation/lxd-compose-0.27.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; luet q belongs  /usr/bin/lxd-compose --quiet
+</span></span><span style="display:flex;"><span>app-emulation/lxd-compose
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; luet q belongs /usr/bin/lxd-compose --installed
+</span></span><span style="display:flex;"><span>app-emulation/lxd-compose-0.27.0
+</span></span></code></pre></div><h4 id="93-show-orphans-packages">
+  9.3. Show orphans packages
+  <a class="anchor" href="#93-show-orphans-packages">#</a>
+</h4>
+<p>On upgrading a system or on remove a custom repository it&rsquo;s possible that
+some packages will be no more available.</p>
+<p>In this use case having a way to retrieve the list of orphan packages is
+helpful.</p>
+<p>This operation could require a lot of time.</p>
+<p>NOTE: It&rsquo;s important executing this command when there aren&rsquo;t packages
+to upgrade. So, after executing <code>luet upgrade</code>.</p>
+<pre tabindex="0"><code>$&gt; luet q orphans --help
+An orphan package is a package that is no more
+available in the configured and/or enabled repositories.
+
+This operation could require a bit of time.
+
+Usage:
+  luet query orphans [OPTIONS] [flags]
+
+Aliases:
+  orphans, o
+
+Flags:
+  -h, --help            help for orphans
+  -o, --output string   Output format ( Defaults: terminal, available: json,yaml ) (default &#34;terminal&#34;)
+      --quiet           show output as list without version
+      --verbose         Show messages. (default true)
+</code></pre><h3 id="10-local-database-operations">
+  10. Local Database Operations
+  <a class="anchor" href="#10-local-database-operations">#</a>
+</h3>
+<p>There are different commands to operate on local database.</p>
+<h4 id="101-reindex-collections">
+  10.1. Reindex collections
+  <a class="anchor" href="#101-reindex-collections">#</a>
+</h4>
+<p>On upgrade <code>luet</code> it&rsquo;s possible that is needed to update the indexes of
+the local database.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet  database reindex
+</span></span></code></pre></div><h4 id="102-get-package-data">
+  10.2. Get package data
+  <a class="anchor" href="#102-get-package-data">#</a>
+</h4>
+<p>Retrive metadata of a package installed in the YAML format.</p>
+<pre tabindex="0"><code>$&gt; luet  database get app-emulation/lxd-compose --help
+Get a package in the system database in the YAML format:
+
+		$ luet database get system/foo
+
+To return also files:
+		$ luet database get --files system/foo
+
+Usage:
+  luet database get &lt;package&gt; [flags]
+
+Flags:
+      --files   Show package files.
+  -h, --help    help for get
+</code></pre><ul>
+<li><code>--files</code>: Show also the package files.</li>
+</ul>
+<p>An example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet database get app-emulation/lxd-compose --files
+</span></span><span style="display:flex;"><span>category: app-emulation
+</span></span><span style="display:flex;"><span>conflicts: <span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>description: Supply a way to deploy a complex environment to an LXD Cluster or LXD
+</span></span><span style="display:flex;"><span>  standalone installation
+</span></span><span style="display:flex;"><span>id: <span style="color:#ae81ff">467</span>
+</span></span><span style="display:flex;"><span>labels:
+</span></span><span style="display:flex;"><span>  github.owner: lxd-compose
+</span></span><span style="display:flex;"><span>  github.repo: MottainaiCI
+</span></span><span style="display:flex;"><span>license: GPL-3.0
+</span></span><span style="display:flex;"><span>name: lxd-compose
+</span></span><span style="display:flex;"><span>repository: mottainai-stable
+</span></span><span style="display:flex;"><span>requires: <span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>uri:
+</span></span><span style="display:flex;"><span>- https://github.com/MottainaiCI/lxd-compose
+</span></span><span style="display:flex;"><span>version: 0.27.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>files:
+</span></span><span style="display:flex;"><span>- usr/bin/lxd-compose
+</span></span></code></pre></div><h4 id="103-remove-an-installed-package-from-the-database">
+  10.3. Remove an installed package from the database
+  <a class="anchor" href="#103-remove-an-installed-package-from-the-database">#</a>
+</h4>
+<p>This command is a low-level operation that normally must be not
+used.</p>
+<pre tabindex="0"><code>$&gt; luet  database remove --help
+Removes a package in the system database without actually uninstalling it:
+
+		$ luet database remove foo/bar
+
+This commands takes multiple packages as arguments and prunes their entries from the system database.
+
+Usage:
+  luet database remove [package1] [package2] ... [flags]
+
+Flags:
+      --force   Force uninstall
+  -h, --help    help for remove
+</code></pre><h4 id="104-insert-a-package-in-the-system-database">
+  10.4. Insert a package in the system database
+  <a class="anchor" href="#104-insert-a-package-in-the-system-database">#</a>
+</h4>
+<p>It&rsquo;s a low-level command that permit to register a new
+package in the system database.</p>
+<p>This command is used by the <code>luet-portage-converter</code> tool
+to sync the package installed with <em>emerge</em> to <em>luet</em> database.</p>
+<pre tabindex="0"><code> luet  database create --help
+Inserts a package in the system database:
+
+		$ luet database create foo.yaml
+
+&#34;luet database create&#34; injects a package in the system database without actually installing it, use it with caution.
+This commands takes multiple yaml input file representing package artifacts, that are usually generated while building packages.
+The yaml must contain the package definition, and the file list at least.
+
+For reference, inspect a &#34;metadata.yaml&#34; file generated while running &#34;luet build&#34;
+
+Usage:
+  luet database create &lt;artifact_metadata1.yaml&gt; &lt;artifact_metadata1.yaml&gt; [flags]
+
+Flags:
+  -h, --help   help for create
 </code></pre></article>
  
       
