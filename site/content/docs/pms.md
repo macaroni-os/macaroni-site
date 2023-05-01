@@ -22,7 +22,7 @@ It will be rebranding soon in `anise`.
 
 # Luet
 
-## 1. Repositories or Wagons
+### 1. Repositories or Wagons
 
 In computer science in general, the term `repository` describes the place
 where is available a list of packages.
@@ -215,7 +215,7 @@ definition.yaml  metadata.json  metadata.yaml
 ```
 
 
-### 1.1 Show repositories
+#### 1.1 Show repositories
 
 This command permits to see all installed repositories. In particular,
 the enabled repositories are colored on green and instead the
@@ -250,7 +250,7 @@ The availables options are:
 
 * `--quiet`: Show only name of the repositories.
 
-### 1.2 Enable one or more repositories
+#### 1.2 Enable one or more repositories
 
 This command permits to enable repositories.
 
@@ -265,7 +265,7 @@ Flags:
   -h, --help   help for enable
 ```
 
-### 1.3 Disable one or more repositories
+#### 1.3 Disable one or more repositories
 
 This command permits to disable repositories.
 
@@ -280,7 +280,7 @@ Flags:
   -h, --help   help for disable
 ```
 
-### 1.4 Update / Sync one or more repositories
+#### 1.4 Update / Sync one or more repositories
 
 This command permits to sync repositories metadata locally. When the repository
 is not defined it tries to sync all enabled repositories.
@@ -317,7 +317,7 @@ Flags:
 * `--ignore-errors|-i` option permits to ignore errors on sync. In this
   case, luet exiting always with zero.
 
-## 2. Subsets
+### 2. Subsets
 
 The *subsets* is the feature available in `luet` that permits to filter the
 file to install from a binary. This permits to choice a runtime what files
@@ -389,19 +389,19 @@ the same result is to define a subset definition like this:
 ```bash
 $> echo "
 subsets_def:
-gcc-devel:
-  description: \"Split gcc compiler stuff\"
-  name: \"gcc-devel\"
-  rules:
-  - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
-  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
-  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
-  - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
-  - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
-  - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
-  - ^/usr/bin/
-  packages:
-  - sys-devel-9.2.0/gcc
+    gcc-devel:
+      description: \"Split gcc compiler stuff\"
+      name: \"gcc-devel\"
+      rules:
+      - ^/usr/x86_64-pc-linux-gnu/gcc-bin/9.2.0/
+      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/plugin/include/
+      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/
+      - ^/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/finclude/omp*
+      - ^/usr/share/gcc-data/x86_64-pc-linux-gnu/9.2.0/
+      - ^/usr/libexec/gcc/x86_64-pc-linux-gnu/9.2.0
+      - ^/usr/bin/
+      packages:
+      - sys-devel-9.2.0/gcc
 " > /etc/luet/subsets.def.d/00-gcc.yaml
 ```
 
@@ -446,7 +446,10 @@ enabled:
     - gcc-devel
 ```
 
-### 2.1. Subsets list
+At the moment, `luet` doesn't supply commands to iterate with
+*subsets definition* but new commands are in our backlog.
+
+#### 2.1. Subsets list
 
 This command permits to show the list of subsets enabled.
 
@@ -477,7 +480,7 @@ $> luet subsets list
 
 * `--quiet`: show only the name of the subset enabled.
 
-### 2.2. Enable one or more subsets
+#### 2.2. Enable one or more subsets
 
 This command permits to enable one or more subsets.
 
@@ -532,7 +535,7 @@ enabled:
     - gcc-devel
 ```
 
-### 2.3. Disable one or more subsets
+#### 2.3. Disable one or more subsets
 
 This command permits to disable one or more subsets.
 
@@ -555,3 +558,718 @@ Flags:
   -f, --file string   Define the filename without extension where enable the subsets.
   -h, --help          help for disable
 ```
+
+### 3. Search packages
+
+This command permits to search packages available in the configured
+repositories or between installed packages.
+
+```
+$ luet s --help
+Search for installed and available packages
+		
+	To search a package in the repositories:
+
+		$ luet search <regex1> ... <regexN>
+
+	To search a package and display results in a table (wide screens):
+
+		$ luet search --table <regex>
+
+	To look into the installed packages:
+
+		$ luet search --installed <regex>
+
+	Note: the regex argument is optional, if omitted implies "all"
+
+	To search a package by label:
+
+		$ luet search --label <label1>,<label2>...,<labelN>
+
+	or by regex against the label:
+
+		$ luet search --rlabel <regex-label1>,..,<regex-labelN>
+
+	or by categories:
+
+		$ luet search --category <cat1>,..,<catN>
+
+	or by names:
+
+		$ luet search --name|-n <name1>,..,<nameN>
+
+	or by annotations:
+
+		$ luet search --annotation <annotation1>,..,<annotationN>
+
+	or by package (used only category and package name for name in the format cat/foo)
+
+		$ luet search -p <cat/foo>,<cat/foo2>
+
+	Search can also return results in the terminal in different ways: as terminal output, as json or as yaml.
+
+		$ luet search -o json <regex> # JSON output
+		$ luet search -o yaml <regex> # YAML output
+
+Usage:
+  luet search <term> [flags]
+
+Aliases:
+  search, s
+
+Flags:
+  -a, --annotation strings     Search packages through one or more annotations.
+      --category strings       Search packages through one or more categories regex.
+      --condition-or           The searching options are managed in OR between the searching types.
+      --files                  Show package files on YAML/JSON output.
+      --full                   Show full informations.
+  -h, --help                   help for search
+      --hidden                 Include hidden packages
+      --ignore-masks           Ignore packages masked.
+      --installed              Search between system packages
+      --label strings          Search packages through one or more labels.
+  -n, --name strings           Search packages matching the package name string.
+  -o, --output string          Output format ( Defaults: terminal, available: json,yaml ) (default "terminal")
+  -p, --package strings        Search packages matching the package string cat/name.
+      --quiet                  show output as list without version
+      --rlabel strings         Search packages through one or more labels regex.
+      --system-dbpath string   System db path
+      --system-engine string   System DB engine
+      --system-target string   System rootpath
+      --table                  show output in a table (wider screens)
+      --with-rootfs-prefix     Add prefix of the configured rootfs path. (default true)
+
+```
+
+### 4. Install packages
+
+This command permits to install packages from the configured repositories.
+
+```
+$  luet i --help
+Installs one or more packages without asking questions:
+
+	$ luet install -y utils/busybox utils/yq ...
+	
+To install only deps of a package:
+	
+	$ luet install --onlydeps utils/busybox ...
+	
+To not install deps of a package:
+	
+	$ luet install --nodeps utils/busybox ...
+
+To force install a package:
+	
+	$ luet install --force utils/busybox ...
+
+Usage:
+  luet install <pkg1> <pkg2> ... [flags]
+
+Aliases:
+  install, i
+
+Flags:
+      --download-only                  Download only
+      --finalizer-env stringArray      Set finalizer environment in the format key=value.
+      --force                          Skip errors and keep going (potentially harmful)
+  -h, --help                           help for install
+      --ignore-conflicts               Don't consider package conflicts (harmful!)
+      --ignore-masks                   Ignore packages masked.
+      --nodeps                         Don't consider package dependencies (harmful!)
+      --overwrite-existing-dir-perms   Overwrite exiting directories permissions.
+      --preserve-system-essentials     Preserve system luet files (default true)
+  -p, --pretend                        simply display what *would* have been installed if --pretend weren't used
+      --show-install-order             In additional of the package to install, show the installation order and exit.
+      --skip-check-system              Skip conflicts check with existing rootfs.
+      --skip-finalizers                Skip the execution of the finalizers.
+      --sync-repos                     Sync repositories before install. Note: If there are in memory repositories then the sync is done always.
+  -y, --yes                            Don't ask questions
+
+```
+
+#### 4.1. Show packages candidates to install
+
+This command permit to see what packages are candidates for the selected packages to install.
+
+In particular, the option `--pretend|-p` shows the list of the packages selected from the solver
+to install in alphabetic order.
+
+```bash
+$> luet i xdg-utils --pretend
+🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:             macaroni-eagle-dev Revision: 480 - 2023-04-13 01:14:59 +0000 UTC
+🏠 Repository:                  mottainai-dev Revision:  88 - 2023-04-21 16:15:48 +0000 UTC
+🧠 Solving install tree...
+🍦 [  1 of  36] [N] dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+🍦 [  2 of  36] [N] dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+🍦 [  3 of  36] [N] dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+🍦 [  4 of  36] [N] dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+🍦 [  5 of  36] [N] dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+🍦 [  6 of  36] [N] dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+🍦 [  7 of  36] [N] dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+🍦 [  8 of  36] [N] dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+🍦 [  9 of  36] [N] dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+🍦 [ 10 of  36] [N] virtual/libelf::macaroni-eagle-dev                            - 3
+🍦 [ 11 of  36] [N] virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+🍦 [ 12 of  36] [N] virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+🍦 [ 13 of  36] [N] virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+🍦 [ 14 of  36] [N] virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+🍦 [ 15 of  36] [N] virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+🍦 [ 16 of  36] [N] virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+🍦 [ 17 of  36] [N] virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+🍦 [ 18 of  36] [N] virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+🍦 [ 19 of  36] [N] virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+🍦 [ 20 of  36] [N] virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+🍦 [ 21 of  36] [N] x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+🍦 [ 22 of  36] [N] x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+🍦 [ 23 of  36] [N] x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+🍦 [ 24 of  36] [N] x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+🍦 [ 25 of  36] [N] x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+🍦 [ 26 of  36] [N] x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+🍦 [ 27 of  36] [N] x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+🍦 [ 28 of  36] [N] x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+🍦 [ 29 of  36] [N] x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+🍦 [ 30 of  36] [N] x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+🍦 [ 31 of  36] [N] x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+🍦 [ 32 of  36] [N] x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+🍦 [ 33 of  36] [N] x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+🍦 [ 34 of  36] [N] x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+🍦 [ 35 of  36] [N] x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+🍦 [ 36 of  36] [N] x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 5966 µs).
+🎊 All done.
+```
+
+Usually, it's better to see the packages in alphabetic order, this help research
+and pre-install checks.
+
+There are use cases, that could help to see what will be the install order, for
+example, to validate the solver. In this case, it's possible to use the option
+`--show-install-order` that will share the order of the operations after the download of
+the packages.
+
+```bash
+# luet i xdg-utils --show-install-order 
+🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:             macaroni-eagle-dev Revision: 480 - 2023-04-13 01:14:59 +0000 UTC
+🏠 Repository:                  mottainai-dev Revision:  88 - 2023-04-21 16:15:48 +0000 UTC
+🧠 Solving install tree...
+🍦 [  1 of  36] [N] dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+🍦 [  2 of  36] [N] dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+🍦 [  3 of  36] [N] dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+🍦 [  4 of  36] [N] dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+🍦 [  5 of  36] [N] dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+🍦 [  6 of  36] [N] dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+🍦 [  7 of  36] [N] dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+🍦 [  8 of  36] [N] dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+🍦 [  9 of  36] [N] dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+🍦 [ 10 of  36] [N] virtual/libelf::macaroni-eagle-dev                            - 3
+🍦 [ 11 of  36] [N] virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+🍦 [ 12 of  36] [N] virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+🍦 [ 13 of  36] [N] virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+🍦 [ 14 of  36] [N] virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+🍦 [ 15 of  36] [N] virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+🍦 [ 16 of  36] [N] virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+🍦 [ 17 of  36] [N] virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+🍦 [ 18 of  36] [N] virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+🍦 [ 19 of  36] [N] virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+🍦 [ 20 of  36] [N] virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+🍦 [ 21 of  36] [N] x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+🍦 [ 22 of  36] [N] x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+🍦 [ 23 of  36] [N] x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+🍦 [ 24 of  36] [N] x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+🍦 [ 25 of  36] [N] x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+🍦 [ 26 of  36] [N] x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+🍦 [ 27 of  36] [N] x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+🍦 [ 28 of  36] [N] x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+🍦 [ 29 of  36] [N] x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+🍦 [ 30 of  36] [N] x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+🍦 [ 31 of  36] [N] x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+🍦 [ 32 of  36] [N] x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+🍦 [ 33 of  36] [N] x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+🍦 [ 34 of  36] [N] x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+🍦 [ 35 of  36] [N] x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+🍦 [ 36 of  36] [N] x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 6343 µs).
+🚚 Downloading 36 packages...
+📦 [  1 of  36] x11-misc/xdg-utils::macaroni-eagle-dev                            - 1.1.3           # downloaded ✔
+📦 [  2 of  36] x11-libs/libX11::macaroni-eagle-dev                               - 1.8.2           # downloaded ✔
+📦 [  3 of  36] x11-libs/xtrans::macaroni-eagle-dev                               - 1.4.0           # downloaded ✔
+📦 [  4 of  36] x11-libs/libSM::macaroni-eagle-dev                                - 1.2.3           # downloaded ✔
+📦 [  5 of  36] x11-libs/libXt::macaroni-eagle-dev                                - 1.2.0           # downloaded ✔
+📦 [  6 of  36] x11-base/xorg-proto::macaroni-eagle-dev                           - 2019.2          # downloaded ✔
+📦 [  7 of  36] virtual/perl-Scalar-List-Utils::macaroni-eagle-dev                - 1.550.0         # downloaded ✔
+📦 [  8 of  36] virtual/perl-MIME-Base64::macaroni-eagle-dev                      - 3.150.0         # downloaded ✔
+📦 [  9 of  36] x11-misc/shared-mime-info::macaroni-eagle-dev                     - 1.10            # downloaded ✔
+📦 [ 10 of  36] dev-util/desktop-file-utils::macaroni-eagle-dev                   - 0.23            # downloaded ✔
+📦 [ 11 of  36] virtual/perl-Carp::macaroni-eagle-dev                             - 1.500.0         # downloaded ✔
+📦 [ 12 of  36] dev-perl/File-BaseDir::macaroni-eagle-dev                         - 0.70.0          # downloaded ✔
+📦 [ 13 of  36] virtual/perl-Encode::macaroni-eagle-dev                           - 3.60.0          # downloaded ✔
+📦 [ 14 of  36] x11-libs/libXmu::macaroni-eagle-dev                               - 1.1.3           # downloaded ✔
+📦 [ 15 of  36] x11-apps/xset::macaroni-eagle-dev                                 - 1.2.4           # downloaded ✔
+📦 [ 16 of  36] virtual/perl-Data-Dumper::macaroni-eagle-dev                      - 2.174.0         # downloaded ✔
+📦 [ 17 of  36] dev-perl/File-MimeInfo::macaroni-eagle-dev                        - 0.280.0         # downloaded ✔
+📦 [ 18 of  36] x11-libs/libXau::macaroni-eagle-dev                               - 1.0.9           # downloaded ✔
+📦 [ 19 of  36] x11-libs/libXext::macaroni-eagle-dev                              - 1.3.4           # downloaded ✔
+📦 [ 20 of  36] dev-util/gdbus-codegen::macaroni-eagle-dev                        - 2.70.0          # downloaded ✔
+📦 [ 21 of  36] dev-libs/libpthread-stubs::macaroni-eagle-dev                     - 0.4             # downloaded ✔
+📦 [ 22 of  36] x11-libs/libxcb::macaroni-eagle-dev                               - 1.14+1          # downloaded ✔
+📦 [ 23 of  36] virtual/perl-File-Spec::macaroni-eagle-dev                        - 3.780.0         # downloaded ✔
+📦 [ 24 of  36] dev-perl/URI::macaroni-eagle-dev                                  - 1.730.0         # downloaded ✔
+📦 [ 25 of  36] virtual/perl-File-Path::macaroni-eagle-dev                        - 2.160.0         # downloaded ✔
+📦 [ 26 of  36] dev-perl/File-DesktopEntry::macaroni-eagle-dev                    - 0.220.0         # downloaded ✔
+📦 [ 27 of  36] dev-perl/IPC-System-Simple::macaroni-eagle-dev                    - 1.250.0         # downloaded ✔
+📦 [ 28 of  36] x11-libs/libXdmcp::macaroni-eagle-dev                             - 1.1.3           # downloaded ✔
+📦 [ 29 of  36] x11-libs/libICE::macaroni-eagle-dev                               - 1.0.10          # downloaded ✔
+📦 [ 30 of  36] x11-apps/xprop::macaroni-eagle-dev                                - 1.2.4           # downloaded ✔
+📦 [ 31 of  36] virtual/perl-libnet::macaroni-eagle-dev                           - 3.110.0         # downloaded ✔
+📦 [ 32 of  36] virtual/perl-parent::macaroni-eagle-dev                           - 0.238.0         # downloaded ✔
+📦 [ 33 of  36] virtual/libelf::macaroni-eagle-dev                                - 3               # downloaded ✔
+📦 [ 34 of  36] dev-libs-2/glib::macaroni-eagle-dev                               - 2.70.0          # downloaded ✔
+📦 [ 35 of  36] virtual/perl-Exporter::macaroni-eagle-dev                         - 5.740.0         # downloaded ✔
+📦 [ 36 of  36] x11-misc/compose-tables::macaroni-eagle-dev                       - 1.8.1           # downloaded ✔
+🧠 Sorting 36 packages operations...
+🧠 Install order:
+🍦 [  1 of  36] [N] dev-libs/libpthread-stubs::macaroni-eagle-dev                 - 0.4
+🍦 [  2 of  36] [N] dev-util/gdbus-codegen::macaroni-eagle-dev                    - 2.70.0
+🍦 [  3 of  36] [N] virtual/libelf::macaroni-eagle-dev                            - 3
+🍦 [  4 of  36] [N] virtual/perl-Carp::macaroni-eagle-dev                         - 1.500.0
+🍦 [  5 of  36] [N] virtual/perl-Data-Dumper::macaroni-eagle-dev                  - 2.174.0
+🍦 [  6 of  36] [N] virtual/perl-Encode::macaroni-eagle-dev                       - 3.60.0
+🍦 [  7 of  36] [N] virtual/perl-Exporter::macaroni-eagle-dev                     - 5.740.0
+🍦 [  8 of  36] [N] virtual/perl-File-Path::macaroni-eagle-dev                    - 2.160.0
+🍦 [  9 of  36] [N] virtual/perl-File-Spec::macaroni-eagle-dev                    - 3.780.0
+🍦 [ 10 of  36] [N] virtual/perl-MIME-Base64::macaroni-eagle-dev                  - 3.150.0
+🍦 [ 11 of  36] [N] virtual/perl-Scalar-List-Utils::macaroni-eagle-dev            - 1.550.0
+🍦 [ 12 of  36] [N] virtual/perl-libnet::macaroni-eagle-dev                       - 3.110.0
+🍦 [ 13 of  36] [N] virtual/perl-parent::macaroni-eagle-dev                       - 0.238.0
+🍦 [ 14 of  36] [N] x11-base/xorg-proto::macaroni-eagle-dev                       - 2019.2
+🍦 [ 15 of  36] [N] x11-libs/xtrans::macaroni-eagle-dev                           - 1.4.0
+🍦 [ 16 of  36] [N] x11-misc/compose-tables::macaroni-eagle-dev                   - 1.8.1
+🍦 [ 17 of  36] [N] x11-libs/libXau::macaroni-eagle-dev                           - 1.0.9
+🍦 [ 18 of  36] [N] x11-libs/libXdmcp::macaroni-eagle-dev                         - 1.1.3
+🍦 [ 19 of  36] [N] dev-libs-2/glib::macaroni-eagle-dev                           - 2.70.0
+🍦 [ 20 of  36] [N] x11-misc/shared-mime-info::macaroni-eagle-dev                 - 1.10
+🍦 [ 21 of  36] [N] dev-util/desktop-file-utils::macaroni-eagle-dev               - 0.23
+🍦 [ 22 of  36] [N] x11-libs/libICE::macaroni-eagle-dev                           - 1.0.10
+🍦 [ 23 of  36] [N] x11-libs/libSM::macaroni-eagle-dev                            - 1.2.3
+🍦 [ 24 of  36] [N] dev-perl/IPC-System-Simple::macaroni-eagle-dev                - 1.250.0
+🍦 [ 25 of  36] [N] dev-perl/File-BaseDir::macaroni-eagle-dev                     - 0.70.0
+🍦 [ 26 of  36] [N] x11-libs/libxcb::macaroni-eagle-dev                           - 1.14+1
+🍦 [ 27 of  36] [N] x11-libs/libX11::macaroni-eagle-dev                           - 1.8.2
+🍦 [ 28 of  36] [N] dev-perl/URI::macaroni-eagle-dev                              - 1.730.0
+🍦 [ 29 of  36] [N] x11-libs/libXt::macaroni-eagle-dev                            - 1.2.0
+🍦 [ 30 of  36] [N] dev-perl/File-DesktopEntry::macaroni-eagle-dev                - 0.220.0
+🍦 [ 31 of  36] [N] x11-apps/xprop::macaroni-eagle-dev                            - 1.2.4
+🍦 [ 32 of  36] [N] x11-libs/libXext::macaroni-eagle-dev                          - 1.3.4
+🍦 [ 33 of  36] [N] x11-libs/libXmu::macaroni-eagle-dev                           - 1.1.3
+🍦 [ 34 of  36] [N] x11-apps/xset::macaroni-eagle-dev                             - 1.2.4
+🍦 [ 35 of  36] [N] dev-perl/File-MimeInfo::macaroni-eagle-dev                    - 0.280.0
+🍦 [ 36 of  36] [N] x11-misc/xdg-utils::macaroni-eagle-dev                        - 1.1.3
+🎊 All done.
+```
+
+### 5. Cleanup local cache
+
+The tree of the installed repositories installed under the
+directory `/var/cache/luet/repos` are not mandatory when the
+user had installed the packages.
+
+Through the `cleanup` command it's possible clean the cache
+of the downloaded files:
+
+```bash
+$> luet cleanup
+Cleaned:  36 packages.
+```
+
+and to clean all the repositories under the directory
+`/var/cache/luet/repos` with:
+
+```bash
+$> luet cleanup --purge-repos
+Cleaned:  0 packages.
+Repos Cleaned:  17
+```
+
+### 6. Uninstall packages
+
+The command `uninstall` or `rm` permits to uninstall installed packages.
+
+```
+$> luet uninstall --help
+
+Remove one or more package and his dependencies recursively
+
+	$ luet uninstall cat/foo1 ... cat/foo2
+
+Remove one or more packages without dependencies
+
+	$ luet uninstall cat/foo1 ... --nodeps
+
+Remove one or more packages and skip errors
+
+	$ luet uninstall cat/foo1 ... --force
+
+Remove one or more packages without ask confirm
+
+	$ luet uninstall cat/foo1 ... --yes
+
+Remove one or more packages without ask confirm and skip execution
+of the finalizers.
+
+	$ luet uninstall cat/foo1 ... --yes --skip-finalizers
+
+Usage:
+  luet uninstall <pkg> <pkg2> ... [flags]
+
+Aliases:
+  uninstall, rm, un
+
+Flags:
+      --finalizer-env stringArray    Set finalizer environment in the format key=value.
+      --force                        Force uninstall
+  -h, --help                         help for uninstall
+  -k, --keep-protected-files         Keep package protected files around
+      --nodeps                       Don't consider package dependencies (harmful! overrides checkconflicts and full!)
+      --preserve-system-essentials   Preserve system luet files (default true)
+      --skip-finalizers              Skip the execution of the finalizers.
+  -y, --yes                          Don't ask questions
+```
+
+By default the selected packages are removed with all packages that depend on
+the candidates in reverse order. To avoid the dependencies could be used the
+`--nodeps` option.
+
+* `--yes|-y`: skip the confirm phase.
+
+* `--force`: ignore errors and for uninstall of the selected packages.
+
+* `--keep-protected-files|-k`: keep the protected files.
+
+* `--nodeps`: ignore dependencies on uninstall selected packages.
+
+* `--finalizer-env <key=value>`: define one or more environment variables to use on finalizer
+
+### 7. Upgrade the system
+
+The upgrade of the existing system is possible through the `upgrade`
+command.
+
+```bash
+$> luet upgrade
+🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:             macaroni-eagle-dev Revision: 480 - 2023-04-13 01:14:59 +0000 UTC
+🏠 Repository:                  mottainai-dev Revision:  88 - 2023-04-21 16:15:48 +0000 UTC
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🍬 [  1 of   1] [U] system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 [0.35.4::mottainai-stable]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 40018 µs).
+Do you want to continue with this operation? [y/N]: 
+```
+
+* `--show-upgrade-order`: Show the order of the packages to upgrade
+
+* `--sync-repos`: On upgrade the system, sync the repository before execute
+  the solver.
+
+* `--yes|y`: Skip the confirm question
+
+* `--ignore-masks`: Ignores the masks
+
+* `--ignore-conflicts`: Ignore the conflicts
+
+* `--pretend`: Show the candidates for the upgrade
+
+* `--show-upgrade-order`: Show the order of the packages to upgrade
+
+* `--skip-finalizers`: Skip finalizers
+
+* `--force`: Ignore errors and force installation of all candidates packages.
+
+* `--download-only`: Download only the packages candidates.
+
+```bash
+$> luet upgrade --show-upgrade-order
+🚀 Luet 0.35.4-geaaru-g3fcfc36cea5636d539d55117b8befc07e0812083 2023-04-04 09:46:02 UTC - go1.20.2
+🏠 Repository:              geaaru-repo-index Revision:   5 - 2023-03-18 10:12:28 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision: 137 - 2023-03-19 11:49:39 +0000 UTC
+🏠 Repository:             macaroni-eagle-dev Revision: 480 - 2023-04-13 01:14:59 +0000 UTC
+🏠 Repository:                  mottainai-dev Revision:  88 - 2023-04-21 16:15:48 +0000 UTC
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🍬 [  1 of   1] [U] system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 [0.35.4::mottainai-stable]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 107 µs).
+🚚 Downloading 1 packages...
+📦 [  1 of   1] system/luet-geaaru-testing::mottainai-dev                         - 0.35.5          # downloaded ✔
+🧠 Sorting 2 packages operations...
+🧠 Upgrade order:
+🍬 [  1 of   1] [U] system/luet-geaaru-testing::mottainai-dev                     - 0.35.5 [0.35.4::mottainai-stable]
+```
+
+
+### 8. Show luet configuration
+
+The command `config` permits to see the configuration parameters active
+in `luet`.
+
+```
+# luet config --help
+Show luet configuration
+
+Usage:
+  luet config [flags]
+
+Aliases:
+  config, c
+
+Flags:
+  -h, --help   help for config
+```
+
+### 9. Queries tools
+
+`luet` supplies different commands to analyze the repositories and the
+installed packages.
+
+```
+# luet query --help
+Repository query tools.
+
+Usage:
+  luet query [command]
+
+Aliases:
+  query, q
+
+Available Commands:
+  belongs     Resolve what package a file belongs to.
+  files       Show files owned by a specific package.
+  orphans     Show orphans packages.
+
+Flags:
+  -h, --help   help for query
+```
+
+#### 9.1. Show files owned by a specific package
+
+This command permits to show the files owned by a specific package.
+
+```
+$> luet q files --help
+Show files owned by a specific package.
+
+Usage:
+  luet query files <pkg1> ... <pkgN> [OPTIONS] [flags]
+
+Aliases:
+  files, fi, f
+
+Flags:
+  -h, --help                 help for files
+      --installed            Search between system packages
+  -o, --output string        Output format ( Defaults: terminal, available: json,yaml ) (default "terminal")
+      --with-rootfs-prefix   Add prefix of the configured rootfs path. (default true)
+```
+
+It's possible to see the list of files in JSON or YAML format:
+
+```bash
+$> luet q files lxd-compose -o json
+["/usr/bin/lxd-compose"]
+```
+
+#### 9.2. Resolve what package a file belongs to
+
+This command permits to search the packages that contains the file specified.
+
+```
+$> luet q belongs  --help
+Resolve what package a file belongs to.
+
+Usage:
+  luet query belongs <file1> ... <fileN> [OPTIONS] [flags]
+
+Aliases:
+  belongs, be, b
+
+Flags:
+  -h, --help            help for belongs
+      --installed       Search between system packages
+  -o, --output string   Output format ( Defaults: terminal, available: json,yaml ) (default "terminal")
+      --quiet           show output as list without version
+      --table           show output in a table (wider screens)
+```
+
+* `--quiet`: show the list of the packages without the version
+
+* `--output|-o string`: show the package list in JSON, or YAML format. Default as string.
+
+* `--installed`: search only between the installed packages. It uses the local database.
+
+```bash
+$> luet q belongs /usr/bin/lxd-compose
+app-emulation/lxd-compose-0.27.0
+
+$> luet q belongs  /usr/bin/lxd-compose --quiet
+app-emulation/lxd-compose
+
+$> luet q belongs /usr/bin/lxd-compose --installed
+app-emulation/lxd-compose-0.27.0
+```
+
+#### 9.3. Show orphans packages
+
+On upgrading a system or on remove a custom repository it's possible that
+some packages will be no more available.
+
+In this use case having a way to retrieve the list of orphan packages is
+helpful.
+
+This operation could require a lot of time.
+
+NOTE: It's important executing this command when there aren't packages
+      to upgrade. So, after executing `luet upgrade`.
+
+```
+$> luet q orphans --help
+An orphan package is a package that is no more
+available in the configured and/or enabled repositories.
+
+This operation could require a bit of time.
+
+Usage:
+  luet query orphans [OPTIONS] [flags]
+
+Aliases:
+  orphans, o
+
+Flags:
+  -h, --help            help for orphans
+  -o, --output string   Output format ( Defaults: terminal, available: json,yaml ) (default "terminal")
+      --quiet           show output as list without version
+      --verbose         Show messages. (default true)
+```
+
+### 10. Local Database Operations
+
+There are different commands to operate on local database.
+
+#### 10.1. Reindex collections
+
+On upgrade `luet` it's possible that is needed to update the indexes of
+the local database.
+
+```bash
+$> luet  database reindex
+```
+
+#### 10.2. Get package data
+
+Retrive metadata of a package installed in the YAML format.
+
+```
+$> luet  database get app-emulation/lxd-compose --help
+Get a package in the system database in the YAML format:
+
+		$ luet database get system/foo
+
+To return also files:
+		$ luet database get --files system/foo
+
+Usage:
+  luet database get <package> [flags]
+
+Flags:
+      --files   Show package files.
+  -h, --help    help for get
+```
+
+* `--files`: Show also the package files.
+
+An example:
+
+```bash
+$> luet database get app-emulation/lxd-compose --files
+category: app-emulation
+conflicts: []
+description: Supply a way to deploy a complex environment to an LXD Cluster or LXD
+  standalone installation
+id: 467
+labels:
+  github.owner: lxd-compose
+  github.repo: MottainaiCI
+license: GPL-3.0
+name: lxd-compose
+repository: mottainai-stable
+requires: []
+uri:
+- https://github.com/MottainaiCI/lxd-compose
+version: 0.27.0
+
+files:
+- usr/bin/lxd-compose
+```
+
+#### 10.3. Remove an installed package from the database
+
+This command is a low-level operation that normally must be not
+used.
+
+```
+$> luet  database remove --help
+Removes a package in the system database without actually uninstalling it:
+
+		$ luet database remove foo/bar
+
+This commands takes multiple packages as arguments and prunes their entries from the system database.
+
+Usage:
+  luet database remove [package1] [package2] ... [flags]
+
+Flags:
+      --force   Force uninstall
+  -h, --help    help for remove
+```
+
+#### 10.4. Insert a package in the system database
+
+It's a low-level command that permit to register a new
+package in the system database.
+
+This command is used by the `luet-portage-converter` tool
+to sync the package installed with *emerge* to *luet* database.
+
+```
+ luet  database create --help
+Inserts a package in the system database:
+
+		$ luet database create foo.yaml
+
+"luet database create" injects a package in the system database without actually installing it, use it with caution.
+This commands takes multiple yaml input file representing package artifacts, that are usually generated while building packages.
+The yaml must contain the package definition, and the file list at least.
+
+For reference, inspect a "metadata.yaml" file generated while running "luet build"
+
+Usage:
+  luet database create <artifact_metadata1.yaml> <artifact_metadata1.yaml> [flags]
+
+Flags:
+  -h, --help   help for create
+```
+
+
+
+

@@ -19,6 +19,14 @@ headless: true
 - [**Package Manager System**]({{< relref "/docs/pms" >}})
     - [Repositories or Wagons]({{< relref "/docs/pms#1-repositories-or-wagons" >}})
     - [Subsets]({{< relref "/docs/pms#2-subsets" >}})
+    - [Search Packages]({{< relref "/docs/pms#3-search-packages" >}})
+    - [Install Packages]({{< relref "/docs/pms#4-install-packages" >}})
+    - [Uninstall Packages]({{< relref "/docs/pms#6-uninstall-packages" >}})
+    - [Upgrade System]({{< relref "/docs/pms#7-upgrade-the-system" >}})
+    - [Show files owned by a specific package]({{< relref "/docs/pms#91-show-files-owned-by-a-specific-package" >}})
+    - [Resolve what package a file belongs to]({{< relref "/docs/pms#92-resolve-what-package-a-file-belongs-to" >}})
+    - [Show orphans Packages]({{< relref "/docs/pms#93-show-orphans-packages" >}})
+    - [Local Database Operations]({{< relref "/docs/pms#10-local-database-operations" >}})
 <br />
 
 <br />
