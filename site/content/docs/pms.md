@@ -1270,6 +1270,48 @@ Flags:
   -h, --help   help for create
 ```
 
+### 11. Masking Packages
 
+Leaving users the possibility to create their packages it's needed to have a way to mask
+packages from the main repositories or others repositories.
+The masking could be used to stop the upgrade of a package too.
 
+At the moment, there isn't a CLI command that permit to mask packages.
 
+The mask operation must be done manually creating file under one of the directories
+defined in the configuration option `packages_maskdir` that has the default
+`/etc/luet/mask.d` directory.
+
+In particular, the content of the files YAML used to add mask rules are in the format:
+
+```yaml
+description: |
+  Packages mask for XXX
+# Enable packages mask (true) or not (false)
+enabled: true
+# The rules are in the Gentoo/Funtoo format
+rules:
+  # Hidden the package test/b with version >=1.0
+  - >=test/b-1.0
+  # Hidden the package test/c with version 2.0
+  - =test/c-2.0
+  # Hidden the package test/e with version <3.0
+  - <test/e-3.0
+  # Hidden the package test/g with version 2.0 from repos main
+  - test/g-2.0::main
+```
+
+A real example could be the masking of the package that supplies the
+binary `macaronictl`. The package `macaroni/ctl` is a *provides*
+that is supplied by both packages `app-admin/macaronictl` and
+`app-admin/macaronictl-thin`.
+
+A way to define what package the solver will be selected is to mask
+the package to exclude.
+
+```yaml
+description: Select macaronictl-thin.
+enabled: true
+rules:
+- app-admin/macaronictl
+```

@@ -27,6 +27,7 @@ headless: true
     - [Resolve what package a file belongs to]({{< relref "/docs/pms#92-resolve-what-package-a-file-belongs-to" >}})
     - [Show orphans Packages]({{< relref "/docs/pms#93-show-orphans-packages" >}})
     - [Local Database Operations]({{< relref "/docs/pms#10-local-database-operations" >}})
+    - [Masking Packages]({{< relref "/docs/pms#11-masking-packages" >}})
 <br />
 
 <br />

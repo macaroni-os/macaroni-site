@@ -72,7 +72,7 @@ Funtoo 1.4-prime and so:
 
     * GCC 9.2.0
     * Glibc 2.33
-    * Python 3.7 (2.7 is available but will be dropped in the near future)
+    * Python 3.7
     * LLVM 11
 
 The desktop environments available in this release are:
@@ -81,8 +81,10 @@ The desktop environments available in this release are:
 | :--- |  :---:  | :--- | :---: |
 | Gnome | 3.36 | *stable* | yes |
 | XFCE | 4.16 | *stable* | yes |
+| LXQt | 1.3.0 | *experimental* | yes |
 | Enlightenment | 0.25.4 | *experimental* | no |
 | KDE | 5.22 | *experimental* | no |
+| i3 | 4.22 | *experimental* | no |
 
 As the first release a lot of things could be improved but it's also true
 that the Desktop is something complex that requires a lot of effort and
