@@ -82,7 +82,7 @@ It&rsquo;s composed of two different binary: the luet binary is the PMS client u
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.76c74e6da547a5042911aa8ff6936ef44dc3c6a85ddeb5d9d554ed780f470e02.js" integrity="sha256-dsdObaVHpQQpEaqP9pNu9E3Dxqhd3rXZ1VTteA9HDgI="></script>
+<script defer src="/en.search.min.46a30f9ad6823961efeeccfedda6523a49e0ccbe315ea0260860b297a68331e7.js" integrity="sha256-RqMPmtaCOWHv7sz&#43;3aZSOkngzL4xXqAmCGCyl6aDMec="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -247,7 +247,9 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/pms/#93-show-orphans-packages">Show orphans Packages</a></li>
 <li>
-  <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a>
+  <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a></li>
+<li>
+  <a href="/docs/pms/#11-masking-packages">Masking Packages</a>
 <br /></li>
 </ul>
 </li>
@@ -1481,7 +1483,43 @@ Usage:
 
 Flags:
   -h, --help   help for create
-</code></pre></article>
+</code></pre><h3 id="11-masking-packages">
+  11. Masking Packages
+  <a class="anchor" href="#11-masking-packages">#</a>
+</h3>
+<p>Leaving users the possibility to create their packages it&rsquo;s needed to have a way to mask
+packages from the main repositories or others repositories.
+The masking could be used to stop the upgrade of a package too.</p>
+<p>At the moment, there isn&rsquo;t a CLI command that permit to mask packages.</p>
+<p>The mask operation must be done manually creating file under one of the directories
+defined in the configuration option <code>packages_maskdir</code> that has the default
+<code>/etc/luet/mask.d</code> directory.</p>
+<p>In particular, the content of the files YAML used to add mask rules are in the format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">description</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  </span>  <span style="color:#ae81ff">Packages mask for XXX</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable packages mask (true) or not (false)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The rules are in the Gentoo/Funtoo format</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Hidden the package test/b with version &gt;=1.0</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">&gt;=test/b-1.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Hidden the package test/c with version 2.0</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">=test/c-2.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Hidden the package test/e with version &lt;3.0</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">&lt;test/e-3.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Hidden the package test/g with version 2.0 from repos main</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">test/g-2.0::main</span>
+</span></span></code></pre></div><p>A real example could be the masking of the package that supplies the
+binary <code>macaronictl</code>. The package <code>macaroni/ctl</code> is a <em>provides</em>
+that is supplied by both packages <code>app-admin/macaronictl</code> and
+<code>app-admin/macaronictl-thin</code>.</p>
+<p>A way to define what package the solver will be selected is to mask
+the package to exclude.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#ae81ff">Select macaronictl-thin.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">app-admin/macaronictl</span>
+</span></span></code></pre></div></article>
  
       
 
