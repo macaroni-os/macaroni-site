@@ -134,8 +134,8 @@ Hereinafter, a summary of our repositories and the packages related.
 | ---------- |  :---: | :---: | :---: |
 | *macaroni-commons* | repository/macaroni-commons | repository/macaroni-commons-testing | repository/macaroni-commons-dev |
 | *mottainai* | repository/mottainai-stable | repository/mottainai-testing | repository/mottainai-dev |
-| *macaroni-funtoo* | repository/macaroni-funtoo | repository/macaroni-funtoo-testing | repository/macaroni-funtoo-dev |
-| *macaroni-funtoo-systemd* | repository/macaroni-funtoo-systemd | repository/macaroni-funtoo-systemd-testing | repository/macaroni-funtoo-systemd-dev |
+| *macaroni-phoenix (ex macaroni-funtoo)*| repository/macaroni-phoenix | repository/macaroni-phoenix-testing | repository/macaroni-phoenix-dev |
+| *macaroni-eagle (ex macaroni-funtoo-systemd)* | repository/macaroni-eagle | repository/macaroni-eagle-testing | repository/macaroni-eagle-dev |
 | *macaroni-terragon* | repository/macaroni-terragon | repository/macaroni-terragon-testing | repository/macaroni-terragon-dev |
 
 **NOTE:** The development repositories must be used only by the Staff and are
@@ -166,17 +166,17 @@ This is the reason we have left our PMS in an independent repository.
 
 Normally, this repository is installed by default.
 
-#### Macaroni Funtoo
+#### Macaroni Phoenix
 
-The **macaroni-funtoo** repository is the repository of the **Phoenix**
-release.
+The **macaroni-phoenix** (previous **macaroni-funtoo**) repository is the
+repository of the **Phoenix** release.
 
 Normally, this repository is installed by default in all Phoenix installation.
 
-#### Macaroni Funtoo SystemD
+#### Macaroni Eagle
 
-The **macaroni-funtoo-systemd** repository is the repository of the **Eagle**
-release.
+The **macaroni-eagle** (previous **macaroni-funtoo-systemd**) repository is
+the repository of the **Eagle** release.
 
 Normally, this repository is installed by default in all Eagle installation.
 
