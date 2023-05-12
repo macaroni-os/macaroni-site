@@ -225,16 +225,16 @@ Like for eagle release the terragon release is been compiled with server-oriente
 Based on Funtoo Next some core packages are:
 * GCC 11.3.0 * Glibc 2.33 * Python 3.9 Macaroni Repositories # We have three different repositories for any release: a stable repository, a testing repository and, a development repository.
 Hereinafter, a summary of our repositories and the packages related.
-Repository Stable Testing Development macaroni-commons repository/macaroni-commons repository/macaroni-commons-testing repository/macaroni-commons-dev mottainai repository/mottainai-stable repository/mottainai-testing repository/mottainai-dev macaroni-funtoo repository/macaroni-funtoo repository/macaroni-funtoo-testing repository/macaroni-funtoo-dev macaroni-funtoo-systemd repository/macaroni-funtoo-systemd repository/macaroni-funtoo-systemd-testing repository/macaroni-funtoo-systemd-dev macaroni-terragon repository/macaroni-terragon repository/macaroni-terragon-testing repository/macaroni-terragon-dev NOTE: The development repositories must be used only by the Staff and are attached to the Macaroni/Mottainai CD/CI flows. The origin server has limited bandwidth so please, use them only for emergencies and/or in collaboration with the Macaroni Team.
+Repository Stable Testing Development macaroni-commons repository/macaroni-commons repository/macaroni-commons-testing repository/macaroni-commons-dev mottainai repository/mottainai-stable repository/mottainai-testing repository/mottainai-dev macaroni-phoenix (ex macaroni-funtoo) repository/macaroni-phoenix repository/macaroni-phoenix-testing repository/macaroni-phoenix-dev macaroni-eagle (ex macaroni-funtoo-systemd) repository/macaroni-eagle repository/macaroni-eagle-testing repository/macaroni-eagle-dev macaroni-terragon repository/macaroni-terragon repository/macaroni-terragon-testing repository/macaroni-terragon-dev NOTE: The development repositories must be used only by the Staff and are attached to the Macaroni/Mottainai CD/CI flows. The origin server has limited bandwidth so please, use them only for emergencies and/or in collaboration with the Macaroni Team.
 Macaroni Commons # The macaroni-commons repository contains the specs for building the Macaroni OS packages common to all releases and all packages compiled without Portage integration.
 In particular, in this repository are maintained the Macaroni Kernels.
 Normally, this repository is installed by default and present in all Macaroni releases.
 Mottainai # The Macaroni Team supports the MottainaiCI organization and the mottainai-stable repository is used to supply the Mottainai tools and luet.
 The luet PMS could be used inside other distributions and it makes sense to avoid having a macaroni-commons repository to install and upgrade it. This is the reason we have left our PMS in an independent repository.
 Normally, this repository is installed by default.
-Macaroni Funtoo # The macaroni-funtoo repository is the repository of the Phoenix release.
+Macaroni Phoenix # The macaroni-phoenix (previous macaroni-funtoo) repository is the repository of the Phoenix release.
 Normally, this repository is installed by default in all Phoenix installation.
-Macaroni Funtoo SystemD # The macaroni-funtoo-systemd repository is the repository of the Eagle release.
+Macaroni Eagle # The macaroni-eagle (previous macaroni-funtoo-systemd) repository is the repository of the Eagle release.
 Normally, this repository is installed by default in all Eagle installation.
 Macaroni Terragon # The macaroni-terragon repository is the repository of the Terragon release.
 Normally, this repository is installed by default in all Terragon installation.
