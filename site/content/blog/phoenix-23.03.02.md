@@ -2,8 +2,6 @@
 author: "Daniele Rondina"
 date: 2023-03-21
 linktitle: Phoenix 23.03.02 is out!
-menu:
-  main:
 title: Macaroni OS Phoenix 23.03.02 is out!
 tags:
   - macaroni
