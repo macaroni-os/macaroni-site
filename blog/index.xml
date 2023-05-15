@@ -6,7 +6,16 @@
     <description>Recent content in Blog on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macaroni OS Phoenix 23.05 is out!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.05/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.05/</guid>
+      <description>We are happy to announce the new release Phoenix 23.05 that contains the first significant change needed to migrate the Phoenix tree from the Funtoo release 1.4-prime to the Next release, an activity that will be completed for the subsequent releases. In particular, with this release is dropped the support of Python 2.7 in EOL for a lot of months. The package dev-lang-2.7/python is yet available because a lot of Funtoo packages depend on it for compilation but it&amp;rsquo;s discouraged the use.</description>
+    </item>
+    
     <item>
       <title>Macaroni OS Phoenix 23.03.02 is out!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.03.02/</link>
