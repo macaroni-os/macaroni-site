@@ -86,6 +86,17 @@ a:hover {
   --bs-badge-border-radius: 0.375rem;
 }
 
+.badge-nerd {
+  color: #fff !important;
+  background-color: RGBA(232,30,25,var(--bs-bg-opacity,1)) !important;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #b50d0d;
+  --bs-badge-border-radius: 0.375rem;
+}
+
 .badge-blue-light {
   color: #000 !important;
   background-color: RGBA(13,202,240,var(--bs-bg-opacity,1)) !important;
