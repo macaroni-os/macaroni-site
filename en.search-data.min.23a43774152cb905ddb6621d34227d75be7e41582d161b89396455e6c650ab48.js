@@ -38,7 +38,7 @@ Working on rewrite of luet-build binary
 Starts migration of Phoenix release to Funtoo Next branch.
 Following the idea of the macaroni-security repository we are thinking of a macaroni-community repository where users could create their packages to share and also a macaroni-games where share packages of games and emulators.
 In July, we will in holiday so, probably the next release of Phoenix will be available in August.
-A PMS GUI incoming! I\u0026rsquo;m very happy that people begin to use Macaroni OS and I want to thank a special user Marcello Basso aka nomorelogic who developing a GUI for luet, available in our repository with the name pageant that is been written in Pascal and that could be used to search packages, show files owned by packages and soon with others good features.
+A PMS GUI incoming! I\u0026rsquo;m very happy that people begin to use Macaroni OS and I want to thank a special user Marcello Basso aka nomorelogic who developing a GUI for luet, available in our repository with the name pageant that is been written with Lazarus and Free Pascal and that could be used to search packages, show files owned by packages and soon with others good features.
 The pageant is yet in high development phase and is available as version 0.0.4_alpha.
 Hereinafter, the window where to see the detail of a package and his files.
 We waiting for you We waiting for you in our Discord Server.
