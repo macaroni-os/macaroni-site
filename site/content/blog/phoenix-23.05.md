@@ -155,8 +155,8 @@ I'm very happy that people begin to use Macaroni OS and I want to thank
 a special user **Marcello Basso** aka `nomorelogic` who developing a GUI
 for `luet`, available in our repository with the 
 name [`pageant`](https://github.com/macaroni-os/pageant) that is been
-written in Pascal and that could be used to search packages, show files owned
-by packages and soon with others good features.
+written with Lazarus and Free Pascal and that could be used to search
+packages, show files owned by packages and soon with others good features.
 
 The `pageant` is yet in high development phase and is available as
 version `0.0.4_alpha`.
