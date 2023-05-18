@@ -145,7 +145,7 @@ The password of the `macaroni` user is `macaroni`.
       <td>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>A LXQt Desktop ISO to install Macaroni LXQt DE with Calamares. Ideal for LXQt fans and for old computers.</td>
+      <td>A i3 Desktop ISO to install Macaroni i3 DE with XFCE Terminal through the Calamares installer. Ideal for i3 fans and for old computers.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix Gnome Devel</td>
