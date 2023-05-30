@@ -4,7 +4,7 @@ type: contact
 weight: 2
 ---
 
-We will happy to receive your feedback about the software available, what is missing, and your help in improving the distro.
+We would be happy to receive your feedback about the software available, what is missing, and your help in improving the distro.
 
 ## Discord
 
@@ -12,9 +12,9 @@ You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG) and we a
 
 ## Issues Tracker
 
-Our issue tracker is over our Github main repository.
+Our issue tracker is over at our Github main repository.
 
-If you find a bug or do you have some new feature request please open an issue [here](https://github.com/macaroni-os/macaroni-funtoo/issues).
+If you find a bug or have some new feature request please open an issue [here](https://github.com/macaroni-os/macaroni-funtoo/issues).
 
 ## Support us with hardware
 
