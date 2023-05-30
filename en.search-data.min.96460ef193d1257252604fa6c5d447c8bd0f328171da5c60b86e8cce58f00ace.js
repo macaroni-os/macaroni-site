@@ -1,7 +1,7 @@
-"use strict";(function(){const t={};t.doc={id:"id",field:["title","content"],store:["title","href","section"]};const e=FlexSearch.create("balance",t);window.bookSearchIndex=e,e.add({id:0,href:"/contact/",title:"Contacts",section:"Macaroni OS",content:`We will happy to receive your feedback about the software available, what is missing, and your help in improving the distro.
+"use strict";(function(){const t={};t.doc={id:"id",field:["title","content"],store:["title","href","section"]};const e=FlexSearch.create("balance",t);window.bookSearchIndex=e,e.add({id:0,href:"/contact/",title:"Contacts",section:"Macaroni OS",content:`We would be happy to receive your feedback about the software available, what is missing, and your help in improving the distro.
 Discord You can reach us in our Discord Server and we are also in the Funtoo Discord Server.
-Issues Tracker Our issue tracker is over our Github main repository.
-If you find a bug or do you have some new feature request please open an issue here.
+Issues Tracker Our issue tracker is over at our Github main repository.
+If you find a bug or have some new feature request please open an issue here.
 Support us with hardware Building packages requires resources and hardware. If you want to donate a node to attach to our Mottainai Cluster please contact me directly through our Discord Server.
 `}),e.add({id:1,href:"/faq/",title:"Frequently Asked Questions",section:"Macaroni OS",content:`1. How update Macaroni Repositories URLs? In the last period due to the changes in the new domain and the stabilization of the Macaroni infra there are been a lot of changes in the repository URLs. Working with donated resources and/or free resources has the consequence that the changes could happen.
 So, I will describe the better way to upgrade safe our repositories.
