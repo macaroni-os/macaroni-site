@@ -236,7 +236,7 @@ Our last release is <b>`23.06`</b> and it uses kernel 5.10.181 for Server ISOs a
   <div style="width: 1360px;">
 
     <h4>Download Releases ISOs</h4>
-    <b-table id="table-transition-releases"
+    <b-table id="table-iso-releases"
              :items="filteredItemsReleases"
              :fields="columnsReleases"
              :filter="activeFilterReleases"
@@ -253,7 +253,7 @@ Our last release is <b>`23.06`</b> and it uses kernel 5.10.181 for Server ISOs a
 
       <template slot="top-row" slot-scope="{ fields }">
           <td v-for="field in fields" :key="field.key">
-            <input v-if="field.key != 'actions'" v-model="filters[field.key]"
+            <input v-if="field.key != 'actions'" v-model="filtersReleases[field.key]"
                    style="box-sizing: inherit; width: 100%"/>
           </td>
       </template>
@@ -276,7 +276,7 @@ Our last release is <b>`23.06`</b> and it uses kernel 5.10.181 for Server ISOs a
   <div style="width: 1360px;">
 
     <h4>Download Weekly ISOs</h4>
-    <b-table id="table-transition-example"
+    <b-table id="table-iso-weekly"
              :items="filteredItems"
              :fields="columns"
              :filter="activeFilter"
