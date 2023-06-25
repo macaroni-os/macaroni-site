@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>terragon on Macaroni OS</title>
+    <link>https://www.macaronios.org/tags/terragon/</link>
+    <description>Recent content in terragon on Macaroni OS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/terragon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New features incoming with 23.06 releases!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.06.01/</link>
+      <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.06.01/</guid>
+      <description>We have important news to share: the development of our PMS continues and finally, we have rewritten the method used to bump a new revision of the repository.
+This enhancement integrates a new way to create the tree tarball used on repo update command. This new implementation breaks the existing implementation. For this reason, we will migrate to the new implementation in August or September. This will permit to users to upgrade to the minimal luet version requires: version 0.</description>
+    </item>
+    
+  </channel>
+</rss>
