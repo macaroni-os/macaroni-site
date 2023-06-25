@@ -1074,6 +1074,11 @@ Also in this case it's used the char `U` to identify the update.
 In this case the installed package will be removed and the code visible will be `D`, instead
 the new installed package with be with the `N` char as operation code.
 
+```shell
+🔪 [  1 of   2] [D] app-misc/jq                                                   - 1.6+3
+🍦 [  2 of   2] [N] utils/jq::mottainai-stable                                    - 1.6+2
+```
+
 ##### 7.1.6 Downgrade the package to previous version
 
 Switching between the stable and testing/dev repository permits to test new version and
