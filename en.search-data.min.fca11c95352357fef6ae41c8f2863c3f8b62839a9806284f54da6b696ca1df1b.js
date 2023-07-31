@@ -32,7 +32,7 @@ Phoenix 23.06 and 23.06.01 are out! Meantime, we preparing the migration from Fu
 In particular, between the rest:
 * LXD 5.14 * ZFS 2.1.12 * Gnome Maps is been fixed on both Funtoo and Macaroni * NTFSg3 package to support NTFS USB pendrive See the complete changelog of Phoenix 23.06 release and Phoenix 23.06.01 release on Github.
 Terragon 23.06 is out! A new release of the Funtoo Next release for Container is out. This release is a maintenance release that contains between the rest:
-* Rust v1.7.0 * Python v3.9.17 * Nodejs v20.3.0 * Git v2.41.0 * Haproxy v2.6.14 See the complete changelog of Terragon 23.06 release on Github.
+* Rust v1.70.0 * Python v3.9.17 * Nodejs v20.3.0 * Git v2.41.0 * Haproxy v2.6.14 See the complete changelog of Terragon 23.06 release on Github.
 What next? Hereinafter, out hot points in our backlog:
 Go ahead with the rewrite of the luet build command and cleanup the old code. This will require at least three or four months (considering the summer stop period).
 To complete the dismission of Python 2.7 on Eagle release. This job is now in progress.
