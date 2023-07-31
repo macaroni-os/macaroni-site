@@ -185,7 +185,7 @@ A new release of the Funtoo Next release for Container is out.
 This release is a maintenance release that contains between
 the rest:
 
-    * Rust v1.7.0
+    * Rust v1.70.0
 
     * Python v3.9.17
 
