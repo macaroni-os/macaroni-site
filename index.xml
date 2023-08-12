@@ -6,7 +6,19 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Aug 2023 11:06:54 +0600</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Macaroni-Security Repository is here!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.08/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.08/</guid>
+      <description>Finally, it&amp;rsquo;s available the new macaroni-security repository!
+Considering that the Funtoo release 1.4-prime is in EOL, we will use the macaroni-security repository to share security patches and updates of Browsers, Devs tools, and other packages meantime we rebooting Phoenix&amp;rsquo;s branch to Funtoo Next.
+Due to this change, all users using Macaroni Phoenix MUST add the macaroni-security repository before executing any update.
+$&amp;gt; luet repo update $&amp;gt; luet i repository/macaroni-security $&amp;gt; luet repo update $&amp;gt; luet upgrade The repository macaroni-security uses the new tree v2 which requires luet version 0.</description>
+    </item>
+    
     <item>
       <title>New features incoming with 23.06 releases!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.06.01/</link>
@@ -66,6 +78,17 @@ We want to thank again the GARR consortium that is now our primary mirror under 
       <description>After 1 year of incubation under the Funtoo Foundation, the Macaroni OS has now its domain macaronios.org and its infrastructure. Really, thanks to the Funtoo Foundation and Daniel Robbins for its support that helped to Macaroni OS to be here today.
 From the infrastructure aspect nothing is changed, all compilation tasks are executed over MottainaiCI cluster but with less resource power for now.
 We hope that the community will help us to maintain the infrastructure costs with donations over our Github Sponsor or with VMs donations for compilation.</description>
+    </item>
+    
+    <item>
+      <title>Docker Inc.</title>
+      <link>https://www.macaronios.org/partners/docker/</link>
+      <pubDate>Sat, 12 Aug 2023 11:06:54 +0600</pubDate>
+      
+      <guid>https://www.macaronios.org/partners/docker/</guid>
+      <description>The Docker Inc. approved the Macaroni OS to the Docker-Sponsored Open Source program that permits to remove the rate-limit for all users pulling public images from our namespace.
+The Macaroni OS Docker images are available on our macaronios organization.
+Thank you very much for your support.</description>
     </item>
     
     <item>

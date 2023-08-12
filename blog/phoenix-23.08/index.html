@@ -10,7 +10,7 @@
   
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tags</title>
+  <title>New Macaroni-Security Repository is here!</title>
   <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
 
   <!-- Twitter Bootstrs CSS -->
@@ -107,130 +107,144 @@
 	</div>
 </section>
 
-<!-- Global Page Section Start -->
 <section class="global-page-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block">
-          <h2>Tags</h2>
-          <ol class="breadcrumb list-inline text-center">
-            <li class="list-inline-item">
-              <a href="https://www.macaronios.org/">
-                <i class="ion-ios-home"></i>
-                Home &nbsp; &nbsp;/
-              </a>
-            </li>
-            <li class="active list-inline-item">Tags</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>New Macaroni-Security Repository is here!</h2>
+					<div class="portfolio-meta">
+						<span>Sunday, Jul 30, 2023</span>|
+						<span> Tags:
+							macaroni, release, phoenix
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
-<!-- Global Page Section End -->
 
-<section id="blog-full-width">
+<section class="single-post">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+				<div class="post-content">
+					<p><strong>Finally, it&rsquo;s available the new <code>macaroni-security</code> repository!</strong></p>
+<p>Considering that the Funtoo release 1.4-prime is in EOL, we will use
+the <code>macaroni-security</code> repository to share security patches and
+updates of Browsers, Devs tools, and other packages meantime we
+rebooting Phoenix&rsquo;s branch to Funtoo Next.</p>
+<p>Due to this change, <strong>all users using Macaroni Phoenix MUST add
+the <code>macaroni-security</code> repository before executing any update</strong>.</p>
+<pre tabindex="0"><code>$&gt; luet repo update
+$&gt; luet i repository/macaroni-security
+$&gt; luet repo update
+$&gt; luet upgrade
+</code></pre><p>The repository <code>macaroni-security</code> uses the new tree v2 which requires
+luet version <em>0.37.0</em> or greather.</p>
+<p>This repository is also a good example for the users about how could
+create their repository starting from the Phoenix base layer and then
+using <em>luet-build</em> and <em>luet-portage-converter</em> to generate their
+packages.</p>
+<h1 id="macaroni-os-enter-on-docker-sponsored-open-source-program">Macaroni OS enter on Docker-Sponsored Open Source Program</h1>
+<p>We are really happy to announce that we are entered into the annual
+<a href="https://docs.docker.com/docker-hub/dsos-program/"><em>Docker-Sponsored Open Source Program</em></a>.</p>
+<p>The <a href="https://hub.docker.com/orgs/macaronios"><code>macaronios</code></a> docker user is now an organization.</p>
+<p>We will complete the right setup in the next month.</p>
+<p>Really, thanks to Docker Inc. for this opportunity.</p>
+<h1 id="phoenix-2308-is-out">Phoenix 23.08 is out!</h1>
+<p>This release introduces updates about the available Browsers
+and a lot of new packages for the development incoming with the
+<code>macaroni-security</code> repository:</p>
+<p>In particular, between the rest:</p>
+<pre><code>* Firefox 116.0.2
 
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/tags/macaroni/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/tags/macaroni/">macaroni</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Sunday, Jul 30, 2023</span>
-							
-							
-						</div>
-						<p>
-							
-						</p>
-						<a href="https://www.macaronios.org/tags/macaroni/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+* Google Chrome 115.0.5790.110
 
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/tags/phoenix/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/tags/phoenix/">phoenix</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Sunday, Jul 30, 2023</span>
-							
-							
-						</div>
-						<p>
-							
-						</p>
-						<a href="https://www.macaronios.org/tags/phoenix/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+* Brave 1.56.20
 
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/tags/release/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/tags/release/">release</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Sunday, Jul 30, 2023</span>
-							
-							
-						</div>
-						<p>
-							
-						</p>
-						<a href="https://www.macaronios.org/tags/release/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+* Jenkins 2.410
 
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/tags/terragon/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/tags/terragon/">terragon</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Saturday, Jun 24, 2023</span>
-							
-							
-						</div>
-						<p>
-							
-						</p>
-						<a href="https://www.macaronios.org/tags/terragon/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
+* Vivaldi 6.1.3035.257
+
+* Openssh v9.3p2 (CVE-2023-38408)
+
+* Thunderbird 115.1.0
+
+* Github Cli 2.32.1
+
+* MongoDB Compass 1.39.1
+</code></pre>
+<p>In addition, the new kernels are now available with the fix for CVE-2023-38408.</p>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-security/releases/tag/v23.08-phoenix">Phoenix Security 23.08 release</a> and on Github.</p>
+<p>The <code>macaroni-phoenix</code> repository will be freeze or with few updates
+until the migration from Funtoo 1.4-prime to Next.</p>
+<h1 id="terragon-2308-is-out">Terragon 23.08 is out!</h1>
+<p>A new release of the Funtoo Next release for Container is out.</p>
+<p>The new release contains the migration to luet tree v2 that improve 3x the repository update time:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minion ~ $&gt; time luet repo update --force macaroni-terragon
+</span></span><span style="display:flex;"><span>🏠 Repository:              macaroni-terragon Revision: <span style="color:#ae81ff">208</span> - 2023-06-14 15:13:15 +0000 UTC
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real	0m18.193s
+</span></span><span style="display:flex;"><span>user	0m4.807s
+</span></span><span style="display:flex;"><span>sys		0m1.236s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>minion ~ $&gt; time luet repo update --force macaroni-terragon-dev
+</span></span><span style="display:flex;"><span>🏠 Repository:          macaroni-terragon-dev Revision: <span style="color:#ae81ff">228</span> - 2023-08-11 15:15:06 +0000 UTC
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real	0m6.312s
+</span></span><span style="display:flex;"><span>user	0m0.477s
+</span></span><span style="display:flex;"><span>sys		0m0.788s
+</span></span></code></pre></div><p>This release is a maintenance release that contains between
+the rest:</p>
+<pre><code>* Rust v1.71.0
+
+* Grafana v10.0.3
+
+* Nodejs v20.5.0
+
+* Prometheus v2.46.0
+
+* Openssh v9.3p2 (CVE-2023-38408)
+</code></pre>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.08-terragon">Terragon 23.08 release</a>
+on Github.</p>
+<h1 id="what-next">What next?</h1>
+<p>Hereinafter, out hot points in our backlog:</p>
+<ol>
+<li>
+<p>The refactor of <code>luet-build</code> go ahead and we will rename our
+PMS at the end of this refactor with the new name
+<code>anise</code>/<code>anise-build</code>.</p>
+</li>
+<li>
+<p>Considering that the Funtoo release 1.4-prime will be in EOL
+for the end of the year we will move soon both Eagle and Phoenix
+release to the new tree. We will share for 3 or 4 months
+the repository <code>macaroni-phoenix-legacy</code> and <code>macaroni-eagle-legacy</code>
+to permit users using the 1.4-prime to manage a more quiet
+migration but without updates.</p>
+</li>
+<li>
+<p>At the moment the <code>luet-portage-converter</code> doesn&rsquo;t manage
+for the same package multiple versions. When the refactor
+of <code>luet-build</code> will be ended we will review this feature to
+support multiple version in the same repository (for example,
+having multiple release of Nodejs package).</p>
+</li>
+</ol>
+<h1 id="we-waiting-for-you">We waiting for you</h1>
+<p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
+<h1 id="thanks">Thanks</h1>
+<p>Many thanks to all Funtoo devs that are the sap of all this and to all
+people that helps us with testing and donations.</p>
+<h1 id="support-us">Support Us</h1>
+<p>Any user that wants to support our work for Macaroni could do this through the
+Github <a href="https://github.com/sponsors/geaaru">Sponsor</a>.</p>
+
+				</div>
 			</div>
 		</div>
 	</div>

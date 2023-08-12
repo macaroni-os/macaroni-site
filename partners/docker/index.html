@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   
-  <meta name="description" content="Macaroni">
+  <meta name="description" content="Docker-Sponsored Open Source Program">
   <meta name="author" content="Geaaru">
   <meta name="generator" content="Hugo 0.110.0">
   
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Frequently Asked Questions</title>
+  <title>Docker Inc.</title>
   <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
 
   <!-- Twitter Bootstrs CSS -->
@@ -107,128 +107,70 @@
 	</div>
 </section>
 
-<!-- Global Page Section Start -->
+<!-- Page Header -->
 <section class="global-page-header">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block">
-          <h2>Frequently Asked Questions</h2>
-          <ol class="breadcrumb list-inline text-center">
-            <li class="list-inline-item">
-              <a href="https://www.macaronios.org/">
-                <i class="ion-ios-home"></i>
-                Home &nbsp; &nbsp;/
-              </a>
-            </li>
-            <li class="active list-inline-item">Frequently Asked Questions</li>
-          </ol>
+          <h2>Docker Inc.</h2>
+          <div class="portfolio-meta">
+            <span>2023-08-12</span>|
+            <span> Category: docker, sponsored oss</span>|
+            <span> website:
+              <a href="https://docs.docker.com/docker-hub/dsos-program/">https://docs.docker.com/docker-hub/dsos-program/</a>
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Global Page Section End -->
 
-<section id="blog-full-width">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-					<div class="blog-content">
-            <h3 id="1-how-update-macaroni-repositories-urls"><strong>1. How update Macaroni Repositories URLs?</strong></h3>
-<p>In the last period due to the changes in the new domain and the stabilization of
-the Macaroni infra there are been a lot of changes in the repository URLs.
-Working with donated resources and/or free resources has the consequence that the
-changes could happen.</p>
-<p>So, I will describe the better way to upgrade safe our repositories.</p>
-<p>a) leave only the <code>geaaru-repo-index</code> repository enabled.
-This means to call <code>luet repo disable</code> for all others repositories</p>
-<pre tabindex="0"><code>$# luet repo disable macaroni-commons mottainai-stable macaroni-funtoo
+<!-- work details part start -->
+<section class="work-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        
+        <div class="work-single-image">
+          
+          <img class="img-fluid w-50" src="https://www.macaronios.org/images/partners/docker_logo.svg" alt="work-single-image">
+        </div>
+        
+        
+        
+        <div class="work-single-content">
+          <p>The Docker Inc. approved the Macaroni OS to the
+Docker-Sponsored Open Source program that permits
+to remove the rate-limit for all users pulling
+public images from our namespace.</p>
+<p>The Macaroni OS Docker images are available on our
+<a href="https://hub.docker.com/orgs/macaronios"><code>macaronios</code></a>
+organization.</p>
+<p>Thank you very much for your support.</p>
 
-$# luet repo list --enabled
-geaaru-repo-index
-  Macaroni OS Repository Index
-  Revision     4 - 2023-02-25 10:32:39 +0000 -00
-  Priority     1 - Type http
-</code></pre><p>b) At this point, it&rsquo;s possible update the repository and get the new urls:</p>
-<pre tabindex="0"><code>$# luet repo update
-🏠 Repository:              geaaru-repo-index Revision:   4 - 2023-02-25 10:32:39 +0000 -00
-$# luet upgrade
-</code></pre><p>The upgrade creates the files <code>/etc/luet/repos.conf.d/._cfg_&lt;repo&gt;.yml</code> that could be merged with the
-command <code>etc-update</code> (in the old system) or with the command <code>macaronictl etc-update</code>
-in the more updated systems.</p>
-<p>After the upgrade and the merge of the new configs the system is ready for the
-updates: <code>luet repo update</code> and <code>luet upgrade</code>.</p>
-<p>It&rsquo;s possible check the repositories urls with:</p>
-<pre tabindex="0"><code># luet repo list --urls --enabled
-geaaru-repo-index
-  Geaaru Repository index
-  Revision     4 - 2023-02-25 10:32:39 +0000 UTC
-  Priority     1 - Type http
-  Urls:
-   * https://cdn.macaronios.org/mottainai/geaaru-repo-index
-macaroni-commons-dev
-  Macaroni OS Commons Development Repository
-  Revision   129 - 2023-03-03 22:16:31 +0000 UTC
-  Priority    10 - Type http
-  Urls:
-   * https://dev.macaronios.org/macaroni-commons-dev/
-macaroni-funtoo-systemd-dev
-  Macaroni OS Funtoo Eagle Develop Repository
-  Revision   452 - 2023-02-26 11:14:32 +0000 UTC
-  Priority     2 - Type http
-  Urls:
-   * https://images.macaronios.org/macaroni-funtoo-systemd-dev/
-mottainai-dev
-  Mottainai Development Repository
-  Revision    72 - 2023-02-25 23:47:52 +0000 UTC
-  Priority    10 - Type http
-  Urls:
-   * https://dev.macaronios.org/mottainai-dev/
-mottainai-stable
-  Mottainai official Repository
-  Revision    72 - 2023-02-25 23:47:52 +0000 UTC
-  Priority    30 - Type http
-  Urls:
-   * https://dl.macaronios.org/repos/mottainai/
-   * https://cdn2.macaronios.org/repos/mottainai/
-   * https://macaronios.mirror.garr.it/repos/mottainai/
-</code></pre><h3 id="2-what-to-do-after-the-upgrade-of-the-luet-binary"><strong>2. What to do after the upgrade of the luet binary?</strong></h3>
-<p>I leave this point in the FAQ because I began to rewrite the Macaroni PMS and until
-I will rewrite the <code>luet-build</code> binary the <code>luet repo update</code> command executes
-some post-fetch operations on the downloaded tree to speed up the research,
-and to have the files used by the new solver available in the <code>luet</code>
-version 0.33.0 and followed.</p>
-<p>So, after the upgrade of luet there are two things that is better to do:</p>
-<pre tabindex="0"><code>$# luet database reindex
-</code></pre><p>This will rebuild the Bolt Database indexes and</p>
-<pre tabindex="0"><code>$# luet repo update --force
-</code></pre><p>that download and executes again the post-fetch hooks in the downloaded tree.</p>
-<p>One of the errors reported by the users when is not executed a full fetch
-of the Macaroni repositories after the upgrade is this:</p>
-<pre tabindex="0"><code>🤔 Computing upgrade, please hang tight... 💤
-Error: Package net-libs-4/webkit not found on map
-</code></pre><h3 id="3-why-luet-search-doesnt-return-packages"><strong>3. Why <code>luet search</code> doesn&rsquo;t return packages?</strong></h3>
-<p>Excluding the search of the packages installed, i mean with the <code>--installed</code>
-option, the <code>luet search</code> command works only when the enabled repositories are
-been synced.</p>
-<p>It&rsquo;s just needed to download one time the repositories tree and then all works
-fine.</p>
-<pre tabindex="0"><code>$# luet repo update
-...
-
-$# luet s macaronictl
-app-admin/macaronictl-0.6.2
-app-admin/macaronictl-thin-0.6.2
-
-# luet s portage-converter
-macaroni/luet-portage-converter-0.11.2
-</code></pre>
-          </div>
-			</div>
-		</div>
-	</div>
+        </div>
+        
+      </div>
+      <div class="col-lg-4">
+        
+        <div class="work-single-sidebar">
+          
+          <h5>Join date</h5>
+          <h6>August 5, 2023</h6>
+          
+          
+          <h5>Website</h5>
+          <h6>https://docs.docker.com/docker-hub/dsos-program/</h6>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- work details part end -->
 
 <!-- Footer Section Start -->
 <footer id="footer">
