@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2023-06-24
 linktitle: Releases 23.06 are out!
 title: New features incoming with 23.06 releases!
-menu:
-  main:
 tags:
   - macaroni
   - release

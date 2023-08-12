@@ -13,7 +13,7 @@
 				<figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms"
 					data-wow-delay="{{ $delay }}ms">
 					<div class="img-wrapper">
-						<img src="{{ .Params.Image | relURL }}" style="width: 250px;" class="img-fluid" alt="">
+						<img src="{{ .Params.Image | relURL }}" style="width: 250px;" class="img-fluid {{ .Params.Class }}" alt="">
 						<div class="overlay">
 							<div class="buttons">
 								<a href="{{ .Permalink }}">Details</a>

@@ -1474,4 +1474,8 @@ ul.social-icons li {
   text-decoration: none;
 }
 
+.logo-home {
+	max-width: 150px;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
