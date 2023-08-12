@@ -1,6 +1,6 @@
 ---
 author: "Daniele Rondina"
-date: 2023-07-30
+date: 2023-08-12
 linktitle: Releases 23.08 is out!
 title: New Macaroni-Security Repository is here!
 menu:
