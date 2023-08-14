@@ -219,7 +219,7 @@ The password of the `macaroni` user is `macaroni`.
   </tbody>
 </table>
 
-Our last release is <b>`23.06.01`</b> and it uses kernel *5.10.185* for Server ISOs and *6.1.35* for the others.
+Our last release is <b>`23.08`</b> and it uses kernel *5.10.188* for Server ISOs and *6.1.43* for the others.
 
 <div id="isos"></div>
 
