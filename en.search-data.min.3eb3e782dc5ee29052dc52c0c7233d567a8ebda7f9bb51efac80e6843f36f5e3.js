@@ -28,7 +28,7 @@ We will complete the right setup in the next month.
 Really, thanks to Docker Inc. for this opportunity.
 Phoenix 23.08 is out! This release introduces updates about the available Browsers and a lot of new packages for the development incoming with the macaroni-security repository:
 In particular, between the rest:
-* Firefox 116.0.2 * Google Chrome 115.0.5790.110 * Brave 1.56.20 * Jenkins 2.410 * Vivaldi 6.1.3035.257 * Openssh v9.3p2 (CVE-2023-38408) * Thunderbird 115.1.0 * Github Cli 2.32.1 * MongoDB Compass 1.39.1 In addition, the new kernels are now available with the fix for CVE-2023-38408.
+* Firefox 116.0.2 * Google Chrome 115.0.5790.110 * Brave 1.56.20 * Jenkins 2.410 * Vivaldi 6.1.3035.257 * Openssh v9.3p2 (CVE-2023-38408) * Thunderbird 115.1.0 * Github Cli 2.32.1 * MongoDB Compass 1.39.1 In addition, the new kernels are now available with the fix for CVE-2023-3269.
 See the complete changelog of Phoenix Security 23.08 release and on Github.
 The macaroni-phoenix repository will be freeze or with few updates until the migration from Funtoo 1.4-prime to Next.
 Terragon 23.08 is out! A new release of the Funtoo Next release for Container is out.
