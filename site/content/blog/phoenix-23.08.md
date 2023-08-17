@@ -76,7 +76,7 @@ In particular, between the rest:
 
     * MongoDB Compass 1.39.1
 
-In addition, the new kernels are now available with the fix for CVE-2023-38408.
+In addition, the new kernels are now available with the fix for CVE-2023-3269.
 
 See the complete changelog of [Phoenix Security 23.08 release](https://github.com/macaroni-os/macaroni-security/releases/tag/v23.08-phoenix) and on Github.
 
