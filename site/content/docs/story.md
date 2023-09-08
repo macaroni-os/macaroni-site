@@ -234,6 +234,10 @@ the **Funtoo Linux** Linux distribution based on Gentoo Linux. It
 was created by **Daniel Robbins** after that the Gentoo Foundation
 doesn't want to follow the ideas proposed by Robbins.
 
+Thanks to the high quality of the solution and the easy customization
+in 2009 Google chose to create the **Chrome OS** (or **Chromium OS**)
+based on Gentoo (previously based on Ubuntu).
+
 Between battles with Solaris servers and Debian's VMs on beginning
 working on supplying ready-to-use binary packages for my Clients,
 my colleague, and friend **Walter Curtetti** (aka `kurtz81`) shared
