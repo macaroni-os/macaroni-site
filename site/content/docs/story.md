@@ -75,7 +75,8 @@ These pieces of information with others are what is called the
 `metadata` of the package and for an installed package are visible
 under the directory `/var/db/pkg`.
 
-In Macaroni, like in both binary `luet-portage-converter` and `luet`
+In Macaroni, like in both binary `anise-portage-converter`
+(previously `luet-portage-converter`) and `luet`
 we use code available in the `pkgs-checker` tool that I written in
 Golang that between the rest, it has a way to retrieve package *metadata*
 and convert them to JSON:
