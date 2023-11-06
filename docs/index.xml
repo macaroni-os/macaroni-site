@@ -7,6 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://www.macaronios.org/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Funtoo zone</title>
+      <link>https://www.macaronios.org/docs/funtoo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/funtoo/</guid>
+      <description>Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have an more linear installation between systems and help on share network filesystem like NFS.
+It possible to see the list of the available uid/gid with the following command:</description>
+    </item>
+    
+    <item>
       <title>Getting Started</title>
       <link>https://www.macaronios.org/docs/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

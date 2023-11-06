@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funtoo zone</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><head>
+  <meta name="generator" content="Hugo 0.110.0">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funtoo zone</title>
+<link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+<!-- Twitter Bootstrs CSS -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+<!-- Ionicons Fonts Css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+<!-- animate css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+<!-- Hero area slider css-->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+<!-- slick slider -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+<!-- hover -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+<!-- template main css file -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+
+  
+<!-- Custom stylesheet - for your changes -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Funtoo zone" />
+<meta property="og:description" content="Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have an more linear installation between systems and help on share network filesystem like NFS.
+It possible to see the list of the available uid/gid with the following command:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.macaronios.org/docs/funtoo/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="Macarani OS" />
+<title>Funtoo zone | Macaroni OS</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
+<script defer src="/en.search.min.cca9f464f3fe4a91beb685780640b1b44c39788217b00ebcb3ba0da961ddcb0c.js" integrity="sha256-zKn0ZPP&#43;SpG&#43;toV4BkCxtEw5eIIXsA68s7oNqWHdyww="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/faq/">FAQ</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.08/">Releases 23.08 is out!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section><body dir="ltr">
+
+  <div style="margin-top: 60px;">
+
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/"><strong>The Project</strong></a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-releases">Macaroni Releases</a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-os-phoenix">Phoenix</a></li>
+<li>
+  <a href="/docs/#macaroni-os-eagle">Eagle</a></li>
+<li>
+  <a href="/docs/#macaroni-os-terragon">Terragon</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/#macaroni-repositories">Macaroni Repositories</a></li>
+<li>
+  <a href="/docs/#macaroni-tags">Macaroni Tags</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/story/"><strong>The Story</strong></a></li>
+<li>
+  <a href="/docs/getting-started/"><strong>Getting Started</strong></a>
+<ul>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a></li>
+<li>
+  <a href="/docs/networking/">Networking</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/pms/"><strong>Package Manager System</strong></a>
+<ul>
+<li>
+  <a href="/docs/pms/#1-repositories-or-wagons">Repositories or Wagons</a></li>
+<li>
+  <a href="/docs/pms/#2-subsets">Subsets</a></li>
+<li>
+  <a href="/docs/pms/#3-search-packages">Search Packages</a></li>
+<li>
+  <a href="/docs/pms/#4-install-packages">Install Packages</a></li>
+<li>
+  <a href="/docs/pms/#6-uninstall-packages">Uninstall Packages</a></li>
+<li>
+  <a href="/docs/pms/#7-upgrade-the-system">Upgrade System</a></li>
+<li>
+  <a href="/docs/pms/#91-show-files-owned-by-a-specific-package">Show files owned by a specific package</a></li>
+<li>
+  <a href="/docs/pms/#92-resolve-what-package-a-file-belongs-to">Resolve what package a file belongs to</a></li>
+<li>
+  <a href="/docs/pms/#93-show-orphans-packages">Show orphans Packages</a></li>
+<li>
+  <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a></li>
+<li>
+  <a href="/docs/pms/#11-masking-packages">Masking Packages</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/funtoo/"class=active><strong>Funtoo Zone</strong></a>
+<ul>
+<li>
+  <a href="/docs/funtoo/#main-differences-between-funtoo-and-macaroni-os">Main differences between Funtoo and Macaroni OS</a></li>
+<li>
+  <a href="/docs/funtoo/#upgrade-funtoo-14-to-funtoo-next-with-macaroni">Upgrade Funtoo 1.4 to Funtoo Next with Macaroni</a></li>
+<li>
+  <a href="/docs/funtoo/#integrate-funtoo-next-rootfs-with-macaroni">Integrate Funtoo Next with Macaroni</a>
+<br /></li>
+</ul>
+</li>
+</ul>
+<br />
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/blog/" >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/macaroni-os" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page" >
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Funtoo zone</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="main-differences-between-funtoo-and-macaroni-os">
+  Main differences between Funtoo and Macaroni OS
+  <a class="anchor" href="#main-differences-between-funtoo-and-macaroni-os">#</a>
+</h1>
+<h2 id="1-static-uidgid">
+  1. Static UID/GID
+  <a class="anchor" href="#1-static-uidgid">#</a>
+</h2>
+<p>The system UID (user ID) and GID (group ID) of the major services are statically
+allocated and managed through the <code>entities</code> tool and his catalog. This helps
+to have an more linear installation between systems and help on share network
+filesystem like NFS.</p>
+<p>It possible to see the list of the available uid/gid with the following
+command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all groups availables in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list groups --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all users available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list users --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all shadow available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list shadow --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all gshadow available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list gshadow --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all groups configured in the current rootfs</span>
+</span></span><span style="display:flex;"><span>$&gt;  entities list groups
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all users configured in the current rootfs</span>
+</span></span><span style="display:flex;"><span>$&gt;  entities list users
+</span></span></code></pre></div><p>The <code>entities</code> tool is a replacer of the classic <code>adduser</code>, <code>gpasswd</code>, etc.</p>
+<h2 id="2-use-flags-not-aligned-to-funtoo-profiles">
+  2. Use flags not aligned to Funtoo Profiles
+  <a class="anchor" href="#2-use-flags-not-aligned-to-funtoo-profiles">#</a>
+</h2>
+<p>Macaroni OS is a binaries-based distribution that wants to try to supply
+multiple DE. To reach this target means that a lot of user flags must be
+enabled but without trying to inject unnecessary dependencies when possible.
+So, for this reason, the control of the use flags selected for every package
+is done by the <code>anise-portage-converter</code> tool that permits to override
+existing dependencies and/or elaborate dependencies based on the use flags
+defined in the <code>anise-portage-converter</code> specs. This permits a major control
+of the compilation process but unlucky, doesn&rsquo;t permit it to maintain
+compatibility with the Funtoo profiles that are used to configure the use
+flags based on the needs of the users and their choice. This means that
+installing Macaroni&rsquo;s packages and just using <code>emerge</code> could be not managed
+with a simple configuration of the Funtoo profiles and instead it&rsquo;s highly
+probable that just trying to emerge the <code>@world</code> will ask for changes of the
+use flags used instead by Macaroni.</p>
+<h2 id="3-split-packages">
+  3. Split packages
+  <a class="anchor" href="#3-split-packages">#</a>
+</h2>
+<p>So, in order to support multiple use cases but will fewer dependencies
+injected we have some packages that are been split without having a map 1:1
+with an ebuild. For example, the <em>pinentry</em> package installs additional binary
+when <code>gtk</code>/<code>gnome</code> use flag is enabled with the <code>pinetry-gnome</code> binary or with
+the <code>qt</code> use flag the <code>pinentry-qt</code>, etc.
+Thanks to our build process it&rsquo;s very easy to assign the specific file to
+a specific package, but this package will be without portage metadata and
+instead, the use flags of the main <em>pinentry</em> package will be minimal.</p>
+<h2 id="4-packages-from-scratch">
+  4. Packages from scratch
+  <a class="anchor" href="#4-packages-from-scratch">#</a>
+</h2>
+<p>In addition, there are packages that are not related to a specific ebuild
+because the Macaroni build process permits building packages from scratch
+or through different Docker images as a base. These will be available in
+your system but not visible through the emerge tool, for example, the
+<code>anise</code> binary is compiled directly with Go without an ebuild.</p>
+<h2 id="5-portage-metadata-optional">
+  5. Portage metadata optional
+  <a class="anchor" href="#5-portage-metadata-optional">#</a>
+</h2>
+<p>The installation of the Portage metadata and the include files are optional,
+they are installed only when the <em>subsets</em> <code>devel</code> and <code>portage</code> are enabled.
+This permits users without the need to compile software to reduce space used
+in their filesystem.</p>
+<p>The Portage package database under the directory <code>/var/db/pkg</code> is then used by
+the <code>anise-portage-converter</code> tool to compare packages updates with emerge that
+will be added in the Macaroni database with the <code>scm</code> repository and will be
+part of the Macaroni upgrades if the installed version will be elder or will be
+the same version available in Macaroni repository. In particular, in order to
+automatically install missing runtime dependencies the <code>anise</code> tool creates a
+hash will the <em>requires</em> of the analyzed package and if this hash is different
+from the hash of the installed package will be queued for the upgrade with the
+asterisk in the version (for example, *1.1.1). It&rsquo;s possible that the injected
+package added from <code>anise-portage-converter</code> will have different <em>requires</em> of
+the Macaroni original specs; this is the reason because will be replaced.
+This could be avoided by masking the package.</p>
+<h2 id="6-etc-update-and-env-update-implementation">
+  6. etc-update and env-update implementation
+  <a class="anchor" href="#6-etc-update-and-env-update-implementation">#</a>
+</h2>
+<p>The Funtoo/Gentoo <code>etc-update</code> and <code>env-update</code> scripts are supplied by the
+<code>sys-apps/portage</code> package that requires Python to be installed with a lot
+of dependencies.</p>
+<p>In order to reduce the installation of the packages for a Macaroni&rsquo;s  minimal
+image where Python is not something needed, for example considering CD/CI tasks,
+Macaroni implements the <code>macaronictl etc-update</code> that supplies an <code>etc-update</code>
+compliant command and as a replacer. It has a few differences that are more
+related to the interactive shell but for the rest, it&rsquo;s pretty similar.</p>
+<p>The same concept is applicable to the <code>macaronictl env-update</code> command that
+reimplements a Portage-compliant logic. The behavior is configurable, instead
+of updating every time the system and the (t)csh environment files, for these
+two the configuration is enabled respectively with the options <code>--systemd</code> and <code>--csh</code>.</p>
+<h2 id="7-post-installpost-remove-commands">
+  7. Post-install/Post-remove commands
+  <a class="anchor" href="#7-post-installpost-remove-commands">#</a>
+</h2>
+<p>In the Funtoo/Gentoo world where every package is compiled the ebuild file contains
+the instructions about how to compile the package supply yet the steps for the
+post-installation and post-remove. Macaroni divides completely the build process
+from the runtime/install phase and as described in the previous chapters the Portage
+metadata could not be present, like the kits. In Macaroni, the post-install and
+post-remove operations are managed by the <code>finalizer</code> that could be added in the
+<code>anise</code> specs over the YAML file <code>finalize.yaml</code> of the package. Due to the complexity
+of this phase, and because sometimes could be helpful to re-run the post-install
+steps we have created the tool <strong>whip</strong> that collects the instructions about what runs
+as a specific hook. The hook is a scripted list of commands to run.</p>
+<p>The same hooks are used as post-install/pre-install steps or just like ready-to-use
+commands for particular example described in the next chapters about upgrading
+Funtoo 1.4 to Funtoo Next/Macaroni.</p>
+<p>At the moment, it&rsquo;s possible that some hooks could be missing and please, you open a
+PR or an issue if you find something.</p>
+<h2 id="8-macaroni-solver-logic">
+  8. Macaroni solver logic
+  <a class="anchor" href="#8-macaroni-solver-logic">#</a>
+</h2>
+<p>The Funtoo/Gentoo&rsquo;s Portage solver always considers RDEPEND (runtime dependencies) as
+mandatory dependencies for the compilation of a package. We understand this choice,
+for example, this is needed for <em>virtual</em> package, the consequence is the ebuilds have
+some dependencies added as RDEPEND when could be more correct to have them as DEPEND
+for Macaroni. So, for these use cases, we override the dependencies through the
+<code>anise-portage-converter</code> specs.</p>
+<p>Another big difference is that at the moment the <code>anise</code> solver doesn&rsquo;t support the
+OR condition needed to supply alternative packages supply the same feature.
+This is been a design choice to try to maintain things more simple for the solver,
+a similar functionality could be handled by the <em>provides</em> and the mask feature.
+But it&rsquo;s something that could be grown based on the use cases we need to support.</p>
+<p>Third, the default behavior of the solver in the upgrading process is to select only
+packages with a greater version for speedup reasons. The downgrade is possible on
+adding <code>--deep</code> flag on <code>upgrade</code> command.</p>
+<h2 id="9-kernel-initrd-and-extra-modules">
+  9. Kernel, initrd and extra modules
+  <a class="anchor" href="#9-kernel-initrd-and-extra-modules">#</a>
+</h2>
+<p>At the moment we writing this documentation the kernels available to the Macaroni OS
+are based on vanilla, compiled over the Macaroni Terragon Release system but without
+generating Portage metadata. In order to handle automatically the upgrade of the branch
+release selected we don&rsquo;t follow the Funtoo way where the slot of the kernel is based
+on the full version of the kernel. We understand the choice of Funtoo where the user
+has sufficient skill to manage the compilation of the kernel and a more precise tune,
+but it&rsquo;s a bit more complex for a binary distribution to manage the automatic upgrade.
+So, all kernels and modules use as a package category with the name <code>kernel-&lt;branch-version&gt;</code>
+and the new versions of the category will replace the previous. So, the package
+<em>kernel-5.10/macaroni-full-5.10.198</em> will be upgraded by the package
+<em>kernel-5.10/macaroni-full-5.10.199</em>, etc.</p>
+<p>In a similar way, the extra kernel modules will be managed with the same logic the category
+but with the version of the module used, for example, for ZFS, the package will be
+<em>kernel-5.10/zfs-kmod-2.2.0</em> and for new kernel release we will bump a new build version of
+the same package, for example, <em>kernel-5.10/zfs-kmod-2.2.0+1</em>.</p>
+<p>About <em>initrd</em>, at the moment we use a custom initrd based of Golang <code>u-root</code> for the
+Macaroni ISO, and instead it&rsquo;s used Dracut for the generation of the initrd images in the
+installed rootfs (Desktop and Server).</p>
+<h1 id="upgrade-funtoo-14-to-funtoo-next-with-macaroni">
+  Upgrade Funtoo 1.4 to Funtoo Next with Macaroni
+  <a class="anchor" href="#upgrade-funtoo-14-to-funtoo-next-with-macaroni">#</a>
+</h1>
+<p>Before beginning to describe how to upgrade a Funtoo 1.4 rootfs to a Funtoo Next rootfs
+I want to share that at the moment the Funtoo Community doesn&rsquo;t support officially
+the upgrade of a Funtoo 1.4 environment to a Funtoo Next environment.</p>
+<p>This means that this guide is <strong>not officially supported by Funtoo Community</strong> but it&rsquo;s
+an experimental behavior about how <code>Macaroni OS</code> could be used to help <code>Funtoo</code>
+users in some particular operations.</p>
+<p><strong>Macaroni&rsquo;s team does not suggest using this experimental process without specific
+tests and with a backup to recover the state of the previous system before the upgrade.</strong></p>
+<p>The second point to share before going ahead is that there are a few differences between
+Funtoo and Macaroni that will be available after this upgrade based on what is been
+described in the previous chapters. Any user who wants to add some more details about
+restoring a Funtoo complete state after this operation could add more information here
+by sending a PR.</p>
+<p>Due the complexity of this workflow we have prepared a <em>whip</em> 
+  <a href="https://github.com/macaroni-os/whip-catalog/blob/master/catalog/commons/macaroni.yaml#L96">hook</a>
+that could be used to speedup some upgrade process.</p>
+<p>It&rsquo;s also available in an 
+  <a href="https://asciinema.org/a/619230">asciinema</a> stream that shows
+the steps to upgrade an LXD container with Funtoo 1.4 to a Macaroni Funtoo Next rootfs
+that we share hereinafter, too.</p>
+<p>For this presentation we use an LXD container but the steps for a Desktop environment
+are pretty equal.</p>
+<h4 id="1-create-the-lxd-funtoo-14-container">
+  1. Create the LXD Funtoo 1.4 Container
+  <a class="anchor" href="#1-create-the-lxd-funtoo-14-container">#</a>
+</h4>
+<p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we could
+launch the container with this command:</p>
+<pre tabindex="0"><code>$&gt; lxc launch -p default images:funtoo/1.4 test
+</code></pre><p>We consider that the <code>default</code> profiles is configured correctly with a valid
+storage pool and a network interface where is enabled DHCP.</p>
+<h4 id="2-install-macaroni-pms-binary">
+  2. Install Macaroni PMS binary
+  <a class="anchor" href="#2-install-macaroni-pms-binary">#</a>
+</h4>
+<p>At the moment, the Macaroni PMS repository is 
+  <a href="https://github.com/geaaru/luet/">luet</a>
+but the installer creates already the symbolic link with the new name <code>anise</code>. The repository
+will be soon migrated with the new name.</p>
+<pre tabindex="0"><code>$&gt; curl https://raw.githubusercontent.com/geaaru/luet/geaaru/contrib/config/get_luet_root.sh | sh
+</code></pre><h4 id="3-install-macaroni-repositories">
+  3. Install Macaroni repositories
+  <a class="anchor" href="#3-install-macaroni-repositories">#</a>
+</h4>
+<p>In order to start the upgrade we need to install the Macaroni repositories. In this
+example, we use the Phoenix release but could be used the Terragon release too.</p>
+<pre tabindex="0"><code>$&gt; anise i -y  repository/macaroni-commons-testing repository/macaroni-phoenix-testing
+</code></pre><h4 id="4-download-the-repositories-metadata">
+  4. Download the repositories metadata
+  <a class="anchor" href="#4-download-the-repositories-metadata">#</a>
+</h4>
+<p>Before to download the repositories data, we want to share how it&rsquo;s possible to mask
+a package available from different packages and to configure the solver to get only
+the package the user wants. For example, the package <code>jq</code> is available inside the
+<code>mottainai-stable</code> repository without Portage metadata, but it&rsquo;s also available as
+package <code>app-admin/jq</code> with the Portage metadata and based on Funtoo ebuild.
+In this case, to force the second it&rsquo;s possible mask the other in this way:</p>
+<pre tabindex="0"><code>$&gt; mkdir /etc/luet/mask.d
+$&gt; echo &#34;
+enabled: true
+rules:
+  - utils/jq::mottainai-stable
+&#34; &gt; /etc/luet/mask.d/00-mask.yml
+</code></pre><p>Another important thing to do before execute the upgrade is to enable the <em>subsets</em>
+<code>devel</code> and <code>portage</code> that are by default disabled.</p>
+<pre tabindex="0"><code>$&gt; anise subsets enable devel portage
+</code></pre><p>and finally to start the <code>repo update</code>:</p>
+<pre tabindex="0"><code>$&gt; anise repo update
+</code></pre><h4 id="5-install-anise-portage-converter-tool">
+  5. Install <code>anise-portage-converter</code> tool
+  <a class="anchor" href="#5-install-anise-portage-converter-tool">#</a>
+</h4>
+<p>In order to upgrade the system we need to install the <code>anise-portage-converter</code> tool
+that will sync the list of the installed packages in the system of the Portage inside
+the <code>anise</code> database.</p>
+<pre tabindex="0"><code>$&gt; anise install -y anise-portage-converter app-misc/jq
+</code></pre><h4 id="6-sync-portage-to-anise-database">
+  6. Sync Portage to Anise database
+  <a class="anchor" href="#6-sync-portage-to-anise-database">#</a>
+</h4>
+<pre tabindex="0"><code>$&gt; anise-portage-converter sync
+</code></pre><p>eventually it&rsquo;s possible to run the command with <code>--dry-run</code> to test the execution
+without update the <code>anise</code> database.</p>
+<h4 id="7-install-macaroni-tools">
+  7. Install Macaroni tools
+  <a class="anchor" href="#7-install-macaroni-tools">#</a>
+</h4>
+<p>We need to install the <strong>whip</strong> tool and the other stuff used in the Macaroni finalizer.</p>
+<pre tabindex="0"><code>$&gt; anise i -y whip whip-catalog entities whip-profiles/macaroni macaronictl-thin entities macaroni/entities-catalog
+</code></pre><p>These packages could be removed at the end of the upgrade if you will use the rootfs
+only as Funtoo rootfs.</p>
+<h4 id="8-start-the-upgrade">
+  8. Start the upgrade
+  <a class="anchor" href="#8-start-the-upgrade">#</a>
+</h4>
+<p>Finally, we can start the upgrade and use the environment variable <code>SKIP_GRUB=1</code> to skip
+the generation of the macaroni initrd and/or Grub setup.</p>
+<p>It&rsquo;s also available the variable <code>SKIP_CLEANUP</code> to avoid the clean of the anise cache with all
+downloaded packages. If for example, you want to run the same workflow in another node and copy
+the packages manually.</p>
+<pre tabindex="0"><code>$&gt; SKIP_GRUB=1 whip h macaroni.upgrade2funtoo-next
+</code></pre><p>or for Desktop/Server filesystem:</p>
+<pre tabindex="0"><code>$&gt; whip h macaroni.upgrade2funtoo-next
+</code></pre><h4 id="9-run-macaronictl-etc-update">
+  9. Run <code>macaronictl etc-update</code>
+  <a class="anchor" href="#9-run-macaronictl-etc-update">#</a>
+</h4>
+<p>In the same way, you run <code>etc-update</code> in Funtoo you can run <code>macaronictl etc-update</code> and check
+what files merge and/or drop. But it&rsquo;s also true that if you have installed the <em>sys-apps/portage</em>
+package you can use also the <code>etc-update</code> from Portage. The both can work together.</p>
+<p>At the moment, there are known issues in <code>anise</code> that could generate extra diff: <code>anise</code> doesn&rsquo;t
+support a CONFIG_PROTECT_MASK similar option. So, if it&rsquo;s been configured the directory <em>/etc</em> as
+a protected directory, every file will be protected also on removing a package. But what has not
+been managed automatically from <code>anise</code> could be overridden with <code>macaronictl etc-update</code> with the
+option <code>-m|--mask-path</code> that permits to define of one or more additional mask paths.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; macaronictl etc-update --help
+</span></span><span style="display:flex;"><span>handle configuration file updates and automatically
+</span></span><span style="display:flex;"><span>merge the CONFIG_PROTECT_MASK files.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl etc-update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>   etc-update <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Aliases:
+</span></span><span style="display:flex;"><span>  etc-update, etc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -h, --help                    help <span style="color:#66d9ef">for</span> etc-update
+</span></span><span style="display:flex;"><span>  -m, --mask-path stringArray   Define one or more additional mask paths <span style="color:#f92672">(</span>CONFIG_PROTECT_MASK<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>  -p, --path stringArray        Scan one or more specific paths <span style="color:#f92672">(</span>CONFIG_PROTECT<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>      --rootfs string           Override the default path where run etc-update. <span style="color:#f92672">(</span>experimental<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Global Flags:
+</span></span><span style="display:flex;"><span>  -c, --config string   Macaronictl configuration file
+</span></span><span style="display:flex;"><span>  -d, --debug           Enable debug output.
+</span></span></code></pre></div><p>So, running the command will be show an interactive shell to understand what
+files merge or drop:</p>
+<pre tabindex="0"><code>$&gt; macaronictl etc-update
+Scanning Configuration files... 
+File ._cfg0001_sshd_config is an orphan. Removing it directly...
+File ._cfg0002_sshd_config is an orphan. Removing it directly...
+Automerging file /etc/ca-certificates.conf config protect masked.
+Automerging file /etc/os-release config protect masked.
+The following is the list of files which need updating, each
+configuration file is followed by a list of possible replacement files.
+
+[  1] /etc/env.d/50baselayout
+[  2] /etc/init.d/devfs
+[  3] /etc/init.d/dhcpcd
+[  4] /etc/init.d/s6-svscan
+[  5] /etc/netif.d/dhclient
+[  6] /etc/ego.conf
+[  7] /etc/init.d/numlock
+[  8] /etc/terminfo/s/screen
+[  9] /etc/rc.conf
+[ 10] /etc/init.d/agetty
+[ 11] /etc/ssh/moduli
+[ 12] /etc/terminfo/s/screen-256color
+[ 13] /etc/dhcpcd.conf
+[ 14] /etc/init.d/cgroups
+[ 15] /etc/init.d/hwclock
+[ 16] /etc/init.d/localmount
+[ 17] /etc/init.d/modules
+[ 18] /etc/init.d/osclock
+[ 19] /etc/portage/savedconfig/sys-apps/busybox-1.36.0
+[ 20] /etc/python-exec/python-exec.conf
+[ 21] /etc/init.d/bootmisc
+[ 22] /etc/terminfo/x/xterm-color
+[ 23] /etc/terminfo/s/screen.xterm-256color
+[ 24] /etc/issue
+[ 25] /etc/terminfo/x/xterm
+[ 26] /etc/terminfo/x/xterm-256color
+
+[ -1] to exit
+[ -3] to auto merge all files
+[ -7] to discard all updates
+
+
+Please select a file to edit by entering the corresponding number.
+	(don&#39;t use -3 or -7 if you&#39;re ensure what to do):
+</code></pre><p>One of the differences between <code>macaronictl etc-update</code> and <code>etc-update</code> is that the
+file number is reset when a specific file is been managed, this permits to use of
+the number 1 always until the files are been all processed.</p>
+<p>For example, the files under <code>/etc/terminfo/</code> normally must be merged and
+will be soon managed as CONFIG_PROTECT_MASK when the feature will present
+in the <code>anise</code> software.</p>
+<h4 id="10-run-macaronictl-env-update">
+  10. Run <code>macaronictl env-update</code>
+  <a class="anchor" href="#10-run-macaronictl-env-update">#</a>
+</h4>
+<p>This command updates the <em>/etc/profile.env</em> and regenerates the file ld.so.cache
+like the Funtoo <code>env-update</code> command:</p>
+<pre tabindex="0"><code>$&gt; macaronictl env-update
+&gt;&gt;&gt; Generating /etc/profile.env...
+&gt;&gt;&gt; Generating /etc/ld.so.conf...
+&gt;&gt;&gt; Regenerating /etc/ld.so.cache...
+</code></pre><h4 id="11-verify-the-linking-of-the-installed-files">
+  11. Verify the linking of the installed files
+  <a class="anchor" href="#11-verify-the-linking-of-the-installed-files">#</a>
+</h4>
+<p>It&rsquo;s available a <strong>whip</strong> hook that permits to verify if there are libraries or
+binaries with links to no more available libraries.</p>
+<p>It&rsquo;s a good idea to run this command on every upgrade:</p>
+<pre tabindex="0"><code>$&gt; whip h linking.check
+Checking directory /usr/lib64...
+Checking directory /usr/lib...
+Checking directory /usr/bin...
+Checking directory /bin...
+Checking directory /usr/sbin...
+Checking directory /usr/libexec...
+[linking.check] Completed correctly.
+</code></pre><p>The directories checked by default are these:</p>
+<ul>
+<li>/usr/lib64</li>
+<li>/usr/lib</li>
+<li>/usr/bin</li>
+<li>/bin</li>
+<li>/usr/sbin</li>
+<li>/usr/libexec</li>
+</ul>
+<p>But could be changed overriding the environment variable <code>DIRS</code>:</p>
+<pre tabindex="0"><code>$&gt; DIRS=&#34;/usr/lib64&#34; whip h linking.check
+</code></pre><h4 id="12-remove-orphans-packages">
+  12. Remove orphans packages
+  <a class="anchor" href="#12-remove-orphans-packages">#</a>
+</h4>
+<p>When the upgrade is ended, it&rsquo;s possible check what packages installed
+are no more available in the Macaroni repositories that could be removed
+through the <code>anise query orphans</code> command:</p>
+<pre tabindex="0"><code># anise q orphans
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🧠 Searching for orphans packages...
+dev-python/chardet-compat-4.0.0
+dev-python/enum34-1.1.10
+dev-python/setuptools_scm-compat-5.0.2
+dev-python/cryptography-compat-3.3.2
+dev-python/mwparserfromhell-compat-0.5.4
+dev-python/setuptools-compat-44.1.1
+dev-lang-2.7/python-2.7.18
+sys-apps/opentmpfiles-0.3.1
+sys-devel/binutils-config-5.4
+dev-python/pyopenssl-compat-21.0.0
+dev-python/zipp-compat-1.2.0
+dev-python/requests-compat-2.27.1
+dev-python/importlib_metadata-compat-2.1.1
+dev-python/packaging-compat-20.9
+sys-kernel-debian-sources-6.3.7_p1/debian-sources-6.3.7
+dev-python/configparser-4.0.2
+dev-python/pygments-compat-2.5.2
+dev-python/wheel-compat-0.37.1
+dev-lang-3.7/python-3.7.17
+sys-devel-9.2.0/gcc-9.2.0
+dev-python/idna-compat-2.9
+</code></pre><p>The <em>debian-sources</em> package will be always see as orphans for the reasons
+described before. Any user could choice what packages remove or leave.</p>
+<p>For the example we want to leave only packages available in Macaroni to the steps
+will be:</p>
+<pre tabindex="0"><code>$&gt; # Removing all python 2.7 packages...
+$&gt; anise rm -y $(anise s compat --installed)
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🔪 [  1 of  13] [D] dev-python/chardet-compat::scm                                - 4.0.0
+🔪 [  2 of  13] [D] dev-python/cryptography-compat::scm                           - 3.3.2
+🔪 [  3 of  13] [D] dev-python/idna-compat::scm                                   - 2.9
+🔪 [  4 of  13] [D] dev-python/importlib_metadata-compat::scm                     - 2.1.1
+🔪 [  5 of  13] [D] dev-python/mwparserfromhell-compat::scm                       - 0.5.4
+🔪 [  6 of  13] [D] dev-python/packaging-compat::scm                              - 20.9
+🔪 [  7 of  13] [D] dev-python/pygments-compat::scm                               - 2.5.2
+🔪 [  8 of  13] [D] dev-python/pyopenssl-compat::scm                              - 21.0.0
+🔪 [  9 of  13] [D] dev-python/requests-compat::scm                               - 2.27.1
+🔪 [ 10 of  13] [D] dev-python/setuptools-compat::scm                             - 44.1.1
+🔪 [ 11 of  13] [D] dev-python/setuptools_scm-compat::scm                         - 5.0.2
+🔪 [ 12 of  13] [D] dev-python/wheel-compat::scm                                  - 0.37.1
+🔪 [ 13 of  13] [D] dev-python/zipp-compat::scm                                   - 1.2.0
+♻️ [  1 of  13] dev-python/chardet-compat::scm                                    - 4.0.0           # uninstalled ✔ 
+♻️ [  2 of  13] dev-python/cryptography-compat::scm                               - 3.3.2           # uninstalled ✔ 
+♻️ [  3 of  13] dev-python/idna-compat::scm                                       - 2.9             # uninstalled ✔ 
+♻️ [  4 of  13] dev-python/importlib_metadata-compat::scm                         - 2.1.1           # uninstalled ✔ 
+♻️ [  5 of  13] dev-python/mwparserfromhell-compat::scm                           - 0.5.4           # uninstalled ✔ 
+♻️ [  6 of  13] dev-python/packaging-compat::scm                                  - 20.9            # uninstalled ✔ 
+♻️ [  7 of  13] dev-python/pygments-compat::scm                                   - 2.5.2           # uninstalled ✔ 
+♻️ [  8 of  13] dev-python/pyopenssl-compat::scm                                  - 21.0.0          # uninstalled ✔ 
+♻️ [  9 of  13] dev-python/requests-compat::scm                                   - 2.27.1          # uninstalled ✔ 
+♻️ [ 10 of  13] dev-python/setuptools-compat::scm                                 - 44.1.1          # uninstalled ✔ 
+♻️ [ 11 of  13] dev-python/setuptools_scm-compat::scm                             - 5.0.2           # uninstalled ✔ 
+♻️ [ 12 of  13] dev-python/wheel-compat::scm                                      - 0.37.1          # uninstalled ✔ 
+♻️ [ 13 of  13] dev-python/zipp-compat::scm                                       - 1.2.0           # uninstalled ✔ 
+</code></pre><p>and later removing the old GCC and Python versions, etc.:</p>
+<pre tabindex="0"><code>$&gt; anise rm -y dev-python/configparser dev-python/enum34 \
+   sys-kernel-debian-sources-6.3.7_p1/debian-sources dev-lang-3.7/python \
+   sys-devel-9.2.0/gcc dev-lang-2.7/python sys-devel/binutils-config
+</code></pre><h4 id="13-reboot-and-starting-to-play-with-funtoo-">
+  13. Reboot and starting to play with Funtoo 🎊
+  <a class="anchor" href="#13-reboot-and-starting-to-play-with-funtoo-">#</a>
+</h4>
+<p>The job is done! The container is been upgraded.</p>
+<pre tabindex="0"><code>$&gt; reboot
+</code></pre><p>and later begin with the Funtoo fun:</p>
+<pre tabindex="0"><code>$&gt; ego sync
+</code></pre><h1 id="integrate-funtoo-next-rootfs-with-macaroni">
+  Integrate Funtoo Next rootfs with Macaroni
+  <a class="anchor" href="#integrate-funtoo-next-rootfs-with-macaroni">#</a>
+</h1>
+<p>Hereinafter will be shared the steps needed to integrate Macaroni into an existing
+Funtoo Next filesystem and get the power from both worlds.</p>
+<p><strong>The Funtoo Community doesn&rsquo;t support officially issues from filesystems that don&rsquo;t
+follow the 
+  <a href="https://www.funtoo.org/Wolf_Pack_Philosophy">Wolf Pack Philosophy</a>, so before opening issues about errors on emerging
+packages from Funtoo Kits you need to be sure that the issue is easily reproducible
+from the Funtoo Developers Team</strong>. Unlucky, due to the different processes of the
+Macaroni build tools and the dynamic build process managed by the <code>anise-portage-converter</code>
+tool isn&rsquo;t so easy to follow a logic based on Funtoo profiles as described in
+the previous chapters.</p>
+<p>Like described for the Funtoo 1.4 upgrade we use an LXD container to describe the
+steps to integrate Macaroni OS to a Funtoo Next filesytem.</p>
+<h4 id="1-create-the-lxd-funtoo-next-container">
+  1. Create the LXD Funtoo Next Container
+  <a class="anchor" href="#1-create-the-lxd-funtoo-next-container">#</a>
+</h4>
+<p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we could
+launch the container with this command:</p>
+<pre tabindex="0"><code>$&gt; lxc launch -p default images:funtoo/next test
+</code></pre><p>We consider that the <code>default</code> profiles is configured correctly with a valid
+storage pool and a network interface where is enabled DHCP.</p>
+<h4 id="2-install-macaroni-pms-binary-1">
+  2. Install Macaroni PMS binary
+  <a class="anchor" href="#2-install-macaroni-pms-binary-1">#</a>
+</h4>
+<p>At the moment, the Macaroni PMS repository is 
+  <a href="https://github.com/geaaru/luet/">luet</a>
+but the installer creates already the symbolic link with the new name <code>anise</code>. The repository
+will be soon migrated with the new name.</p>
+<pre tabindex="0"><code>$&gt; curl https://raw.githubusercontent.com/geaaru/luet/geaaru/contrib/config/get_luet_root.sh | sh
+</code></pre><h4 id="3-install-macaroni-repositories-1">
+  3. Install Macaroni repositories
+  <a class="anchor" href="#3-install-macaroni-repositories-1">#</a>
+</h4>
+<p>In order to start the upgrade we need to install the Macaroni repositories. In this
+example, we use the Phoenix release but could be used the Terragon release too.</p>
+<pre tabindex="0"><code>$&gt; anise i -y  repository/macaroni-commons-testing repository/macaroni-phoenix-testing
+</code></pre><h4 id="4-download-the-repositories-metadata-1">
+  4. Download the repositories metadata
+  <a class="anchor" href="#4-download-the-repositories-metadata-1">#</a>
+</h4>
+<p>Before to download the repositories data, we want to share how it&rsquo;s possible to mask
+a package available from different packages and to configure the solver to get only
+the package the user wants. For example, the package <code>jq</code> is available inside the
+<code>mottainai-stable</code> repository without Portage metadata, but it&rsquo;s also available as
+package <code>app-admin/jq</code> with the Portage metadata and based on Funtoo ebuild.
+In this case, to force the second it&rsquo;s possible mask the other in this way:</p>
+<pre tabindex="0"><code>$&gt; mkdir /etc/luet/mask.d
+$&gt; echo &#34;
+enabled: true
+rules:
+  - utils/jq::mottainai-stable
+&#34; &gt; /etc/luet/mask.d/00-mask.yml
+</code></pre><p>Another important thing to do before execute the upgrade is to enable the <em>subsets</em>
+<code>devel</code> and <code>portage</code> that are by default disabled.</p>
+<pre tabindex="0"><code>$&gt; anise subsets enable devel portage
+</code></pre><p>and finally to start the <code>repo update</code>:</p>
+<pre tabindex="0"><code>$&gt; anise repo update
+</code></pre><h4 id="5-install-anise-portage-converter-tool-1">
+  5. Install <code>anise-portage-converter</code> tool
+  <a class="anchor" href="#5-install-anise-portage-converter-tool-1">#</a>
+</h4>
+<p>In order to upgrade the system we need to install the <code>anise-portage-converter</code> tool
+that will sync the list of the installed packages in the system of the Portage inside
+the <code>anise</code> database.</p>
+<pre tabindex="0"><code>$&gt; anise install -y anise-portage-converter app-misc/jq
+</code></pre><h4 id="6-sync-portage-to-anise-database-1">
+  6. Sync Portage to Anise database
+  <a class="anchor" href="#6-sync-portage-to-anise-database-1">#</a>
+</h4>
+<pre tabindex="0"><code>$&gt; anise-portage-converter sync
+</code></pre><p>eventually it&rsquo;s possible to run the command with <code>--dry-run</code> to test the execution
+without update the <code>anise</code> database.</p>
+<h4 id="7-install-macaroni-tools-1">
+  7. Install Macaroni tools
+  <a class="anchor" href="#7-install-macaroni-tools-1">#</a>
+</h4>
+<p>We need to install the <strong>whip</strong> tool and the other stuff used in the Macaroni finalizer.</p>
+<pre tabindex="0"><code>$&gt; anise i -y whip whip-catalog entities whip-profiles/macaroni macaronictl-thin entities macaroni/entities-catalog
+</code></pre><p>These packages could be removed at the end of the upgrade if you will use the rootfs
+only as Funtoo rootfs.</p>
+<h4 id="8-start-the-upgrade-1">
+  8. Start the upgrade
+  <a class="anchor" href="#8-start-the-upgrade-1">#</a>
+</h4>
+<p>Finally, we can start the upgrade and use the environment variable <code>SKIP_GRUB=1</code> to skip
+the generation of the macaroni initrd and/or Grub setup.</p>
+<p>It&rsquo;s also available the variable <code>SKIP_CLEANUP</code> to avoid the clean of the anise cache with all
+downloaded packages. If for example, you want to run the same workflow in another node and copy
+the packages manually.</p>
+<pre tabindex="0"><code>$&gt; SKIP_GRUB=1 whip h macaroni.funtoo2macaroni
+</code></pre><p>or for Desktop/Server filesystem:</p>
+<pre tabindex="0"><code>$&gt; whip h macaroni.funtoo2macaroni
+</code></pre><h4 id="9-run-macaronictl-etc-update-1">
+  9. Run <code>macaronictl etc-update</code>
+  <a class="anchor" href="#9-run-macaronictl-etc-update-1">#</a>
+</h4>
+<p>In the same way, you run <code>etc-update</code> in Funtoo you can run <code>macaronictl etc-update</code> and check
+what files merge and/or drop. But it&rsquo;s also true that if you have installed the <em>sys-apps/portage</em>
+package you can use also the <code>etc-update</code> from Portage. The both can work together.</p>
+<p>At the moment, there are known issues in <code>anise</code> that could generate extra diff: <code>anise</code> doesn&rsquo;t
+support a CONFIG_PROTECT_MASK similar option. So, if it&rsquo;s been configured the directory <em>/etc</em> as
+a protected directory, every file will be protected also on removing a package. But what has not
+been managed automatically from <code>anise</code> could be overridden with <code>macaronictl etc-update</code> with the
+option <code>-m|--mask-path</code> that permits to define of one or more additional mask paths.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; macaronictl etc-update --help
+</span></span><span style="display:flex;"><span>handle configuration file updates and automatically
+</span></span><span style="display:flex;"><span>merge the CONFIG_PROTECT_MASK files.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl etc-update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>   etc-update <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Aliases:
+</span></span><span style="display:flex;"><span>  etc-update, etc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>  -h, --help                    help <span style="color:#66d9ef">for</span> etc-update
+</span></span><span style="display:flex;"><span>  -m, --mask-path stringArray   Define one or more additional mask paths <span style="color:#f92672">(</span>CONFIG_PROTECT_MASK<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>  -p, --path stringArray        Scan one or more specific paths <span style="color:#f92672">(</span>CONFIG_PROTECT<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>      --rootfs string           Override the default path where run etc-update. <span style="color:#f92672">(</span>experimental<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Global Flags:
+</span></span><span style="display:flex;"><span>  -c, --config string   Macaronictl configuration file
+</span></span><span style="display:flex;"><span>  -d, --debug           Enable debug output.
+</span></span></code></pre></div><p>So, running the command will be show an interactive shell to understand what
+files merge or drop:</p>
+<pre tabindex="0"><code>$&gt; macaronictl etc-update
+Scanning Configuration files...
+Automerging file /etc/os-release config protect masked.
+Automerging file /etc/ca-certificates.conf config protect masked.
+The following is the list of files which need updating, each
+configuration file is followed by a list of possible replacement files.
+
+[  1] /etc/env.d/50baselayout
+[  2] /etc/netif.d/dhclient
+[  3] /etc/portage/savedconfig/sys-apps/busybox-1.36.0
+[  4] /etc/issue
+
+[ -1] to exit
+[ -3] to auto merge all files
+[ -7] to discard all updates
+
+
+Please select a file to edit by entering the corresponding number.
+	(don&#39;t use -3 or -7 if you&#39;re ensure what to do): -3
+File /etc/env.d/50baselayout replaced by new file.
+File /etc/env.d/50baselayout replaced by new file.
+File /etc/netif.d/dhclient replaced by new file.
+File /etc/netif.d/dhclient replaced by new file.
+File /etc/portage/savedconfig/sys-apps/busybox-1.36.0 replaced by new file.
+File /etc/portage/savedconfig/sys-apps/busybox-1.36.0 replaced by new file.
+File /etc/issue replaced by new file.
+File /etc/issue replaced by new file.
+Nothing left to do; exiting. :)
+</code></pre><p>One of the differences between <code>macaronictl etc-update</code> and <code>etc-update</code> is that the
+file number is reset when a specific file is been managed, this permits to use of
+the number 1 always until the files are been all processed.</p>
+<p>For example, the files under <code>/etc/terminfo/</code> normally must be merged and
+will be soon managed as CONFIG_PROTECT_MASK when the feature will present
+in the <code>anise</code> software.</p>
+<h4 id="10-run-macaronictl-env-update-1">
+  10. Run <code>macaronictl env-update</code>
+  <a class="anchor" href="#10-run-macaronictl-env-update-1">#</a>
+</h4>
+<p>This command updates the <em>/etc/profile.env</em> and regenerates the file ld.so.cache
+like the Funtoo <code>env-update</code> command:</p>
+<pre tabindex="0"><code>$&gt; macaronictl env-update
+&gt;&gt;&gt; Generating /etc/profile.env...
+&gt;&gt;&gt; Generating /etc/ld.so.conf...
+&gt;&gt;&gt; Regenerating /etc/ld.so.cache...
+</code></pre><h4 id="11-verify-the-linking-of-the-installed-files-1">
+  11. Verify the linking of the installed files
+  <a class="anchor" href="#11-verify-the-linking-of-the-installed-files-1">#</a>
+</h4>
+<p>It&rsquo;s available a <strong>whip</strong> hook that permits to verify if there are libraries or
+binaries with links to no more available libraries.</p>
+<p>It&rsquo;s a good idea to run this command on every upgrade:</p>
+<pre tabindex="0"><code>$&gt; whip h linking.check
+Checking directory /usr/lib64...
+Checking directory /usr/lib...
+Checking directory /usr/bin...
+Checking directory /bin...
+Checking directory /usr/sbin...
+Checking directory /usr/libexec...
+[linking.check] Completed correctly.
+</code></pre><p>The directories checked by default are these:</p>
+<ul>
+<li>/usr/lib64</li>
+<li>/usr/lib</li>
+<li>/usr/bin</li>
+<li>/bin</li>
+<li>/usr/sbin</li>
+<li>/usr/libexec</li>
+</ul>
+<p>But could be changed overriding the environment variable <code>DIRS</code>:</p>
+<pre tabindex="0"><code>$&gt; DIRS=&#34;/usr/lib64&#34; whip h linking.check
+</code></pre><h4 id="12-remove-orphans-packages-1">
+  12. Remove orphans packages
+  <a class="anchor" href="#12-remove-orphans-packages-1">#</a>
+</h4>
+<p>When the upgrade is ended, it&rsquo;s possible check what packages installed
+are no more available in the Macaroni repositories that could be removed
+through the <code>anise query orphans</code> command:</p>
+<pre tabindex="0"><code>$&gt; anise q orphans
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:31:44 UTC - go1.20.3
+🧠 Searching for orphans packages...
+sys-devel-12.3.0/gcc-12.3.0
+sys-kernel-debian-sources-6.4.13_p1-r1/debian-sources-6.4.13
+dev-util/b2-4.10.1
+</code></pre><p>In this moment, Macaroni OS uses GCC 11 but we will add GCC 12 on Terragon release in
+the near future.</p>
+<p>The <em>debian-sources</em> package will be always see as orphans for the reasons
+described before. Any user could choice what packages remove or leave.</p>
+<pre tabindex="0"><code>$&gt; anise rm -y sys-devel-12.3.0/gcc sys-kernel-debian-sources-6.4.13_p1-r1/debian-sources
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:31:44 UTC - go1.20.3
+🔪 [  1 of   2] [D] sys-devel-12.3.0/gcc::scm                                     - 12.3.0
+🔪 [  2 of   2] [D] sys-kernel-debian-sources-6.4.13_p1-r1/debian-sources::scm    - 6.4.13
+♻️ [  1 of   2] sys-devel-12.3.0/gcc::scm                                         - 12.3.0          # uninstalled ✔ 
+♻️ [  2 of   2] sys-kernel-debian-sources-6.4.13_p1-r1/debian-sources::scm        - 6.4.13          # uninstalled ✔
+</code></pre><h4 id="13-reboot-and-starting-to-play-with-funtoo--1">
+  13. Reboot and starting to play with Funtoo 🎊
+  <a class="anchor" href="#13-reboot-and-starting-to-play-with-funtoo--1">#</a>
+</h4>
+<p>The job is done! The container is been integrated with Macaroni PMS.</p>
+<pre tabindex="0"><code>$&gt; reboot
+</code></pre><p>You can install the Macaroni OS metadata with the specific version with:</p>
+<pre tabindex="0"><code>$&gt; anise i -y meta-repo 
+</code></pre><p>or to use Funtoo way:</p>
+<pre tabindex="0"><code>$&gt; ego sync
+</code></pre><p>Note: after upgrade the system it&rsquo;s better setup GCC with:</p>
+<pre tabindex="0"><code>$&gt; gcc-config 1
+* Switching native-compiler to x86_64-pc-linux-gnu-11.3.0 ...           [ ok ]
+</code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/macaroni-os/macaroni-site/edit/master/site/content/docs/funtoo.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span></span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+
+  </div><!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

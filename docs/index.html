@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.f3d92d7fe5a950437562c0b08b7e900fdc2089c2ff989b5a418d23f28f109aa0.js" integrity="sha256-89ktf&#43;WpUEN1YsCwi36QD9wgicL/mJtaQY0j8o8QmqA="></script>
+<script defer src="/en.search.min.cca9f464f3fe4a91beb685780640b1b44c39788217b00ebcb3ba0da961ddcb0c.js" integrity="sha256-zKn0ZPP&#43;SpG&#43;toV4BkCxtEw5eIIXsA68s7oNqWHdyww="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/index.xml" title="Macaroni OS" />
@@ -246,7 +246,18 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a></li>
 <li>
-  <a href="/docs/pms/#11-masking-packages">Masking Packages</a>
+  <a href="/docs/pms/#11-masking-packages">Masking Packages</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/funtoo/"><strong>Funtoo Zone</strong></a>
+<ul>
+<li>
+  <a href="/docs/funtoo/#main-differences-between-funtoo-and-macaroni-os">Main differences between Funtoo and Macaroni OS</a></li>
+<li>
+  <a href="/docs/funtoo/#upgrade-funtoo-14-to-funtoo-next-with-macaroni">Upgrade Funtoo 1.4 to Funtoo Next with Macaroni</a></li>
+<li>
+  <a href="/docs/funtoo/#integrate-funtoo-next-rootfs-with-macaroni">Integrate Funtoo Next with Macaroni</a>
 <br /></li>
 </ul>
 </li>
@@ -368,17 +379,17 @@ different releases:</p>
 <tbody>
 <tr>
 <td style="text-align:left"><em>Phoenix</em></td>
-<td style="text-align:center">1.4-prime</td>
+<td style="text-align:center">Next</td>
 <td style="text-align:left">The core release based on OpenRC/SysVinit for Server and Desktop</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>Eagle</em></td>
-<td style="text-align:center">1.4-prime + patches</td>
+<td style="text-align:center">Next + patches</td>
 <td style="text-align:left">A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>Terragon</em></td>
-<td style="text-align:center">next</td>
+<td style="text-align:center">Next</td>
 <td style="text-align:left">The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags.</td>
 </tr>
 </tbody>
@@ -396,11 +407,11 @@ ashes of its predecessor. This is the reason I choose this name: to describe
 a new beginning and to remember us that also when others try to stop a
 dream, with the commitment it&rsquo;s possible reborn and goes ahead.</p>
 <p>In <strong>phoenix</strong> it&rsquo;s used the OpenRC as an init system, it&rsquo;s based on
-Funtoo 1.4-prime and so:</p>
-<pre><code>* GCC 9.2.0
+Funtoo Next (previously was based on 1.4-prime) and so:</p>
+<pre><code>* GCC 11.3.0
 * Glibc 2.33
-* Python 3.7
-* LLVM 11
+* Python 3.9
+* LLVM 13
 </code></pre>
 <p>The desktop environments available in this release are:</p>
 <table>
@@ -447,7 +458,7 @@ Funtoo 1.4-prime and so:</p>
 <td style="text-align:left">i3</td>
 <td style="text-align:center">4.22</td>
 <td style="text-align:left"><em>experimental</em></td>
-<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
 </tr>
 </tbody>
 </table>
@@ -531,6 +542,12 @@ testing repository and, a development repository.</p>
 <td style="text-align:center">repository/macaroni-terragon-testing</td>
 <td style="text-align:center">repository/macaroni-terragon-dev</td>
 </tr>
+<tr>
+<td><em>macaroni-security</em></td>
+<td style="text-align:center">repository/macaroni-security</td>
+<td style="text-align:center">repository/macaroni-security-testing</td>
+<td style="text-align:center">repository/macaroni-security-dev</td>
+</tr>
 </tbody>
 </table>
 <p><strong>NOTE:</strong> The development repositories must be used only by the Staff and are
@@ -580,6 +597,15 @@ the repository of the <strong>Eagle</strong> release.</p>
 <p>The <strong>macaroni-terragon</strong> repository is the repository of the <strong>Terragon</strong>
 release.</p>
 <p>Normally, this repository is installed by default in all Terragon installation.</p>
+<h4 id="macaroni-security">
+  Macaroni Security
+  <a class="anchor" href="#macaroni-security">#</a>
+</h4>
+<p>The <strong>macaroni-security</strong> repository is the repository of the <strong>Pheonix</strong> release
+where we releases security updates and fast rollings packages (browsers, etc.).</p>
+<p>It permits to release on stable branch new updates when the build cycle process
+of the <code>macaroni-phoenix</code> repository is yet in progress.</p>
+<p>Normally, this repository is installed by default in all Phoenix installation.</p>
 <h1 id="macaroni-tags">
   Macaroni Tags
   <a class="anchor" href="#macaroni-tags">#</a>
@@ -633,7 +659,7 @@ push a more fast fix.</p>
 <tbody>
 <tr>
 <td style="text-align:left"><em>Macaroni OS Phoenix</em></td>
-<td style="text-align:center">every 2 months</td>
+<td style="text-align:center">every 2 months (when possible monthly with <em>macaroni-security</em> repository)</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>Macaroni OS Terragon</em></td>
