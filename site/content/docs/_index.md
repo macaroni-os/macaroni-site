@@ -52,9 +52,9 @@ different releases:
 
 | Release Codename | Funtoo Release | Description |
 | :----            |     :---:              | :---        |
-| *Phoenix* | 1.4-prime | The core release based on OpenRC/SysVinit for Server and Desktop |
-| *Eagle*   | 1.4-prime + patches | A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
-| *Terragon* | next | The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags. |
+| *Phoenix* | Next | The core release based on OpenRC/SysVinit for Server and Desktop |
+| *Eagle*   | Next + patches | A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
+| *Terragon* | Next | The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags. |
 
 ## Macaroni OS Phoenix
 
@@ -68,12 +68,12 @@ a new beginning and to remember us that also when others try to stop a
 dream, with the commitment it's possible reborn and goes ahead.
 
 In **phoenix** it's used the OpenRC as an init system, it's based on
-Funtoo 1.4-prime and so:
+Funtoo Next (previously was based on 1.4-prime) and so:
 
-    * GCC 9.2.0
+    * GCC 11.3.0
     * Glibc 2.33
-    * Python 3.7
-    * LLVM 11
+    * Python 3.9
+    * LLVM 13
 
 The desktop environments available in this release are:
 
@@ -84,7 +84,7 @@ The desktop environments available in this release are:
 | LXQt | 1.3.0 | *experimental* | yes |
 | Enlightenment | 0.25.4 | *experimental* | no |
 | KDE | 5.22 | *experimental* | no |
-| i3 | 4.22 | *experimental* | no |
+| i3 | 4.22 | *experimental* | yes |
 
 As the first release a lot of things could be improved but it's also true
 that the Desktop is something complex that requires a lot of effort and
@@ -137,6 +137,7 @@ Hereinafter, a summary of our repositories and the packages related.
 | *macaroni-phoenix (ex macaroni-funtoo)*| repository/macaroni-phoenix | repository/macaroni-phoenix-testing | repository/macaroni-phoenix-dev |
 | *macaroni-eagle (ex macaroni-funtoo-systemd)* | repository/macaroni-eagle | repository/macaroni-eagle-testing | repository/macaroni-eagle-dev |
 | *macaroni-terragon* | repository/macaroni-terragon | repository/macaroni-terragon-testing | repository/macaroni-terragon-dev |
+| *macaroni-security* | repository/macaroni-security | repository/macaroni-security-testing | repository/macaroni-security-dev |
 
 **NOTE:** The development repositories must be used only by the Staff and are
       attached to the Macaroni/Mottainai CD/CI flows. The origin server has limited
@@ -187,6 +188,17 @@ release.
 
 Normally, this repository is installed by default in all Terragon installation.
 
+
+#### Macaroni Security
+
+The **macaroni-security** repository is the repository of the **Pheonix** release
+where we releases security updates and fast rollings packages (browsers, etc.).
+
+It permits to release on stable branch new updates when the build cycle process
+of the `macaroni-phoenix` repository is yet in progress.
+
+Normally, this repository is installed by default in all Phoenix installation.
+
 # Macaroni Tags
 
 In Macaroni the **tag** means that a specific release is been promoted for
@@ -227,7 +239,7 @@ We want to try to follow these periodic tags on our Releases:
 
 | Release | <div style="width:200px">Rolling Tags<div> |
 | :--- |  :---:  |
-| *Macaroni OS Phoenix* | every 2 months  |
+| *Macaroni OS Phoenix* | every 2 months (when possible monthly with *macaroni-security* repository) |
 | *Macaroni OS Terragon* | monthly |
 | *Macaroni OS Eagle* | monthly |
 
