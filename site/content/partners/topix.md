@@ -2,7 +2,7 @@
 title: "Consortium TOP-IX"
 type: portfolio
 
-date: 2023-01-31T11:06:54+06:00
+date: 2023-11-10T11:06:54+06:00
 description : "Macaroni Compute Node"
 image: images/partners/topix.png
 class: logo-topix
