@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Phoenix 23.11 based on Funtoo Next!</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><body><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/faq/">FAQ</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-23.11/">Phoenix 23.11 is out!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="global-page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>New Phoenix 23.11 based on Funtoo Next!</h2>
+					<div class="portfolio-meta">
+						<span>Sunday, Nov 5, 2023</span>|
+						<span> Tags:
+							macaroni, release, phoenix
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="single-post">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="post-content">
+					<p><strong>We are happy to announce that after three intense months we have finally
+completed the migration of Macaroni Phoenix to a Funtoo Next based system.</strong></p>
+<p>This is a really good milestone for us because after two years we have been
+a big step ahead, before becoming an independent project, entering in the
+Docker Sponsored program, and now with the first big release upgrade.
+The world is buggy so we are sure that something will be also present in
+this first big step but we hope the community and the users will be happy
+about how things grow. We have a lot of things to do, so stay tuned!</p>
+<p>At the moment, the Funtoo Community officially doesn&rsquo;t support the upgrade
+of a Funtoo 1.4 filesystem to Funtoo Next and we are happy to have a way that
+permits, eventually with a more tested tuning and with feedback from users, to help
+Funtoo users in this. We think that is important to create synergy between
+the community groups because only together we can grow fast and strong.
+This is the reason we have worked a lot to have a first version of the
+<code>anise-portage-converter</code> tool that could be easily used to work with
+<code>anise</code> (the new name of the <code>luet</code> tool) and <code>emerge</code>.</p>
+<p>So, to help Funtoo users to identify the differences between Funtoo and Macaroni
+we have added a new <a href="https://www.macaronios.org/docs/funtoo/">Funtoo Zone</a> area
+in the documentation page that wants to help to see how the two worlds can work
+together.</p>
+<p>So, trying to organize the tons of pieces of information we have to share we
+divide these by argument hereinafter.</p>
+<h1 id="phoenix-2311-the-reborn">Phoenix 23.11, the reborn!</h1>
+<p>The Phoenix release is been our first release of Macaroni OS and only later with
+the Terragon and Eagle release we have found a better way to organize the build
+process to reduce the build time.</p>
+<p>So, for this release, a lot is been done under the hood to reorganize the build
+pipeline to help integrate new software in the next releases. Just you can
+consider that the <code>seed/funtoo-base</code> of the 1.4-prime release was based on
+stage3-gnome with a lot of profiles enabled. This was expensive as time, it took
+about 16 hours to build that seed every time. Now we start from a Funtoo stage3
+base that takes about 4 hours the build and all other packages are divided into
+different &ldquo;races&rdquo;. We tried to divide the races to divide the groups of packages
+and frameworks to build, for example, the Gtk stuff, qt stuff, xorg stuff, etc.
+This will permit to user to experiment on integrating new versions in a clearer way.</p>
+<p>In this rework, we have rebuilt all packages and others will arrive in the next
+releases. At the moment, the new release contains about 2800 packages but we
+have decided to follow the kits paradigm for the games. We building the new
+<code>macaroni-games</code> repository that will supply the Games and the emulators instead
+of having them in the main repository.</p>
+<p>Unluckily, when this big job started the GCC 12 was not available yet in Funtoo
+tree, for this reason, we have decided to stay with GCC 11 for now and because
+we have introduced a lot of experiments and patches that were too expensive to
+over buffer our time with a GCC upgrade in the middle. In particular, for what
+is possible we want to start a path where Macaroni OS is not only a user of
+Funtoo but it&rsquo;s also a contributor.</p>
+<p>To follow this idea, we are organizing these tasks:</p>
+<ol>
+<li>
+<p>We have created a new repository <code>labs</code> where begin to introduce new packages
+and new autogen that will be added in the Funtoo tree after a first validation.
+In particular, working with autogen Budgie Desktop packages we have found that
+these packages require Gnome 40 at least and we want, really, to try to help the
+Funtoo Community on move ahead with these kinds of stuff that are very very complex
+and we think that to have a parallel tree where working and break everything could
+be good before begin trying to open single PR with a big impact and not easy to test.</p>
+</li>
+<li>
+<p>In this release, we have patched the <em>vala.eclass</em> to have all packages using
+Vala 0.54.1 and avoid to have multiple releases. This had a lot of impacts in
+the Gnome stuff and a lot of patches are been created. These types of changes
+are not so easy to send to the Funtoo Community without validating what happens
+in a big park of packages. For this reason, Shotwell and a few other Gnome
+packages aren&rsquo;t yet been ported but will work on these soon.</p>
+</li>
+<li>
+<p>We starting to integrate Wayland to Xorg to be available to Funtoo users
+we hope soon.</p>
+</li>
+</ol>
+<p>Part of all patches are available and/or will be organized to be easily integrated
+with Funtoo when ready. The list is available <a href="https://github.com/macaroni-os/macaroni-funtoo/blob/phoenix/packages/seeds/funtoo-kits/patches4funtoo.sh">here</a>.</p>
+<p>Unluckily, we do have not sufficient space and budget to maintain a temporary
+<code>macaroni-phoenix-legacy</code> repository based on Funtoo 1.4 to help users in the
+migration. So, with this release, the old desktop release will no longer be
+supported but we describe the upgrade process clearly for the migration.</p>
+<p>Thanks to the job done by the Funtoo Community and our work, between the the big
+changes of this new release we have:</p>
+<pre><code>* GCC 11.3.0
+
+* Python 3.9
+
+* Ruby 3.1.4
+
+* Golang 1.21.3
+
+* PHP 8.2
+
+* LXD 5.18
+
+* Docker 24.0.6 (thanks to @siris to autogen this package)!
+
+* Docker Compose 2.21.0
+
+* Firefox 118.0.2: we have finally the compiled version with our branding
+
+* Google Chrome 118.0.5993.70
+
+* Brave 1.59.117
+
+* Vivaldi 6.2.3105.58
+
+* Thunderbird 115.3.2
+
+* MongoDB Compass 1.40.3
+
+* Libreoffice 7.6.2.1
+
+* Inkscape 1.3
+</code></pre>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.11-phoenix">Phoenix 23.11 release</a>.</p>
+<h2 id="know-issues">Know issues</h2>
+<p>These the know issues after the upgrades that will be fixed in the next releases:</p>
+<ol>
+<li>
+<p>the new Inkscape release v1.3 has an annoying warning about using the <code>sans-serif</code>
+that seems related to the upstream issue <a href="https://gitlab.com/inkscape/inkscape/-/issues/4651">#4651</a>.</p>
+</li>
+<li>
+<p>the games will be available only in the next weeks after that the first stable
+release of the <code>macaroni-games</code> repository will be available. So, the installed
+games (Wesnoth, Warhammer, etc.) could be broken after the upgrade.</p>
+</li>
+<li>
+<p>The package ArangoDB needs maintenance as been reported in the Funtoo
+issue <a href="https://bugs.funtoo.org/browse/FL-11506">#FL-11506</a> and will be not available
+after the upgrade. We will take care of this soon.</p>
+</li>
+</ol>
+<h1 id="new-versions-of-the-package-manager">New versions of the Package Manager</h1>
+<p>In order to rename the our Package Manager <code>luet</code> in <code>anise</code> the new releases is installed
+with the link <code>/usr/bin/anise</code> to begin migration all tasks and pipeline with the new name.</p>
+<p>In particular, are been released two versions:</p>
+<ul>
+<li>
+<p><a href="https://github.com/geaaru/luet/releases/tag/v0.40.0-geaaru">v0.40-0-geaaru</a>:</p>
+<pre><code>  - the render engine using Helm framework is been totally rewritten and will be used
+    soon to complete the refactor of the solver for the build phase of the `luet-build`
+    tool
+
+  - a new command `luet-build tree render` is been added in order to have a preview of
+    the `build.yaml` file rendered.
+
+  - a new environment variable `ANISE_SUBSETS` is automatically injected in the
+    finalizer in order to customize commands based on the subsets enabled.
+</code></pre>
+</li>
+<li>
+<p><a href="https://github.com/geaaru/luet/releases/tag/v0.40.0-geaaru">v0.40-1-geaaru</a>:</p>
+<pre><code>  - contains a review of the Solver to support better the provides and the conflicts.
+</code></pre>
+</li>
+</ul>
+<h1 id="macaronictl-get-power">macaronictl get power!</h1>
+<p><strong>After upgrading to Phoenix 23.11 we found an unexpected surprise: with the upgrade of the
+Chromium engine from version 116 to version 117 the browsers Google Chrome and Brave try
+to use by default the 3D acceleration and this breaks the startup in the installation with
+poor cards</strong>. I personally had a bad experience in my ASUS Trasform T300 with a poor Intel GPU
+after the upgrade and we want to avoid sharing this experience with other users.</p>
+<p>For this reason, we have added a new customization that permits control of the startup
+flags of the browsers and by default, we disable 3D acceleration that seems the default
+behavior of the previous releases.</p>
+<p>This is done by replacing the links under <code>/usr/bin/</code> with a bash script that could be
+controlled by the <code>macaronictl browser configure</code> command.</p>
+<p>We have planned to improve these command to have more control but for this tool permits
+to configure only Google Chrome (Stable, Unstable, Beta) and Brave.
+In particular, the <em>finalizer</em> of this package creates automatically the right setup that
+could be controller by the <em>root</em> users or specifically but every user</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; macaronictl browser available
+</span></span><span style="display:flex;"><span>|              PACKAGE              | PACKAGE VERSION  | SYSTEM OPTIONS | USER OPTIONS |  ENGINE  |            BINARIES             |
+</span></span><span style="display:flex;"><span>|-----------------------------------|------------------|----------------|--------------|----------|---------------------------------|
+</span></span><span style="display:flex;"><span>| www-client/brave-bin              | v1.59.117+2      | true           | false        | chromium | /usr/bin/brave-bin              |
+</span></span><span style="display:flex;"><span>| www-client/firefox                | v118.0.2         | false          | false        | N/A      | N/A                             |
+</span></span><span style="display:flex;"><span>| www-client/firefox-beta-bin       | v119.0           | false          | false        | N/A      | N/A                             |
+</span></span><span style="display:flex;"><span>| www-client/firefox-bin            | v118.0.2         | false          | false        | N/A      | N/A                             |
+</span></span><span style="display:flex;"><span>| www-client/google-chrome          | v118.0.5993.70+2 | false          | false        | chromium | /usr/bin/google-chrome-stable   |
+</span></span><span style="display:flex;"><span>| www-client/google-chrome-beta     | v119.0.6045.21+2 | false          | false        | chromium | /usr/bin/google-chrome-beta     |
+</span></span><span style="display:flex;"><span>| www-client/google-chrome-unstable | v120.0.6062.2+2  | false          | false        | chromium | /usr/bin/google-chrome-unstable |
+</span></span><span style="display:flex;"><span>| www-client/opera                  | v99.0.4788.9+1   | false          | false        | N/A      | N/A                             |
+</span></span><span style="display:flex;"><span>| www-client/vivaldi                | v6.2.3105.58     | false          | false        | N/A      | N/A                             |
+</span></span><span style="display:flex;"><span>| www-client/vivaldi-snapshot       | v6.4.3152.3      | false          | false        | N/A      | N/A                             |
+</span></span></code></pre></div><p>and customized with this command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ macaronictl browser configure --help
+</span></span><span style="display:flex;"><span>Shows browsers available in configured repositories.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the system yaml file with the default options from catalog.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --system --defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the user yaml file with the default options from catalog.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --user --defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the user yaml file without options for the selected package.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --user --without-opts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the user yaml file awithout options and the user include file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for the selected package.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --user --without-opts --exec
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the binary script of the package and the system includes scripts.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Normally, this command is executed on package finalizer.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --exec --system  --defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the user include and YAML files with the default options</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --exec --user  --defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remove the user include file.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --purge --user
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remove the sytem include file and the binary of the package</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --purge --system
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update the user include file. Normally, used when the user YAML file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># is been modified manually.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --user --only-update-includes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update the system include file. Normally, used when the user YAML file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># is been modified manually.</span>
+</span></span><span style="display:flex;"><span>$&gt; macaronictl browser conf www-client/brave-bin --system --only-update-includes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NOTE: It works only <span style="color:#66d9ef">if</span> the repositories are synced.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>   browser configure <span style="color:#f92672">[</span>pkg<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Aliases:
+</span></span><span style="display:flex;"><span>  configure, conf, c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flags:
+</span></span><span style="display:flex;"><span>      --catalog-file string    Specify the directory of the catalog file of all engines options. <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/usr/share/macaroni/browsers/catalog&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      --defaults               Set catalog defaults options to specified package.
+</span></span><span style="display:flex;"><span>      --exec                   Update script of the binary. Need root permissions.
+</span></span><span style="display:flex;"><span>  -h, --help                   help <span style="color:#66d9ef">for</span> configure
+</span></span><span style="display:flex;"><span>      --home-dir string        Override the directory of the user with engines options. <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/home/geaaru/.local/share/macaroni/browsers&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      --only-update-includes   Update script includes file.
+</span></span><span style="display:flex;"><span>      --purge                  Remove system option from system. Need root permissions.
+</span></span><span style="display:flex;"><span>      --system                 Set bootstrap option on system. Need root permissions.
+</span></span><span style="display:flex;"><span>      --system-dir string      Override the directory of the system configuration with engines options. <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/etc/macaroni/browsers&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      --user                   Set bootstrap option <span style="color:#66d9ef">for</span> user.
+</span></span><span style="display:flex;"><span>      --without-opts           Disable all options to specified package.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Global Flags:
+</span></span><span style="display:flex;"><span>  -c, --config string   Macaronictl configuration file
+</span></span><span style="display:flex;"><span>  -d, --debug           Enable debug output.
+</span></span></code></pre></div><p>In particular, it&rsquo;s possible to restore the default behaviour without customization
+from the user with this command:</p>
+<pre tabindex="0"><code>$ macaronictl browser configure   www-client/brave-bin --user --without-opts
+Configuring browser start flags:
+Package:         www-client/brave-bin
+User options:
+
+Generated engine file:	/home/geaaru/.local/share/macaroni/browsers/chromium.yml
+Generated include file:	/home/geaaru/.local/share/macaroni/browsers/chromium.brave-bin.inc
+All done.
+</code></pre><p>The file <em>chromium.brave-bin.inc</em> is included by the script under <code>/usr/bin</code> for the specified browser selected.</p>
+<p><strong>NOTE: To use the new command is needed add the <code>desktop</code> subset in order to
+install the browser catalog on upgrading <code>macaronictl</code> package.</strong></p>
+<h1 id="openshot-is-now-integrated-with-blender">Openshot is now integrated with Blender!</h1>
+<p>Thanks to the upgrade of Python to version 3.9 is now possible to use the integration of the
+Openshot QT Video editor with Blender for animations!</p>
+<p>In particular, the migration to Funtoo Next required the upgrade of his packages with the
+last release that will be added to Funtoo soon.</p>
+<p>Considering that Macaroni OS uses the <code>blender-bin</code> package the users need some tricks to
+use the integration with Blender, these the steps that we report hereinafter:</p>
+<pre tabindex="0"><code>$&gt; mkdir $HOME/bin
+
+$&gt; echo &#34;
+export PATH=$PATH:$HOME/bin
+&#34; &gt;&gt; $HOME/.bashrc
+
+$&gt; cd $HOME/bin
+$&gt; ln -s /opt/bin/blender-bin blender
+</code></pre><p>It&rsquo;s possible that in the near future, we will move to the <code>blender</code> compiled release
+and these steps will no longer be needed.</p>
+<h1 id="security-updates">Security updates</h1>
+<p>The list of the major security fix:</p>
+<ul>
+<li>
+<p>CVE-2023-39232 - Go 1.21.3</p>
+</li>
+<li>
+<p>CVE-2023-38545 - Curl</p>
+</li>
+<li>
+<p>CVE-2023-4911 - Looney tunables - Local Privilege Escalation in glibc</p>
+</li>
+<li>
+<p>CVE-2023-4863 - libwebp</p>
+</li>
+<li>
+<p>CVE-2022-36019 - Docker</p>
+</li>
+<li>
+<p>CVE-2022-39253 - Docker</p>
+</li>
+<li>
+<p>CVE-2023-5217 - libvpx</p>
+</li>
+<li>
+<p>CVE-2023-25809 - runc</p>
+</li>
+<li>
+<p>CVE-2023-27561 - runc</p>
+</li>
+</ul>
+<h1 id="upgrade-existing-macaroni-os-filesytem-to-phoenix-2311">Upgrade existing Macaroni OS filesytem to Phoenix 23.11</h1>
+<p>Before beginning the upgrade you need to be sure to have a backup of your data
+and sufficient space in the filesystem to download all packages installed because
+will be replaced and installed.</p>
+<p>This upgrade is a <code>dist-upgrade</code> and it needs additional support.</p>
+<p>Obviously, it&rsquo;s also possible to just reinstall a fresh installation from
+the new ISO 23.11.</p>
+<p>The <em>whip</em> hook will remove the packages:</p>
+<ol>
+<li>
+<p><code>sys-firmware/ed2k-ovmf</code>: we will move to <code>sys-firmware/ed2k-ovmf-bin</code> package</p>
+</li>
+<li>
+<p><code>net-misc/openntpd</code>: No more available in our repository and with this conflict:</p>
+<pre tabindex="0"><code>Error file conflict between &#39;net-misc/openntpd-6.2+2&#39; and &#39;net-misc/ntp-4.2.8&#39; ( file: etc/conf.d/ntpd )
+</code></pre></li>
+<li>
+<p><code>sys-firmware/seabios</code>: we will move to <code>sys-firmware/seabios-bin</code> package</p>
+</li>
+</ol>
+<p>**ATTENTION: In order to avoid errors on upgrade if the system to upgrade contains browsers
+you need to add the <code>desktop</code> subset before start the upgrade.</p>
+<pre tabindex="0"><code>$&gt; luet subsets enable desktop
+</code></pre><p>So, these the steps to follow on upgrade your Macaroni system based on Funtoo 1.4:</p>
+<h4 id="1-get-last-release-of-anise-luet-package-manager">1. Get last release of <code>anise</code> (luet) Package Manager</h4>
+<p>To do this you need disable all repositories exclude <code>geaaru-repo-index</code> and <code>mottainai-stable</code>:</p>
+<pre tabindex="0"><code>$&gt; luet repo disable macaroni-commons macaroni-phoenix macaroni-security
+</code></pre><p>Upgrade the repositories:</p>
+<pre tabindex="0"><code>$&gt; luet repo update
+</code></pre><p>Upgrade luet to last release:</p>
+<pre tabindex="0"><code>$&gt; luet upgrade -y
+</code></pre><h4 id="2-enable-repositories">2. Enable repositories</h4>
+<p>You can enable the previous disabled repositories (you can maintain disabled the repository
+<code>macaroni-security</code> because it doesn&rsquo;t contain new packages for now):</p>
+<pre tabindex="0"><code>$&gt; anise repo enable macaroni-commons macaroni-phoenix
+</code></pre><p>and then update the local metadata:</p>
+<pre tabindex="0"><code>$&gt; anise repo update
+</code></pre><h4 id="3-get-the-last-version-of-the-whip-catalog">3. Get the last version of the <code>whip-catalog</code></h4>
+<p>In order to start the upgrade process you need to have the last version of the
+<code>macaroni/whip-catalog</code> package:</p>
+<pre tabindex="0"><code>$&gt; anise rm macaroni/whip-catalog --nodeps
+
+$&gt; anise i macaroni/whip-catalog
+</code></pre><h4 id="4-start-the-upgrade">4. Start the upgrade</h4>
+<p>You can start the upgrade and to use the environment variable <code>SKIP_REINDEX=1</code>
+if the <code>luet</code> version is greather then v0.39.0 else it&rsquo;s better to run this
+without the variable.</p>
+<pre tabindex="0"><code>$&gt; SKIP_REINDEX=1 whip h macaroni.upgrade2funtoo-next
+</code></pre><h4 id="5-run-macaronictl-etc-update">5. Run <code>macaronictl etc-update</code></h4>
+<p>Due to big upgrades done will be a lot of files to check and merge eventually.
+This phase requires attention.</p>
+<pre tabindex="0"><code>$&gt; macaronictl etc-update
+</code></pre><h4 id="6-run-macaronictl-env-update">6. Run <code>macaronictl env-update</code></h4>
+<p>This command updates the <em>/etc/profile.env</em> and regenerates the file ld.so.cache
+like the Funtoo <code>env-update</code> command:</p>
+<pre tabindex="0"><code>$&gt; macaronictl env-update
+&gt;&gt;&gt; Generating /etc/profile.env...
+&gt;&gt;&gt; Generating /etc/ld.so.conf...
+&gt;&gt;&gt; Regenerating /etc/ld.so.cache...
+</code></pre><h4 id="7-verify-the-linking-of-the-installed-files">7. Verify the linking of the installed files</h4>
+<p>It&rsquo;s available a <strong>whip</strong> hook that permits to verify if there are libraries or
+binaries with links to no more available libraries.</p>
+<p>It&rsquo;s a good idea to run this command on every upgrade:</p>
+<pre tabindex="0"><code>$&gt; whip h linking.check
+Checking directory /usr/lib64...
+Checking directory /usr/lib...
+Checking directory /usr/bin...
+Checking directory /bin...
+Checking directory /usr/sbin...
+Checking directory /usr/libexec...
+[linking.check] Completed correctly.
+</code></pre><p>The directories checked by default are these:</p>
+<ul>
+<li>/usr/lib64</li>
+<li>/usr/lib</li>
+<li>/usr/bin</li>
+<li>/bin</li>
+<li>/usr/sbin</li>
+<li>/usr/libexec</li>
+</ul>
+<p>But could be changed overriding the environment variable <code>DIRS</code>:</p>
+<pre tabindex="0"><code>$&gt; DIRS=&#34;/usr/lib64&#34; whip h linking.check
+</code></pre><h4 id="12-remove-orphans-packages-optional">12. Remove orphans packages (optional)</h4>
+<p>When the upgrade is ended, it&rsquo;s possible check what packages installed
+are no more available in the Macaroni repositories that could be removed
+through the <code>anise query orphans</code> command:</p>
+<pre tabindex="0"><code>$&gt; anise q orphans
+</code></pre><p>Between the orphans list will be present the old GCC 9.2.0 that could be
+removed:</p>
+<pre tabindex="0"><code>$&gt; anise rm sys-devel-9.2.0/gcc
+</code></pre><h4 id="13-regenerate-the-kernel-initrd-image">13. Regenerate the kernel initrd image</h4>
+<p>It&rsquo;s important to run this command to build an initrd image updated
+and aligned to the merge configurations with <code>macaronictl etc-update</code>.</p>
+<pre tabindex="0"><code>macaronictl kernel geninitrd --all --set-links --purge --grub
+</code></pre><h4 id="14-reboot-and-starting-to-play-with-the-new-macaroni-phoenix-release">14. Reboot and starting to play with the new Macaroni Phoenix release</h4>
+<p>The job is done!</p>
+<pre tabindex="0"><code>$&gt; reboot
+</code></pre><p>If you have the subsets <code>devel</code> and <code>portage</code> enable and you want to setup
+the new GCC it&rsquo;s better to run:</p>
+<pre tabindex="0"><code>$&gt; gcc-config 1
+</code></pre><h4 id="15-optional-steps">15. Optional steps</h4>
+<p>If you have Virtualbox installed could be a good idea to execute this command:</p>
+<pre tabindex="0"><code>$&gt; whip h vbox.vbox_setup
+</code></pre><p>not yet present in the finalize.</p>
+<h1 id="a-new-partner-join-the-project">A new Partner join the project</h1>
+<p>We are happy to share that the TOP-IX consortium donated a VM to the Macaroni
+OS Project and this is great news because will help on work parallel to compile
+the new packages from the different releases.</p>
+<p>Really thanks for your support TOP-IX!</p>
+<h1 id="what-next">What next?</h1>
+<p>Hereinafter, out hot points in our backlog:</p>
+<ol>
+<li>
+<p>After the rewrite of the render engine of the <code>anise-build</code> (luet-build)
+tool we want to continue the refactoring of the Macaroni build tool.</p>
+</li>
+<li>
+<p>Complete the migration of the Macaroni Eagle release to Funtoo Next</p>
+</li>
+<li>
+<p>Bump the first release of the <code>macaroni-games</code> repository</p>
+</li>
+<li>
+<p>Starting setup of <code>labs</code> repository</p>
+</li>
+<li>
+<p>Continue the improvement of our documentation</p>
+</li>
+</ol>
+<h1 id="we-waiting-for-you">We waiting for you</h1>
+<p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
+<h1 id="thanks">Thanks</h1>
+<p>Many thanks to all Funtoo devs that are the sap of all this and to all
+people that helps us with testing and donations.</p>
+<h1 id="support-us">Support Us</h1>
+<p>Any user that wants to support our work for Macaroni could do this through the
+Github <a href="https://github.com/sponsors/geaaru">Sponsor</a>.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Call To Action Section Start -->
+<section id="call-to-action">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h2 class="title wow fadeInDown" data-wow-delay=".3s"
+            data-wow-duration="500ms">WHAT DO YOU THINK?</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+              Do you think I could integrate more features?</p>
+            <a href="https://www.macaronios.org/contact" class="btn btn-default btn-contact wow fadeInDown"
+              data-wow-delay=".7s" data-wow-duration="500ms">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call To Action Section End -->
+
+
+
+<!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>

@@ -6,7 +6,17 @@
     <description>Recent content in phoenix on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/phoenix/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/phoenix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Phoenix 23.11 based on Funtoo Next!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.11/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.11/</guid>
+      <description>We are happy to announce that after three intense months we have finally completed the migration of Macaroni Phoenix to a Funtoo Next based system.
+This is a really good milestone for us because after two years we have been a big step ahead, before becoming an independent project, entering in the Docker Sponsored program, and now with the first big release upgrade. The world is buggy so we are sure that something will be also present in this first big step but we hope the community and the users will be happy about how things grow.</description>
+    </item>
+    
     <item>
       <title>New Macaroni-Security Repository is here!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.08/</link>

@@ -81,7 +81,7 @@ It possible to see the list of the available uid/gid with the following command:
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.cca9f464f3fe4a91beb685780640b1b44c39788217b00ebcb3ba0da961ddcb0c.js" integrity="sha256-zKn0ZPP&#43;SpG&#43;toV4BkCxtEw5eIIXsA68s7oNqWHdyww="></script>
+<script defer src="/en.search.min.55c23cc9d57c3c9c825dd565b253f3f18db38ceb29f2c3c3c8ffaa4819be96a4.js" integrity="sha256-VcI8ydV8PJyCXdVlslPz8Y2zjOsp8sPDyP&#43;qSBm&#43;lqQ="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -143,7 +143,7 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/blog/phoenix-23.08/">Releases 23.08 is out!</a>
+									href="https://www.macaronios.org/blog/phoenix-23.11/">Phoenix 23.11 is out!</a>
 							</li>
 							
 							
@@ -259,7 +259,9 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/funtoo/#upgrade-funtoo-14-to-funtoo-next-with-macaroni">Upgrade Funtoo 1.4 to Funtoo Next with Macaroni</a></li>
 <li>
-  <a href="/docs/funtoo/#integrate-funtoo-next-rootfs-with-macaroni">Integrate Funtoo Next with Macaroni</a>
+  <a href="/docs/funtoo/#integrate-funtoo-next-rootfs-with-macaroni">Integrate Funtoo Next with Macaroni</a></li>
+<li>
+  <a href="/docs/funtoo/#using-funtoo-kits-in-macaroni">Using Funtoo Kits in Macaroni</a>
 <br /></li>
 </ul>
 </li>
@@ -1034,7 +1036,522 @@ described before. Any user could choice what packages remove or leave.</p>
 </code></pre><p>Note: after upgrade the system it&rsquo;s better setup GCC with:</p>
 <pre tabindex="0"><code>$&gt; gcc-config 1
 * Switching native-compiler to x86_64-pc-linux-gnu-11.3.0 ...           [ ok ]
-</code></pre></article>
+</code></pre><h1 id="using-funtoo-kits-in-macaroni">
+  Using Funtoo Kits in Macaroni
+  <a class="anchor" href="#using-funtoo-kits-in-macaroni">#</a>
+</h1>
+<p>We want describe how it&rsquo;s possible to use the Funtoo Portage and <code>emerge</code>
+in Macaroni and merge packages to <code>anise</code> database.</p>
+<p>Inside the Macaroni repository we supply a freezed tree of all Funtoo kits
+that is been used to build the packages availables. If you want just add
+packages that at the moment aren&rsquo;t present in the Macaroni tree could be
+a good idea using the same tree else you can follow the Funtoo pattern and
+to run <code>ego sync</code>.</p>
+<h4 id="1-verify-anise-subsets-configuration">
+  1. Verify <code>anise</code> subsets configuration
+  <a class="anchor" href="#1-verify-anise-subsets-configuration">#</a>
+</h4>
+<p>Before starting on this it&rsquo;s mandatory that your system is been installed
+with the <code>devel</code> and <code>portage</code> subsets.</p>
+<p>This the command that permits to verify this condition:</p>
+<pre tabindex="0"><code>$&gt; anise subsets list
+🍨 Subsets enabled:
+ * portage
+   Portage metadata and files.
+
+ * devel
+   Includes and devel files. Needed for compilation.
+
+ * desktop
+</code></pre><p>If these subsets aren&rsquo;t present means that you choice to install the
+release not <em>devel</em>. But this is not an issue you can change the subsets
+on the road and we have prepared a <strong>whip</strong> hook that helps on this.</p>
+<p>So, to enable these subsets you need to execute this command:</p>
+<pre tabindex="0"><code>$&gt; ansie subsets enable devel portage
+Subsets devel portage enabled ✔ .
+</code></pre><p>So, ONLY if the subsets wasn&rsquo;t enabled you need to execute this command:</p>
+<pre tabindex="0"><code>$&gt; whip h macaroni.apply-subsets
+</code></pre><h4 id="2-install-the-packages-needed-to-use-portage-and-funtoo-stuff">
+  2. Install the packages needed to use Portage and Funtoo stuff
+  <a class="anchor" href="#2-install-the-packages-needed-to-use-portage-and-funtoo-stuff">#</a>
+</h4>
+<p>It&rsquo;s possible that some packages defined in this list will be already
+present if you have installed the <em>devel</em> ISOs but eventually, you will
+see the <em>warning</em> message that the package is already installed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise install elt-patches patch autoconf-archive gcc-config diffutils binutils <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    binutils-libs which make portage metatools ego
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/diffutils already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-devel-2.40/binutils already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-libs/binutils-libs already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/which already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/portage already installed.
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-admin/ego::macaroni-phoenix-testing                       - 2.8.7+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-arch/unzip::macaroni-phoenix-testing                      - 6.0+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-portage/elt-patches::macaroni-phoenix-testing             - 20170826.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libyaml::macaroni-phoenix-testing                    - 0.2.5
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/aiofiles::macaroni-phoenix-testing                 - 23.2.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/anyio::macaroni-phoenix-testing                    - 4.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/async-generator::macaroni-phoenix-testing          - 1.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/beautifulsoup::macaroni-phoenix-testing            - 4.12.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/certifi::macaroni-phoenix-testing                  - <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/colorama::macaroni-phoenix-testing                 - 0.4.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/curio::macaroni-phoenix-testing                    - 1.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/cython::macaroni-phoenix-testing                   - 0.29.36
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/dict-toolbox::macaroni-phoenix-testing             - 5.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/exceptiongroup::macaroni-phoenix-testing           - 1.1.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/h11::macaroni-phoenix-testing                      - 0.14.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/h2::macaroni-phoenix-testing                       - 4.1.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/hpack::macaroni-phoenix-testing                    - 4.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/httpcore::macaroni-phoenix-testing                 - 1.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/httpx::macaroni-phoenix-testing                    - 0.25.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/hyperframe::macaroni-phoenix-testing               - 6.0.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/idna::macaroni-phoenix-testing                     - 3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/msgpack::macaroni-phoenix-testing                  - 1.0.7+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/outcome::macaroni-phoenix-testing                  - 1.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/psutil::macaroni-phoenix-testing                   - 5.9.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/py::macaroni-phoenix-testing                       - 1.11.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pykerberos::macaroni-phoenix-testing               - 1.2.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pymongo::macaroni-phoenix-testing                  - 4.5.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyyaml::macaroni-phoenix-testing                   - 6.0.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyzmq::macaroni-phoenix-testing                    - 25.1.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/rich::macaroni-phoenix-testing                     - 13.6.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/sniffio::macaroni-phoenix-testing                  - 1.3.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/sortedcontainers::macaroni-phoenix-testing         - 2.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/soupsieve::macaroni-phoenix-testing                - 2.3.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/trio::macaroni-phoenix-testing                     - 0.22.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/xmltodict::macaroni-phoenix-testing                - 0.13.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                      - 1.2.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">37</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> net-libs/zeromq::macaroni-phoenix-testing                     - 4.3.5
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">38</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-apps/metatools::macaroni-phoenix-testing                  - 1.3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">39</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/autoconf-archive::macaroni-phoenix-testing          - 2021.02.19
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">40</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/gcc-config::macaroni-phoenix-testing                - 2.4+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">41</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/make::macaroni-phoenix-testing                      - 4.2.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">42</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/patch::macaroni-phoenix-testing                     - 2.7.6+1
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">455608</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># anise install elt-patches patch autoconf-archive gcc-config diffutils binutils \</span>
+</span></span><span style="display:flex;"><span>    binutils-libs which make portage metatools ego
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/diffutils already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-devel-2.40/binutils already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-libs/binutils-libs already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/which already installed.
+</span></span><span style="display:flex;"><span>🚧  warning sys-apps/portage already installed.
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-admin/ego::macaroni-phoenix-testing                       - 2.8.7+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-arch/unzip::macaroni-phoenix-testing                      - 6.0+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-portage/elt-patches::macaroni-phoenix-testing             - 20170826.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-libs/libyaml::macaroni-phoenix-testing                    - 0.2.5
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/aiofiles::macaroni-phoenix-testing                 - 23.2.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/anyio::macaroni-phoenix-testing                    - 4.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/async-generator::macaroni-phoenix-testing          - 1.10
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/beautifulsoup::macaroni-phoenix-testing            - 4.12.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/certifi::macaroni-phoenix-testing                  - <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/colorama::macaroni-phoenix-testing                 - 0.4.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/curio::macaroni-phoenix-testing                    - 1.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/cython::macaroni-phoenix-testing                   - 0.29.36
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/dict-toolbox::macaroni-phoenix-testing             - 5.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/exceptiongroup::macaroni-phoenix-testing           - 1.1.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/h11::macaroni-phoenix-testing                      - 0.14.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/h2::macaroni-phoenix-testing                       - 4.1.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/hpack::macaroni-phoenix-testing                    - 4.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/httpcore::macaroni-phoenix-testing                 - 1.0.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/httpx::macaroni-phoenix-testing                    - 0.25.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/hyperframe::macaroni-phoenix-testing               - 6.0.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/idna::macaroni-phoenix-testing                     - 3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/msgpack::macaroni-phoenix-testing                  - 1.0.7+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/outcome::macaroni-phoenix-testing                  - 1.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/psutil::macaroni-phoenix-testing                   - 5.9.6
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/py::macaroni-phoenix-testing                       - 1.11.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pykerberos::macaroni-phoenix-testing               - 1.2.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pymongo::macaroni-phoenix-testing                  - 4.5.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyyaml::macaroni-phoenix-testing                   - 6.0.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyzmq::macaroni-phoenix-testing                    - 25.1.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/rich::macaroni-phoenix-testing                     - 13.6.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/sniffio::macaroni-phoenix-testing                  - 1.3.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/sortedcontainers::macaroni-phoenix-testing         - 2.4.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/soupsieve::macaroni-phoenix-testing                - 2.3.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/trio::macaroni-phoenix-testing                     - 0.22.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/xmltodict::macaroni-phoenix-testing                - 0.13.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                      - 1.2.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">37</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> net-libs/zeromq::macaroni-phoenix-testing                     - 4.3.5
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">38</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-apps/metatools::macaroni-phoenix-testing                  - 1.3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">39</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/autoconf-archive::macaroni-phoenix-testing          - 2021.02.19
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">40</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/gcc-config::macaroni-phoenix-testing                - 2.4+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">41</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/make::macaroni-phoenix-testing                      - 4.2.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">42</span> of  42<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-devel/patch::macaroni-phoenix-testing                     - 2.7.6+1
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">455608</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">42</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  42<span style="color:#f92672">]</span> dev-python/httpcore::macaroni-phoenix-testing                     - 1.0.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  42<span style="color:#f92672">]</span> dev-python/pykerberos::macaroni-phoenix-testing                   - 1.2.1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  42<span style="color:#f92672">]</span> dev-python/rich::macaroni-phoenix-testing                         - 13.6.0          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  42<span style="color:#f92672">]</span> dev-python/xmltodict::macaroni-phoenix-testing                    - 0.13.0          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  42<span style="color:#f92672">]</span> dev-python/aiofiles::macaroni-phoenix-testing                     - 23.2.1          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  42<span style="color:#f92672">]</span> dev-python/cython::macaroni-phoenix-testing                       - 0.29.36         <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  42<span style="color:#f92672">]</span> dev-python/pyyaml::macaroni-phoenix-testing                       - 6.0.1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  42<span style="color:#f92672">]</span> dev-python/outcome::macaroni-phoenix-testing                      - 1.2.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  42<span style="color:#f92672">]</span> net-libs/zeromq::macaroni-phoenix-testing                         - 4.3.5           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  42<span style="color:#f92672">]</span> dev-python/pyzmq::macaroni-phoenix-testing                        - 25.1.1          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  42<span style="color:#f92672">]</span> sys-devel/make::macaroni-phoenix-testing                          - 4.2.1+1         <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  42<span style="color:#f92672">]</span> dev-python/soupsieve::macaroni-phoenix-testing                    - 2.3.1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  42<span style="color:#f92672">]</span> dev-python/colorama::macaroni-phoenix-testing                     - 0.4.6           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  42<span style="color:#f92672">]</span> dev-python/trio::macaroni-phoenix-testing                         - 0.22.2          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  42<span style="color:#f92672">]</span> dev-python/certifi::macaroni-phoenix-testing                      - <span style="color:#ae81ff">10001</span>           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  42<span style="color:#f92672">]</span> app-admin/ego::macaroni-phoenix-testing                           - 2.8.7+1         <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  42<span style="color:#f92672">]</span> dev-python/dict-toolbox::macaroni-phoenix-testing                 - 5.0.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  42<span style="color:#f92672">]</span> dev-python/hyperframe::macaroni-phoenix-testing                   - 6.0.1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  42<span style="color:#f92672">]</span> sys-apps/metatools::macaroni-phoenix-testing                      - 1.3.4           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  42<span style="color:#f92672">]</span> dev-python/h11::macaroni-phoenix-testing                          - 0.14.0          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  42<span style="color:#f92672">]</span> dev-python/psutil::macaroni-phoenix-testing                       - 5.9.6           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  42<span style="color:#f92672">]</span> dev-python/pymongo::macaroni-phoenix-testing                      - 4.5.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  42<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                          - 1.2.2           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  42<span style="color:#f92672">]</span> app-portage/elt-patches::macaroni-phoenix-testing                 - 20170826.1+1    <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  42<span style="color:#f92672">]</span> app-arch/unzip::macaroni-phoenix-testing                          - 6.0+1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  42<span style="color:#f92672">]</span> dev-python/idna::macaroni-phoenix-testing                         - 3.4             <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  42<span style="color:#f92672">]</span> dev-python/sortedcontainers::macaroni-phoenix-testing             - 2.4.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  42<span style="color:#f92672">]</span> dev-libs/libyaml::macaroni-phoenix-testing                        - 0.2.5           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  42<span style="color:#f92672">]</span> dev-python/msgpack::macaroni-phoenix-testing                      - 1.0.7+1         <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  42<span style="color:#f92672">]</span> dev-python/h2::macaroni-phoenix-testing                           - 4.1.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  42<span style="color:#f92672">]</span> dev-python/py::macaroni-phoenix-testing                           - 1.11.0          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  42<span style="color:#f92672">]</span> sys-devel/patch::macaroni-phoenix-testing                         - 2.7.6+1         <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  42<span style="color:#f92672">]</span> dev-python/curio::macaroni-phoenix-testing                        - 1.6             <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  42<span style="color:#f92672">]</span> dev-python/async-generator::macaroni-phoenix-testing              - 1.10            <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  42<span style="color:#f92672">]</span> dev-python/anyio::macaroni-phoenix-testing                        - 4.0.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  42<span style="color:#f92672">]</span> dev-python/httpx::macaroni-phoenix-testing                        - 0.25.0          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">37</span> of  42<span style="color:#f92672">]</span> sys-devel/autoconf-archive::macaroni-phoenix-testing              - 2021.02.19      <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">38</span> of  42<span style="color:#f92672">]</span> sys-devel/gcc-config::macaroni-phoenix-testing                    - 2.4+1           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">39</span> of  42<span style="color:#f92672">]</span> dev-python/beautifulsoup::macaroni-phoenix-testing                - 4.12.2          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">40</span> of  42<span style="color:#f92672">]</span> dev-python/exceptiongroup::macaroni-phoenix-testing               - 1.1.2           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">41</span> of  42<span style="color:#f92672">]</span> dev-python/sniffio::macaroni-phoenix-testing                      - 1.3.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">42</span> of  42<span style="color:#f92672">]</span> dev-python/hpack::macaroni-phoenix-testing                        - 4.0.0           <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">42</span> packages operations...
+</span></span><span style="display:flex;"><span>🍻 Executing <span style="color:#ae81ff">42</span> packages operations...
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  42<span style="color:#f92672">]</span> app-admin/ego::macaroni-phoenix-testing                           - 2.8.7+1         <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  42<span style="color:#f92672">]</span> app-arch/unzip::macaroni-phoenix-testing                          - 6.0+1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  42<span style="color:#f92672">]</span> app-portage/elt-patches::macaroni-phoenix-testing                 - 20170826.1+1    <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  42<span style="color:#f92672">]</span> dev-libs/libyaml::macaroni-phoenix-testing                        - 0.2.5           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  42<span style="color:#f92672">]</span> dev-python/aiofiles::macaroni-phoenix-testing                     - 23.2.1          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  42<span style="color:#f92672">]</span> dev-python/async-generator::macaroni-phoenix-testing              - 1.10            <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  42<span style="color:#f92672">]</span> dev-python/certifi::macaroni-phoenix-testing                      - <span style="color:#ae81ff">10001</span>           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  42<span style="color:#f92672">]</span> dev-python/colorama::macaroni-phoenix-testing                     - 0.4.6           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  42<span style="color:#f92672">]</span> dev-python/curio::macaroni-phoenix-testing                        - 1.6             <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  42<span style="color:#f92672">]</span> dev-python/cython::macaroni-phoenix-testing                       - 0.29.36         <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  42<span style="color:#f92672">]</span> dev-python/exceptiongroup::macaroni-phoenix-testing               - 1.1.2           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  42<span style="color:#f92672">]</span> dev-python/h11::macaroni-phoenix-testing                          - 0.14.0          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  42<span style="color:#f92672">]</span> dev-python/hpack::macaroni-phoenix-testing                        - 4.0.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  42<span style="color:#f92672">]</span> dev-python/hyperframe::macaroni-phoenix-testing                   - 6.0.1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  42<span style="color:#f92672">]</span> dev-python/idna::macaroni-phoenix-testing                         - 3.4             <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  42<span style="color:#f92672">]</span> dev-python/msgpack::macaroni-phoenix-testing                      - 1.0.7+1         <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  42<span style="color:#f92672">]</span> dev-python/outcome::macaroni-phoenix-testing                      - 1.2.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  42<span style="color:#f92672">]</span> dev-python/psutil::macaroni-phoenix-testing                       - 5.9.6           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  42<span style="color:#f92672">]</span> dev-python/py::macaroni-phoenix-testing                           - 1.11.0          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  42<span style="color:#f92672">]</span> dev-python/pykerberos::macaroni-phoenix-testing                   - 1.2.1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  42<span style="color:#f92672">]</span> dev-python/rich::macaroni-phoenix-testing                         - 13.6.0          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  42<span style="color:#f92672">]</span> dev-python/sniffio::macaroni-phoenix-testing                      - 1.3.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  42<span style="color:#f92672">]</span> dev-python/sortedcontainers::macaroni-phoenix-testing             - 2.4.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  42<span style="color:#f92672">]</span> dev-python/soupsieve::macaroni-phoenix-testing                    - 2.3.1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  42<span style="color:#f92672">]</span> dev-python/xmltodict::macaroni-phoenix-testing                    - 0.13.0          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">26</span> of  42<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                          - 1.2.2           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">27</span> of  42<span style="color:#f92672">]</span> net-libs/zeromq::macaroni-phoenix-testing                         - 4.3.5           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">28</span> of  42<span style="color:#f92672">]</span> sys-devel/autoconf-archive::macaroni-phoenix-testing              - 2021.02.19      <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">29</span> of  42<span style="color:#f92672">]</span> sys-devel/gcc-config::macaroni-phoenix-testing                    - 2.4+1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">30</span> of  42<span style="color:#f92672">]</span> sys-devel/make::macaroni-phoenix-testing                          - 4.2.1+1         <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">31</span> of  42<span style="color:#f92672">]</span> sys-devel/patch::macaroni-phoenix-testing                         - 2.7.6+1         <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">32</span> of  42<span style="color:#f92672">]</span> dev-python/beautifulsoup::macaroni-phoenix-testing                - 4.12.2          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">33</span> of  42<span style="color:#f92672">]</span> dev-python/pymongo::macaroni-phoenix-testing                      - 4.5.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">34</span> of  42<span style="color:#f92672">]</span> dev-python/h2::macaroni-phoenix-testing                           - 4.1.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">35</span> of  42<span style="color:#f92672">]</span> dev-python/pyyaml::macaroni-phoenix-testing                       - 6.0.1           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">36</span> of  42<span style="color:#f92672">]</span> dev-python/pyzmq::macaroni-phoenix-testing                        - 25.1.1          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">37</span> of  42<span style="color:#f92672">]</span> dev-python/dict-toolbox::macaroni-phoenix-testing                 - 5.0.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">38</span> of  42<span style="color:#f92672">]</span> dev-python/trio::macaroni-phoenix-testing                         - 0.22.2          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">39</span> of  42<span style="color:#f92672">]</span> dev-python/anyio::macaroni-phoenix-testing                        - 4.0.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">40</span> of  42<span style="color:#f92672">]</span> dev-python/httpcore::macaroni-phoenix-testing                     - 1.0.0           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">41</span> of  42<span style="color:#f92672">]</span> dev-python/httpx::macaroni-phoenix-testing                        - 0.25.0          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span> <span style="color:#ae81ff">42</span> of  42<span style="color:#f92672">]</span> sys-apps/metatools::macaroni-phoenix-testing                      - 1.3.4           <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>Executing finalizer <span style="color:#66d9ef">for</span> app-admin/ego-2.8.7+1
+</span></span><span style="display:flex;"><span>🐚  Executing finalizer on  / /bin/bash <span style="color:#f92672">[</span>-c entities merge --specs-dir /usr/share/macaroni/entities/ -e sync<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Merged users sync.
+</span></span><span style="display:flex;"><span>Merged shadow sync.
+</span></span><span style="display:flex;"><span>All <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>🎊 All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>The package to install with the Funtoo kits used in the buiding process is this, and eventually
+you can install it inside the previous command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise i meta-repo meta-geaaru-kit
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> toolchain/meta-geaaru-kit::macaroni-phoenix-testing           - 0.20231025
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> toolchain/meta-repo::macaroni-phoenix-testing                 - 0.20231017
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">282713</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">2</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   2<span style="color:#f92672">]</span> toolchain/meta-geaaru-kit::macaroni-phoenix-testing               - 0.20231025      <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   2<span style="color:#f92672">]</span> toolchain/meta-repo::macaroni-phoenix-testing                     - 0.20231017      <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">2</span> packages operations...
+</span></span><span style="display:flex;"><span>🍻 Executing <span style="color:#ae81ff">2</span> packages operations...
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   2<span style="color:#f92672">]</span> toolchain/meta-geaaru-kit::macaroni-phoenix-testing               - 0.20231025      <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   2<span style="color:#f92672">]</span> toolchain/meta-repo::macaroni-phoenix-testing                     - 0.20231017      <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>🎊 All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>We suggest installing the extra kit <em>geaaru-kit</em> because the same ebuilds with patches are released
+there before opening a PR to the Funtoo community or there are packages that follow a different
+release pipeline like LXD.</p>
+<p><strong>NOTE: The <code>virtual/base</code> package (already available) installs in the finalize the file <code>/etc/portage/make.conf</code>
+with the only variable <code>CHOST</code> because without it and without the setup of the profiles the emerge
+doesn&rsquo;t work correctly.</strong></p>
+<pre tabindex="0"><code>$&gt; cat /etc/portage/make.conf
+CHOST=&#34;x86_64-pc-linux-gnu&#34;
+</code></pre><p>You are free to modify it if you need.</p>
+<h4 id="3-configure-gcc">
+  3. Configure GCC
+  <a class="anchor" href="#3-configure-gcc">#</a>
+</h4>
+<pre tabindex="0"><code>$&gt; gcc-config 1
+ * Switching native-compiler to x86_64-pc-linux-gnu-11.3.0 ...
+&gt;&gt;&gt; Regenerating /etc/ld.so.cache...                                 [ ok ]
+
+ * If you intend to use the gcc from the new profile in an already
+ * running shell, please remember to do:
+
+ *   . /etc/profile
+
+
+$&gt; source /etc/profile
+</code></pre><h4 id="4-play-with-emerge">
+  4. Play with <code>emerge</code>
+  <a class="anchor" href="#4-play-with-emerge">#</a>
+</h4>
+<p>You can now play with <code>emerge</code> as you do in Funtoo.</p>
+<p>Playing with <code>emerge</code> you could be in the case where the installation
+of a package require a lot of dependencies that are missing.
+In this case, you can just check with <code>--pretend</code> option what packages are candidates
+for installation and use <code>anise</code> to install them and just leave the package
+you need for the compilation, or just compile everything.</p>
+<p>This a little tip to use emerge to get the list of the dependencies to install and
+through <code>pkgs-checker</code> and <code>jq</code> convert the gentoo package string and retrieve the
+package name. It&rsquo;s just an example, we will have a finer integration with
+<code>anise-portage-converter</code> soon.</p>
+<p>So, for example if we want to <code>emerge</code> the <em>app-admin/cloud-init</em> package and
+the <code>--pretend</code> output is this:</p>
+<pre tabindex="0"><code>$&gt; emerge cloud-init -pv --onlydeps 
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild  N     ] net-analyzer/macchanger-1.7.0-r1::net-kit  388 KiB
+[ebuild  N     ] dev-python/jsonpointer-2.4::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 10 KiB
+[ebuild  N     ] dev-python/chardet-5.2.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 2,022 KiB
+[ebuild  N     ] dev-python/urllib3-1.26.15-r2::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 295 KiB
+[ebuild  N     ] dev-python/charset_normalizer-3.3.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 102 KiB
+[ebuild  N     ] dev-python/pyopenssl-23.2.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 181 KiB
+[ebuild  N     ] dev-python/semantic_version-2.10.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 52 KiB
+[ebuild  N     ] dev-python/installer-0.5.1-r1::python-modules-kit  USE=&#34;-test&#34; PYTHON_TARGETS=&#34;python3_9 -pypy3 -python3_10 -python3_7 -python3_8&#34; 900 KiB
+[ebuild  N     ] dev-python/pyjwt-2.8.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 77 KiB
+[ebuild  N     ] dev-python/blinker-1.6.3::python-modules-kit  USE=&#34;-doc -test&#34; PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 28 KiB
+[ebuild  N     ] virtual/python-enum34-2::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 0 KiB
+[ebuild  N     ] virtual/python-ipaddress-1.0-r1::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 0 KiB
+[ebuild  N     ] dev-python/pyserial-3.4::python-modules-kit  USE=&#34;-doc -examples&#34; PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 149 KiB
+[ebuild  N     ] dev-python/configobj-5.0.8::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 38 KiB
+[ebuild  N     ] sys-fs/growpart-0.0.30::core-kit  8 KiB
+[ebuild  N     ] dev-python/gpep517-15::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 20 KiB
+[ebuild  N     ] app-admin/metalog-20200113::core-kit  USE=&#34;unicode&#34; 40 KiB
+[ebuild  N     ] dev-python/jsonpatch-1.23::python-modules-kit  USE=&#34;-test&#34; PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 18 KiB
+[ebuild  N     ] dev-python/flit_core-3.9.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 41 KiB
+[ebuild  N     ] virtual/logger-0-r1::core-kit  0 KiB
+[ebuild  N     ] dev-python/wheel-0.41.2::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 96 KiB
+[ebuild  N     ] dev-python/setuptools-rust-1.7.0::python-modules-kit  PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 297 KiB
+[ebuild  N     ] dev-python/cryptography-41.0.4::python-modules-kit  USE=&#34;-debug -idna -libressl&#34; CPU_FLAGS_X86=&#34;sse2&#34; PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 10,196 KiB
+[ebuild  N     ] dev-python/oauthlib-3.0.1::python-modules-kit  USE=&#34;-test&#34; PYTHON_TARGETS=&#34;python3_9 -python2_7 -python3_10 -python3_7 -python3_8&#34; 146 KiB
+[ebuild  N     ] dev-python/requests-2.31.0::python-modules-kit  USE=&#34;ssl -socks5&#34; PYTHON_TARGETS=&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34; 109 KiB
+
+Total: 25 packages (25 new), Size of downloads: 15,200 KiB
+
+!!! The following installed packages are masked:
+- media-libs/fdk-aac-2.0.2::media-kit (masked by: FraunhoferFDK license(s))
+A copy of the &#39;FraunhoferFDK&#39; license is located at &#39;/var/git/meta-repo/kits/media-kit/licenses/FraunhoferFDK&#39;.
+
+For more information, see the MASKED PACKAGES section in the emerge
+man page or refer to the Gentoo Handbook.
+</code></pre><p>And we can install dependencies from Macaroni repositories with this bashing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise i pkgs-checker-minimal
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise i <span style="color:#66d9ef">$(for</span> i in <span style="color:#66d9ef">$(</span>emerge cloud-init -p --quiet --color n --onlydeps 2&gt;/dev/null | grep <span style="color:#e6db74">&#34;ebuild&#34;</span> | awk <span style="color:#e6db74">&#39;{ print $4 }&#39;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> pkgs-checker pkg info $i -j | jq <span style="color:#e6db74">&#39;.name&#39;</span> -r   ; <span style="color:#66d9ef">done</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> app-admin/metalog::macaroni-phoenix-testing                   - <span style="color:#ae81ff">20200113</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/blinker::macaroni-phoenix-testing                  - 1.6.3
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/chardet::macaroni-phoenix-testing                  - 5.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/charset_normalizer::macaroni-phoenix-testing       - 3.3.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/configobj::macaroni-phoenix-testing                - 5.0.8
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">6</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/cryptography::macaroni-phoenix-testing             - 41.0.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">7</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/flit_core::macaroni-phoenix-testing                - 3.9.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">8</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/gpep517::macaroni-phoenix-testing                  - <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">9</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/installer::macaroni-phoenix-testing                - 0.5.1+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">10</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/jsonpatch::macaroni-phoenix-testing                - 1.23
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">11</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/jsonpointer::macaroni-phoenix-testing              - 2.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">12</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/oauthlib::macaroni-phoenix-testing                 - 3.0.1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">13</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyjwt::macaroni-phoenix-testing                    - 2.8.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">14</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyopenssl::macaroni-phoenix-testing                - 23.2.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">15</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/pyserial::macaroni-phoenix-testing                 - 3.4
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">16</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/requests::macaroni-phoenix-testing                 - 2.31.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">17</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/semantic_version::macaroni-phoenix-testing         - 2.10.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">18</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/setuptools-rust::macaroni-phoenix-testing          - 1.7.0+1
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">19</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/urllib3::macaroni-phoenix-testing                  - 1.26.15
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">20</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> dev-python/wheel::macaroni-phoenix-testing                    - 0.41.2
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">21</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> net-analyzer/macchanger::macaroni-phoenix-testing             - 1.7.0
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">22</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> sys-fs/growpart::macaroni-phoenix-testing                     - 0.0.30
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">23</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/logger::macaroni-phoenix-testing                      - <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">24</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/python-enum34::macaroni-phoenix-testing               - <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span> <span style="color:#ae81ff">25</span> of  25<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> virtual/python-ipaddress::macaroni-phoenix-testing            - 1.0
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">69337</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>And later:</p>
+<pre tabindex="0"><code>$&gt; emerge cloud-init -t
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild  N     ] app-admin/cloud-init-23.3.2::core-server-kit  USE=&#34;-systemd -test&#34; PYTHON_TARGETS=&#34;python3_9 -python3_10 -python3_7 -python3_8&#34; 5,605 KiB
+
+...
+
+
+&gt;&gt;&gt; Installing (1 of 1) app-admin/cloud-init-23.3.2::core-server-kit
+ * cloud-init-local needs to be run in the boot runlevel because it
+ * modifies services in the default runlevel.  When a runlevel is started
+ * it is cached, so modifications that happen to the current runlevel
+ * while you are in it are not acted upon.
+
+&gt;&gt;&gt; Recording app-admin/cloud-init in &#34;world&#34; favorites file...
+
+ * Messages for package app-admin/cloud-init-23.3.2:
+
+ * cloud-init-local needs to be run in the boot runlevel because it
+ * modifies services in the default runlevel.  When a runlevel is started
+ * it is cached, so modifications that happen to the current runlevel
+ * while you are in it are not acted upon.
+&gt;&gt;&gt; Auto-cleaning packages...
+
+&gt;&gt;&gt; No outdated packages were found on your system.
+</code></pre><p><em>NOTE: On using <em>emerge</em> it&rsquo;s possible that you will catch some warning about the COUNTER
+available in the packages installed by <code>anise</code>, but this happens because the value
+is related to the build process and not to the installed order. Probably, in the near
+future could be a good idea to set the COUNTER to zero for all Macaroni packages.</em></p>
+<h4 id="5-sync-the-packages-installed-with-emerge-to-macaroni-database">
+  5. Sync the packages installed with <code>emerge</code> to Macaroni database
+  <a class="anchor" href="#5-sync-the-packages-installed-with-emerge-to-macaroni-database">#</a>
+</h4>
+<p>To sync the package installed with emerge to <code>anise</code> database you need
+to have installed the <code>anise-portage-converter</code> package.</p>
+<p>So, if it isn&rsquo;t present just run this command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise i anise-portage-converter
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🧠 Solving install tree...
+</span></span><span style="display:flex;"><span>🍦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> macaroni/anise-portage-converter::macaroni-commons-testing    - 0.14.3
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">3034</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: y
+</span></span><span style="display:flex;"><span>🚚 Downloading <span style="color:#ae81ff">1</span> packages...
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> macaroni/anise-portage-converter::macaroni-commons-testing        - 0.14.3          <span style="color:#75715e"># downloaded ✔</span>
+</span></span><span style="display:flex;"><span>🧠 Sorting <span style="color:#ae81ff">1</span> packages operations...
+</span></span><span style="display:flex;"><span>🍻 Executing <span style="color:#ae81ff">1</span> packages operations...
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> macaroni/anise-portage-converter::macaroni-commons-testing        - 0.14.3          <span style="color:#75715e"># installed ✔</span>
+</span></span><span style="display:flex;"><span>🎊 All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>And later sync the package to the database, eventually running the same command with
+<code>--dry-run</code> to verify the behavior before propagate the change:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise-portage-converter sync --dry-run
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   5/ 833<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>app-admin/cloud-init<span style="color:#f92672">]</span> Package with version 23.3.2 not found on anise database.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   5/ 833<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>app-admin/cloud-init<span style="color:#f92672">]</span> 23.3.2 candidated <span style="color:#66d9ef">for</span> sync ✔️
+</span></span></code></pre></div><p>In the output the number 5 means that the package is the fifth analyzed among a total
+of 883 packages present in the <code>/var/db/pkg</code> directory.</p>
+<p>To complete the sync to the <code>anise</code> database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise-portage-converter sync
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   5/ 833<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>app-admin/cloud-init<span style="color:#f92672">]</span> Package with version 23.3.2 not found on anise database.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   5/ 833<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>app-admin/cloud-init<span style="color:#f92672">]</span> 23.3.2 added ✔️
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; anise s --installed cloud-init
+</span></span><span style="display:flex;"><span>app-admin/cloud-init-23.3.2
+</span></span></code></pre></div><p>Normally, after that sync if the package is available with the same version the solver
+tries to replace it with the Macaroni repository because the package <em>hash</em> doesn&rsquo;t match
+with the value calculated from the metadata of the Macaroni repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet upgrade
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> app-admin/cloud-init::macaroni-phoenix-testing                - *23.3.2 <span style="color:#f92672">[</span>23.3.2::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> macaroni/whip-catalog::macaroni-commons-testing               - 0.20231107 <span style="color:#f92672">[</span>0.20231104+1<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-fs/fuse-exfat::macaroni-phoenix-testing                   - *1.3.0+1 <span style="color:#f92672">[</span>1.3.0+1<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-process/htop::macaroni-phoenix-testing                    - *3.2.2 <span style="color:#f92672">[</span>3.2.2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-testing                 - 0.40.1 <span style="color:#f92672">[</span>0.40.0<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">35608</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: N
+</span></span></code></pre></div><p>If the package installed with emerge (identified by the <code>scm</code> repository) has a version greather than
+the version available in the Macaroni repository the solver will skipp the replace if the <code>--deep</code>
+option is not used.</p>
+<p>Instead, if you want to avoid upgrade of the package <code>app-admin/cloud-init</code> and to maintain
+the compiled version you can mask the package:</p>
+<pre tabindex="0"><code>$&gt; mkdir -p /etc/luet/mask.d || true
+$&gt; echo &#34;
+enabled: true
+rules:
+  - app-admin/cloud-init
+&#34; &gt; /etc/luet/mask.d/00-mymask.yml
+</code></pre><p>And later the package will not be candidates for the upgrade:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; luet upgrade
+</span></span><span style="display:flex;"><span>🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">11</span> - 2023-10-22 21:25:30 +0200 CEST
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">194</span> - 2023-11-07 23:12:45 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1043</span> - 2023-11-10 15:20:40 +0100 CET
+</span></span><span style="display:flex;"><span>🏠 Repository:              mottainai-testing Revision:  <span style="color:#ae81ff">113</span> - 2023-11-06 19:36:11 +0100 CET
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> macaroni/whip-catalog::macaroni-commons-testing               - 0.20231107 <span style="color:#f92672">[</span>0.20231104+1<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-fs/fuse-exfat::macaroni-phoenix-testing                   - *1.3.0+1 <span style="color:#f92672">[</span>1.3.0+1<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-process/htop::macaroni-phoenix-testing                    - *3.2.2 <span style="color:#f92672">[</span>3.2.2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🧁 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> system/luet-geaaru-testing::mottainai-testing                 - 0.40.1 <span style="color:#f92672">[</span>0.40.0<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">779</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
+</span></span></code></pre></div><p>The rules could be mapped to a specific repository too, for example,
+<em>app-admin/cloud-init::macaroni-phoenix-testing</em>, or for a specific version,
+for example <em>=app-admin/cloud-init-23.3.2</em>. With this last configuration could be good
+to keep the version with the patch and installed with <code>emerge</code> until a new version will
+be available from Macaroni.</p>
+<p>Enjoy!</p>
+</article>
  
       
 

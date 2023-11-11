@@ -6,7 +6,17 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Aug 2023 11:06:54 +0600</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Phoenix 23.11 based on Funtoo Next!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.11/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.11/</guid>
+      <description>We are happy to announce that after three intense months we have finally completed the migration of Macaroni Phoenix to a Funtoo Next based system.
+This is a really good milestone for us because after two years we have been a big step ahead, before becoming an independent project, entering in the Docker Sponsored program, and now with the first big release upgrade. The world is buggy so we are sure that something will be also present in this first big step but we hope the community and the users will be happy about how things grow.</description>
+    </item>
+    
     <item>
       <title>New Macaroni-Security Repository is here!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.08/</link>
@@ -99,6 +109,16 @@ Thank you very much for your support.</description>
       <guid>https://www.macaronios.org/partners/garr/</guid>
       <description>GARR is the ultra-broadband network dedicated to the Italian research and education community. Its main objective is to provide high-performance connectivity and to develop innovative services for the daily activities of researchers, professors and students as well as for international collaboration.
 GARR network is designed and managed by Consortium GARR, a non-profit association founded under the auspices of the Ministry of Education, University and Research. The members are CNR, ENEA, INAF, INFN, INGV and CRUI Foundation, representing all Italian universities.</description>
+    </item>
+    
+    <item>
+      <title>Consortium TOP-IX</title>
+      <link>https://www.macaronios.org/partners/topix/</link>
+      <pubDate>Tue, 31 Jan 2023 11:06:54 +0600</pubDate>
+      
+      <guid>https://www.macaronios.org/partners/topix/</guid>
+      <description>The TOP-IX Consortium has been actively working on several fronts: managing the Internet Exchange infrastructure (the reason for its initial foundation in 2002); running the Development Program, we are been added to this program; the Streaming platform, which has been providing support for technological innovation projects since 2006; and the Streaming platform, which enabled the Consortium to act as the official provider of the Berlinale Film Festival since 2006.
+The Consortium TOP-IX supplies a Development node that helps us with the building process of the Macaroni packages.</description>
     </item>
     
     <item>
