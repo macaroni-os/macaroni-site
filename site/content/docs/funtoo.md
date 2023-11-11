@@ -865,3 +865,595 @@ Note: after upgrade the system it's better setup GCC with:
 $> gcc-config 1
 * Switching native-compiler to x86_64-pc-linux-gnu-11.3.0 ...           [ ok ]
 ```
+
+# Using Funtoo Kits in Macaroni
+
+We want describe how it's possible to use the Funtoo Portage and `emerge`
+in Macaroni and merge packages to `anise` database.
+
+Inside the Macaroni repository we supply a freezed tree of all Funtoo kits
+that is been used to build the packages availables. If you want just add
+packages that at the moment aren't present in the Macaroni tree could be
+a good idea using the same tree else you can follow the Funtoo pattern and
+to run `ego sync`.
+
+#### 1. Verify `anise` subsets configuration
+
+Before starting on this it's mandatory that your system is been installed
+with the `devel` and `portage` subsets.
+
+This the command that permits to verify this condition:
+
+```
+$> anise subsets list
+🍨 Subsets enabled:
+ * portage
+   Portage metadata and files.
+
+ * devel
+   Includes and devel files. Needed for compilation.
+
+ * desktop
+
+```
+
+If these subsets aren't present means that you choice to install the
+release not *devel*. But this is not an issue you can change the subsets
+on the road and we have prepared a **whip** hook that helps on this.
+
+So, to enable these subsets you need to execute this command:
+
+```
+$> ansie subsets enable devel portage
+Subsets devel portage enabled ✔ .
+```
+
+So, ONLY if the subsets wasn't enabled you need to execute this command:
+
+```
+$> whip h macaroni.apply-subsets
+```
+
+#### 2. Install the packages needed to use Portage and Funtoo stuff
+
+It's possible that some packages defined in this list will be already
+present if you have installed the *devel* ISOs but eventually, you will
+see the *warning* message that the package is already installed.
+
+```bash
+$> anise install elt-patches patch autoconf-archive gcc-config diffutils binutils \
+    binutils-libs which make portage metatools ego
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🚧  warning sys-apps/diffutils already installed.
+🚧  warning sys-devel-2.40/binutils already installed.
+🚧  warning sys-libs/binutils-libs already installed.
+🚧  warning sys-apps/which already installed.
+🚧  warning sys-apps/portage already installed.
+🧠 Solving install tree...
+🍦 [  1 of  42] [N] app-admin/ego::macaroni-phoenix-testing                       - 2.8.7+1
+🍦 [  2 of  42] [N] app-arch/unzip::macaroni-phoenix-testing                      - 6.0+1
+🍦 [  3 of  42] [N] app-portage/elt-patches::macaroni-phoenix-testing             - 20170826.1+1
+🍦 [  4 of  42] [N] dev-libs/libyaml::macaroni-phoenix-testing                    - 0.2.5
+🍦 [  5 of  42] [N] dev-python/aiofiles::macaroni-phoenix-testing                 - 23.2.1
+🍦 [  6 of  42] [N] dev-python/anyio::macaroni-phoenix-testing                    - 4.0.0
+🍦 [  7 of  42] [N] dev-python/async-generator::macaroni-phoenix-testing          - 1.10
+🍦 [  8 of  42] [N] dev-python/beautifulsoup::macaroni-phoenix-testing            - 4.12.2
+🍦 [  9 of  42] [N] dev-python/certifi::macaroni-phoenix-testing                  - 10001
+🍦 [ 10 of  42] [N] dev-python/colorama::macaroni-phoenix-testing                 - 0.4.6
+🍦 [ 11 of  42] [N] dev-python/curio::macaroni-phoenix-testing                    - 1.6
+🍦 [ 12 of  42] [N] dev-python/cython::macaroni-phoenix-testing                   - 0.29.36
+🍦 [ 13 of  42] [N] dev-python/dict-toolbox::macaroni-phoenix-testing             - 5.0.0
+🍦 [ 14 of  42] [N] dev-python/exceptiongroup::macaroni-phoenix-testing           - 1.1.2
+🍦 [ 15 of  42] [N] dev-python/h11::macaroni-phoenix-testing                      - 0.14.0
+🍦 [ 16 of  42] [N] dev-python/h2::macaroni-phoenix-testing                       - 4.1.0
+🍦 [ 17 of  42] [N] dev-python/hpack::macaroni-phoenix-testing                    - 4.0.0
+🍦 [ 18 of  42] [N] dev-python/httpcore::macaroni-phoenix-testing                 - 1.0.0
+🍦 [ 19 of  42] [N] dev-python/httpx::macaroni-phoenix-testing                    - 0.25.0
+🍦 [ 20 of  42] [N] dev-python/hyperframe::macaroni-phoenix-testing               - 6.0.1
+🍦 [ 21 of  42] [N] dev-python/idna::macaroni-phoenix-testing                     - 3.4
+🍦 [ 22 of  42] [N] dev-python/msgpack::macaroni-phoenix-testing                  - 1.0.7+1
+🍦 [ 23 of  42] [N] dev-python/outcome::macaroni-phoenix-testing                  - 1.2.0
+🍦 [ 24 of  42] [N] dev-python/psutil::macaroni-phoenix-testing                   - 5.9.6
+🍦 [ 25 of  42] [N] dev-python/py::macaroni-phoenix-testing                       - 1.11.0
+🍦 [ 26 of  42] [N] dev-python/pykerberos::macaroni-phoenix-testing               - 1.2.1
+🍦 [ 27 of  42] [N] dev-python/pymongo::macaroni-phoenix-testing                  - 4.5.0
+🍦 [ 28 of  42] [N] dev-python/pyyaml::macaroni-phoenix-testing                   - 6.0.1
+🍦 [ 29 of  42] [N] dev-python/pyzmq::macaroni-phoenix-testing                    - 25.1.1
+🍦 [ 30 of  42] [N] dev-python/rich::macaroni-phoenix-testing                     - 13.6.0
+🍦 [ 31 of  42] [N] dev-python/sniffio::macaroni-phoenix-testing                  - 1.3.0
+🍦 [ 32 of  42] [N] dev-python/sortedcontainers::macaroni-phoenix-testing         - 2.4.0
+🍦 [ 33 of  42] [N] dev-python/soupsieve::macaroni-phoenix-testing                - 2.3.1
+🍦 [ 34 of  42] [N] dev-python/trio::macaroni-phoenix-testing                     - 0.22.2
+🍦 [ 35 of  42] [N] dev-python/xmltodict::macaroni-phoenix-testing                - 0.13.0
+🍦 [ 36 of  42] [N] dev-util/meson::macaroni-phoenix-testing                      - 1.2.2
+🍦 [ 37 of  42] [N] net-libs/zeromq::macaroni-phoenix-testing                     - 4.3.5
+🍦 [ 38 of  42] [N] sys-apps/metatools::macaroni-phoenix-testing                  - 1.3.4
+🍦 [ 39 of  42] [N] sys-devel/autoconf-archive::macaroni-phoenix-testing          - 2021.02.19
+🍦 [ 40 of  42] [N] sys-devel/gcc-config::macaroni-phoenix-testing                - 2.4+1
+🍦 [ 41 of  42] [N] sys-devel/make::macaroni-phoenix-testing                      - 4.2.1+1
+🍦 [ 42 of  42] [N] sys-devel/patch::macaroni-phoenix-testing                     - 2.7.6+1
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 455608 µs).
+Do you want to continue with this operation? [y/N]:
+# anise install elt-patches patch autoconf-archive gcc-config diffutils binutils \
+    binutils-libs which make portage metatools ego
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🚧  warning sys-apps/diffutils already installed.
+🚧  warning sys-devel-2.40/binutils already installed.
+🚧  warning sys-libs/binutils-libs already installed.
+🚧  warning sys-apps/which already installed.
+🚧  warning sys-apps/portage already installed.
+🧠 Solving install tree...
+🍦 [  1 of  42] [N] app-admin/ego::macaroni-phoenix-testing                       - 2.8.7+1
+🍦 [  2 of  42] [N] app-arch/unzip::macaroni-phoenix-testing                      - 6.0+1
+🍦 [  3 of  42] [N] app-portage/elt-patches::macaroni-phoenix-testing             - 20170826.1+1
+🍦 [  4 of  42] [N] dev-libs/libyaml::macaroni-phoenix-testing                    - 0.2.5
+🍦 [  5 of  42] [N] dev-python/aiofiles::macaroni-phoenix-testing                 - 23.2.1
+🍦 [  6 of  42] [N] dev-python/anyio::macaroni-phoenix-testing                    - 4.0.0
+🍦 [  7 of  42] [N] dev-python/async-generator::macaroni-phoenix-testing          - 1.10
+🍦 [  8 of  42] [N] dev-python/beautifulsoup::macaroni-phoenix-testing            - 4.12.2
+🍦 [  9 of  42] [N] dev-python/certifi::macaroni-phoenix-testing                  - 10001
+🍦 [ 10 of  42] [N] dev-python/colorama::macaroni-phoenix-testing                 - 0.4.6
+🍦 [ 11 of  42] [N] dev-python/curio::macaroni-phoenix-testing                    - 1.6
+🍦 [ 12 of  42] [N] dev-python/cython::macaroni-phoenix-testing                   - 0.29.36
+🍦 [ 13 of  42] [N] dev-python/dict-toolbox::macaroni-phoenix-testing             - 5.0.0
+🍦 [ 14 of  42] [N] dev-python/exceptiongroup::macaroni-phoenix-testing           - 1.1.2
+🍦 [ 15 of  42] [N] dev-python/h11::macaroni-phoenix-testing                      - 0.14.0
+🍦 [ 16 of  42] [N] dev-python/h2::macaroni-phoenix-testing                       - 4.1.0
+🍦 [ 17 of  42] [N] dev-python/hpack::macaroni-phoenix-testing                    - 4.0.0
+🍦 [ 18 of  42] [N] dev-python/httpcore::macaroni-phoenix-testing                 - 1.0.0
+🍦 [ 19 of  42] [N] dev-python/httpx::macaroni-phoenix-testing                    - 0.25.0
+🍦 [ 20 of  42] [N] dev-python/hyperframe::macaroni-phoenix-testing               - 6.0.1
+🍦 [ 21 of  42] [N] dev-python/idna::macaroni-phoenix-testing                     - 3.4
+🍦 [ 22 of  42] [N] dev-python/msgpack::macaroni-phoenix-testing                  - 1.0.7+1
+🍦 [ 23 of  42] [N] dev-python/outcome::macaroni-phoenix-testing                  - 1.2.0
+🍦 [ 24 of  42] [N] dev-python/psutil::macaroni-phoenix-testing                   - 5.9.6
+🍦 [ 25 of  42] [N] dev-python/py::macaroni-phoenix-testing                       - 1.11.0
+🍦 [ 26 of  42] [N] dev-python/pykerberos::macaroni-phoenix-testing               - 1.2.1
+🍦 [ 27 of  42] [N] dev-python/pymongo::macaroni-phoenix-testing                  - 4.5.0
+🍦 [ 28 of  42] [N] dev-python/pyyaml::macaroni-phoenix-testing                   - 6.0.1
+🍦 [ 29 of  42] [N] dev-python/pyzmq::macaroni-phoenix-testing                    - 25.1.1
+🍦 [ 30 of  42] [N] dev-python/rich::macaroni-phoenix-testing                     - 13.6.0
+🍦 [ 31 of  42] [N] dev-python/sniffio::macaroni-phoenix-testing                  - 1.3.0
+🍦 [ 32 of  42] [N] dev-python/sortedcontainers::macaroni-phoenix-testing         - 2.4.0
+🍦 [ 33 of  42] [N] dev-python/soupsieve::macaroni-phoenix-testing                - 2.3.1
+🍦 [ 34 of  42] [N] dev-python/trio::macaroni-phoenix-testing                     - 0.22.2
+🍦 [ 35 of  42] [N] dev-python/xmltodict::macaroni-phoenix-testing                - 0.13.0
+🍦 [ 36 of  42] [N] dev-util/meson::macaroni-phoenix-testing                      - 1.2.2
+🍦 [ 37 of  42] [N] net-libs/zeromq::macaroni-phoenix-testing                     - 4.3.5
+🍦 [ 38 of  42] [N] sys-apps/metatools::macaroni-phoenix-testing                  - 1.3.4
+🍦 [ 39 of  42] [N] sys-devel/autoconf-archive::macaroni-phoenix-testing          - 2021.02.19
+🍦 [ 40 of  42] [N] sys-devel/gcc-config::macaroni-phoenix-testing                - 2.4+1
+🍦 [ 41 of  42] [N] sys-devel/make::macaroni-phoenix-testing                      - 4.2.1+1
+🍦 [ 42 of  42] [N] sys-devel/patch::macaroni-phoenix-testing                     - 2.7.6+1
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 455608 µs).
+Do you want to continue with this operation? [y/N]: y
+🚚 Downloading 42 packages...
+📦 [  1 of  42] dev-python/httpcore::macaroni-phoenix-testing                     - 1.0.0           # downloaded ✔ 
+📦 [  2 of  42] dev-python/pykerberos::macaroni-phoenix-testing                   - 1.2.1           # downloaded ✔ 
+📦 [  3 of  42] dev-python/rich::macaroni-phoenix-testing                         - 13.6.0          # downloaded ✔ 
+📦 [  4 of  42] dev-python/xmltodict::macaroni-phoenix-testing                    - 0.13.0          # downloaded ✔ 
+📦 [  5 of  42] dev-python/aiofiles::macaroni-phoenix-testing                     - 23.2.1          # downloaded ✔ 
+📦 [  6 of  42] dev-python/cython::macaroni-phoenix-testing                       - 0.29.36         # downloaded ✔
+📦 [  7 of  42] dev-python/pyyaml::macaroni-phoenix-testing                       - 6.0.1           # downloaded ✔ 
+📦 [  8 of  42] dev-python/outcome::macaroni-phoenix-testing                      - 1.2.0           # downloaded ✔ 
+📦 [  9 of  42] net-libs/zeromq::macaroni-phoenix-testing                         - 4.3.5           # downloaded ✔ 
+📦 [ 10 of  42] dev-python/pyzmq::macaroni-phoenix-testing                        - 25.1.1          # downloaded ✔ 
+📦 [ 11 of  42] sys-devel/make::macaroni-phoenix-testing                          - 4.2.1+1         # downloaded ✔ 
+📦 [ 12 of  42] dev-python/soupsieve::macaroni-phoenix-testing                    - 2.3.1           # downloaded ✔ 
+📦 [ 13 of  42] dev-python/colorama::macaroni-phoenix-testing                     - 0.4.6           # downloaded ✔ 
+📦 [ 14 of  42] dev-python/trio::macaroni-phoenix-testing                         - 0.22.2          # downloaded ✔ 
+📦 [ 15 of  42] dev-python/certifi::macaroni-phoenix-testing                      - 10001           # downloaded ✔ 
+📦 [ 16 of  42] app-admin/ego::macaroni-phoenix-testing                           - 2.8.7+1         # downloaded ✔ 
+📦 [ 17 of  42] dev-python/dict-toolbox::macaroni-phoenix-testing                 - 5.0.0           # downloaded ✔ 
+📦 [ 18 of  42] dev-python/hyperframe::macaroni-phoenix-testing                   - 6.0.1           # downloaded ✔ 
+📦 [ 19 of  42] sys-apps/metatools::macaroni-phoenix-testing                      - 1.3.4           # downloaded ✔ 
+📦 [ 20 of  42] dev-python/h11::macaroni-phoenix-testing                          - 0.14.0          # downloaded ✔ 
+📦 [ 21 of  42] dev-python/psutil::macaroni-phoenix-testing                       - 5.9.6           # downloaded ✔ 
+📦 [ 22 of  42] dev-python/pymongo::macaroni-phoenix-testing                      - 4.5.0           # downloaded ✔ 
+📦 [ 23 of  42] dev-util/meson::macaroni-phoenix-testing                          - 1.2.2           # downloaded ✔ 
+📦 [ 24 of  42] app-portage/elt-patches::macaroni-phoenix-testing                 - 20170826.1+1    # downloaded ✔ 
+📦 [ 25 of  42] app-arch/unzip::macaroni-phoenix-testing                          - 6.0+1           # downloaded ✔ 
+📦 [ 26 of  42] dev-python/idna::macaroni-phoenix-testing                         - 3.4             # downloaded ✔ 
+📦 [ 27 of  42] dev-python/sortedcontainers::macaroni-phoenix-testing             - 2.4.0           # downloaded ✔ 
+📦 [ 28 of  42] dev-libs/libyaml::macaroni-phoenix-testing                        - 0.2.5           # downloaded ✔ 
+📦 [ 29 of  42] dev-python/msgpack::macaroni-phoenix-testing                      - 1.0.7+1         # downloaded ✔ 
+📦 [ 30 of  42] dev-python/h2::macaroni-phoenix-testing                           - 4.1.0           # downloaded ✔ 
+📦 [ 31 of  42] dev-python/py::macaroni-phoenix-testing                           - 1.11.0          # downloaded ✔ 
+📦 [ 32 of  42] sys-devel/patch::macaroni-phoenix-testing                         - 2.7.6+1         # downloaded ✔ 
+📦 [ 33 of  42] dev-python/curio::macaroni-phoenix-testing                        - 1.6             # downloaded ✔ 
+📦 [ 34 of  42] dev-python/async-generator::macaroni-phoenix-testing              - 1.10            # downloaded ✔ 
+📦 [ 35 of  42] dev-python/anyio::macaroni-phoenix-testing                        - 4.0.0           # downloaded ✔ 
+📦 [ 36 of  42] dev-python/httpx::macaroni-phoenix-testing                        - 0.25.0          # downloaded ✔ 
+📦 [ 37 of  42] sys-devel/autoconf-archive::macaroni-phoenix-testing              - 2021.02.19      # downloaded ✔ 
+📦 [ 38 of  42] sys-devel/gcc-config::macaroni-phoenix-testing                    - 2.4+1           # downloaded ✔ 
+📦 [ 39 of  42] dev-python/beautifulsoup::macaroni-phoenix-testing                - 4.12.2          # downloaded ✔ 
+📦 [ 40 of  42] dev-python/exceptiongroup::macaroni-phoenix-testing               - 1.1.2           # downloaded ✔ 
+📦 [ 41 of  42] dev-python/sniffio::macaroni-phoenix-testing                      - 1.3.0           # downloaded ✔ 
+📦 [ 42 of  42] dev-python/hpack::macaroni-phoenix-testing                        - 4.0.0           # downloaded ✔ 
+🧠 Sorting 42 packages operations...
+🍻 Executing 42 packages operations...
+🍰 [  1 of  42] app-admin/ego::macaroni-phoenix-testing                           - 2.8.7+1         # installed ✔ 
+🍰 [  2 of  42] app-arch/unzip::macaroni-phoenix-testing                          - 6.0+1           # installed ✔ 
+🍰 [  3 of  42] app-portage/elt-patches::macaroni-phoenix-testing                 - 20170826.1+1    # installed ✔ 
+🍰 [  4 of  42] dev-libs/libyaml::macaroni-phoenix-testing                        - 0.2.5           # installed ✔ 
+🍰 [  5 of  42] dev-python/aiofiles::macaroni-phoenix-testing                     - 23.2.1          # installed ✔ 
+🍰 [  6 of  42] dev-python/async-generator::macaroni-phoenix-testing              - 1.10            # installed ✔ 
+🍰 [  7 of  42] dev-python/certifi::macaroni-phoenix-testing                      - 10001           # installed ✔ 
+🍰 [  8 of  42] dev-python/colorama::macaroni-phoenix-testing                     - 0.4.6           # installed ✔ 
+🍰 [  9 of  42] dev-python/curio::macaroni-phoenix-testing                        - 1.6             # installed ✔ 
+🍰 [ 10 of  42] dev-python/cython::macaroni-phoenix-testing                       - 0.29.36         # installed ✔ 
+🍰 [ 11 of  42] dev-python/exceptiongroup::macaroni-phoenix-testing               - 1.1.2           # installed ✔ 
+🍰 [ 12 of  42] dev-python/h11::macaroni-phoenix-testing                          - 0.14.0          # installed ✔ 
+🍰 [ 13 of  42] dev-python/hpack::macaroni-phoenix-testing                        - 4.0.0           # installed ✔ 
+🍰 [ 14 of  42] dev-python/hyperframe::macaroni-phoenix-testing                   - 6.0.1           # installed ✔ 
+🍰 [ 15 of  42] dev-python/idna::macaroni-phoenix-testing                         - 3.4             # installed ✔ 
+🍰 [ 16 of  42] dev-python/msgpack::macaroni-phoenix-testing                      - 1.0.7+1         # installed ✔ 
+🍰 [ 17 of  42] dev-python/outcome::macaroni-phoenix-testing                      - 1.2.0           # installed ✔ 
+🍰 [ 18 of  42] dev-python/psutil::macaroni-phoenix-testing                       - 5.9.6           # installed ✔ 
+🍰 [ 19 of  42] dev-python/py::macaroni-phoenix-testing                           - 1.11.0          # installed ✔ 
+🍰 [ 20 of  42] dev-python/pykerberos::macaroni-phoenix-testing                   - 1.2.1           # installed ✔ 
+🍰 [ 21 of  42] dev-python/rich::macaroni-phoenix-testing                         - 13.6.0          # installed ✔ 
+🍰 [ 22 of  42] dev-python/sniffio::macaroni-phoenix-testing                      - 1.3.0           # installed ✔ 
+🍰 [ 23 of  42] dev-python/sortedcontainers::macaroni-phoenix-testing             - 2.4.0           # installed ✔ 
+🍰 [ 24 of  42] dev-python/soupsieve::macaroni-phoenix-testing                    - 2.3.1           # installed ✔ 
+🍰 [ 25 of  42] dev-python/xmltodict::macaroni-phoenix-testing                    - 0.13.0          # installed ✔ 
+🍰 [ 26 of  42] dev-util/meson::macaroni-phoenix-testing                          - 1.2.2           # installed ✔ 
+🍰 [ 27 of  42] net-libs/zeromq::macaroni-phoenix-testing                         - 4.3.5           # installed ✔ 
+🍰 [ 28 of  42] sys-devel/autoconf-archive::macaroni-phoenix-testing              - 2021.02.19      # installed ✔ 
+🍰 [ 29 of  42] sys-devel/gcc-config::macaroni-phoenix-testing                    - 2.4+1           # installed ✔ 
+🍰 [ 30 of  42] sys-devel/make::macaroni-phoenix-testing                          - 4.2.1+1         # installed ✔ 
+🍰 [ 31 of  42] sys-devel/patch::macaroni-phoenix-testing                         - 2.7.6+1         # installed ✔ 
+🍰 [ 32 of  42] dev-python/beautifulsoup::macaroni-phoenix-testing                - 4.12.2          # installed ✔ 
+🍰 [ 33 of  42] dev-python/pymongo::macaroni-phoenix-testing                      - 4.5.0           # installed ✔ 
+🍰 [ 34 of  42] dev-python/h2::macaroni-phoenix-testing                           - 4.1.0           # installed ✔ 
+🍰 [ 35 of  42] dev-python/pyyaml::macaroni-phoenix-testing                       - 6.0.1           # installed ✔ 
+🍰 [ 36 of  42] dev-python/pyzmq::macaroni-phoenix-testing                        - 25.1.1          # installed ✔ 
+🍰 [ 37 of  42] dev-python/dict-toolbox::macaroni-phoenix-testing                 - 5.0.0           # installed ✔ 
+🍰 [ 38 of  42] dev-python/trio::macaroni-phoenix-testing                         - 0.22.2          # installed ✔ 
+🍰 [ 39 of  42] dev-python/anyio::macaroni-phoenix-testing                        - 4.0.0           # installed ✔ 
+🍰 [ 40 of  42] dev-python/httpcore::macaroni-phoenix-testing                     - 1.0.0           # installed ✔ 
+🍰 [ 41 of  42] dev-python/httpx::macaroni-phoenix-testing                        - 0.25.0          # installed ✔ 
+🍰 [ 42 of  42] sys-apps/metatools::macaroni-phoenix-testing                      - 1.3.4           # installed ✔ 
+Executing finalizer for app-admin/ego-2.8.7+1
+🐚  Executing finalizer on  / /bin/bash [-c entities merge --specs-dir /usr/share/macaroni/entities/ -e sync]
+Merged users sync.
+Merged shadow sync.
+All done.
+
+🎊 All done.
+
+```
+
+The package to install with the Funtoo kits used in the buiding process is this, and eventually
+you can install it inside the previous command:
+
+```bash
+$> anise i meta-repo meta-geaaru-kit
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🧠 Solving install tree...
+🍦 [  1 of   2] [N] toolchain/meta-geaaru-kit::macaroni-phoenix-testing           - 0.20231025
+🍦 [  2 of   2] [N] toolchain/meta-repo::macaroni-phoenix-testing                 - 0.20231017
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 282713 µs).
+Do you want to continue with this operation? [y/N]: y
+🚚 Downloading 2 packages...
+📦 [  1 of   2] toolchain/meta-geaaru-kit::macaroni-phoenix-testing               - 0.20231025      # downloaded ✔
+📦 [  2 of   2] toolchain/meta-repo::macaroni-phoenix-testing                     - 0.20231017      # downloaded ✔
+🧠 Sorting 2 packages operations...
+🍻 Executing 2 packages operations...
+🍰 [  1 of   2] toolchain/meta-geaaru-kit::macaroni-phoenix-testing               - 0.20231025      # installed ✔ 
+🍰 [  2 of   2] toolchain/meta-repo::macaroni-phoenix-testing                     - 0.20231017      # installed ✔ 
+🎊 All done.
+
+```
+
+We suggest installing the extra kit *geaaru-kit* because the same ebuilds with patches are released
+there before opening a PR to the Funtoo community or there are packages that follow a different
+release pipeline like LXD.
+
+**NOTE: The `virtual/base` package (already available) installs in the finalize the file `/etc/portage/make.conf`
+        with the only variable `CHOST` because without it and without the setup of the profiles the emerge
+        doesn't work correctly.**
+
+```
+$> cat /etc/portage/make.conf
+CHOST="x86_64-pc-linux-gnu"
+```
+
+You are free to modify it if you need.
+
+
+#### 3. Configure GCC
+
+```
+$> gcc-config 1
+ * Switching native-compiler to x86_64-pc-linux-gnu-11.3.0 ...
+>>> Regenerating /etc/ld.so.cache...                                 [ ok ]
+
+ * If you intend to use the gcc from the new profile in an already
+ * running shell, please remember to do:
+
+ *   . /etc/profile
+
+
+$> source /etc/profile
+```
+
+#### 4. Play with `emerge`
+
+You can now play with `emerge` as you do in Funtoo.
+
+Playing with `emerge` you could be in the case where the installation
+of a package require a lot of dependencies that are missing.
+In this case, you can just check with `--pretend` option what packages are candidates
+for installation and use `anise` to install them and just leave the package
+you need for the compilation, or just compile everything.
+
+This a little tip to use emerge to get the list of the dependencies to install and
+through `pkgs-checker` and `jq` convert the gentoo package string and retrieve the
+package name. It's just an example, we will have a finer integration with
+`anise-portage-converter` soon.
+
+So, for example if we want to `emerge` the *app-admin/cloud-init* package and
+the `--pretend` output is this:
+
+
+```
+$> emerge cloud-init -pv --onlydeps 
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild  N     ] net-analyzer/macchanger-1.7.0-r1::net-kit  388 KiB
+[ebuild  N     ] dev-python/jsonpointer-2.4::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 10 KiB
+[ebuild  N     ] dev-python/chardet-5.2.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 2,022 KiB
+[ebuild  N     ] dev-python/urllib3-1.26.15-r2::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 295 KiB
+[ebuild  N     ] dev-python/charset_normalizer-3.3.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 102 KiB
+[ebuild  N     ] dev-python/pyopenssl-23.2.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 181 KiB
+[ebuild  N     ] dev-python/semantic_version-2.10.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 52 KiB
+[ebuild  N     ] dev-python/installer-0.5.1-r1::python-modules-kit  USE="-test" PYTHON_TARGETS="python3_9 -pypy3 -python3_10 -python3_7 -python3_8" 900 KiB
+[ebuild  N     ] dev-python/pyjwt-2.8.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 77 KiB
+[ebuild  N     ] dev-python/blinker-1.6.3::python-modules-kit  USE="-doc -test" PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 28 KiB
+[ebuild  N     ] virtual/python-enum34-2::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 0 KiB
+[ebuild  N     ] virtual/python-ipaddress-1.0-r1::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 0 KiB
+[ebuild  N     ] dev-python/pyserial-3.4::python-modules-kit  USE="-doc -examples" PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 149 KiB
+[ebuild  N     ] dev-python/configobj-5.0.8::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 38 KiB
+[ebuild  N     ] sys-fs/growpart-0.0.30::core-kit  8 KiB
+[ebuild  N     ] dev-python/gpep517-15::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 20 KiB
+[ebuild  N     ] app-admin/metalog-20200113::core-kit  USE="unicode" 40 KiB
+[ebuild  N     ] dev-python/jsonpatch-1.23::python-modules-kit  USE="-test" PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 18 KiB
+[ebuild  N     ] dev-python/flit_core-3.9.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 41 KiB
+[ebuild  N     ] virtual/logger-0-r1::core-kit  0 KiB
+[ebuild  N     ] dev-python/wheel-0.41.2::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 96 KiB
+[ebuild  N     ] dev-python/setuptools-rust-1.7.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 297 KiB
+[ebuild  N     ] dev-python/cryptography-41.0.4::python-modules-kit  USE="-debug -idna -libressl" CPU_FLAGS_X86="sse2" PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 10,196 KiB
+[ebuild  N     ] dev-python/oauthlib-3.0.1::python-modules-kit  USE="-test" PYTHON_TARGETS="python3_9 -python2_7 -python3_10 -python3_7 -python3_8" 146 KiB
+[ebuild  N     ] dev-python/requests-2.31.0::python-modules-kit  USE="ssl -socks5" PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 109 KiB
+
+Total: 25 packages (25 new), Size of downloads: 15,200 KiB
+
+!!! The following installed packages are masked:
+- media-libs/fdk-aac-2.0.2::media-kit (masked by: FraunhoferFDK license(s))
+A copy of the 'FraunhoferFDK' license is located at '/var/git/meta-repo/kits/media-kit/licenses/FraunhoferFDK'.
+
+For more information, see the MASKED PACKAGES section in the emerge
+man page or refer to the Gentoo Handbook.
+
+```
+
+And we can install dependencies from Macaroni repositories with this bashing:
+
+```bash
+$> anise i pkgs-checker-minimal
+...
+```
+
+```bash
+$> anise i $(for i in $(emerge cloud-init -p --quiet --color n --onlydeps 2>/dev/null | grep "ebuild" | awk '{ print $4 }'); do pkgs-checker pkg info $i -j | jq '.name' -r   ; done )
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🧠 Solving install tree...
+🍦 [  1 of  25] [N] app-admin/metalog::macaroni-phoenix-testing                   - 20200113
+🍦 [  2 of  25] [N] dev-python/blinker::macaroni-phoenix-testing                  - 1.6.3
+🍦 [  3 of  25] [N] dev-python/chardet::macaroni-phoenix-testing                  - 5.2.0
+🍦 [  4 of  25] [N] dev-python/charset_normalizer::macaroni-phoenix-testing       - 3.3.0
+🍦 [  5 of  25] [N] dev-python/configobj::macaroni-phoenix-testing                - 5.0.8
+🍦 [  6 of  25] [N] dev-python/cryptography::macaroni-phoenix-testing             - 41.0.4
+🍦 [  7 of  25] [N] dev-python/flit_core::macaroni-phoenix-testing                - 3.9.0
+🍦 [  8 of  25] [N] dev-python/gpep517::macaroni-phoenix-testing                  - 15
+🍦 [  9 of  25] [N] dev-python/installer::macaroni-phoenix-testing                - 0.5.1+1
+🍦 [ 10 of  25] [N] dev-python/jsonpatch::macaroni-phoenix-testing                - 1.23
+🍦 [ 11 of  25] [N] dev-python/jsonpointer::macaroni-phoenix-testing              - 2.4
+🍦 [ 12 of  25] [N] dev-python/oauthlib::macaroni-phoenix-testing                 - 3.0.1
+🍦 [ 13 of  25] [N] dev-python/pyjwt::macaroni-phoenix-testing                    - 2.8.0
+🍦 [ 14 of  25] [N] dev-python/pyopenssl::macaroni-phoenix-testing                - 23.2.0
+🍦 [ 15 of  25] [N] dev-python/pyserial::macaroni-phoenix-testing                 - 3.4
+🍦 [ 16 of  25] [N] dev-python/requests::macaroni-phoenix-testing                 - 2.31.0
+🍦 [ 17 of  25] [N] dev-python/semantic_version::macaroni-phoenix-testing         - 2.10.0
+🍦 [ 18 of  25] [N] dev-python/setuptools-rust::macaroni-phoenix-testing          - 1.7.0+1
+🍦 [ 19 of  25] [N] dev-python/urllib3::macaroni-phoenix-testing                  - 1.26.15
+🍦 [ 20 of  25] [N] dev-python/wheel::macaroni-phoenix-testing                    - 0.41.2
+🍦 [ 21 of  25] [N] net-analyzer/macchanger::macaroni-phoenix-testing             - 1.7.0
+🍦 [ 22 of  25] [N] sys-fs/growpart::macaroni-phoenix-testing                     - 0.0.30
+🍦 [ 23 of  25] [N] virtual/logger::macaroni-phoenix-testing                      - 0
+🍦 [ 24 of  25] [N] virtual/python-enum34::macaroni-phoenix-testing               - 2
+🍦 [ 25 of  25] [N] virtual/python-ipaddress::macaroni-phoenix-testing            - 1.0
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 69337 µs).
+Do you want to continue with this operation? [y/N]: y
+...
+...
+```
+
+And later:
+
+```
+$> emerge cloud-init -t
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild  N     ] app-admin/cloud-init-23.3.2::core-server-kit  USE="-systemd -test" PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 5,605 KiB
+
+...
+
+
+>>> Installing (1 of 1) app-admin/cloud-init-23.3.2::core-server-kit
+ * cloud-init-local needs to be run in the boot runlevel because it
+ * modifies services in the default runlevel.  When a runlevel is started
+ * it is cached, so modifications that happen to the current runlevel
+ * while you are in it are not acted upon.
+
+>>> Recording app-admin/cloud-init in "world" favorites file...
+
+ * Messages for package app-admin/cloud-init-23.3.2:
+
+ * cloud-init-local needs to be run in the boot runlevel because it
+ * modifies services in the default runlevel.  When a runlevel is started
+ * it is cached, so modifications that happen to the current runlevel
+ * while you are in it are not acted upon.
+>>> Auto-cleaning packages...
+
+>>> No outdated packages were found on your system.
+
+```
+
+*NOTE: On using *emerge* it's possible that you will catch some warning about the COUNTER
+available in the packages installed by `anise`, but this happens because the value
+is related to the build process and not to the installed order. Probably, in the near
+future could be a good idea to set the COUNTER to zero for all Macaroni packages.*
+
+#### 5. Sync the packages installed with `emerge` to Macaroni database
+
+To sync the package installed with emerge to `anise` database you need
+to have installed the `anise-portage-converter` package.
+
+So, if it isn't present just run this command:
+
+```bash
+$> anise i anise-portage-converter
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🧠 Solving install tree...
+🍦 [  1 of   1] [N] macaroni/anise-portage-converter::macaroni-commons-testing    - 0.14.3
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 3034 µs).
+Do you want to continue with this operation? [y/N]: y
+🚚 Downloading 1 packages...
+📦 [  1 of   1] macaroni/anise-portage-converter::macaroni-commons-testing        - 0.14.3          # downloaded ✔
+🧠 Sorting 1 packages operations...
+🍻 Executing 1 packages operations...
+🍰 [  1 of   1] macaroni/anise-portage-converter::macaroni-commons-testing        - 0.14.3          # installed ✔
+🎊 All done.
+
+```
+
+And later sync the package to the database, eventually running the same command with
+`--dry-run` to verify the behavior before propagate the change:
+
+```bash
+$> anise-portage-converter sync --dry-run
+[   5/ 833] [app-admin/cloud-init] Package with version 23.3.2 not found on anise database.
+[   5/ 833] [app-admin/cloud-init] 23.3.2 candidated for sync ✔️
+```
+
+In the output the number 5 means that the package is the fifth analyzed among a total
+of 883 packages present in the `/var/db/pkg` directory.
+
+To complete the sync to the `anise` database:
+
+```bash
+$> anise-portage-converter sync
+[   5/ 833] [app-admin/cloud-init] Package with version 23.3.2 not found on anise database.
+[   5/ 833] [app-admin/cloud-init] 23.3.2 added ✔️
+
+$> anise s --installed cloud-init
+app-admin/cloud-init-23.3.2
+```
+
+Normally, after that sync if the package is available with the same version the solver
+tries to replace it with the Macaroni repository because the package *hash* doesn't match
+with the value calculated from the metadata of the Macaroni repository:
+
+```bash
+$> luet upgrade
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🍬 [  1 of   5] [U] app-admin/cloud-init::macaroni-phoenix-testing                - *23.3.2 [23.3.2::scm]
+🧁 [  2 of   5] [U] macaroni/whip-catalog::macaroni-commons-testing               - 0.20231107 [0.20231104+1]
+🧁 [  3 of   5] [U] sys-fs/fuse-exfat::macaroni-phoenix-testing                   - *1.3.0+1 [1.3.0+1]
+🧁 [  4 of   5] [U] sys-process/htop::macaroni-phoenix-testing                    - *3.2.2 [3.2.2]
+🧁 [  5 of   5] [U] system/luet-geaaru-testing::mottainai-testing                 - 0.40.1 [0.40.0]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 35608 µs).
+Do you want to continue with this operation? [y/N]: N
+```
+
+If the package installed with emerge (identified by the `scm` repository) has a version greather than
+the version available in the Macaroni repository the solver will skipp the replace if the `--deep`
+option is not used.
+
+Instead, if you want to avoid upgrade of the package `app-admin/cloud-init` and to maintain
+the compiled version you can mask the package:
+
+```
+$> mkdir -p /etc/luet/mask.d || true
+$> echo "
+enabled: true
+rules:
+  - app-admin/cloud-init
+" > /etc/luet/mask.d/00-mymask.yml
+```
+
+And later the package will not be candidates for the upgrade:
+
+```bash
+$> luet upgrade
+🚀 Luet 0.40.0-geaaru-geaef4995d713afd2937c67f255dff229e555eba8 2023-11-03 10:10:38 UTC - go1.20.3
+🏠 Repository:              geaaru-repo-index Revision:   11 - 2023-10-22 21:25:30 +0200 CEST
+🏠 Repository:       macaroni-commons-testing Revision:  194 - 2023-11-07 23:12:45 +0100 CET
+🏠 Repository:       macaroni-phoenix-testing Revision: 1043 - 2023-11-10 15:20:40 +0100 CET
+🏠 Repository:              mottainai-testing Revision:  113 - 2023-11-06 19:36:11 +0100 CET
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🧁 [  1 of   4] [U] macaroni/whip-catalog::macaroni-commons-testing               - 0.20231107 [0.20231104+1]
+🧁 [  2 of   4] [U] sys-fs/fuse-exfat::macaroni-phoenix-testing                   - *1.3.0+1 [1.3.0+1]
+🧁 [  3 of   4] [U] sys-process/htop::macaroni-phoenix-testing                    - *3.2.2 [3.2.2]
+🧁 [  4 of   4] [U] system/luet-geaaru-testing::mottainai-testing                 - 0.40.1 [0.40.0]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 779 µs).
+Do you want to continue with this operation? [y/N]: 
+```
+
+The rules could be mapped to a specific repository too, for example,
+*app-admin/cloud-init::macaroni-phoenix-testing*, or for a specific version,
+for example *=app-admin/cloud-init-23.3.2*. With this last configuration could be good
+to keep the version with the patch and installed with `emerge` until a new version will
+be available from Macaroni.
+
+Enjoy!
