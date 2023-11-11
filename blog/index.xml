@@ -6,11 +6,11 @@
     <description>Recent content in Blog on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>New Phoenix 23.11 based on Funtoo Next!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.11/</link>
-      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/blog/phoenix-23.11/</guid>
       <description>We are happy to announce that after three intense months we have finally completed the migration of Macaroni Phoenix to a Funtoo Next based system.
