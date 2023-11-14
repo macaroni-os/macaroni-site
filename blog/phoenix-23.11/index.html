@@ -487,7 +487,9 @@ without the variable.</p>
 <p>Due to big upgrades done will be a lot of files to check and merge eventually.
 This phase requires attention.</p>
 <pre tabindex="0"><code>$&gt; macaronictl etc-update
-</code></pre><h4 id="6-run-macaronictl-env-update">6. Run <code>macaronictl env-update</code></h4>
+</code></pre><p><strong>NOTE: Normally, you need to avoid the override of the file /etc/default/grub.
+Check what are the differences and if it makes sense merge changes.</strong></p>
+<h4 id="6-run-macaronictl-env-update">6. Run <code>macaronictl env-update</code></h4>
 <p>This command updates the <em>/etc/profile.env</em> and regenerates the file ld.so.cache
 like the Funtoo <code>env-update</code> command:</p>
 <pre tabindex="0"><code>$&gt; macaronictl env-update
@@ -525,17 +527,69 @@ through the <code>anise query orphans</code> command:</p>
 </code></pre><p>Between the orphans list will be present the old GCC 9.2.0 that could be
 removed:</p>
 <pre tabindex="0"><code>$&gt; anise rm sys-devel-9.2.0/gcc
-</code></pre><h4 id="13-regenerate-the-kernel-initrd-image">13. Regenerate the kernel initrd image</h4>
+</code></pre><h4 id="13-verify-if-the-kernel-is-correctly-installed">13. Verify if the kernel is correctly installed</h4>
+<p>If you have upgrade the system before get the last release of the
+package <code>macaroni/whip-catalog</code> could be possible that the system detection
+hasn&rsquo;t correctly detect the system between Macaroni and Funtoo. If this is
+happens the packages:</p>
+<ul>
+<li>virtual/base</li>
+<li>virtual/grub</li>
+<li>virtual/sh</li>
+</ul>
+<p>will not be present.</p>
+<p>You can verify this with:</p>
+<pre tabindex="0"><code>$&gt; anise s --installed -p virtual/base -p virtual/grub -p virtual/sh --quiet
+virtual/sh
+virtual/base
+virtual/grub
+</code></pre><p>If the output is not this you need to reinstall them before generate initramfs:</p>
+<pre tabindex="0"><code>$&gt; anise i virtual/base virtual/grub virtual/sh
+</code></pre><p>It&rsquo;s important to verify if the kernel is been correctly upgraded.
+To do this the first check is related to the content of the <code>/boot</code> directory
+that will be with at least on kernel:</p>
+<pre tabindex="0"><code>$&gt; ls /boot/
+Initrd                                       config-vanilla-x86_64-5.15.137-macaroni  initramfs-vanilla-x86_64-5.15.137-macaroni  lost+found
+System.map-vanilla-x86_64-5.15.137-macaroni  config-vanilla-x86_64-6.1.60-macaroni    initramfs-vanilla-x86_64-6.1.60-macaroni
+System.map-vanilla-x86_64-6.1.60-macaroni    efi                                      kernel-vanilla-x86_64-5.15.137-macaroni
+bzImage                                      grub                                     kernel-vanilla-x86_64-6.1.60-macaroni
+</code></pre><p>In the example, it&rsquo;s available both kernel 6.1.60 and 5.15.137.</p>
+<p>If the directory is without the kernel is better to reinstall it, by first
+trying this:</p>
+<pre tabindex="0"><code>$&gt; anise i kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \
+        kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod
+</code></pre><p>If <code>anise</code> saids that all packages are installed trying with:</p>
+<pre tabindex="0"><code>$&gt; anise miner ri kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \
+        kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod
+</code></pre><h4 id="14-regenerate-the-kernel-initrd-image">14. Regenerate the kernel initrd image</h4>
 <p>It&rsquo;s important to run this command to build an initrd image updated
 and aligned to the merge configurations with <code>macaronictl etc-update</code>.</p>
-<pre tabindex="0"><code>macaronictl kernel geninitrd --all --set-links --purge --grub
-</code></pre><h4 id="14-reboot-and-starting-to-play-with-the-new-macaroni-phoenix-release">14. Reboot and starting to play with the new Macaroni Phoenix release</h4>
+<pre tabindex="0"><code>$&gt; macaronictl kernel geninitrd --all --set-links --purge --grub
+</code></pre><p><strong>NOTE: Before restart your system you need to be sure that the initramfs is
+been generated correctly.</strong></p>
+<p>Based on the installed kernel the output of the <code>kernel geninitrd</code> will be
+without <em>warning</em> or <em>errors</em>:</p>
+<pre tabindex="0"><code>$&gt; macaronictl kernel geninitrd --all --set-links --purge --grub
+Creating initrd image /boot/initramfs-vanilla-x86_64-5.15.137-macaroni...DONE
+Creating initrd image /boot/initramfs-vanilla-x86_64-6.1.60-macaroni...DONE
+No valid links found. I set links to kernel 6.1.60.
+Creating grub config file /boot/grub/grub.cfg...
+Generating grub configuration file ...
+Found linux image: /boot/kernel-vanilla-x86_64-6.1.60-macaroni
+Found initrd image: /boot/initramfs-vanilla-x86_64-6.1.60-macaroni
+fgrep: warning: fgrep is obsolescent; using /bin/grep -F
+Found linux image: /boot/kernel-vanilla-x86_64-5.15.137-macaroni
+Found initrd image: /boot/initramfs-vanilla-x86_64-5.15.137-macaroni
+fgrep: warning: fgrep is obsolescent; using /bin/grep -F
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+</code></pre><h4 id="15-reboot-and-starting-to-play-with-the-new-macaroni-phoenix-release">15. Reboot and starting to play with the new Macaroni Phoenix release</h4>
 <p>The job is done!</p>
 <pre tabindex="0"><code>$&gt; reboot
 </code></pre><p>If you have the subsets <code>devel</code> and <code>portage</code> enable and you want to setup
 the new GCC it&rsquo;s better to run:</p>
 <pre tabindex="0"><code>$&gt; gcc-config 1
-</code></pre><h4 id="15-optional-steps">15. Optional steps</h4>
+</code></pre><h4 id="16-optional-steps">16. Optional steps</h4>
 <p>If you have Virtualbox installed could be a good idea to execute this command:</p>
 <pre tabindex="0"><code>$&gt; whip h vbox.vbox_setup
 </code></pre><p>not yet present in the finalize.</p>
@@ -564,7 +618,7 @@ tool we want to continue the refactoring of the Macaroni build tool.</p>
 <p>Continue the improvement of our documentation</p>
 </li>
 </ol>
-<h1 id="we-waiting-for-you">We waiting for you</h1>
+<h1 id="we-are-waiting-for-you">We are waiting for you</h1>
 <p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
 <h1 id="thanks">Thanks</h1>
 <p>Many thanks to all Funtoo devs that are the sap of all this and to all

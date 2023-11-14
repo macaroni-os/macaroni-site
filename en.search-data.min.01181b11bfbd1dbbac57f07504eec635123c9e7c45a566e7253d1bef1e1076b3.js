@@ -81,17 +81,28 @@ $\u0026gt; anise repo enable macaroni-commons macaroni-phoenix and then update t
 $\u0026gt; anise repo update 3. Get the last version of the whip-catalog In order to start the upgrade process you need to have the last version of the macaroni/whip-catalog package:
 $\u0026gt; anise rm macaroni/whip-catalog --nodeps $\u0026gt; anise i macaroni/whip-catalog 4. Start the upgrade You can start the upgrade and to use the environment variable SKIP_REINDEX=1 if the luet version is greather then v0.39.0 else it\u0026rsquo;s better to run this without the variable.
 $\u0026gt; SKIP_REINDEX=1 whip h macaroni.upgrade2funtoo-next 5. Run macaronictl etc-update Due to big upgrades done will be a lot of files to check and merge eventually. This phase requires attention.
-$\u0026gt; macaronictl etc-update 6. Run macaronictl env-update This command updates the /etc/profile.env and regenerates the file ld.so.cache like the Funtoo env-update command:
+$\u0026gt; macaronictl etc-update NOTE: Normally, you need to avoid the override of the file /etc/default/grub. Check what are the differences and if it makes sense merge changes.
+6. Run macaronictl env-update This command updates the /etc/profile.env and regenerates the file ld.so.cache like the Funtoo env-update command:
 $\u0026gt; macaronictl env-update \u0026gt;\u0026gt;\u0026gt; Generating /etc/profile.env... \u0026gt;\u0026gt;\u0026gt; Generating /etc/ld.so.conf... \u0026gt;\u0026gt;\u0026gt; Regenerating /etc/ld.so.cache... 7. Verify the linking of the installed files It\u0026rsquo;s available a whip hook that permits to verify if there are libraries or binaries with links to no more available libraries.
 It\u0026rsquo;s a good idea to run this command on every upgrade:
 $\u0026gt; whip h linking.check Checking directory /usr/lib64... Checking directory /usr/lib... Checking directory /usr/bin... Checking directory /bin... Checking directory /usr/sbin... Checking directory /usr/libexec... [linking.check] Completed correctly. The directories checked by default are these:
 /usr/lib64 /usr/lib /usr/bin /bin /usr/sbin /usr/libexec But could be changed overriding the environment variable DIRS:
 $\u0026gt; DIRS=\u0026#34;/usr/lib64\u0026#34; whip h linking.check 12. Remove orphans packages (optional) When the upgrade is ended, it\u0026rsquo;s possible check what packages installed are no more available in the Macaroni repositories that could be removed through the anise query orphans command:
 $\u0026gt; anise q orphans Between the orphans list will be present the old GCC 9.2.0 that could be removed:
-$\u0026gt; anise rm sys-devel-9.2.0/gcc 13. Regenerate the kernel initrd image It\u0026rsquo;s important to run this command to build an initrd image updated and aligned to the merge configurations with macaronictl etc-update.
-macaronictl kernel geninitrd --all --set-links --purge --grub 14. Reboot and starting to play with the new Macaroni Phoenix release The job is done!
+$\u0026gt; anise rm sys-devel-9.2.0/gcc 13. Verify if the kernel is correctly installed If you have upgrade the system before get the last release of the package macaroni/whip-catalog could be possible that the system detection hasn\u0026rsquo;t correctly detect the system between Macaroni and Funtoo. If this is happens the packages:
+virtual/base virtual/grub virtual/sh will not be present.
+You can verify this with:
+$\u0026gt; anise s --installed -p virtual/base -p virtual/grub -p virtual/sh --quiet virtual/sh virtual/base virtual/grub If the output is not this you need to reinstall them before generate initramfs:
+$\u0026gt; anise i virtual/base virtual/grub virtual/sh It\u0026rsquo;s important to verify if the kernel is been correctly upgraded. To do this the first check is related to the content of the /boot directory that will be with at least on kernel:
+$\u0026gt; ls /boot/ Initrd config-vanilla-x86_64-5.15.137-macaroni initramfs-vanilla-x86_64-5.15.137-macaroni lost+found System.map-vanilla-x86_64-5.15.137-macaroni config-vanilla-x86_64-6.1.60-macaroni initramfs-vanilla-x86_64-6.1.60-macaroni System.map-vanilla-x86_64-6.1.60-macaroni efi kernel-vanilla-x86_64-5.15.137-macaroni bzImage grub kernel-vanilla-x86_64-6.1.60-macaroni In the example, it\u0026rsquo;s available both kernel 6.1.60 and 5.15.137.
+If the directory is without the kernel is better to reinstall it, by first trying this:
+$\u0026gt; anise i kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \\ kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod If anise saids that all packages are installed trying with:
+$\u0026gt; anise miner ri kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \\ kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod 14. Regenerate the kernel initrd image It\u0026rsquo;s important to run this command to build an initrd image updated and aligned to the merge configurations with macaronictl etc-update.
+$\u0026gt; macaronictl kernel geninitrd --all --set-links --purge --grub NOTE: Before restart your system you need to be sure that the initramfs is been generated correctly.
+Based on the installed kernel the output of the kernel geninitrd will be without warning or errors:
+$\u0026gt; macaronictl kernel geninitrd --all --set-links --purge --grub Creating initrd image /boot/initramfs-vanilla-x86_64-5.15.137-macaroni...DONE Creating initrd image /boot/initramfs-vanilla-x86_64-6.1.60-macaroni...DONE No valid links found. I set links to kernel 6.1.60. Creating grub config file /boot/grub/grub.cfg... Generating grub configuration file ... Found linux image: /boot/kernel-vanilla-x86_64-6.1.60-macaroni Found initrd image: /boot/initramfs-vanilla-x86_64-6.1.60-macaroni fgrep: warning: fgrep is obsolescent; using /bin/grep -F Found linux image: /boot/kernel-vanilla-x86_64-5.15.137-macaroni Found initrd image: /boot/initramfs-vanilla-x86_64-5.15.137-macaroni fgrep: warning: fgrep is obsolescent; using /bin/grep -F Adding boot menu entry for UEFI Firmware Settings ... done 15. Reboot and starting to play with the new Macaroni Phoenix release The job is done!
 $\u0026gt; reboot If you have the subsets devel and portage enable and you want to setup the new GCC it\u0026rsquo;s better to run:
-$\u0026gt; gcc-config 1 15. Optional steps If you have Virtualbox installed could be a good idea to execute this command:
+$\u0026gt; gcc-config 1 16. Optional steps If you have Virtualbox installed could be a good idea to execute this command:
 $\u0026gt; whip h vbox.vbox_setup not yet present in the finalize.
 A new Partner join the project We are happy to share that the TOP-IX consortium donated a VM to the Macaroni OS Project and this is great news because will help on work parallel to compile the new packages from the different releases.
 Really thanks for your support TOP-IX!
@@ -101,7 +112,7 @@ Complete the migration of the Macaroni Eagle release to Funtoo Next
 Bump the first release of the macaroni-games repository
 Starting setup of labs repository
 Continue the improvement of our documentation
-We waiting for you We waiting for you in our Discord Server.
+We are waiting for you We waiting for you in our Discord Server.
 Thanks Many thanks to all Funtoo devs that are the sap of all this and to all people that helps us with testing and donations.
 Support Us Any user that wants to support our work for Macaroni could do this through the Github Sponsor.
 `}),e.add({id:3,href:"/blog/phoenix-23.08/",title:"New Macaroni-Security Repository is here!",section:"Blog",content:`Finally, it\u0026rsquo;s available the new macaroni-security repository!
