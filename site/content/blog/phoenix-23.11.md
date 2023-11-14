@@ -442,6 +442,9 @@ This phase requires attention.
 $> macaronictl etc-update
 ```
 
+**NOTE: Normally, you need to avoid the override of the file /etc/default/grub.
+Check what are the differences and if it makes sense merge changes.**
+
 #### 6. Run `macaronictl env-update`
 
 This command updates the */etc/profile.env* and regenerates the file ld.so.cache
@@ -505,16 +508,96 @@ removed:
 $> anise rm sys-devel-9.2.0/gcc
 ```
 
-#### 13. Regenerate the kernel initrd image
+#### 13. Verify if the kernel is correctly installed
+
+If you have upgrade the system before get the last release of the
+package `macaroni/whip-catalog` could be possible that the system detection
+hasn't correctly detect the system between Macaroni and Funtoo. If this is
+happens the packages:
+
+* virtual/base
+* virtual/grub
+* virtual/sh
+
+will not be present.
+
+You can verify this with:
+
+```
+$> anise s --installed -p virtual/base -p virtual/grub -p virtual/sh --quiet
+virtual/sh
+virtual/base
+virtual/grub
+```
+
+If the output is not this you need to reinstall them before generate initramfs:
+
+```
+$> anise i virtual/base virtual/grub virtual/sh
+```
+
+It's important to verify if the kernel is been correctly upgraded.
+To do this the first check is related to the content of the `/boot` directory
+that will be with at least on kernel:
+
+```
+$> ls /boot/
+Initrd                                       config-vanilla-x86_64-5.15.137-macaroni  initramfs-vanilla-x86_64-5.15.137-macaroni  lost+found
+System.map-vanilla-x86_64-5.15.137-macaroni  config-vanilla-x86_64-6.1.60-macaroni    initramfs-vanilla-x86_64-6.1.60-macaroni
+System.map-vanilla-x86_64-6.1.60-macaroni    efi                                      kernel-vanilla-x86_64-5.15.137-macaroni
+bzImage                                      grub                                     kernel-vanilla-x86_64-6.1.60-macaroni
+```
+
+In the example, it's available both kernel 6.1.60 and 5.15.137.
+
+If the directory is without the kernel is better to reinstall it, by first
+trying this:
+
+```
+$> anise i kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \
+        kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod
+```
+
+If `anise` saids that all packages are installed trying with:
+
+```
+$> anise miner ri kernel-6.1/macaroni-full kernel-6.1/macaroni-modules \
+        kernel-6.1/nvidia-kernel-modules kernel-6.1/zfs-kmod
+```
+
+#### 14. Regenerate the kernel initrd image
 
 It's important to run this command to build an initrd image updated
 and aligned to the merge configurations with `macaronictl etc-update`.
 
 ```
-macaronictl kernel geninitrd --all --set-links --purge --grub
+$> macaronictl kernel geninitrd --all --set-links --purge --grub
 ```
 
-#### 14. Reboot and starting to play with the new Macaroni Phoenix release
+**NOTE: Before restart your system you need to be sure that the initramfs is
+been generated correctly.**
+
+Based on the installed kernel the output of the `kernel geninitrd` will be
+without *warning* or *errors*:
+
+```
+$> macaronictl kernel geninitrd --all --set-links --purge --grub
+Creating initrd image /boot/initramfs-vanilla-x86_64-5.15.137-macaroni...DONE
+Creating initrd image /boot/initramfs-vanilla-x86_64-6.1.60-macaroni...DONE
+No valid links found. I set links to kernel 6.1.60.
+Creating grub config file /boot/grub/grub.cfg...
+Generating grub configuration file ...
+Found linux image: /boot/kernel-vanilla-x86_64-6.1.60-macaroni
+Found initrd image: /boot/initramfs-vanilla-x86_64-6.1.60-macaroni
+fgrep: warning: fgrep is obsolescent; using /bin/grep -F
+Found linux image: /boot/kernel-vanilla-x86_64-5.15.137-macaroni
+Found initrd image: /boot/initramfs-vanilla-x86_64-5.15.137-macaroni
+fgrep: warning: fgrep is obsolescent; using /bin/grep -F
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+```
+
+#### 15. Reboot and starting to play with the new Macaroni Phoenix release
 
 The job is done!
 
@@ -529,7 +612,7 @@ the new GCC it's better to run:
 $> gcc-config 1
 ```
 
-#### 15. Optional steps
+#### 16. Optional steps
 
 If you have Virtualbox installed could be a good idea to execute this command:
 
@@ -562,7 +645,7 @@ Hereinafter, out hot points in our backlog:
 
 5. Continue the improvement of our documentation
 
-# We waiting for you
+# We are waiting for you
 
 We waiting for you in our [Discord Server](https://discord.gg/AMuVCRZEvG).
 
