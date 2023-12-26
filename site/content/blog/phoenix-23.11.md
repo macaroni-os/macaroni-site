@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2023-11-11
 linktitle: Phoenix 23.11 is out!
 title: New Phoenix 23.11 based on Funtoo Next!
-menu:
-  main:
 tags:
   - macaroni
   - release
