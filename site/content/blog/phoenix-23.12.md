@@ -125,7 +125,8 @@ In the middle of this, we fixed an [issue](https://github.com/lxc/lxc-ci/pull/80
 last Funtoo Next tarball related to the DHCPCD tool that has been downgraded as visible
 in the Funtoo Bug tracker.
 
-So, we think that the Funtoo Next images again in 2024 on the Linux Containers Image server.
+So, we think that the Funtoo Next images will be available again in 2024 on the
+Linux Containers Image server.
 
 # What next?
 
