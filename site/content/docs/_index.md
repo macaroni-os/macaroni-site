@@ -83,14 +83,9 @@ The desktop environments available in this release are:
 | XFCE | 4.16 | *stable* | yes |
 | LXQt | 1.3.0 | *experimental* | yes |
 | Enlightenment | 0.25.4 | *experimental* | no |
-| KDE | 5.22 | *experimental* | no |
+| KDE | 5.22 | *experimental* | yes |
 | i3 | 4.22 | *experimental* | yes |
 
-As the first release a lot of things could be improved but it's also true
-that the Desktop is something complex that requires a lot of effort and
-computing. We will work to clean up things and speed up the building
-phase that now it's very expensive, in particular for the build of the
-*funtoo-base* seed based on Gnome Funtoo stage3.
 
 ## Macaroni OS Eagle
 
@@ -103,10 +98,10 @@ packages fewer dependencies and more optimized for containers.
 
 Like *phoenix* also *eagle* is based on Funtoo 1.4-prime and so:
 
-    * GCC 9.2.0
+    * GCC 11.2.0
     * Glibc 2.33
-    * Python 3.7 (2.7 is available but will be dropped in the near future)
-    * LLVM 11
+    * Python 3.9
+    * LLVM 13
 
 
 ## Macaroni OS Terragon
@@ -138,6 +133,7 @@ Hereinafter, a summary of our repositories and the packages related.
 | *macaroni-eagle (ex macaroni-funtoo-systemd)* | repository/macaroni-eagle | repository/macaroni-eagle-testing | repository/macaroni-eagle-dev |
 | *macaroni-terragon* | repository/macaroni-terragon | repository/macaroni-terragon-testing | repository/macaroni-terragon-dev |
 | *macaroni-security* | repository/macaroni-security | repository/macaroni-security-testing | repository/macaroni-security-dev |
+| *macaroni-games* | repository/macaroni-games | repository/macaroni-games-testing | repository/macaroni-games-dev |
 
 **NOTE:** The development repositories must be used only by the Staff and are
       attached to the Macaroni/Mottainai CD/CI flows. The origin server has limited
@@ -159,9 +155,9 @@ Macaroni releases.
 
 The Macaroni Team supports the [MottainaiCI](https://github.com/MottainaiCI/)
 organization and the **mottainai-stable** repository is used to supply the
-Mottainai tools and `luet`.
+Mottainai tools and `anice`.
 
-The `luet` PMS could be used inside other distributions and it makes sense
+The `anice` PMS could be used inside other distributions and it makes sense
 to avoid having a `macaroni-commons` repository to install and upgrade it.
 This is the reason we have left our PMS in an independent repository.
 
@@ -198,6 +194,12 @@ It permits to release on stable branch new updates when the build cycle process
 of the `macaroni-phoenix` repository is yet in progress.
 
 Normally, this repository is installed by default in all Phoenix installation.
+
+#### Macaroni Games
+
+The **macaroni-games** repository is the repository of the **Pheonix** release
+where we releases games (Scorched3D, Wesnoth, etc.).
+
 
 # Macaroni Tags
 
