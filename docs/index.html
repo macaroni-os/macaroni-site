@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.522040fc38cf5508893509b81d8f8d3d9bb252542a9264c9dd94bd8ffd03396d.js" integrity="sha256-UiBA/DjPVQiJNQm4HY&#43;NPZuyUlQqkmTJ3ZS9j/0DOW0="></script>
+<script defer src="/en.search.min.18f0d04753d4d115c8e14e5048f977a85473b2738915f5cb1593958f711bd803.js" integrity="sha256-GPDQR1PU0RXI4U5QSPl3qFRzsnOJFfXLFZOVj3Eb2AM="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/index.xml" title="Macaroni OS" />
@@ -141,7 +141,7 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/blog/phoenix-23.11/">Phoenix 23.11 is out!</a>
+									href="https://www.macaronios.org/blog/phoenix-23.12/">Phoenix 23.12 and Eagle 23.12 are out!</a>
 							</li>
 							
 							
@@ -454,7 +454,7 @@ Funtoo Next (previously was based on 1.4-prime) and so:</p>
 <td style="text-align:left">KDE</td>
 <td style="text-align:center">5.22</td>
 <td style="text-align:left"><em>experimental</em></td>
-<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
 </tr>
 <tr>
 <td style="text-align:left">i3</td>
@@ -464,11 +464,6 @@ Funtoo Next (previously was based on 1.4-prime) and so:</p>
 </tr>
 </tbody>
 </table>
-<p>As the first release a lot of things could be improved but it&rsquo;s also true
-that the Desktop is something complex that requires a lot of effort and
-computing. We will work to clean up things and speed up the building
-phase that now it&rsquo;s very expensive, in particular for the build of the
-<em>funtoo-base</em> seed based on Gnome Funtoo stage3.</p>
 <h2 id="macaroni-os-eagle">
   Macaroni OS Eagle
   <a class="anchor" href="#macaroni-os-eagle">#</a>
@@ -479,10 +474,10 @@ Funtoo 1.4-prime with patches to integrate SystemD as an init system.</p>
 with server-oriented and X-less use flags. This permits to have core
 packages fewer dependencies and more optimized for containers.</p>
 <p>Like <em>phoenix</em> also <em>eagle</em> is based on Funtoo 1.4-prime and so:</p>
-<pre><code>* GCC 9.2.0
+<pre><code>* GCC 11.2.0
 * Glibc 2.33
-* Python 3.7 (2.7 is available but will be dropped in the near future)
-* LLVM 11
+* Python 3.9
+* LLVM 13
 </code></pre>
 <h2 id="macaroni-os-terragon">
   Macaroni OS Terragon
@@ -550,6 +545,12 @@ testing repository and, a development repository.</p>
 <td style="text-align:center">repository/macaroni-security-testing</td>
 <td style="text-align:center">repository/macaroni-security-dev</td>
 </tr>
+<tr>
+<td><em>macaroni-games</em></td>
+<td style="text-align:center">repository/macaroni-games</td>
+<td style="text-align:center">repository/macaroni-games-testing</td>
+<td style="text-align:center">repository/macaroni-games-dev</td>
+</tr>
 </tbody>
 </table>
 <p><strong>NOTE:</strong> The development repositories must be used only by the Staff and are
@@ -573,8 +574,8 @@ Macaroni releases.</p>
 <p>The Macaroni Team supports the 
   <a href="https://github.com/MottainaiCI/">MottainaiCI</a>
 organization and the <strong>mottainai-stable</strong> repository is used to supply the
-Mottainai tools and <code>luet</code>.</p>
-<p>The <code>luet</code> PMS could be used inside other distributions and it makes sense
+Mottainai tools and <code>anice</code>.</p>
+<p>The <code>anice</code> PMS could be used inside other distributions and it makes sense
 to avoid having a <code>macaroni-commons</code> repository to install and upgrade it.
 This is the reason we have left our PMS in an independent repository.</p>
 <p>Normally, this repository is installed by default.</p>
@@ -608,6 +609,12 @@ where we releases security updates and fast rollings packages (browsers, etc.).<
 <p>It permits to release on stable branch new updates when the build cycle process
 of the <code>macaroni-phoenix</code> repository is yet in progress.</p>
 <p>Normally, this repository is installed by default in all Phoenix installation.</p>
+<h4 id="macaroni-games">
+  Macaroni Games
+  <a class="anchor" href="#macaroni-games">#</a>
+</h4>
+<p>The <strong>macaroni-games</strong> repository is the repository of the <strong>Pheonix</strong> release
+where we releases games (Scorched3D, Wesnoth, etc.).</p>
 <h1 id="macaroni-tags">
   Macaroni Tags
   <a class="anchor" href="#macaroni-tags">#</a>

@@ -6,11 +6,20 @@
     <description>Recent content in Tags on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eagle</title>
+      <link>https://www.macaronios.org/tags/eagle/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/tags/eagle/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>macaroni</title>
       <link>https://www.macaronios.org/tags/macaroni/</link>
-      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/macaroni/</guid>
       <description></description>
@@ -19,7 +28,7 @@
     <item>
       <title>phoenix</title>
       <link>https://www.macaronios.org/tags/phoenix/</link>
-      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/phoenix/</guid>
       <description></description>
@@ -28,7 +37,7 @@
     <item>
       <title>release</title>
       <link>https://www.macaronios.org/tags/release/</link>
-      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/release/</guid>
       <description></description>
