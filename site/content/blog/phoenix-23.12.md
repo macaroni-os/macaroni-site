@@ -106,6 +106,12 @@ We will work on integrate emulators in 2024.
 
 See the complete changelog of [Macaroni Games 23.11 release](https://github.com/macaroni-os/macaroni-games/releases/tag/v23.11-phoenix).
 
+Hereinafter, the step to add this new repository:
+
+```bash
+$> anise install repository/macaroni-games
+$> anise repo update
+```
 
 # Eagle 23.12 is out!
 
