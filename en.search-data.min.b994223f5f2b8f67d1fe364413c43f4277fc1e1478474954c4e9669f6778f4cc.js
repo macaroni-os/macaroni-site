@@ -53,7 +53,7 @@ We suggestion to move soon to the release 23.12.
 See the complete changelog of Eagle 23.12 release.
 Funtoo LXD/Incus images Many changes happen in the last period around the Linux Containers world.
 In the middle of this, we fixed an issue in the last Funtoo Next tarball related to the DHCPCD tool that has been downgraded as visible in the Funtoo Bug tracker.
-So, we think that the Funtoo Next images again in 2024 on the Linux Containers Image server.
+So, we think that the Funtoo Next images will be available again in 2024 on the Linux Containers Image server.
 What next? Hereinafter, out hot points in our backlog:
 Will be our first priority to complete the first rewrite of the anise-build (luet-build) tool and improve our building process to complete the rebranding of our Package Manager.
 Starting setup of labs repository
