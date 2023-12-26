@@ -48,7 +48,8 @@ Wesnoth 1.16.10
 Warzone 2100 3.2.3
 We will work on integrate emulators in 2024.
 See the complete changelog of Macaroni Games 23.11 release.
-Eagle 23.12 is out! Finally, also the Eagle release is been moved to Funtoo Next, this includes all improved described in the previous blog about Phoenix 23.11 (GCC 11.3.0, Python 3.9, etc.) and a lot of Security fix.
+Hereinafter, the step to add this new repository:
+$\u0026gt; anise install repository/macaroni-games $\u0026gt; anise repo update Eagle 23.12 is out! Finally, also the Eagle release is been moved to Funtoo Next, this includes all improved described in the previous blog about Phoenix 23.11 (GCC 11.3.0, Python 3.9, etc.) and a lot of Security fix.
 We suggestion to move soon to the release 23.12.
 See the complete changelog of Eagle 23.12 release.
 Funtoo LXD/Incus images Many changes happen in the last period around the Linux Containers world.
