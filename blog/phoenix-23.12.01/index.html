@@ -10,7 +10,7 @@
   
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>eagle</title>
+  <title>Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!</title>
   <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
 
   <!-- Twitter Bootstrs CSS -->
@@ -107,101 +107,221 @@
 	</div>
 </section>
 
-<!-- Global Page Section Start -->
 <section class="global-page-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block">
-          <h2>eagle</h2>
-          <ol class="breadcrumb list-inline text-center">
-            <li class="list-inline-item">
-              <a href="https://www.macaronios.org/">
-                <i class="ion-ios-home"></i>
-                Home &nbsp; &nbsp;/
-              </a>
-            </li>
-            <li class="active list-inline-item">eagle</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!</h2>
+					<div class="portfolio-meta">
+						<span>Saturday, Jan 20, 2024</span>|
+						<span> Tags:
+							macaroni, release, phoenix, eagle
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
-<!-- Global Page Section End -->
 
-<section id="blog-full-width">
+<section class="single-post">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+				<div class="post-content">
+					<p><strong>Happy new year to all Macaroni OS and Funtoo users!</strong></p>
+<p>We are happy to announce a new bugfix release for Phoenix and Eagle <strong>23.12.01</strong>
+based on the tree of <em>23.12</em> and the release Terragon <strong>23.12</strong>:</p>
+<ol>
+<li>
+<p>We have autogen the Apache package, a fix that will be available for Funtoo users
+in <code>harvester/24.01</code> soon. This permits an upgrade to version 2.4.58
+with tons of security fixes. See later for the details.</p>
+</li>
+<li>
+<p>Phoenix 23.12.01 supplies a new version of the Poppler package with a fix of
+the use flags used. Now the PDFs with JPEG or PNG are correctly visible.</p>
+</li>
+<li>
+<p>The release v0.4.0 of the Incus project is now available in the tree of all
+our releases.</p>
+</li>
+<li>
+<p>The kernel 6.6 is now available but without the NVIDIA driver for the moment
+caused by some issues with symbols exporting as described
+<a href="https://www.phoronix.com/news/Linux-6.6-Illicit-NVIDIA-Change">here</a>.</p>
+</li>
+<li>
+<p>The kernel 6.7 is now been added in the tree without extra kernel modules.</p>
+</li>
+<li>
+<p>The release Phoenix 23.12.01 uses Macaroni Security 24.01 tag.</p>
+</li>
+<li>
+<p>We have fixed an important issue in the wrapper script of Google Chrome,
+Brave that now permits opening the browser with the clicked link.
+This fix needs <code>macaronictl v0.9.12</code>.</p>
+</li>
+</ol>
+<h1 id="security">Security</h1>
+<p>With the upgrade of the Apache package these the CVE fixed in all releases:</p>
+<ul>
+<li>CVE-2023-43622</li>
+<li>CVE-2023-45802</li>
+<li>CVE-2023-25690</li>
+<li>CVE-2023-27522</li>
+<li>CVE-2006-20001</li>
+<li>CVE-2022-23943</li>
+<li>CVE-2022-22721</li>
+<li>CVE-2022-22720</li>
+<li>CVE-2022-22719</li>
+<li>CVE-2022-31813</li>
+<li>CVE-2022-30556</li>
+<li>CVE-2022-30522</li>
+<li>CVE-2022-29404</li>
+<li>CVE-2022-28615</li>
+<li>CVE-2022-28614</li>
+<li>CVE-2022-28330</li>
+<li>CVE-2022-26377</li>
+<li>CVE-2021-44224</li>
+<li>CVE-2021-44790</li>
+<li>CVE-2021-42013</li>
+<li>CVE-2021-41524</li>
+<li>CVE-2021-41773</li>
+</ul>
+<h1 id="phoenix-231201-is-out">Phoenix 23.12.01 is out!</h1>
+<p>In additional to the points described in the introduction, in evidence we have:</p>
+<ul>
+<li>
+<p>Incus v0.4.0</p>
+</li>
+<li>
+<p>Apache 2.4.58</p>
+</li>
+<li>
+<p>Added package <code>dev-vsc/hub</code> 2.14.2 for CD/CI processes.</p>
+</li>
+<li>
+<p>VSCode v1.85.1</p>
+</li>
+<li>
+<p>VSCodium v1.85.1.23348</p>
+</li>
+<li>
+<p>PyCharm Community v2023.3.2</p>
+</li>
+<li>
+<p>Thunderbird v115.6.1</p>
+</li>
+<li>
+<p>Discord v0.0.40</p>
+</li>
+<li>
+<p>Github Cli v2.42.0</p>
+</li>
+<li>
+<p>Google Chrome v120.0.6099.216</p>
+</li>
+<li>
+<p>Vivaldi v6.5.3206.53</p>
+</li>
+<li>
+<p>Criu 3.19</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.12.01-phoenix">Phoenix 23.12.01 release</a>
+and <a href="https://github.com/macaroni-os/macaroni-security/releases/tag/v24.01-phoenix">Security 24.01 release</a>.</p>
+<h1 id="eagle-231201-is-out">Eagle 23.12.01 is out!</h1>
+<p>In additional to the points described in the introduction, in evidence we have:</p>
+<ul>
+<li>
+<p>Incus v0.4.0</p>
+</li>
+<li>
+<p>Apache 2.4.58 with the fix of the logrotate file</p>
+</li>
+<li>
+<p>Added Numpy v1.21.5</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.12.01-eagle">Eagle 23.12.01 release</a>.</p>
+<h1 id="terragon-2312-is-out">Terragon 23.12 is out!</h1>
+<p>In additional to the points described in the introduction, in evidence we have:</p>
+<ul>
+<li>
+<p>Incus v0.4.0</p>
+</li>
+<li>
+<p>Binutils v2.40</p>
+</li>
+<li>
+<p>GCC 12.3.0 is now available as optional compiler but for now we maintain
+11.3.0 as main system package.</p>
+</li>
+<li>
+<p>LXD v5.20</p>
+</li>
+<li>
+<p>MongoDB v4.4.27</p>
+</li>
+<li>
+<p>Rust v1.74.1</p>
+</li>
+<li>
+<p>Grafana v10.2.3</p>
+</li>
+<li>
+<p>Apache v2.4.58</p>
+</li>
+<li>
+<p>Vim v9.0.2184</p>
+</li>
+<li>
+<p>Prometheus v2.48.1</p>
+</li>
+<li>
+<p>Bind v9.18.21</p>
+</li>
+<li>
+<p>Haproxy v2.6.16</p>
+</li>
+<li>
+<p>Meson v1.3.0</p>
+</li>
+<li>
+<p>Funtoo Metatools v1.3.5</p>
+</li>
+<li>
+<p>Util Linux v2.93.3</p>
+</li>
+<li>
+<p>Caddy v2.7.6</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.12-terragon">Terragon 23.12 release</a>.</p>
+<h1 id="what-next">What next?</h1>
+<p>Hereinafter, out hot points in our backlog:</p>
+<ol>
+<li>
+<p>The rewrite of the <code>anise-build</code> (luet-build) tool is in progress. We hope to
+have the new release in two or three months.</p>
+</li>
+<li>
+<p>Continue the improvement of our documentation</p>
+</li>
+</ol>
+<h1 id="we-are-waiting-for-you">We are waiting for you</h1>
+<p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
+<h1 id="thanks">Thanks</h1>
+<p>Many thanks to all Funtoo devs that are the sap of all this and to all
+people that helps us with testing and donations.</p>
+<h1 id="support-us">Support Us</h1>
+<p>Any user that wants to support our work for Macaroni could do this through the
+Github <a href="https://github.com/sponsors/geaaru">Sponsor</a>.</p>
 
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/blog/phoenix-23.12.01/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/blog/phoenix-23.12.01/">Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Saturday, Jan 20, 2024</span>
-							<span>by
-								Daniele Rondina
-							</span>
-							
-							
-							<span>
-								macaroni, release, phoenix, eagle
-							</span>
-							
-						</div>
-						<p>
-							Happy new year to all Macaroni OS and Funtoo users!
-We are happy to announce a new bugfix release for Phoenix and Eagle 23.12.01 based on the tree of 23.12 and the release Terragon 23.12:
-We have autogen the Apache package, a fix that will be available for Funtoo users in harvester/24.01 soon. This permits an upgrade to version 2.4.58 with tons of security fixes. See later for the details.
-						</p>
-						<a href="https://www.macaronios.org/blog/phoenix-23.12.01/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
-				<article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
-
-					<div class="blog-post-image">
-						<a href="https://www.macaronios.org/blog/phoenix-23.12/">
-							
-						</a>
-					</div>
-					<div class="blog-content">
-						<h2 class="blogpost-title">
-							<a href="https://www.macaronios.org/blog/phoenix-23.12/">Phoenix 23.12 and Eagle 23.12!</a>
-						</h2>
-						<div class="blog-meta">
-							<span>Monday, Dec 25, 2023</span>
-							<span>by
-								Daniele Rondina
-							</span>
-							
-							
-							<span>
-								macaroni, release, phoenix, eagle
-							</span>
-							
-						</div>
-						<p>
-							Macaroni OS is about two years old and we want to thank all the people who helped to reach this result.
-Thank you!
-For this reason, without to have a complete build pipeline for a new version of the Phoenix release, we want to tag the release 23.12 of Macaroni Phoenix with anothers big steps:
-This releaes contains the upgrade of ZFS to version 2.2.2 with important bugfix of the release 2.
-						</p>
-						<a href="https://www.macaronios.org/blog/phoenix-23.12/" class="btn btn-dafault btn-details hvr-bounce-to-right">Continue
-							Reading</a>
-					</div>
-				</article>
-				
+				</div>
 			</div>
 		</div>
 	</div>

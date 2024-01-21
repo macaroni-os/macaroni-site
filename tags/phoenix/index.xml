@@ -6,7 +6,18 @@
     <description>Recent content in phoenix on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/phoenix/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/phoenix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!</title>
+      <link>https://www.macaronios.org/blog/phoenix-23.12.01/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-23.12.01/</guid>
+      <description>Happy new year to all Macaroni OS and Funtoo users!
+We are happy to announce a new bugfix release for Phoenix and Eagle 23.12.01 based on the tree of 23.12 and the release Terragon 23.12:
+We have autogen the Apache package, a fix that will be available for Funtoo users in harvester/24.01 soon. This permits an upgrade to version 2.4.58 with tons of security fixes. See later for the details.</description>
+    </item>
+    
     <item>
       <title>Phoenix 23.12 and Eagle 23.12!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.12/</link>
