@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2023-12-25
 linktitle: Phoenix 23.12 and Eagle 23.12 are out!
 title: Phoenix 23.12 and Eagle 23.12!
-menu:
-  main:
 tags:
   - macaroni
   - release
