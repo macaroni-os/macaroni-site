@@ -147,7 +147,10 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue-light">student</span>
         <span class="badge-label badge-orange">tester</span>
       </td>
-      <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares. KDE is at the moment experimental.</td>
+      <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares.
+          KDE is at the moment supply by default experimental Wayland integration that could be unstable with some video cards.
+          Just use X11 mode in this case.
+      </td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix i3</td>
@@ -177,7 +180,10 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue-light">student</span>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares and with subsets <i>portage</i> and <i>devel</i>. KDE is at the moment experimental.</td>
+      <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares and with subsets <i>portage</i> and <i>devel</i>.
+          KDE is at the moment supply by default experimental Wayland integration that could be unstable with some video cards.
+          Just use X11 mode in this case.
+      </td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix XFCE Devel</td>
@@ -239,7 +245,7 @@ The password of the `macaroni` user is `macaroni`.
   </tbody>
 </table>
 
-Our last release is <b>`23.12`</b> and it uses kernel *5.10.201* for Server ISOs and *6.1.63* for the others.
+Our last release is <b>`23.12.01`</b> and it uses kernel *5.10.206* for Server ISOs and *6.1.71* for the others.
 
 <div id="isos"></div>
 
