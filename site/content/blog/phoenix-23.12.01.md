@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2024-01-20
 linktitle: New releases 23.12.01 are out!
 title: Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!
-menu:
-  main:
 tags:
   - macaroni
   - release
