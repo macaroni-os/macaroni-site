@@ -81,9 +81,9 @@ The desktop environments available in this release are:
 | :--- |  :---:  | :--- | :---: |
 | Gnome | 3.36 | *stable* | yes |
 | XFCE | 4.16 | *stable* | yes |
-| LXQt | 1.3.0 | *experimental* | yes |
+| LXQt | 1.4.0 | *stable* | yes |
 | Enlightenment | 0.25.4 | *experimental* | no |
-| KDE | 5.22 | *experimental* | yes |
+| KDE | Plasma 5.27.9 - KDE Apps 23.08.2 - KDE Framework 5.111.0 | *experimental* | yes |
 | i3 | 4.22 | *experimental* | yes |
 
 
@@ -241,7 +241,7 @@ We want to try to follow these periodic tags on our Releases:
 
 | Release | <div style="width:200px">Rolling Tags<div> |
 | :--- |  :---:  |
-| *Macaroni OS Phoenix* | every 2 months (when possible monthly with *macaroni-security* repository) |
+| *Macaroni OS Phoenix* | every 3/4 months (when possible monthly with *macaroni-security* repository) |
 | *Macaroni OS Terragon* | monthly |
 | *Macaroni OS Eagle* | monthly |
 
