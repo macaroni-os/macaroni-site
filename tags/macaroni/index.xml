@@ -6,7 +6,17 @@
     <description>Recent content in macaroni on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Releases 24.04 ready!</title>
+      <link>https://www.macaronios.org/blog/phoenix-24.04/</link>
+      <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-24.04/</guid>
+      <description>We are excited to announce the releases of Phoenix 24.04, Terragon 24.04 and Eagle 24.04! Thank you to all people help on this!
+This release proves that we aren&amp;rsquo;t only a distribution that uses Funtoo but also tries to explore new areas for both the Funtoo Community and our users. We want to help the Opensource world to increase its popularity and its features or at least try. This is a hard mission, that requires time, but we believe in this and we will always combat this.</description>
+    </item>
+    
     <item>
       <title>Phoenix 23.12.01, Eagle 23.12.01 and Terragon 23.12!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.12.01/</link>
