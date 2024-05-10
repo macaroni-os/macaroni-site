@@ -23,6 +23,8 @@ We want to help the Opensource world to increase its popularity and its features
 or at least try. This is a hard mission, that requires time, but we believe in this and
 we will always combat this.
 
+We have finally a `macaronios.org` email accounts that helps to validate our works in our projects.
+
 # Call to the Opensource World
 
 In the last period, a somber story has been shared: the *xz backdoor*. I think that this is
@@ -250,6 +252,11 @@ that for this summer the new tool will be ready for production. This means that 
 Macaroni ARM release will arrive soon.
 
 A lot of new features will be added. Stay tuned!
+
+# Gnome Wayland ISO
+
+To helps the testing of Wayland integration we have create a new Gnome Wayland ISO
+that uses XWayland by default.
 
 # Phoenix 24.04 is out!
 
