@@ -411,6 +411,28 @@ with the prompt where insert the passphrase to mount *home* partition:
 
 </div>
 
+
+**NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
+        seems to have an issue with the mouse setup.
+        The problem seems related to the *vmmouse* driver. Forcing using *evdev*
+        driver fixes the problem. Hereinafter, is an example of a possible solution:**
+
+```shell
+$> echo '
+Section "InputClass"
+	Identifier	"vmmouse"
+	MatchIsPointer	"on"
+	MatchTag	"vmmouse"
+	Driver		"evdev"
+EndSection
+' > /etc/X11/xorg.conf.d/50-vmmouse.conf
+
+$> /etc/init.d/xdm restart
+
+```
+
+
+
 # Install Macaroni LXD Containers
 
 Macaroni OS supply their LXD images over a Simplestreams Server with help of the
