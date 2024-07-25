@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.723395fc7e028027e0b937de5c2725020f15cb6974e3d14324608b9e694eeead.js" integrity="sha256-cjOV/H4CgCfguTfeXCclAg8Vy2l049FDJGCLnmlO7q0="></script>
+<script defer src="/en.search.min.f6a4a9e903a5b04a6e8874cbe7c0073e6be4071427c2b878b73a78ece2970c3a.js" integrity="sha256-9qSp6QOlsEpuiHTL58AHPmvkBxQnwrh4tzp47OKXDDo="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -672,7 +672,21 @@ with the prompt where insert the passphrase to mount <em>home</em> partition:</p
 <p>
   <img src="../../images/install/dracut-boot-enc-home.png" alt="Grub Password" /></p>
 </div>
-<h1 id="install-macaroni-lxd-containers">
+<p><strong>NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
+seems to have an issue with the mouse setup.
+The problem seems related to the <em>vmmouse</em> driver. Forcing using <em>evdev</em>
+driver fixes the problem. Hereinafter, is an example of a possible solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Section &#34;InputClass&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	Identifier	&#34;vmmouse&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	MatchIsPointer	&#34;on&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	MatchTag	&#34;vmmouse&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	Driver		&#34;evdev&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EndSection
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> &gt; /etc/X11/xorg.conf.d/50-vmmouse.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; /etc/init.d/xdm restart
+</span></span></code></pre></div><h1 id="install-macaroni-lxd-containers">
   Install Macaroni LXD Containers
   <a class="anchor" href="#install-macaroni-lxd-containers">#</a>
 </h1>

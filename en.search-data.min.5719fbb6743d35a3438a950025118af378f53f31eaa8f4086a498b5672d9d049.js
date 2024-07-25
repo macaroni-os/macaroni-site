@@ -685,7 +685,8 @@ Ensure that the dmcrypt service is enabled on boot runlevel:
 $\u0026gt; rc-update show NetworkManager | default avahi-daemon | default binfmt | boot bluetooth | default bootmisc | boot cgroups | sysinit dbus | boot devfs | sysinit device-mapper | sysinit dmcrypt | boot ... Enable it if it\u0026rsquo;s not available with:
 $\u0026gt; rc-update add dmcrypt boot e. Reboot your system.
 If all is been configured correctly on bootstrap you will see the Plymouth page with the prompt where insert the passphrase to mount home partition:
-Install Macaroni LXD Containers # Macaroni OS supply their LXD images over a Simplestreams Server with help of the simplestreams-builder tool.
+NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3 seems to have an issue with the mouse setup. The problem seems related to the vmmouse driver. Forcing using evdev driver fixes the problem. Hereinafter, is an example of a possible solution:
+$\u0026gt; echo \u0026#39; Section \u0026#34;InputClass\u0026#34; Identifier	\u0026#34;vmmouse\u0026#34; MatchIsPointer	\u0026#34;on\u0026#34; MatchTag	\u0026#34;vmmouse\u0026#34; Driver	\u0026#34;evdev\u0026#34; EndSection \u0026#39; \u0026gt; /etc/X11/xorg.conf.d/50-vmmouse.conf $\u0026gt; /etc/init.d/xdm restart Install Macaroni LXD Containers # Macaroni OS supply their LXD images over a Simplestreams Server with help of the simplestreams-builder tool.
 To configure your LXD system to download Macaroni OS images you need to add the macaroni remote:
 $\u0026gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public The images are visible with the command:
 $\u0026gt; lxc image list macaroni: Install Macaroni Docker Containers # The official Docker Hub user is macaronios.
