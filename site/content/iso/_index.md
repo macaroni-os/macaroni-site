@@ -18,9 +18,9 @@ weight: 5
 <h2>ISO</h2>
 
 Following the idea to share the right ISO for the right user we want to supply
-some indications that help users on choose the ISO for their needs.
+some indications that help users on choosing the ISO for their needs.
 
-We use these labels in the hereinafter ISOs description with these mean:
+We use these labels in the following  ISOs description with these meanings:
 
 <table style="line-height: 10px; font-size: 15px" class="table table-striped table-hover">
   <thead>
@@ -36,7 +36,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-blue">newbie</span>
         </div>
       </td>
-      <td>Ideal for new users and/or not developers that don't need a compilator.</td>
+      <td>Ideal for new users and/or non-developers that don't need a compiler.</td>
     </tr>
     <tr>
       <td>
@@ -44,7 +44,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-blue-light">student</span>
         </div>
       </td>
-      <td>Ideal for students that searching for school stuff.</td>
+      <td>Ideal for students that are searching for school stuff.</td>
     </tr>
     <tr>
       <td>
@@ -52,7 +52,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-green">developer</span>
         </div>
       </td>
-      <td>Ideal for developers that need a compilator and includes.</td>
+      <td>Ideal for developers that need a compiler and includes.</td>
     </tr>
     <tr>
       <td>
@@ -60,7 +60,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-orange">tester</span>
         </div>
       </td>
-      <td>Ideal for users that want help Macaroni with testing.</td>
+      <td>Ideal for users that want to help Macaroni with testing.</td>
     </tr>
     <tr>
       <td>
@@ -76,7 +76,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-services">services</span>
         </div>
       </td>
-      <td>Ideal for System Engineers, Developers users who want to use Macaroni to set up services.</td>
+      <td>Ideal for System Engineers, Developers and users who want to use Macaroni to set up services.</td>
     </tr>
     <tr>
       <td>
@@ -84,7 +84,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-nerd">nerd-herd</span>
         </div>
       </td>
-      <td>Not for weak of heart. Need good preparation in computer science or an advance experience. Inspired by the Chuck Series.</td>
+      <td>Not for weak of heart. Need good preparation in computer science or advanced experience. Inspired by the Chuck Series.</td>
     </tr>
   </tbody>
 </table>
