@@ -137,10 +137,10 @@
 					<div class="blog-content">
             <h3 id="1-how-update-macaroni-repositories-urls"><strong>1. How update Macaroni Repositories URLs?</strong></h3>
 <p>In the last period due to the changes in the new domain and the stabilization of
-the Macaroni infra there are been a lot of changes in the repository URLs.
-Working with donated resources and/or free resources has the consequence that the
+the Macaroni infra there are a lot of changes in the repository URLs.
+Working with donated resources and/or free resources has the consequence that
 changes could happen.</p>
-<p>So, I will describe the better way to upgrade safe our repositories.</p>
+<p>So, I will describe the better way to upgrade our repositories safely.</p>
 <p>a) leave only the <code>geaaru-repo-index</code> repository enabled.
 This means to call <code>luet repo disable</code> for all others repositories</p>
 <pre tabindex="0"><code>$# luet repo disable macaroni-commons mottainai-stable macaroni-funtoo
@@ -150,16 +150,16 @@ geaaru-repo-index
   Macaroni OS Repository Index
   Revision     4 - 2023-02-25 10:32:39 +0000 -00
   Priority     1 - Type http
-</code></pre><p>b) At this point, it&rsquo;s possible update the repository and get the new urls:</p>
+</code></pre><p>b) At this point, it&rsquo;s possible to update the repository and get the new urls:</p>
 <pre tabindex="0"><code>$# luet repo update
 🏠 Repository:              geaaru-repo-index Revision:   4 - 2023-02-25 10:32:39 +0000 -00
 $# luet upgrade
 </code></pre><p>The upgrade creates the files <code>/etc/luet/repos.conf.d/._cfg_&lt;repo&gt;.yml</code> that could be merged with the
 command <code>etc-update</code> (in the old system) or with the command <code>macaronictl etc-update</code>
-in the more updated systems.</p>
+in more updated systems.</p>
 <p>After the upgrade and the merge of the new configs the system is ready for the
 updates: <code>luet repo update</code> and <code>luet upgrade</code>.</p>
-<p>It&rsquo;s possible check the repositories urls with:</p>
+<p>It&rsquo;s possible to check the repository urls with:</p>
 <pre tabindex="0"><code># luet repo list --urls --enabled
 geaaru-repo-index
   Geaaru Repository index
@@ -199,20 +199,20 @@ I will rewrite the <code>luet-build</code> binary the <code>luet repo update</co
 some post-fetch operations on the downloaded tree to speed up the research,
 and to have the files used by the new solver available in the <code>luet</code>
 version 0.33.0 and followed.</p>
-<p>So, after the upgrade of luet there are two things that is better to do:</p>
+<p>So, after the upgrade of luet there are two things that are better to do:</p>
 <pre tabindex="0"><code>$# luet database reindex
 </code></pre><p>This will rebuild the Bolt Database indexes and</p>
 <pre tabindex="0"><code>$# luet repo update --force
-</code></pre><p>that download and executes again the post-fetch hooks in the downloaded tree.</p>
+</code></pre><p>that downloads and executes again the post-fetch hooks in the downloaded tree.</p>
 <p>One of the errors reported by the users when is not executed a full fetch
 of the Macaroni repositories after the upgrade is this:</p>
 <pre tabindex="0"><code>🤔 Computing upgrade, please hang tight... 💤
 Error: Package net-libs-4/webkit not found on map
 </code></pre><h3 id="3-why-luet-search-doesnt-return-packages"><strong>3. Why <code>luet search</code> doesn&rsquo;t return packages?</strong></h3>
-<p>Excluding the search of the packages installed, i mean with the <code>--installed</code>
-option, the <code>luet search</code> command works only when the enabled repositories are
+<p>Excluding the search of the packages installed, I mean with the <code>--installed</code>
+option, the <code>luet search</code> command works only when the enabled repositories have
 been synced.</p>
-<p>It&rsquo;s just needed to download one time the repositories tree and then all works
+<p>It&rsquo;s just needed to download one time the repository tree and then all works
 fine.</p>
 <pre tabindex="0"><code>$# luet repo update
 ...
