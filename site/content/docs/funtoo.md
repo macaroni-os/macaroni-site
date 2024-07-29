@@ -216,6 +216,11 @@ launch the container with this command:
 $> lxc launch -p default images:funtoo/1.4 test
 
 ```
+
+NOTE: Funtoo 1.4 is no more available on Incus Simplestreams Server.
+      You can consider `images:funtoo/1.4` an alias that describe the image
+      with Funtoo 1.4.
+
 We consider that the `default` profiles is configured correctly with a valid
 storage pool and a network interface where is enabled DHCP.
 
@@ -575,7 +580,9 @@ The official `images.linuxcontainers.org` contains the Funtoo LXD images so we c
 launch the container with this command:
 
 ```
-$> lxc launch -p default images:funtoo/next test
+$> lxc launch -p default macaroni:funtoo/next-stage3 test
+$> # or using Incus
+$> incus launch -p default macaroni:funtoo/next-stage3 test
 
 ```
 We consider that the `default` profiles is configured correctly with a valid
