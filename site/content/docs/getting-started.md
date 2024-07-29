@@ -433,9 +433,9 @@ $> /etc/init.d/xdm restart
 
 
 
-# Install Macaroni LXD Containers
+# Install Macaroni LXD/Incus Containers
 
-Macaroni OS supply their LXD images over a Simplestreams Server with help of the
+Macaroni OS supply their LXD/Incus images over a Simplestreams Server with help of the
 [simplestreams-builder](https://github.com/MottainaiCI/simplestreams-builder) tool.
 
 To configure your LXD system to download Macaroni OS images you need to add the `macaroni` remote:
@@ -444,10 +444,19 @@ To configure your LXD system to download Macaroni OS images you need to add the 
 $> lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 ```
 
+Our Simplestreams Server works correctly with both LXD and Incus, so you can to add the remote
+with `incus` too:
+
+```shell
+$> incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+```
+
 The images are visible with the command:
 
 ```shell
 $> lxc image list macaroni:
+$> # or
+$> incus image list macaroni:
 ```
 
 # Install Macaroni Docker Containers
