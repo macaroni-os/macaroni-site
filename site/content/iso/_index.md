@@ -18,9 +18,9 @@ weight: 5
 <h2>ISO</h2>
 
 Following the idea to share the right ISO for the right user we want to supply
-some indications that help users on choose the ISO for their needs.
+some indications that help users on choosing the ISO for their needs.
 
-We use these labels in the hereinafter ISOs description with these mean:
+We use these labels in the following ISOs description with these meanings:
 
 <table style="line-height: 10px; font-size: 15px" class="table table-striped table-hover">
   <thead>
@@ -36,7 +36,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-blue">newbie</span>
         </div>
       </td>
-      <td>Ideal for new users and/or not developers that don't need a compilator.</td>
+      <td>Ideal for new users and/or non-developers that don't need a compiler.</td>
     </tr>
     <tr>
       <td>
@@ -44,7 +44,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-blue-light">student</span>
         </div>
       </td>
-      <td>Ideal for students that searching for school stuff.</td>
+      <td>Ideal for students that are searching for school stuff.</td>
     </tr>
     <tr>
       <td>
@@ -52,7 +52,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-green">developer</span>
         </div>
       </td>
-      <td>Ideal for developers that need a compilator and includes.</td>
+      <td>Ideal for developers that need a compiler and includes.</td>
     </tr>
     <tr>
       <td>
@@ -60,7 +60,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-orange">tester</span>
         </div>
       </td>
-      <td>Ideal for users that want help Macaroni with testing.</td>
+      <td>Ideal for users that want to help Macaroni with testing.</td>
     </tr>
     <tr>
       <td>
@@ -76,7 +76,7 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-services">services</span>
         </div>
       </td>
-      <td>Ideal for System Engineers, Developers users who want to use Macaroni to set up services.</td>
+      <td>Ideal for System Engineers, Developers and users who want to use Macaroni to set up services.</td>
     </tr>
     <tr>
       <td>
@@ -84,16 +84,16 @@ We use these labels in the hereinafter ISOs description with these mean:
         <span class="badge-label badge-nerd">nerd-herd</span>
         </div>
       </td>
-      <td>Not for weak of heart. Need good preparation in computer science or an advance experience. Inspired by the Chuck Series.</td>
+      <td>Not for weak of heart. Need good preparation in computer science or advanced experience. Inspired by the Chuck Series.</td>
     </tr>
   </tbody>
 </table>
 
-<h4>Choice your ISO</h4>
+<h4>Choose your ISO</h4>
 
 At the moment, all our ISOs are based on Phoenix release.
 If you want to install Macaroni OS on your computer and/or laptop you need to use the Release ISOs.
-The weekly ISO are for testing.
+The weekly ISOs are for testing.
 
 All of the ISOs use [Calamares](https://calamares.io/docs/users-guide/) as Installer.
 
@@ -114,7 +114,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue">newbie</span>
         <span class="badge-label badge-blue-light">student</span>
       </td>
-      <td>A minimal Gnome Desktop ISO to install Macaroni Gnome with Calamares or to recovery an exiting system.</td>
+      <td>A minimal Gnome Desktop ISO to install Macaroni Gnome with Calamares or to recovery an existing system.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix Gnome Live</td>
@@ -141,7 +141,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue">newbie</span>
         <span class="badge-label badge-blue-light">student</span>
       </td>
-      <td>A XFCE Desktop ISO to install Macaroni XFCE with Calamares. Ideal for XFCE fans and for old computers.</td>
+      <td>An XFCE Desktop ISO to install Macaroni XFCE with Calamares. Ideal for XFCE fans and for old computers.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix LXQt</td>
@@ -149,7 +149,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue">newbie</span>
         <span class="badge-label badge-blue-light">student</span>
       </td>
-      <td>A LXQt Desktop ISO to install Macaroni LXQt DE with Calamares. Ideal for LXQt fans and for old computers.</td>
+      <td>An LXQt Desktop ISO to install Macaroni LXQt DE with Calamares. Ideal for LXQt fans and for old computers.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix KDE</td>
@@ -159,7 +159,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-orange">tester</span>
       </td>
       <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares.
-          KDE is at the moment supply by default experimental Wayland integration that could be unstable with some video cards.
+          KDE at the moment by default supplies experimental Wayland integration that could be unstable with some video cards.
           Just use X11 mode in this case.
       </td>
     </tr>
@@ -168,7 +168,7 @@ The password of the `macaroni` user is `macaroni`.
       <td>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>A i3 Desktop ISO to install Macaroni i3 DE with XFCE Terminal through the Calamares installer. Ideal for i3 fans and for old computers.</td>
+      <td>An i3 Desktop ISO to install Macaroni i3 DE with XFCE Terminal through the Calamares installer. Ideal for i3 fans and for old computers.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix Gnome Devel</td>
@@ -179,7 +179,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
       <td>
-      A minimal Gnome Desktop ISO where are enabled the subsets <i>portage</i> and <i>devel</i>.
+      A minimal Gnome Desktop ISO where the subsets <i>portage</i> and <i>devel</i> are enabled.
       </td>
     </tr>
     <tr>
@@ -192,7 +192,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
       <td>A KDE Desktop ISO to install Macaroni KDE DE with Calamares and with subsets <i>portage</i> and <i>devel</i>.
-          KDE is at the moment supply by default experimental Wayland integration that could be unstable with some video cards.
+          KDE at the moment by default supplies experimental Wayland integration that could be unstable with some video cards.
           Just use X11 mode in this case.
       </td>
     </tr>
@@ -204,7 +204,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-blue-light">student</span>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>A XFCE Desktop ISO to install Macaroni XFCE with Calamares where are enabled the subsets <i>portage</i> and <i>devel</i>. Ideal for XFCE fans and for old computers.</td>
+      <td>An XFCE Desktop ISO to install Macaroni XFCE with Calamares where the subsets <i>portage</i> and <i>devel</i> are enabled. Ideal for XFCE fans and for old computers.</td>
       </td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@ The password of the `macaroni` user is `macaroni`.
       <td>
         <span class="badge-label badge-orange">tester</span>
       </td>
-      <td>A LXQt Desktop ISO with testing and/or develop repositories.</td>
+      <td>Macaroni LXQt Desktop ISO with testing and/or develop repositories.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix i3 Testing</td>
@@ -234,7 +234,7 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-orange">tester</span>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>A i3 Desktop ISO with testing and/or develop repositories.</td>
+      <td>Macaroni i3 Desktop ISO with testing and/or develop repositories.</td>
     </tr>
     <tr>
       <td>Macaroni Funtoo Phoenix Server</td>
@@ -251,12 +251,12 @@ The password of the `macaroni` user is `macaroni`.
         <span class="badge-label badge-green">developer</span>
         <span class="badge-label badge-nerd">nerd-herd</span>
       </td>
-      <td>Macaroni Server release with the subsets `portage` and `devel` enabled. Installing needed packages could be used Portage.</td>
+      <td>Macaroni Server release with the subsets `portage` and `devel` enabled. Installing needed packages can be done with Portage.</td>
     </tr>
   </tbody>
 </table>
 
-Our last release is <b>`24.04`</b> and it uses kernel *5.10.215* for Server ISOs and *6.1.87* for the others.
+Our latest release is <b>`24.04`</b> and it uses kernel *5.10.215* for Server ISOs and *6.1.87* for the others.
 
 <div id="isos"></div>
 
