@@ -20,7 +20,7 @@ weight: 5
 Following the idea to share the right ISO for the right user we want to supply
 some indications that help users on choosing the ISO for their needs.
 
-We use these labels in the following  ISOs description with these meanings:
+We use these labels in the following ISOs description with these meanings:
 
 <table style="line-height: 10px; font-size: 15px" class="table table-striped table-hover">
   <thead>
