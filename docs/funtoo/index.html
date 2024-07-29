@@ -81,7 +81,7 @@ It possible to see the list of the available uid/gid with the following command:
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.737e81e277979b5e7861f30372e74b0c19050cdb16386aeff964b3f5ec1cd21d.js" integrity="sha256-c36B4neXm154YfMDcudLDBkFDNsWOGrv&#43;WSz9ewc0h0="></script>
+<script defer src="/en.search.min.28d8bceec260e6a3147153a1cd7fa96303307eea439a80235390533a92a52eaa.js" integrity="sha256-KNi87sJg5qMUcVOhzX&#43;pYwMwfupDmoAjU5BTOpKlLqo="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -528,7 +528,10 @@ are pretty equal.</p>
 <p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we could
 launch the container with this command:</p>
 <pre tabindex="0"><code>$&gt; lxc launch -p default images:funtoo/1.4 test
-</code></pre><p>We consider that the <code>default</code> profiles is configured correctly with a valid
+</code></pre><p>NOTE: Funtoo 1.4 is no more available on Incus Simplestreams Server.
+You can consider <code>images:funtoo/1.4</code> an alias that describe the image
+with Funtoo 1.4.</p>
+<p>We consider that the <code>default</code> profiles is configured correctly with a valid
 storage pool and a network interface where is enabled DHCP.</p>
 <h4 id="2-install-macaroni-pms-binary">
   2. Install Macaroni PMS binary
@@ -820,7 +823,9 @@ steps to integrate Macaroni OS to a Funtoo Next filesytem.</p>
 </h4>
 <p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we could
 launch the container with this command:</p>
-<pre tabindex="0"><code>$&gt; lxc launch -p default images:funtoo/next test
+<pre tabindex="0"><code>$&gt; lxc launch -p default macaroni:funtoo/next-stage3 test
+$&gt; # or using Incus
+$&gt; incus launch -p default macaroni:funtoo/next-stage3 test
 </code></pre><p>We consider that the <code>default</code> profiles is configured correctly with a valid
 storage pool and a network interface where is enabled DHCP.</p>
 <h4 id="2-install-macaroni-pms-binary-1">

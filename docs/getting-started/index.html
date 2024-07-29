@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.737e81e277979b5e7861f30372e74b0c19050cdb16386aeff964b3f5ec1cd21d.js" integrity="sha256-c36B4neXm154YfMDcudLDBkFDNsWOGrv&#43;WSz9ewc0h0="></script>
+<script defer src="/en.search.min.28d8bceec260e6a3147153a1cd7fa96303307eea439a80235390533a92a52eaa.js" integrity="sha256-KNi87sJg5qMUcVOhzX&#43;pYwMwfupDmoAjU5BTOpKlLqo="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -686,17 +686,22 @@ driver fixes the problem. Hereinafter, is an example of a possible solution:</st
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> &gt; /etc/X11/xorg.conf.d/50-vmmouse.conf
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$&gt; /etc/init.d/xdm restart
-</span></span></code></pre></div><h1 id="install-macaroni-lxd-containers">
-  Install Macaroni LXD Containers
-  <a class="anchor" href="#install-macaroni-lxd-containers">#</a>
+</span></span></code></pre></div><h1 id="install-macaroni-lxdincus-containers">
+  Install Macaroni LXD/Incus Containers
+  <a class="anchor" href="#install-macaroni-lxdincus-containers">#</a>
 </h1>
-<p>Macaroni OS supply their LXD images over a Simplestreams Server with help of the
+<p>Macaroni OS supply their LXD/Incus images over a Simplestreams Server with help of the
 
   <a href="https://github.com/MottainaiCI/simplestreams-builder">simplestreams-builder</a> tool.</p>
 <p>To configure your LXD system to download Macaroni OS images you need to add the <code>macaroni</code> remote:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+</span></span></code></pre></div><p>Our Simplestreams Server works correctly with both LXD and Incus, so you can to add the remote
+with <code>incus</code> too:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>The images are visible with the command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or</span>
+</span></span><span style="display:flex;"><span>$&gt; incus image list macaroni:
 </span></span></code></pre></div><h1 id="install-macaroni-docker-containers">
   Install Macaroni Docker Containers
   <a class="anchor" href="#install-macaroni-docker-containers">#</a>
