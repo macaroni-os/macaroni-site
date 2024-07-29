@@ -14,7 +14,7 @@ location: Italy
 
 The TOP-IX Consortium has been actively working on several fronts: managing the Internet Exchange
 infrastructure (the reason for its initial foundation in 2002); running the **Development Program**,
-we are been added to this program; the Streaming platform, which has been providing support for
+we have been added to this program; the Streaming platform, which has been providing support for
 technological innovation projects since 2006; and the Streaming platform, which enabled the Consortium
 to act as the official provider of the Berlinale Film Festival since 2006.
 
