@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.28d8bceec260e6a3147153a1cd7fa96303307eea439a80235390533a92a52eaa.js" integrity="sha256-KNi87sJg5qMUcVOhzX&#43;pYwMwfupDmoAjU5BTOpKlLqo="></script>
+<script defer src="/en.search.min.67f8aaf2717d6ee48226780450a57b0ba9fdac88de5cf26ad4919d6446125fe4.js" integrity="sha256-Z/iq8nF9buSCJngEUKV7C6n9rIjeXPJq1JGdZEYSX&#43;Q="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -673,10 +673,12 @@ with the prompt where insert the passphrase to mount <em>home</em> partition:</p
   <img src="../../images/install/dracut-boot-enc-home.png" alt="Grub Password" /></p>
 </div>
 <p><strong>NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
-seems to have an issue with the mouse setup.
+seems to have an issue with the mouse setup. The same issue is also present using VMware
+Workstation 16.
 The problem seems related to the <em>vmmouse</em> driver. Forcing using <em>evdev</em>
 driver fixes the problem. Hereinafter, is an example of a possible solution:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; echo <span style="color:#e6db74">&#39;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; mkdir -p /etc/X11/xorg.conf.d/
+</span></span><span style="display:flex;"><span>$&gt; echo <span style="color:#e6db74">&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Section &#34;InputClass&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	Identifier	&#34;vmmouse&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	MatchIsPointer	&#34;on&#34;
