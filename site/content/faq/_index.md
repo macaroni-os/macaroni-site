@@ -11,11 +11,11 @@ weight: 4
 ### **1. How update Macaroni Repositories URLs?**
 
 In the last period due to the changes in the new domain and the stabilization of
-the Macaroni infra there are been a lot of changes in the repository URLs.
-Working with donated resources and/or free resources has the consequence that the
+the Macaroni infra there are a lot of changes in the repository URLs.
+Working with donated resources and/or free resources has the consequence that
 changes could happen.
 
-So, I will describe the better way to upgrade safe our repositories.
+So, I will describe the better way to upgrade our repositories safely.
 
 a) leave only the `geaaru-repo-index` repository enabled.
 This means to call `luet repo disable` for all others repositories
@@ -31,7 +31,7 @@ geaaru-repo-index
 
 ```
 
-b) At this point, it's possible update the repository and get the new urls:
+b) At this point, it's possible to update the repository and get the new urls:
 
 ```
 $# luet repo update
@@ -41,12 +41,12 @@ $# luet upgrade
 
 The upgrade creates the files `/etc/luet/repos.conf.d/._cfg_<repo>.yml` that could be merged with the
 command `etc-update` (in the old system) or with the command `macaronictl etc-update`
-in the more updated systems.
+in more updated systems.
 
 After the upgrade and the merge of the new configs the system is ready for the
 updates: `luet repo update` and `luet upgrade`.
 
-It's possible check the repositories urls with:
+It's possible to check the repository urls with:
 
 ```
 # luet repo list --urls --enabled
@@ -92,7 +92,7 @@ some post-fetch operations on the downloaded tree to speed up the research,
 and to have the files used by the new solver available in the `luet` 
 version 0.33.0 and followed.
 
-So, after the upgrade of luet there are two things that is better to do:
+So, after the upgrade of luet there are two things that are better to do:
 
 ```
 $# luet database reindex
@@ -102,7 +102,7 @@ This will rebuild the Bolt Database indexes and
 ```
 $# luet repo update --force
 ```
-that download and executes again the post-fetch hooks in the downloaded tree.
+that downloads and executes again the post-fetch hooks in the downloaded tree.
 
 One of the errors reported by the users when is not executed a full fetch
 of the Macaroni repositories after the upgrade is this:
@@ -114,11 +114,11 @@ Error: Package net-libs-4/webkit not found on map
 
 ### **3. Why `luet search` doesn't return packages?**
 
-Excluding the search of the packages installed, i mean with the `--installed`
-option, the `luet search` command works only when the enabled repositories are
+Excluding the search of the packages installed, I mean with the `--installed`
+option, the `luet search` command works only when the enabled repositories have
 been synced. 
 
-It's just needed to download one time the repositories tree and then all works
+It's just needed to download one time the repository tree and then all works
 fine.
 
 ```
