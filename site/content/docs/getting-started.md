@@ -413,11 +413,13 @@ with the prompt where insert the passphrase to mount *home* partition:
 
 
 **NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
-        seems to have an issue with the mouse setup.
+        seems to have an issue with the mouse setup. The same issue is also present using VMware
+        Workstation 16.
         The problem seems related to the *vmmouse* driver. Forcing using *evdev*
         driver fixes the problem. Hereinafter, is an example of a possible solution:**
 
 ```shell
+$> mkdir -p /etc/X11/xorg.conf.d/
 $> echo '
 Section "InputClass"
 	Identifier	"vmmouse"
