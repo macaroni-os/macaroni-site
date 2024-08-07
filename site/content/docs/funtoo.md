@@ -9,11 +9,11 @@ type: docs
 
 The system UID (user ID) and GID (group ID) of the major services are statically
 allocated and managed through the `entities` tool and his catalog. This helps
-to have an more linear installation between systems and help on share network
-filesystem like NFS.
+to have a more linear installation between systems and help on share network
+filesystems like NFS.
 
-It possible to see the list of the available uid/gid with the following
-command:
+It is possible to see the list of the available uid/gid with the following
+commands:
 
 ```bash
 $> # Show list of all groups availables in our catalog
@@ -35,18 +35,18 @@ $> # Show list of all users configured in the current rootfs
 $>  entities list users
 ```
 
-The `entities` tool is a replacer of the classic `adduser`, `gpasswd`, etc.
+The `entities` tool is a replacement of the classic `adduser`, `gpasswd`, etc.
 
 ## 2. Use flags not aligned to Funtoo Profiles
 
 Macaroni OS is a binaries-based distribution that wants to try to supply
-multiple DE. To reach this target means that a lot of user flags must be
+multiple DEs. To reach this target means that a lot of user flags must be
 enabled but without trying to inject unnecessary dependencies when possible.
 So, for this reason, the control of the use flags selected for every package
 is done by the `anise-portage-converter` tool that permits to override
 existing dependencies and/or elaborate dependencies based on the use flags
-defined in the `anise-portage-converter` specs. This permits a major control
-of the compilation process but unlucky, doesn't permit it to maintain
+defined in the `anise-portage-converter` specs. This permits great control
+of the compilation process but unfortunately, doesn't permit it to maintain
 compatibility with the Funtoo profiles that are used to configure the use
 flags based on the needs of the users and their choice. This means that
 installing Macaroni's packages and just using `emerge` could be not managed
@@ -56,8 +56,8 @@ use flags used instead by Macaroni.
 
 ## 3. Split packages
 
-So, in order to support multiple use cases but will fewer dependencies
-injected we have some packages that are been split without having a map 1:1
+So, in order to support multiple use cases but with fewer dependencies
+injected we have some packages that have been split without having a 1:1 map
 with an ebuild. For example, the *pinentry* package installs additional binary
 when `gtk`/`gnome` use flag is enabled with the `pinetry-gnome` binary or with
 the `qt` use flag the `pinentry-qt`, etc.
@@ -209,7 +209,7 @@ are pretty equal.
 
 #### 1. Create the LXD Funtoo 1.4 Container
 
-The official `images.linuxcontainers.org` contains the Funtoo LXD images so we could
+The official `images.linuxcontainers.org` contains the Funtoo LXD images so we can
 launch the container with this command:
 
 ```
@@ -217,7 +217,7 @@ $> lxc launch -p default images:funtoo/1.4 test
 
 ```
 
-NOTE: Funtoo 1.4 is no more available on Incus Simplestreams Server.
+NOTE: Funtoo 1.4 is no longer available on Incus Simplestreams Server.
       You can consider `images:funtoo/1.4` an alias that describe the image
       with Funtoo 1.4.
 

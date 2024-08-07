@@ -7,11 +7,11 @@ type: docs
 
 # Install Macaroni ISO
 
-Choice the right ISO for your requirements from our [Download](https://www.macaronios.org/iso/) page.
+Choose the right ISO for your requirements from our [Download](https://www.macaronios.org/iso/) page.
 
 ## 1.Validate downloaded ISO
 
-After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw
+After the you have downloaded the ISOs file, I suggest to verify the quality of the download with
 our SHA256 hash:
 
 ```shell
@@ -24,14 +24,11 @@ $ cat  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256
 
 If the download is correct the hash will be the same.
 
-Until the issue [#7](https://github.com/macaroni-os/macaroni-funtoo/issues/7) will be fixed
-you need to compare the sha256 manually.
-
 
 ## 2.Flash your USB drive
 
 To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool
-[Balena Etcher](https://etcher.download/) that validate the written bytes before share the result.
+[Balena Etcher](https://etcher.download/) that validates the written bytes before sharing the result.
 
 **NOTE**: At the moment the `ventoy` USB Solution is not supported.
 
@@ -47,7 +44,7 @@ At the moment, the Macaroni ISOs don't support an EFI-signed bootstrap.
 So, before bootstrapping your USB drive just check and disable EFI security
 check.
 
-Hereinafter is an example of how setup the right options:
+Hereinafter is an example of how to setup the right options:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -55,8 +52,8 @@ Hereinafter is an example of how setup the right options:
 
 </div>
 
-Normally, based on device there are different way to enter on BIOS,
-through `F10`, `Canc`, `F2`. You need to check your device manual.
+Normally, based on device there are different ways to enter the BIOS or EUFI setup,
+with `F10`, `Canc`, `F2`. You need to check your device manual.
 
 ## 4.Boot the ISO
 
@@ -74,7 +71,7 @@ the default command line options where you can add every kernel options.
 #### Disable Nouveau driver
 
 By default we prefer using nouveau driver for the NVIDIA cards on bootstrap
-our live ISOs. But it's possible that some new cards could be not be
+our live ISOs. But it's possible that some new cards could be not
 yet supported.
 
 To force the loading of the NVIDIA kernel module you can add this
@@ -86,8 +83,8 @@ modprobe.blacklist=nouveau
 
 #### Enter in the ISO bootstrap shell
 
-If there are issues on bootstrap correctly the Macaroni ISOs you can
-enter in the initrd shell and to recover informations about your
+If there are issues with bootstrap on the Macaroni ISOs you can
+enter in the initrd shell in order to recover informations about your
 system and help us to check what happens.
 
 To enter in the shell before the probing of the ISO squashfs to debug
@@ -96,8 +93,8 @@ option.
 
 #### ISOLinux bootstrap
 
-The described option at the moment are not available in the ISOLinux
-menu visible hereinafter:
+At the moment the options described above are not available in the ISOLinux
+menu, visible hereinafter:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -105,7 +102,7 @@ menu visible hereinafter:
 
 </div>
 
-The ISOLinux menu normally is available for not-EFI systems.
+The ISOLinux menu normally is available for non-EFI systems.
 
 ## 5. Start Installer
 
@@ -132,7 +129,7 @@ Networking correctly.
 
 #### XFCE ISO
 
-To start the Macaroni Installer click to *Install System* from
+To start the Macaroni Installer click on *Install System* from
 *Applications* → *System* → *Install System*.
 
 
@@ -166,12 +163,12 @@ is present the first choice of the user: the select of the language.
 
 </div>
 
-At the moment the tested languages are English and Italian but other languages are available.
+At the moment the tested languages are English and Italianx but other languages are available.
 If you find some problem with the other languages open an issue.
 
 #### 6.2 Location: Select Region and Zone
 
-The second page of the installer permits to configure the Region and the timzone.
+The second page of the installer permits you to configure the Region and the timezone.
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -179,11 +176,11 @@ The second page of the installer permits to configure the Region and the timzone
 
 </div>
 
-Choice the right value from the map and go ahead.
+Choose the right value from the map and go ahead.
 
 #### 6.3 Keyboard: Select Keyboard Model and Language
 
-The third page of the installer permits to configure the Keyboard Model and the langauge.
+The third page of the installer permits you to configure the Keyboard Model and the langauge.
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -194,9 +191,9 @@ The third page of the installer permits to configure the Keyboard Model and the 
 
 #### 6.4 Partitions: Select storage device and Partitions
 
-In this page you need to select the storage device from the menu and choice how the installer will prepare the partitions.
+In this page you need to select the storage device from the menu and choose how the installer will prepare the partitions.
 
-If the selected this is empty the installer will propose only two voices: *Erase disk* and *Manual partitioning*.
+If the selected disk is empty the installer will propose only two choices: *Erase disk* and *Manual partitioning*.
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -204,8 +201,8 @@ If the selected this is empty the installer will propose only two voices: *Erase
 
 </div>
 
-If you try to reinstall Macaroni OS to an existing system and/or replace existing partitions you can select the
-voice *Replace a partition*:
+If you wish to reinstall Macaroni OS to an existing system and/or replace existing partitions you can select the
+option *Replace a partition*:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -218,7 +215,7 @@ define three main parititions: efi boot (if you are in EFI env), Swap partition 
 
 #### *Encrypt Full Disk*
 
-Macaroni support Encryption of full system, the only partition left in clear is the EFI partition.
+Macaroni supports Encryption of full system, the only partition left in clear-text is the EFI partition.
 
 To enable the encryption you need to flag *Encrypt system* and write the passphrase as visible in the screenshot hereinafter:
 
@@ -228,12 +225,12 @@ To enable the encryption you need to flag *Encrypt system* and write the passphr
 
 </div>
 
-With the set *Encrypt System* also the *swap* partition will be encrypted. The passphrase will be ask on GRUB before
-to print the Menu.
+With the option *Encrypt System* also the *swap* partition will be encrypted. The passphrase will be asked on GRUB before
+printing the Menu.
 
 #### *Manual Partitioning*
 
-An expert user could create his custom installation with different partitions, for example, to divide `/var/` from `/`,
+An expert user could create their custom installation with different partitions, for example, to divide `/var/` from `/`,
 etc.
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
@@ -244,8 +241,8 @@ etc.
 
 #### *Encrypt Home Partition Only*
 
-Personally, I think that could be a good compromise to have the rootfs without encryption, this takes things easier
-on restoring a broken system and instead encrypt the `home` with user data.
+Personally, I think that could be a good compromise to have the rootfs without encryption, this makes things easier
+on restoring a broken system and only encrypt the `home` with user data.
 
 This is possible from *Manual Partioning* on creating an encrypted partition.
 
@@ -255,11 +252,11 @@ This is possible from *Manual Partioning* on creating an encrypted partition.
 
 </div>
 
-To this it's only needed after selecting the File System type (in the screenshot *ext4*),
+To enable this it's only needed after selecting the File System type (in the screenshot *ext4*),
 to set the *Encrypt* flag and set the passphrase.
 
-**NOTE: On setup, with a configuration with there are single partitions encrypted you
-need to do some manual operations when the installation is completed or at the first boot.
+**NOTE: On setup, in a configuration with single partitions encrypted you need to do some
+manual operations when the installation is completed or at the first boot.
 Unfortunately, at the moment the configuration of a single encrypted partition is not
 handled correctly and automatically by the Calamares installer. So, these
 steps will be described later.**
@@ -267,7 +264,7 @@ steps will be described later.**
 #### 6.5 Users: Define User and Passwords
 
 It's now time to define the user of your system, write your name and the name of your computer
-and choice your password.
+and choose your password.
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -291,7 +288,7 @@ Just check the selected options before starting the installation.
 
 </div>
 
-If all is ok, go ahead with *Install* button.
+If all is ok, go ahead with the *Install* button.
 
 #### 6.7 Install: The Installation is started
 
@@ -314,11 +311,11 @@ Set the *Restart now* flag to reboot your computer and to start your Macaroni OS
 
 #### *Full Encrypted Disk*
 
-If you have choice to encrypt the full disk on bootstrap the GRUB will
-ask for the passphrase inserted in installation phase before display
-the GRUB menu and go ahead with the bootstrap of your system.
+If you have chosen to encrypt the full disk on bootstrap then GRUB will
+ask for the passphrase inserted in installation phase before displaying
+the GRUB menu and going ahead with the bootstrap of your system.
 
-Hereinafter, an example of what could be happens:
+Hereinafter, an example of what that could look like:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -329,8 +326,8 @@ Hereinafter, an example of what could be happens:
 #### *Complete the setup of Home's encrypted partition*
 
 If you have encrypted only the home partition or any other partition with the
-workflow described before to have the installation correctly working you need
-to execute few steps.
+workflow described before, you need to execute a few steps to have the
+installation working correctly .
 
 a. **Retrieve the LUKS filesystem Id**
 
@@ -357,8 +354,8 @@ GRUB_CMDLINE_LINUX="rd.luks.uuid=f1504aa0-2594-4221-b741-7ba315b47de0"
 ```
 
 Where it's used the LUKS filesystem ID with the option `rd.luks.uuid` that
-say to `dracut` to manage the prompt on Plymouth for uncrypt the home partition
-before start X.
+says to `dracut` to manage the prompt on Plymouth for uncrypt the home partition
+before starting X.
 
 c. **Rebuild the *initramfs* image with `macaronictl`**
 
@@ -394,7 +391,7 @@ $> rc-update show
 
 ```
 
-Enable it if it's not available with:
+Enable it if it's not already with:
 
 ```shell
 $> rc-update add dmcrypt boot
@@ -403,7 +400,7 @@ $> rc-update add dmcrypt boot
 e. **Reboot your system.**
 
 If all is been configured correctly on bootstrap you will see the Plymouth page
-with the prompt where insert the passphrase to mount *home* partition:
+with the prompt where you insert the passphrase to mount *home* partition:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -412,9 +409,9 @@ with the prompt where insert the passphrase to mount *home* partition:
 </div>
 
 
-**NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
-        seems to have an issue with the mouse setup. The same issue is also present using VMware
-        Workstation 16.
+**NOTE: Installing Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with 
+        VMware Fusion 12.2.3 seems to have an issue with the mouse setup. The same issue
+        is also present using VMware Workstation 16.
         The problem seems related to the *vmmouse* driver. Forcing using *evdev*
         driver fixes the problem. Hereinafter, is an example of a possible solution:**
 
@@ -437,7 +434,7 @@ $> /etc/init.d/xdm restart
 
 # Install Macaroni LXD/Incus Containers
 
-Macaroni OS supply their LXD/Incus images over a Simplestreams Server with help of the
+Macaroni OS supplies LXD/Incus images over a Simplestreams Server with help of the
 [simplestreams-builder](https://github.com/MottainaiCI/simplestreams-builder) tool.
 
 To configure your LXD system to download Macaroni OS images you need to add the `macaroni` remote:
@@ -446,7 +443,7 @@ To configure your LXD system to download Macaroni OS images you need to add the 
 $> lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 ```
 
-Our Simplestreams Server works correctly with both LXD and Incus, so you can to add the remote
+Our Simplestreams Server works correctly with both LXD and Incus, so you can add the remote
 with `incus` too:
 
 ```shell
