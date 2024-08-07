@@ -71,8 +71,8 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Funtoo zone" />
-<meta property="og:description" content="Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have an more linear installation between systems and help on share network filesystem like NFS.
-It possible to see the list of the available uid/gid with the following command:" />
+<meta property="og:description" content="Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have a more linear installation between systems and help on share network filesystems like NFS.
+It is possible to see the list of the available uid/gid with the following commands:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaronios.org/docs/funtoo/" /><meta property="article:section" content="docs" />
 
@@ -81,7 +81,7 @@ It possible to see the list of the available uid/gid with the following command:
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.67f8aaf2717d6ee48226780450a57b0ba9fdac88de5cf26ad4919d6446125fe4.js" integrity="sha256-Z/iq8nF9buSCJngEUKV7C6n9rIjeXPJq1JGdZEYSX&#43;Q="></script>
+<script defer src="/en.search.min.e12b3be12c8d4295b09d89845c9cea50e83441b6c55322321a1ebb2b792ac29f.js" integrity="sha256-4Ss74SyNQpWwnYmEXJzqUOg0QbbFUyIyGh67K3kqwp8="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -339,10 +339,10 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>The system UID (user ID) and GID (group ID) of the major services are statically
 allocated and managed through the <code>entities</code> tool and his catalog. This helps
-to have an more linear installation between systems and help on share network
-filesystem like NFS.</p>
-<p>It possible to see the list of the available uid/gid with the following
-command:</p>
+to have a more linear installation between systems and help on share network
+filesystems like NFS.</p>
+<p>It is possible to see the list of the available uid/gid with the following
+commands:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all groups availables in our catalog</span>
 </span></span><span style="display:flex;"><span>$&gt; entities list groups --specs-dir /usr/share/macaroni/entities/
 </span></span><span style="display:flex;"><span>
@@ -360,19 +360,19 @@ command:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all users configured in the current rootfs</span>
 </span></span><span style="display:flex;"><span>$&gt;  entities list users
-</span></span></code></pre></div><p>The <code>entities</code> tool is a replacer of the classic <code>adduser</code>, <code>gpasswd</code>, etc.</p>
+</span></span></code></pre></div><p>The <code>entities</code> tool is a replacement of the classic <code>adduser</code>, <code>gpasswd</code>, etc.</p>
 <h2 id="2-use-flags-not-aligned-to-funtoo-profiles">
   2. Use flags not aligned to Funtoo Profiles
   <a class="anchor" href="#2-use-flags-not-aligned-to-funtoo-profiles">#</a>
 </h2>
 <p>Macaroni OS is a binaries-based distribution that wants to try to supply
-multiple DE. To reach this target means that a lot of user flags must be
+multiple DEs. To reach this target means that a lot of user flags must be
 enabled but without trying to inject unnecessary dependencies when possible.
 So, for this reason, the control of the use flags selected for every package
 is done by the <code>anise-portage-converter</code> tool that permits to override
 existing dependencies and/or elaborate dependencies based on the use flags
-defined in the <code>anise-portage-converter</code> specs. This permits a major control
-of the compilation process but unlucky, doesn&rsquo;t permit it to maintain
+defined in the <code>anise-portage-converter</code> specs. This permits great control
+of the compilation process but unfortunately, doesn&rsquo;t permit it to maintain
 compatibility with the Funtoo profiles that are used to configure the use
 flags based on the needs of the users and their choice. This means that
 installing Macaroni&rsquo;s packages and just using <code>emerge</code> could be not managed
@@ -383,8 +383,8 @@ use flags used instead by Macaroni.</p>
   3. Split packages
   <a class="anchor" href="#3-split-packages">#</a>
 </h2>
-<p>So, in order to support multiple use cases but will fewer dependencies
-injected we have some packages that are been split without having a map 1:1
+<p>So, in order to support multiple use cases but with fewer dependencies
+injected we have some packages that have been split without having a 1:1 map
 with an ebuild. For example, the <em>pinentry</em> package installs additional binary
 when <code>gtk</code>/<code>gnome</code> use flag is enabled with the <code>pinetry-gnome</code> binary or with
 the <code>qt</code> use flag the <code>pinentry-qt</code>, etc.
@@ -525,10 +525,10 @@ are pretty equal.</p>
   1. Create the LXD Funtoo 1.4 Container
   <a class="anchor" href="#1-create-the-lxd-funtoo-14-container">#</a>
 </h4>
-<p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we could
+<p>The official <code>images.linuxcontainers.org</code> contains the Funtoo LXD images so we can
 launch the container with this command:</p>
 <pre tabindex="0"><code>$&gt; lxc launch -p default images:funtoo/1.4 test
-</code></pre><p>NOTE: Funtoo 1.4 is no more available on Incus Simplestreams Server.
+</code></pre><p>NOTE: Funtoo 1.4 is no longer available on Incus Simplestreams Server.
 You can consider <code>images:funtoo/1.4</code> an alias that describe the image
 with Funtoo 1.4.</p>
 <p>We consider that the <code>default</code> profiles is configured correctly with a valid

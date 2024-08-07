@@ -71,10 +71,10 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="Getting Started # Install Macaroni ISO # Choice the right ISO for your requirements from our Download page.
-1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw our SHA256 hash:
+<meta property="og:description" content="Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page.
+1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download with our SHA256 hash:
 $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
-Until the issue #7 will be fixed you need to compare the sha256 manually." />
+2.Flash your USB drive # To write an ISO there are different tools and ways." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaronios.org/docs/getting-started/" /><meta property="article:section" content="docs" />
 
@@ -83,7 +83,7 @@ Until the issue #7 will be fixed you need to compare the sha256 manually." />
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.67f8aaf2717d6ee48226780450a57b0ba9fdac88de5cf26ad4919d6446125fe4.js" integrity="sha256-Z/iq8nF9buSCJngEUKV7C6n9rIjeXPJq1JGdZEYSX&#43;Q="></script>
+<script defer src="/en.search.min.e12b3be12c8d4295b09d89845c9cea50e83441b6c55322321a1ebb2b792ac29f.js" integrity="sha256-4Ss74SyNQpWwnYmEXJzqUOg0QbbFUyIyGh67K3kqwp8="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -339,13 +339,13 @@ https://github.com/alex-shpak/hugo-book
   Install Macaroni ISO
   <a class="anchor" href="#install-macaroni-iso">#</a>
 </h1>
-<p>Choice the right ISO for your requirements from our 
+<p>Choose the right ISO for your requirements from our 
   <a href="https://www.macaronios.org/iso/">Download</a> page.</p>
 <h2 id="1validate-downloaded-iso">
   1.Validate downloaded ISO
   <a class="anchor" href="#1validate-downloaded-iso">#</a>
 </h2>
-<p>After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw
+<p>After the you have downloaded the ISOs file, I suggest to verify the quality of the download with
 our SHA256 hash:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso
 </span></span><span style="display:flex;"><span>8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso
@@ -353,16 +353,13 @@ our SHA256 hash:</p>
 </span></span><span style="display:flex;"><span>$ cat  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 
 </span></span><span style="display:flex;"><span>8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54
 </span></span></code></pre></div><p>If the download is correct the hash will be the same.</p>
-<p>Until the issue 
-  <a href="https://github.com/macaroni-os/macaroni-funtoo/issues/7">#7</a> will be fixed
-you need to compare the sha256 manually.</p>
 <h2 id="2flash-your-usb-drive">
   2.Flash your USB drive
   <a class="anchor" href="#2flash-your-usb-drive">#</a>
 </h2>
 <p>To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool
 
-  <a href="https://etcher.download/">Balena Etcher</a> that validate the written bytes before share the result.</p>
+  <a href="https://etcher.download/">Balena Etcher</a> that validates the written bytes before sharing the result.</p>
 <p><strong>NOTE</strong>: At the moment the <code>ventoy</code> USB Solution is not supported.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
@@ -375,13 +372,13 @@ you need to compare the sha256 manually.</p>
 <p>At the moment, the Macaroni ISOs don&rsquo;t support an EFI-signed bootstrap.
 So, before bootstrapping your USB drive just check and disable EFI security
 check.</p>
-<p>Hereinafter is an example of how setup the right options:</p>
+<p>Hereinafter is an example of how to setup the right options:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/bios1.jpg" alt="ASUS T300 Bios" /></p>
 </div>
-<p>Normally, based on device there are different way to enter on BIOS,
-through <code>F10</code>, <code>Canc</code>, <code>F2</code>. You need to check your device manual.</p>
+<p>Normally, based on device there are different ways to enter the BIOS or EUFI setup,
+with <code>F10</code>, <code>Canc</code>, <code>F2</code>. You need to check your device manual.</p>
 <h2 id="4boot-the-iso">
   4.Boot the ISO
   <a class="anchor" href="#4boot-the-iso">#</a>
@@ -398,7 +395,7 @@ the default command line options where you can add every kernel options.</p>
   <a class="anchor" href="#disable-nouveau-driver">#</a>
 </h4>
 <p>By default we prefer using nouveau driver for the NVIDIA cards on bootstrap
-our live ISOs. But it&rsquo;s possible that some new cards could be not be
+our live ISOs. But it&rsquo;s possible that some new cards could be not
 yet supported.</p>
 <p>To force the loading of the NVIDIA kernel module you can add this
 option:</p>
@@ -407,8 +404,8 @@ option:</p>
   Enter in the ISO bootstrap shell
   <a class="anchor" href="#enter-in-the-iso-bootstrap-shell">#</a>
 </h4>
-<p>If there are issues on bootstrap correctly the Macaroni ISOs you can
-enter in the initrd shell and to recover informations about your
+<p>If there are issues with bootstrap on the Macaroni ISOs you can
+enter in the initrd shell in order to recover informations about your
 system and help us to check what happens.</p>
 <p>To enter in the shell before the probing of the ISO squashfs to debug
 the probing phase and the switch root command you need to add <code>shell=1</code> as
@@ -417,13 +414,13 @@ option.</p>
   ISOLinux bootstrap
   <a class="anchor" href="#isolinux-bootstrap">#</a>
 </h4>
-<p>The described option at the moment are not available in the ISOLinux
-menu visible hereinafter:</p>
+<p>At the moment the options described above are not available in the ISOLinux
+menu, visible hereinafter:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/isolinux.png" alt="Syslinux Menu" /></p>
 </div>
-<p>The ISOLinux menu normally is available for not-EFI systems.</p>
+<p>The ISOLinux menu normally is available for non-EFI systems.</p>
 <h2 id="5-start-installer">
   5. Start Installer
   <a class="anchor" href="#5-start-installer">#</a>
@@ -449,7 +446,7 @@ Networking correctly.</p>
   XFCE ISO
   <a class="anchor" href="#xfce-iso">#</a>
 </h4>
-<p>To start the Macaroni Installer click to <em>Install System</em> from
+<p>To start the Macaroni Installer click on <em>Install System</em> from
 <em>Applications</em> → <em>System</em> → <em>Install System</em>.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
@@ -479,23 +476,23 @@ is present the first choice of the user: the select of the language.</p>
 <p>
   <img src="../../images/install/installer-language.png" alt="Installer Language" /></p>
 </div>
-<p>At the moment the tested languages are English and Italian but other languages are available.
+<p>At the moment the tested languages are English and Italianx but other languages are available.
 If you find some problem with the other languages open an issue.</p>
 <h4 id="62-location-select-region-and-zone">
   6.2 Location: Select Region and Zone
   <a class="anchor" href="#62-location-select-region-and-zone">#</a>
 </h4>
-<p>The second page of the installer permits to configure the Region and the timzone.</p>
+<p>The second page of the installer permits you to configure the Region and the timezone.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-region.png" alt="Installer Region" /></p>
 </div>
-<p>Choice the right value from the map and go ahead.</p>
+<p>Choose the right value from the map and go ahead.</p>
 <h4 id="63-keyboard-select-keyboard-model-and-language">
   6.3 Keyboard: Select Keyboard Model and Language
   <a class="anchor" href="#63-keyboard-select-keyboard-model-and-language">#</a>
 </h4>
-<p>The third page of the installer permits to configure the Keyboard Model and the langauge.</p>
+<p>The third page of the installer permits you to configure the Keyboard Model and the langauge.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-keyboard.png" alt="Installer Keyboard" /></p>
@@ -504,14 +501,14 @@ If you find some problem with the other languages open an issue.</p>
   6.4 Partitions: Select storage device and Partitions
   <a class="anchor" href="#64-partitions-select-storage-device-and-partitions">#</a>
 </h4>
-<p>In this page you need to select the storage device from the menu and choice how the installer will prepare the partitions.</p>
-<p>If the selected this is empty the installer will propose only two voices: <em>Erase disk</em> and <em>Manual partitioning</em>.</p>
+<p>In this page you need to select the storage device from the menu and choose how the installer will prepare the partitions.</p>
+<p>If the selected disk is empty the installer will propose only two choices: <em>Erase disk</em> and <em>Manual partitioning</em>.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-partitions-erase.png" alt="Installer Partitions" /></p>
 </div>
-<p>If you try to reinstall Macaroni OS to an existing system and/or replace existing partitions you can select the
-voice <em>Replace a partition</em>:</p>
+<p>If you wish to reinstall Macaroni OS to an existing system and/or replace existing partitions you can select the
+option <em>Replace a partition</em>:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-replace.png" alt="Installer Partitions and Replace" /></p>
@@ -522,19 +519,19 @@ define three main parititions: efi boot (if you are in EFI env), Swap partition 
   <em>Encrypt Full Disk</em>
   <a class="anchor" href="#encrypt-full-disk">#</a>
 </h4>
-<p>Macaroni support Encryption of full system, the only partition left in clear is the EFI partition.</p>
+<p>Macaroni supports Encryption of full system, the only partition left in clear-text is the EFI partition.</p>
 <p>To enable the encryption you need to flag <em>Encrypt system</em> and write the passphrase as visible in the screenshot hereinafter:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-partitions-encrypt.png" alt="Installer Partition Encrypted" /></p>
 </div>
-<p>With the set <em>Encrypt System</em> also the <em>swap</em> partition will be encrypted. The passphrase will be ask on GRUB before
-to print the Menu.</p>
+<p>With the option <em>Encrypt System</em> also the <em>swap</em> partition will be encrypted. The passphrase will be asked on GRUB before
+printing the Menu.</p>
 <h4 id="manual-partitioning">
   <em>Manual Partitioning</em>
   <a class="anchor" href="#manual-partitioning">#</a>
 </h4>
-<p>An expert user could create his custom installation with different partitions, for example, to divide <code>/var/</code> from <code>/</code>,
+<p>An expert user could create their custom installation with different partitions, for example, to divide <code>/var/</code> from <code>/</code>,
 etc.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
@@ -544,17 +541,17 @@ etc.</p>
   <em>Encrypt Home Partition Only</em>
   <a class="anchor" href="#encrypt-home-partition-only">#</a>
 </h4>
-<p>Personally, I think that could be a good compromise to have the rootfs without encryption, this takes things easier
-on restoring a broken system and instead encrypt the <code>home</code> with user data.</p>
+<p>Personally, I think that could be a good compromise to have the rootfs without encryption, this makes things easier
+on restoring a broken system and only encrypt the <code>home</code> with user data.</p>
 <p>This is possible from <em>Manual Partioning</em> on creating an encrypted partition.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/part-home-encrypt.png" alt="Installer Partition Home Encrypted" /></p>
 </div>
-<p>To this it&rsquo;s only needed after selecting the File System type (in the screenshot <em>ext4</em>),
+<p>To enable this it&rsquo;s only needed after selecting the File System type (in the screenshot <em>ext4</em>),
 to set the <em>Encrypt</em> flag and set the passphrase.</p>
-<p><strong>NOTE: On setup, with a configuration with there are single partitions encrypted you
-need to do some manual operations when the installation is completed or at the first boot.
+<p><strong>NOTE: On setup, in a configuration with single partitions encrypted you need to do some
+manual operations when the installation is completed or at the first boot.
 Unfortunately, at the moment the configuration of a single encrypted partition is not
 handled correctly and automatically by the Calamares installer. So, these
 steps will be described later.</strong></p>
@@ -563,7 +560,7 @@ steps will be described later.</strong></p>
   <a class="anchor" href="#65-users-define-user-and-passwords">#</a>
 </h4>
 <p>It&rsquo;s now time to define the user of your system, write your name and the name of your computer
-and choice your password.</p>
+and choose your password.</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/installer-users.png" alt="Installer Users" /></p>
@@ -581,7 +578,7 @@ flag related to the option: <em>Use the same password for the administrator acco
 <p>
   <img src="../../images/install/installer-summary.png" alt="Installer Summary" /></p>
 </div>
-<p>If all is ok, go ahead with <em>Install</em> button.</p>
+<p>If all is ok, go ahead with the <em>Install</em> button.</p>
 <h4 id="67-install-the-installation-is-started">
   6.7 Install: The Installation is started
   <a class="anchor" href="#67-install-the-installation-is-started">#</a>
@@ -606,10 +603,10 @@ depends on your hardware and the speed of the hard drive.</p>
   <em>Full Encrypted Disk</em>
   <a class="anchor" href="#full-encrypted-disk">#</a>
 </h4>
-<p>If you have choice to encrypt the full disk on bootstrap the GRUB will
-ask for the passphrase inserted in installation phase before display
-the GRUB menu and go ahead with the bootstrap of your system.</p>
-<p>Hereinafter, an example of what could be happens:</p>
+<p>If you have chosen to encrypt the full disk on bootstrap then GRUB will
+ask for the passphrase inserted in installation phase before displaying
+the GRUB menu and going ahead with the bootstrap of your system.</p>
+<p>Hereinafter, an example of what that could look like:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/grub-passphrase.png" alt="Grub Password" /></p>
@@ -619,8 +616,8 @@ the GRUB menu and go ahead with the bootstrap of your system.</p>
   <a class="anchor" href="#complete-the-setup-of-homes-encrypted-partition">#</a>
 </h4>
 <p>If you have encrypted only the home partition or any other partition with the
-workflow described before to have the installation correctly working you need
-to execute few steps.</p>
+workflow described before, you need to execute a few steps to have the
+installation working correctly .</p>
 <p>a. <strong>Retrieve the LUKS filesystem Id</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># cat /etc/fstab </span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># /etc/fstab: static file system information.</span>
@@ -637,8 +634,8 @@ to execute few steps.</p>
 <p>b. <strong>Editing the GRUB configuration file <code>/etc/default/grub</code> and add this option:</strong></p>
 <pre tabindex="0"><code>GRUB_CMDLINE_LINUX=&#34;rd.luks.uuid=f1504aa0-2594-4221-b741-7ba315b47de0&#34;
 </code></pre><p>Where it&rsquo;s used the LUKS filesystem ID with the option <code>rd.luks.uuid</code> that
-say to <code>dracut</code> to manage the prompt on Plymouth for uncrypt the home partition
-before start X.</p>
+says to <code>dracut</code> to manage the prompt on Plymouth for uncrypt the home partition
+before starting X.</p>
 <p>c. <strong>Rebuild the <em>initramfs</em> image with <code>macaronictl</code></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; macaronictl kernel gi --all --grub 
 </span></span><span style="display:flex;"><span>Creating initrd image /boot/initramfs-vanilla-x86_64-6.1.18-macaroni...DONE
@@ -663,18 +660,18 @@ before start X.</p>
 </span></span><span style="display:flex;"><span>        device-mapper |                                 sysinit
 </span></span><span style="display:flex;"><span>              dmcrypt | boot                                   
 </span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><p>Enable it if it&rsquo;s not available with:</p>
+</span></span></code></pre></div><p>Enable it if it&rsquo;s not already with:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; rc-update add dmcrypt boot
 </span></span></code></pre></div><p>e. <strong>Reboot your system.</strong></p>
 <p>If all is been configured correctly on bootstrap you will see the Plymouth page
-with the prompt where insert the passphrase to mount <em>home</em> partition:</p>
+with the prompt where you insert the passphrase to mount <em>home</em> partition:</p>
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 <p>
   <img src="../../images/install/dracut-boot-enc-home.png" alt="Grub Password" /></p>
 </div>
-<p><strong>NOTE: Install Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with VMware Fusion 12.2.3
-seems to have an issue with the mouse setup. The same issue is also present using VMware
-Workstation 16.
+<p><strong>NOTE: Installing Macaroni OS with Xorg on MacOS Sonoma 14.0 in a Virtual Machine with
+VMware Fusion 12.2.3 seems to have an issue with the mouse setup. The same issue
+is also present using VMware Workstation 16.
 The problem seems related to the <em>vmmouse</em> driver. Forcing using <em>evdev</em>
 driver fixes the problem. Hereinafter, is an example of a possible solution:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; mkdir -p /etc/X11/xorg.conf.d/
@@ -692,12 +689,12 @@ driver fixes the problem. Hereinafter, is an example of a possible solution:</st
   Install Macaroni LXD/Incus Containers
   <a class="anchor" href="#install-macaroni-lxdincus-containers">#</a>
 </h1>
-<p>Macaroni OS supply their LXD/Incus images over a Simplestreams Server with help of the
+<p>Macaroni OS supplies LXD/Incus images over a Simplestreams Server with help of the
 
   <a href="https://github.com/MottainaiCI/simplestreams-builder">simplestreams-builder</a> tool.</p>
 <p>To configure your LXD system to download Macaroni OS images you need to add the <code>macaroni</code> remote:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
-</span></span></code></pre></div><p>Our Simplestreams Server works correctly with both LXD and Incus, so you can to add the remote
+</span></span></code></pre></div><p>Our Simplestreams Server works correctly with both LXD and Incus, so you can add the remote
 with <code>incus</code> too:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>The images are visible with the command:</p>

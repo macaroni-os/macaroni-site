@@ -169,8 +169,8 @@ GARR network is designed and managed by Consortium GARR, a non-profit associatio
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/funtoo/</guid>
-      <description>Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have an more linear installation between systems and help on share network filesystem like NFS.
-It possible to see the list of the available uid/gid with the following command:</description>
+      <description>Main differences between Funtoo and Macaroni OS # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have a more linear installation between systems and help on share network filesystems like NFS.
+It is possible to see the list of the available uid/gid with the following commands:</description>
     </item>
     
     <item>
@@ -179,10 +179,10 @@ It possible to see the list of the available uid/gid with the following command:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/getting-started/</guid>
-      <description>Getting Started # Install Macaroni ISO # Choice the right ISO for your requirements from our Download page.
-1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw our SHA256 hash:
+      <description>Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page.
+1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download with our SHA256 hash:
 $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
-Until the issue #7 will be fixed you need to compare the sha256 manually.</description>
+2.Flash your USB drive # To write an ISO there are different tools and ways.</description>
     </item>
     
     <item>
