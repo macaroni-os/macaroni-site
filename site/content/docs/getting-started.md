@@ -7,11 +7,11 @@ type: docs
 
 # Install Macaroni ISO
 
-Choice the right ISO for your requirements from our [Download](https://www.macaronios.org/iso/) page.
+Choose the right ISO for your requirements from our [Download](https://www.macaronios.org/iso/) page.
 
 ## 1.Validate downloaded ISO
 
-After the you have downloaded the ISOs file, I suggest to verify the quality of the download throw
+After the you have downloaded the ISOs file, I suggest to verify the quality of the download with
 our SHA256 hash:
 
 ```shell
@@ -24,14 +24,11 @@ $ cat  Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256
 
 If the download is correct the hash will be the same.
 
-Until the issue [#7](https://github.com/macaroni-os/macaroni-funtoo/issues/7) will be fixed
-you need to compare the sha256 manually.
-
 
 ## 2.Flash your USB drive
 
 To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool
-[Balena Etcher](https://etcher.download/) that validate the written bytes before share the result.
+[Balena Etcher](https://etcher.download/) that validates the written bytes before sharing the result.
 
 **NOTE**: At the moment the `ventoy` USB Solution is not supported.
 
@@ -47,7 +44,7 @@ At the moment, the Macaroni ISOs don't support an EFI-signed bootstrap.
 So, before bootstrapping your USB drive just check and disable EFI security
 check.
 
-Hereinafter is an example of how setup the right options:
+Hereinafter is an example of how to setup the right options:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
@@ -55,8 +52,8 @@ Hereinafter is an example of how setup the right options:
 
 </div>
 
-Normally, based on device there are different way to enter on BIOS,
-through `F10`, `Canc`, `F2`. You need to check your device manual.
+Normally, based on device there are different ways to enter the BIOS or EUFI setup,
+with `F10`, `Canc`, `F2`. You need to check your device manual.
 
 ## 4.Boot the ISO
 
@@ -74,7 +71,7 @@ the default command line options where you can add every kernel options.
 #### Disable Nouveau driver
 
 By default we prefer using nouveau driver for the NVIDIA cards on bootstrap
-our live ISOs. But it's possible that some new cards could be not be
+our live ISOs. But it's possible that some new cards could be not
 yet supported.
 
 To force the loading of the NVIDIA kernel module you can add this
@@ -86,8 +83,8 @@ modprobe.blacklist=nouveau
 
 #### Enter in the ISO bootstrap shell
 
-If there are issues on bootstrap correctly the Macaroni ISOs you can
-enter in the initrd shell and to recover informations about your
+If there are issues with bootstrap on the Macaroni ISOs you can
+enter in the initrd shell in order to recover informations about your
 system and help us to check what happens.
 
 To enter in the shell before the probing of the ISO squashfs to debug
@@ -96,8 +93,8 @@ option.
 
 #### ISOLinux bootstrap
 
-The described option at the moment are not available in the ISOLinux
-menu visible hereinafter:
+At the moment the options described above are not available in the ISOLinux
+menu, visible hereinafter:
 
 <div style="width:60%;display:block;margin-left:auto; margin-right: auto;">
 
