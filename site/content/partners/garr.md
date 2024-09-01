@@ -5,6 +5,7 @@ type: portfolio
 date: 2023-01-31T11:06:54+06:00
 description : "Macaroni mirror"
 image: images/partners/GARRMirror_logo.svg
+class: logo-garr
 category: ["consortium","mirror"]
 liveLink: https://www.garr.it/en/
 submitDate: January 31, 2023

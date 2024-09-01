@@ -1476,11 +1476,23 @@ ul.social-icons li {
 
 .logo-home {
 	max-width: 150px;
+  margin-left: 50px;
+}
+
+.logo-garr {
+  margin-left: 50px;
 }
 
 .logo-topix {
 	max-width: 200px;
-  margin-left: 25px;
+  margin-left: 50px;
+}
+
+.logo-cdn77 {
+	max-width: 200px;
+  margin-top: 30px;
+  margin-bottom: 58px;
+  margin-left: 50px;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

@@ -68,7 +68,7 @@ content = "If you want to help us on support the infra costs you can donate over
 [params.portfolio]
 enable  = true
 title   = "Our Partners"
-subtitle= "Maintaining a distro is hard and we really love all consortiums, opensource initiative and people that help us with this."
+subtitle= "Maintaining a distro is hard and we really love all consortiums, sponsors, opensource initiative and people that help us with this."
 
 
 # Call to Action
