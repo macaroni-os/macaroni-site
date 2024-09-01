@@ -6,7 +6,7 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Aug 2024 12:49:14 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Releases 24.04 ready!</title>
       <link>https://www.macaronios.org/blog/phoenix-24.04/</link>
@@ -121,6 +121,17 @@ We want to thank again the GARR consortium that is now our primary mirror under 
       <description>After 1 year of incubation under the Funtoo Foundation, the Macaroni OS has now its domain macaronios.org and its infrastructure. Really, thanks to the Funtoo Foundation and Daniel Robbins for its support that helped to Macaroni OS to be here today.
 From the infrastructure aspect nothing is changed, all compilation tasks are executed over MottainaiCI cluster but with less resource power for now.
 We hope that the community will help us to maintain the infrastructure costs with donations over our Github Sponsor or with VMs donations for compilation.</description>
+    </item>
+    
+    <item>
+      <title>CDN 77</title>
+      <link>https://www.macaronios.org/partners/cdn77/</link>
+      <pubDate>Fri, 09 Aug 2024 12:49:14 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/partners/cdn77/</guid>
+      <description>CDN77 is a Content Delivery Network that between the rest is specialized in: massive network scale, advanced video engineering.
+The CDN77 supply our primaries repositories domains and help support M.A.R.K. stack development.
+Thank you very much for your support.</description>
     </item>
     
     <item>
