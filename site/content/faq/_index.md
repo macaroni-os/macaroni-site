@@ -21,9 +21,9 @@ a) leave only the `geaaru-repo-index` repository enabled.
 This means to call `luet repo disable` for all others repositories
 
 ```
-$# luet repo disable macaroni-commons mottainai-stable macaroni-funtoo
+$# anise repo disable macaroni-commons mottainai-stable macaroni-funtoo
 
-$# luet repo list --enabled
+$# anise repo list --enabled
 geaaru-repo-index
   Macaroni OS Repository Index
   Revision     4 - 2023-02-25 10:32:39 +0000 -00
@@ -34,9 +34,9 @@ geaaru-repo-index
 b) At this point, it's possible to update the repository and get the new urls:
 
 ```
-$# luet repo update
+$# anise repo update
 🏠 Repository:              geaaru-repo-index Revision:   4 - 2023-02-25 10:32:39 +0000 -00
-$# luet upgrade
+$# anise upgrade
 ```
 
 The upgrade creates the files `/etc/luet/repos.conf.d/._cfg_<repo>.yml` that could be merged with the
@@ -44,12 +44,12 @@ command `etc-update` (in the old system) or with the command `macaronictl etc-up
 in more updated systems.
 
 After the upgrade and the merge of the new configs the system is ready for the
-updates: `luet repo update` and `luet upgrade`.
+updates: `anise repo update` and `anise upgrade`.
 
 It's possible to check the repository urls with:
 
 ```
-# luet repo list --urls --enabled
+# anise repo list --urls --enabled
 geaaru-repo-index
   Geaaru Repository index
   Revision     4 - 2023-02-25 10:32:39 +0000 UTC
@@ -63,7 +63,7 @@ macaroni-commons-dev
   Urls:
    * https://dev.macaronios.org/macaroni-commons-dev/
 macaroni-funtoo-systemd-dev
-  Macaroni OS Funtoo Eagle Develop Repository
+  Macaroni OS Eagle Develop Repository
   Revision   452 - 2023-02-26 11:14:32 +0000 UTC
   Priority     2 - Type http
   Urls:
@@ -84,7 +84,7 @@ mottainai-stable
    * https://macaronios.mirror.garr.it/repos/mottainai/
 ```
 
-### **2. What to do after the upgrade of the luet binary?**
+### **2. What to do after the upgrade of the anise binary?**
 
 I leave this point in the FAQ because I began to rewrite the Macaroni PMS and until
 I will rewrite the `luet-build` binary the `luet repo update` command executes
@@ -95,12 +95,12 @@ version 0.33.0 and followed.
 So, after the upgrade of luet there are two things that are better to do:
 
 ```
-$# luet database reindex
+$# anise database reindex
 ```
 This will rebuild the Bolt Database indexes and
 
 ```
-$# luet repo update --force
+$# anise repo update --force
 ```
 that downloads and executes again the post-fetch hooks in the downloaded tree.
 
@@ -112,23 +112,31 @@ of the Macaroni repositories after the upgrade is this:
 Error: Package net-libs-4/webkit not found on map
 ```
 
-### **3. Why `luet search` doesn't return packages?**
+### **3. Why `anise search` doesn't return packages?**
 
 Excluding the search of the packages installed, I mean with the `--installed`
-option, the `luet search` command works only when the enabled repositories have
+option, the `anise search` command works only when the enabled repositories have
 been synced. 
 
 It's just needed to download one time the repository tree and then all works
 fine.
 
 ```
-$# luet repo update
+$# anise repo update
 ...
 
-$# luet s macaronictl
+$# anise s macaronictl
 app-admin/macaronictl-0.6.2
 app-admin/macaronictl-thin-0.6.2
 
-# luet s portage-converter
-macaroni/luet-portage-converter-0.11.2
+# anise s portage-converter
+macaroni/anise-portage-converter-0.11.2
 ```
+
+### **4. `luet` or `anise`? What is the difference?**
+
+The tool `anise` is the Macaroni OS Package Manager that previously
+was called `luet`. We will definitively rename it when we have
+completed the refactor of `anise-build` tool.
+
+
