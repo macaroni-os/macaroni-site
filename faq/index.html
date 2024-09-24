@@ -135,14 +135,14 @@
 		<div class="row">
 			<div class="col-md-12">
 					<div class="blog-content">
-            <h3 id="1-how-update-macaroni-repositories-urls"><strong>1. How update Macaroni Repositories URLs?</strong></h3>
+            <h3 id="1-how-to-update-macaroni-repositories-urls"><strong>1. How to update Macaroni Repositories URLs?</strong></h3>
 <p>In the last period due to the changes in the new domain and the stabilization of
 the Macaroni infra there are a lot of changes in the repository URLs.
 Working with donated resources and/or free resources has the consequence that
 changes could happen.</p>
 <p>So, I will describe the better way to upgrade our repositories safely.</p>
 <p>a) leave only the <code>geaaru-repo-index</code> repository enabled.
-This means to call <code>luet repo disable</code> for all others repositories</p>
+This means to call <code>luet repo disable</code> for all other repositories</p>
 <pre tabindex="0"><code>$# anise repo disable macaroni-commons mottainai-stable macaroni-funtoo
 
 $# anise repo list --enabled
@@ -204,12 +204,12 @@ version 0.33.0 and followed.</p>
 </code></pre><p>This will rebuild the Bolt Database indexes and</p>
 <pre tabindex="0"><code>$# anise repo update --force
 </code></pre><p>that downloads and executes again the post-fetch hooks in the downloaded tree.</p>
-<p>One of the errors reported by the users when is not executed a full fetch
-of the Macaroni repositories after the upgrade is this:</p>
+<p>One of the errors reported by users when a full fetch of the Macaroni
+repositories is not executed after the upgrade is this:</p>
 <pre tabindex="0"><code>🤔 Computing upgrade, please hang tight... 💤
 Error: Package net-libs-4/webkit not found on map
 </code></pre><h3 id="3-why-anise-search-doesnt-return-packages"><strong>3. Why <code>anise search</code> doesn&rsquo;t return packages?</strong></h3>
-<p>Excluding the search of the packages installed, I mean with the <code>--installed</code>
+<p>Excluding the search of installed packages, I mean with the <code>--installed</code>
 option, the <code>anise search</code> command works only when the enabled repositories have
 been synced.</p>
 <p>It&rsquo;s just needed to download one time the repository tree and then all works
