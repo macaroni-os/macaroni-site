@@ -8,7 +8,7 @@ menu:
 weight: 4
 ---
 
-### **1. How update Macaroni Repositories URLs?**
+### **1. How to update Macaroni Repositories URLs?**
 
 In the last period due to the changes in the new domain and the stabilization of
 the Macaroni infra there are a lot of changes in the repository URLs.
@@ -18,7 +18,7 @@ changes could happen.
 So, I will describe the better way to upgrade our repositories safely.
 
 a) leave only the `geaaru-repo-index` repository enabled.
-This means to call `luet repo disable` for all others repositories
+This means to call `luet repo disable` for all other repositories
 
 ```
 $# anise repo disable macaroni-commons mottainai-stable macaroni-funtoo
@@ -104,8 +104,8 @@ $# anise repo update --force
 ```
 that downloads and executes again the post-fetch hooks in the downloaded tree.
 
-One of the errors reported by the users when is not executed a full fetch
-of the Macaroni repositories after the upgrade is this:
+One of the errors reported by users when a full fetch of the Macaroni 
+repositories is not executed after the upgrade is this:
 
 ```
 🤔 Computing upgrade, please hang tight... 💤
@@ -114,7 +114,7 @@ Error: Package net-libs-4/webkit not found on map
 
 ### **3. Why `anise search` doesn't return packages?**
 
-Excluding the search of the packages installed, I mean with the `--installed`
+Excluding the search of installed packages, I mean with the `--installed`
 option, the `anise search` command works only when the enabled repositories have
 been synced. 
 
