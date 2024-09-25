@@ -8,7 +8,7 @@ We would be happy to receive your feedback about the software available, what is
 
 ## Discord
 
-You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG). The Funtoo Discord server will be missed.
+You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG) and we are also in the [Funtoo Discord Server](https://discord.gg/BNUSpUU).
 
 ## Issues Tracker
 
