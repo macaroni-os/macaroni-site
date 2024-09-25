@@ -8,7 +8,7 @@ We would be happy to receive your feedback about the software available, what is
 
 ## Discord
 
-You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG) and we are also in the [Funtoo Discord Server](https://discord.gg/BNUSpUU).
+You can reach us in our [Discord Server](https://discord.gg/AMuVCRZEvG).
 
 ## Issues Tracker
 
@@ -19,7 +19,7 @@ If you find a bug or have some new feature request please open an issue [here](h
 
 ## M.A.R.K. Issues Tracker
 
-The M.A.R.K. stack has his issue tracker.
+We have another issue tracker for the M.A.R.K. stack.
 
 If you find a bug or have some new feature request please open an issue [here](https://github.com/macaroni-os/mark-issues/issues).
 
