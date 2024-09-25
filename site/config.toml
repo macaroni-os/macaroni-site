@@ -49,7 +49,7 @@ title   = "Binary Distro with a foot in the code"
 [params.about]
 enable  = true
 title   = "MISSION"
-content = "Supply a binary Linux OS that is easy to install and customize for the Desktop, Server and for the Container world (Incus/LXD, Docker, Singularity/Apptainer). </br>In particular, with an eye on optimize Incus/LXD technology and setup to permit the best integration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a distribution born as an incubation project under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella for one year and now it's grow and has his domain and infra. </br> It's been created by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>In August 2024, the M.A.R.K. stack was started as a part of the Macaroni Organization replacing the dependency with the low-level Funtoo stack with a future mission of replace Portage. </br>The name Macaroni comes from the pinguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
+content = "Supply a binary Linux OS that is easy to install and customize for the Desktop, Server and for the Container world (Incus/LXD, Docker, Singularity/Apptainer). </br>In particular, with an eye on optimizing Incus/LXD technology and setup to permit the best integration with <a href='https://mottainaici.github.io/lxd-compose-docs/'>lxd-compose</a> tool. </br><b>Macaroni Linux OS</b> is a distribution born as an incubation project under the <a href='https://www.funtoo.org/'>Funtoo Linux</a> umbrella for one year and now it's grown and has his domain and infra. </br> It's been created by Daniele Rondina (ex Sabayon Linux developer) aka <a href='https://github.com/geaaru/'>geaaru</a>.</br>In August 2024, the M.A.R.K. stack was started as a part of the Macaroni Organization replacing the dependency with the low-level Funtoo stack with a future mission of replacing Portage. </br>The name Macaroni comes from the penguin species found from the Subantarctic to the Antarctic Peninsula. It bears a distinctive yellow crest."
 image   = "images/about/about.png"
 
 # Credits About Section
@@ -62,7 +62,7 @@ content = "This distribution is here thanks the initial support of the <a href='
 [params.support]
 enable  = true
 title   = "SUPPORT US"
-content = "Maintaining a distribution requires effort, costs, and hardware. In the last period, a lot of communities and projects are been abandoned for a few contributions. If you use Macaroni OS or M.A.R.K. consider donating something to the Project to help us support the infra costs and to buy hardware for testing and building. You can donate over the our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a>."
+content = "Maintaining a distribution requires effort, costs, and hardware. In the last period, a lot of communities and projects have been abandoned from too few contributions. If you use Macaroni OS or M.A.R.K. consider donating something to the Project to help us support the infra costs and to buy hardware for testing and building. You can donate over on our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a>."
 
 # Portfolio Section On Homepage
 [params.portfolio]
