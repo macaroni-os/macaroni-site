@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.eee31e6ccf02a8c1fe4ee856a8aa67dbda0d57477f6ed47593cce00dc717a4c9.js" integrity="sha256-7uMebM8CqMH&#43;TuhWqKpn29oNV0d/btR1k8zgDccXpMk="></script>
+<script defer src="/en.search.min.edbb9606971c3d0eb3f4312fbd4fe8ef8a15570ed4b586d74e5dd11a16187df8.js" integrity="sha256-7buWBpccPQ6z9DEvvU/o74oVVw7UtYbXTl3RGhYYffg="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/index.xml" title="Macaroni OS" />
@@ -141,7 +141,7 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/blog/phoenix-24.04/">Phoenix 24.04, Terragon 24.04 and Eagle 24.04 are out!</a>
+									href="https://www.macaronios.org/blog/phoenix-24.08/">M.A.R.K is here together with 24.08!</a>
 							</li>
 							
 							
@@ -332,7 +332,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#why-macaroni-os">#</a>
 </h1>
 <p>Supply a binary distro that follow the Sabayon OS ideas and
-permit to convert the rootfs to a pure Funtoo rootfs in a fast way if
+permit to convert the rootfs to a pure Funtoo/MARK rootfs in a fast way if
 it&rsquo;s needed for specific customizations or to help the distro fix issues.</p>
 <p>You know, the world is buggy, it&rsquo;s better to have a way to check and
 resolve the problems fast.</p>
@@ -358,8 +358,7 @@ Macaroni developer teams share how it&rsquo;s possible to do this through
   
   <div class="flex-even markdown-inner">
     <h2 id="revolution-hotspot">Revolution Hotspot</h2>
-<p>To be a good start point for revolutions within the Linux OS space with
-the synergy of the Funtoo Team.
+<p>To be a good start point for revolutions within the Linux OS space.
   </div>
   
 </div>
@@ -374,7 +373,7 @@ different releases:</p>
 <thead>
 <tr>
 <th style="text-align:left">Release Codename</th>
-<th style="text-align:center">Funtoo Release</th>
+<th style="text-align:center">MARK Release</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
@@ -387,12 +386,12 @@ different releases:</p>
 <tr>
 <td style="text-align:left"><em>Eagle</em></td>
 <td style="text-align:center">Next + patches</td>
-<td style="text-align:left">A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services.</td>
+<td style="text-align:left">A Funtoo/MARK SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services.</td>
 </tr>
 <tr>
 <td style="text-align:left"><em>Terragon</em></td>
 <td style="text-align:center">Next</td>
-<td style="text-align:left">The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags.</td>
+<td style="text-align:left">The next release based on OpenRC/SysVinit Funtoo/MARK system with Container oriented use flags.</td>
 </tr>
 </tbody>
 </table>
@@ -409,7 +408,7 @@ ashes of its predecessor. This is the reason I choose this name: to describe
 a new beginning and to remember us that also when others try to stop a
 dream, with the commitment it&rsquo;s possible reborn and goes ahead.</p>
 <p>In <strong>phoenix</strong> it&rsquo;s used the OpenRC as an init system, it&rsquo;s based on
-Funtoo Next (previously was based on 1.4-prime) and so:</p>
+MARK Next (previously was based on 1.4-prime) and so:</p>
 <pre><code>* GCC 11.3.0
 * Glibc 2.33
 * Python 3.9
@@ -469,12 +468,12 @@ Funtoo Next (previously was based on 1.4-prime) and so:</p>
   <a class="anchor" href="#macaroni-os-eagle">#</a>
 </h2>
 <p>The <strong>Eagle</strong> release is born to be used in container, it&rsquo;s based on
-Funtoo 1.4-prime with patches to integrate SystemD as an init system.</p>
+MARK <em>next</em> with patches to integrate SystemD as an init system.</p>
 <p>Without the need to support the Desktop, the release is been compiled
 with server-oriented and X-less use flags. This permits to have core
 packages fewer dependencies and more optimized for containers.</p>
-<p>Like <em>phoenix</em> also <em>eagle</em> is based on Funtoo 1.4-prime and so:</p>
-<pre><code>* GCC 11.2.0
+<p>Like <em>phoenix</em> also <em>eagle</em> is based on MARK next and so:</p>
+<pre><code>* GCC 11.3.0
 * Glibc 2.33
 * Python 3.9
 * LLVM 13
@@ -484,10 +483,10 @@ packages fewer dependencies and more optimized for containers.</p>
   <a class="anchor" href="#macaroni-os-terragon">#</a>
 </h2>
 <p>The <strong>Terragon</strong> release is born to be used in container and it&rsquo;s based
-on Funtoo Next that is the more innovative release of Funtoo.</p>
+on MARK Next.</p>
 <p>Like for <em>eagle</em> release the <em>terragon</em> release is been compiled with
 server-oriented and X-less use flags.</p>
-<p>Based on Funtoo Next some core packages are:</p>
+<p>Based on MARK Next some core packages are:</p>
 <pre><code>* GCC 11.3.0
 * Glibc 2.33
 * Python 3.9
