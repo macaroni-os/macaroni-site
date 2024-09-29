@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2024-05-09
 linktitle: Phoenix 24.04, Terragon 24.04 and Eagle 24.04 are out!
 title: Releases 24.04 ready!
-menu:
-  main:
 tags:
   - macaroni
   - release

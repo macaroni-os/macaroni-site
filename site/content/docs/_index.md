@@ -6,7 +6,7 @@ type: docs
 # Why Macaroni OS?
 
 Supply a binary distro that follow the Sabayon OS ideas and
-permit to convert the rootfs to a pure Funtoo rootfs in a fast way if
+permit to convert the rootfs to a pure Funtoo/MARK rootfs in a fast way if
 it's needed for specific customizations or to help the distro fix issues.
 
 You know, the world is buggy, it's better to have a way to check and
@@ -40,8 +40,7 @@ Macaroni developer teams share how it's possible to do this through
 
 ## Revolution Hotspot
 
-To be a good start point for revolutions within the Linux OS space with
-the synergy of the Funtoo Team.
+To be a good start point for revolutions within the Linux OS space.
 
 {{< /columns >}}
 
@@ -50,11 +49,11 @@ the synergy of the Funtoo Team.
 Following the core targets just described in Macaroni there are
 different releases:
 
-| Release Codename | Funtoo Release | Description |
+| Release Codename | MARK Release | Description |
 | :----            |     :---:              | :---        |
 | *Phoenix* | Next | The core release based on OpenRC/SysVinit for Server and Desktop |
-| *Eagle*   | Next + patches | A Funtoo SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
-| *Terragon* | Next | The next release based on OpenRC/SysVinit Funtoo system with Container oriented use flags. |
+| *Eagle*   | Next + patches | A Funtoo/MARK SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
+| *Terragon* | Next | The next release based on OpenRC/SysVinit Funtoo/MARK system with Container oriented use flags. |
 
 ## Macaroni OS Phoenix
 
@@ -68,7 +67,7 @@ a new beginning and to remember us that also when others try to stop a
 dream, with the commitment it's possible reborn and goes ahead.
 
 In **phoenix** it's used the OpenRC as an init system, it's based on
-Funtoo Next (previously was based on 1.4-prime) and so:
+MARK Next (previously was based on 1.4-prime) and so:
 
     * GCC 11.3.0
     * Glibc 2.33
@@ -90,15 +89,15 @@ The desktop environments available in this release are:
 ## Macaroni OS Eagle
 
 The **Eagle** release is born to be used in container, it's based on
-Funtoo 1.4-prime with patches to integrate SystemD as an init system.
+MARK *next* with patches to integrate SystemD as an init system.
 
 Without the need to support the Desktop, the release is been compiled
 with server-oriented and X-less use flags. This permits to have core
 packages fewer dependencies and more optimized for containers.
 
-Like *phoenix* also *eagle* is based on Funtoo 1.4-prime and so:
+Like *phoenix* also *eagle* is based on MARK next and so:
 
-    * GCC 11.2.0
+    * GCC 11.3.0
     * Glibc 2.33
     * Python 3.9
     * LLVM 13
@@ -107,12 +106,12 @@ Like *phoenix* also *eagle* is based on Funtoo 1.4-prime and so:
 ## Macaroni OS Terragon
 
 The **Terragon** release is born to be used in container and it's based
-on Funtoo Next that is the more innovative release of Funtoo.
+on MARK Next.
 
 Like for *eagle* release the *terragon* release is been compiled with
 server-oriented and X-less use flags.
 
-Based on Funtoo Next some core packages are:
+Based on MARK Next some core packages are:
 
     * GCC 11.3.0
     * Glibc 2.33
