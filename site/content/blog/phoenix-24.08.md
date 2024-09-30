@@ -1,7 +1,7 @@
 ---
 author: "Daniele Rondina"
-date: 2024-09-20
-linktitle: M.A.R.K is here together with 24.08!
+date: 2024-09-29
+linktitle: M.A.R.K. is here together with 24.08!
 title: M.A.R.K. is born!
 menu:
   main:
