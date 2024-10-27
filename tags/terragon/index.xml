@@ -6,7 +6,28 @@
     <description>Recent content in terragon on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/terragon/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/terragon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phoenix 24.08.01 Released!</title>
+      <link>https://www.macaronios.org/blog/phoenix-24.08.01/</link>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-24.08.01/</guid>
+      <description>Phoenix release have a new look! We are happy to announce the Macaroni Phoenix 24.08.01 release, a minor release with some cool new changes.
+This new release come with a new Plymouth Theme with Macaroni OS logo that will be installed by default in all new installation.
+In this release the GTK default Theme is Orchis that together with the new Papirus icons gift a very new look and feel to the our DE based on GTK.</description>
+    </item>
+    
+    <item>
+      <title>M.A.R.K. is born!</title>
+      <link>https://www.macaronios.org/blog/phoenix-24.08/</link>
+      <pubDate>Sun, 29 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-24.08/</guid>
+      <description>Funtoo is dead, long live to M.A.R.K.! Is just in the previous post that I wrote about how many communities are in difficult and that is need new lymph from young developers and at the begin of July with a pain in the heart that I received the news shared from Daniel Robbins about the Funtoo shutdown.
+These the words shared by him: &amp;ldquo;All Good Things Must Come to an End&amp;rdquo;.</description>
+    </item>
+    
     <item>
       <title>New features incoming with 23.06 releases!</title>
       <link>https://www.macaronios.org/blog/phoenix-23.06.01/</link>

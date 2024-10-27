@@ -10,7 +10,7 @@
   
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phoenix 23.12 and Eagle 23.12!</title>
+  <title>Phoenix 24.08.01 Released!</title>
   <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
 
   <!-- Twitter Bootstrs CSS -->
@@ -112,11 +112,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>Phoenix 23.12 and Eagle 23.12!</h2>
+					<h2>Phoenix 24.08.01 Released!</h2>
 					<div class="portfolio-meta">
-						<span>Monday, Dec 25, 2023</span>|
+						<span>Sunday, Oct 27, 2024</span>|
 						<span> Tags:
-							macaroni, release, phoenix, eagle
+							mark, macaroni, release, phoenix, eagle, terragon
 						</span>
 					</div>
 				</div>
@@ -131,144 +131,185 @@
 			<div class="col-md-12">
 				
 				<div class="post-content">
-					<p><strong>Macaroni OS is about two years old and we want to thank all the people who helped
-to reach this result.</strong></p>
-<p><strong>Thank you!</strong></p>
-<p>For this reason, without to have a complete build pipeline for a new
-version of the Phoenix release, we want to tag the release <strong>23.12</strong> of
-Macaroni Phoenix with anothers big steps:</p>
-<ol>
-<li>
-<p>This releaes contains the upgrade of ZFS to version 2.2.2 with
-important bugfix of the release 2.2. We suggest to upgrade to this release
-really soon. The details are in the official <a href="https://github.com/openzfs/zfs/releases/tag/zfs-2.2.2">site</a> with important fix for a data corruption bug.</p>
-</li>
-<li>
-<p>We are happy to announce that after an intensive work, Macaroni supply a
-KDE based ISO! We consider this first integration experimental but there
-are a lot of applications of the KDE family and we love the KDE Connect tool
-that permits to integration remote control from mobile devices or
-The ISO by default uses a Wayland based integration related to a patched
-Xorg release with the same version available in Funtoo where the Xwayland
-binary was yet supplied by the same package.
-The new versions of the Xorg server supply two different tarballs for Xwayland
-and X11 and we hope to autogen all these stuff in 2024.
-Considering this, could be possible that could be better to use the X11
-implementation if you have issues with your video card, but could be helpfull
-to receive feedback about how it works from users in our Bug tracker.</p>
-</li>
-<li>
-<p>With the release of the new ZFS version and the new LXD version is now possible
-to create storage pool <em>vdev</em> where setup a specific filesytem, like XFS for a
-native integration for Docker over LXD/Incus.
-The new Topix node uses this solution to build packages!</p>
-</li>
-<li>
-<p>This release contains the experimental package of the <strong>Incus</strong> containers manager at
-version 0.3, the fork project started from LXD.
-We hope to complete the autogen file of this package soon and to add
-the package in the Funtoo Community.</p>
-</li>
-<li>
-<p>The package <code>neofetch</code> now contains the Macaroni OS patch with our logo,
-package that will be replaced by <code>hyfetch</code> in the near future.
-The original project (`dylanaraps/neofetch) seems no longer maintained.
-See our <a href="https://github.com/dylanaraps/neofetch/pull/2424">PR</a> for details.</p>
-</li>
-</ol>
-<p><strong>So, before the news about our new releases, we wish to all Macaroni and Funtoo users
-an Happy New Year!</strong></p>
-<h1 id="phoenix-2312-is-out">Phoenix 23.12 is out!</h1>
-<p>In additional to the points described in the introduction, in evidence we have:</p>
+					<h1 id="phoenix-release-have-a-new-look">Phoenix release have a new look!</h1>
+<p>We are happy to announce the <code>Macaroni Phoenix 24.08.01</code> release, a minor release with some cool
+new changes.</p>
+<p>This new release come with a new Plymouth Theme with Macaroni OS logo that will be installed
+by default in all new installation.</p>
+<div style="text-align: center; margin-bottom: 40px">
+<img src="../../images/install/macaroni-plymouth.png" width="600">
+</div>
+<p>In this release the GTK default Theme is <strong>Orchis</strong> that together with the new <strong>Papirus</strong> icons gift a very new look and feel to the our DE based on GTK.</p>
+<div style="text-align: center; margin-bottom: 40px">
+<img src="../../images/blogs/Gnome-orchis-papirus.png" width="600">
+</div>
+<p>This release supply the new <em>Virtualbox 7.1</em> that seems finally a bit
+more stable and without the tons of <em>dmesg</em> errors about DRM.
+The cons is that the 3D option is now broken, we will waiting
+for the new version with the hope that this will be fixed. But
+considering that now it seems more stable we have move ahead things
+with this new release. Having the 3D option broken we have permitted
+to find an issue in the last release of Xorg server  that is been
+patched and that permit to fix the unexpected close of Gnome Photo
+and other X tools in some systems with poor video cards.</p>
+<p>Another good news is that now <em>Firefox</em> package is build with CLANG
+and uses system PNG library to have a better performance and integration.
+The new Firefox release resolve the issues with DRM introduces in the
+release 24.08.</p>
+<h1 id="phoenix-240801">Phoenix 24.08.01</h1>
+<p>The Phoenix 24.08.01 is a patching release always based on MARK <code>next</code> branch.</p>
+<p>The kernel drivers Virtualbox and NVIDIA are now available for the the kernel 6.10.
+The new Kernel ZEN 6.11.2 is available for testing.</p>
+<p>The new ISOs using NVIDIA Driver 560 as default version.</p>
+<h3 id="phoenix-240801-major-updates">Phoenix 24.08.01 major updates</h3>
+<p>In additional to the points described before, in evidence we have:</p>
 <ul>
 <li>
-<p>Open VM Tools 12.3.5</p>
+<p>ZFS 2.2.6</p>
 </li>
 <li>
-<p>Krita 5.1.5</p>
+<p>Incus 6.5</p>
 </li>
 <li>
-<p>Brave 1.60.125</p>
+<p>LXD 5.21.1</p>
 </li>
 <li>
-<p>Firefox 120.0</p>
+<p>Waydroid 1.4.3</p>
 </li>
 <li>
-<p>Google Chrome 119.0.6045.199</p>
+<p>Blender 4.2.1</p>
 </li>
 <li>
-<p>Vivaldi 6.4.3160.47</p>
+<p>Firefox 130.0</p>
 </li>
 <li>
-<p>Github Cli 2.39.2</p>
+<p>Grafana 11.2.0</p>
 </li>
 <li>
-<p>Inkscape 1.3.2</p>
+<p>Google Chrome 128.0.6613.137</p>
 </li>
 <li>
-<p>Blender 4.0.1</p>
-</li>
-<li>
-<p>i3 4.23</p>
-</li>
-<li>
-<p>Funtoo Metatools 1.3.5</p>
+<p>Vivaldi 5.9.3447.33</p>
 </li>
 </ul>
-<p>A lot of new packages are been added.</p>
-<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.12-phoenix">Phoenix 23.12 release</a>.</p>
-<p>The new ISOs will be available in the next weeks.</p>
-<h1 id="macaroni-games-2311-is-out">Macaroni Games 23.11 is out!</h1>
-<p>We are happy to share that in the previous month we have tagged the first release
-of th Macaroni Games repository.</p>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v24.08.01-phoenix">Phoenix 24.08.01 release</a>.</p>
+<h3 id="setup-new-look-in-the-existing-system">Setup new look in the existing system</h3>
+<p>In order to install the new Plymouth theme you need to follow these steps:</p>
+<pre tabindex="0"><code>$&gt; # Install the new plymouth theme
+$&gt; anise i plymouth-macaroni
+$&gt; # Rebuild the initrd image
+$&gt; macaronictl kernel gi --set-links --grub --purge --all
+</code></pre><p>and later install the new Gnome Orchis Theme and the Papirus Icons:</p>
+<pre tabindex="0"><code>$&gt; anise i gnome-orchis-theme papirus-icon-theme
+</code></pre><p>Based on the DE used configure the new Style <code>Orchis-Orange-Compact</code> or
+<code>Orchis-Orange-Dark-Compact</code> and the <code>Papirus</code> icons. Enjoy!</p>
+<h1 id="terragon-2410-is-out">Terragon 24.10 is out!</h1>
+<p>We happy to share that this new release is been completly rebuild to upgrade GCC
+to <em>12.3.0</em> and the starting <em>seed</em> for the compilation is now based on the MARK
+stage3 tarball and on <code>mark-testing</code> branch of MARK.</p>
+<p>Having Terragon based on MARK&rsquo;s <code>mark-testing</code> branch will help for testing
+compilation process and to have soon a better integration with <em>anise</em> stack.</p>
+<p>In evidence with the migration to GCC 12.3.0:</p>
+<ul>
+<li>
+<p>Incus 6.5</p>
+</li>
+<li>
+<p>LXD 5.21.1</p>
+</li>
+<li>
+<p>Rust 1.81.0</p>
+</li>
+<li>
+<p>Nginx 1.26.2</p>
+</li>
+<li>
+<p>Python 3.9.20</p>
+</li>
+<li>
+<p>MariaDB 10.6.19 (columnstore feature is now available again!)</p>
+</li>
+<li>
+<p>PostgreSQL 16.4, 13.16</p>
+</li>
+<li>
+<p>Bash 5.2.37</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v24.10-terragon">Terragon 24.10 release</a>.</p>
+<h1 id="eagle-2410-and-241001-is-out">Eagle 24.10 and 24.10.01 is out!</h1>
 <p>In evidence:</p>
 <ul>
 <li>
-<p>Scorched 3D 44</p>
+<p>Incus 6.5</p>
 </li>
 <li>
-<p>Wesnoth 1.16.10</p>
+<p>LXD 5.21.1</p>
 </li>
 <li>
-<p>Warzone 2100 3.2.3</p>
+<p>HaProxy 2.9.11</p>
+</li>
+<li>
+<p>Minio Object Store 2024.10.02.08.27.28</p>
+</li>
+<li>
+<p>Nodejs 20.18.0</p>
+</li>
+<li>
+<p>Go 1.23.1</p>
+</li>
+<li>
+<p>PHP 8.2.24, 8.1.30</p>
+</li>
+<li>
+<p>FreeRadius 3.0.27</p>
 </li>
 </ul>
-<p>We will work on integrate emulators in 2024.</p>
-<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-games/releases/tag/v23.11-phoenix">Macaroni Games 23.11 release</a>.</p>
-<p>Hereinafter, the step to add this new repository:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise install repository/macaroni-games
-</span></span><span style="display:flex;"><span>$&gt; anise repo update
-</span></span></code></pre></div><h1 id="eagle-2312-is-out">Eagle 23.12 is out!</h1>
-<p>Finally, also the Eagle release is been moved to Funtoo Next, this includes all
-improved described in the previous blog about Phoenix 23.11 (GCC 11.3.0, Python 3.9, etc.)
-and a lot of Security fix.</p>
-<p>We suggestion to move soon to the release 23.12.</p>
-<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v23.12-eagle">Eagle 23.12 release</a>.</p>
-<h1 id="funtoo-lxdincus-images">Funtoo LXD/Incus images</h1>
-<p>Many changes happen in the last period around the <a href="https://discuss.linuxcontainers.org/t/important-notice-for-lxd-users-image-server/18479">Linux Containers</a> world.</p>
-<p>In the middle of this, we fixed an <a href="https://github.com/lxc/lxc-ci/pull/801">issue</a> in the
-last Funtoo Next tarball related to the DHCPCD tool that has been downgraded as visible
-in the Funtoo Bug tracker.</p>
-<p>So, we think that the Funtoo Next images will be available again in 2024 on the
-Linux Containers Image server.</p>
-<h1 id="what-next">What next?</h1>
-<p>Hereinafter, out hot points in our backlog:</p>
-<ol>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v24.10-eagle">Eagle 24.10 release</a> and
+of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v24.10.01-eagle">Eagle 24.10.01 release</a>.</p>
+<h1 id="mark-updates">M.A.R.K. Updates</h1>
+<p>A lot of updates are been introduces in the <code>mark-testing</code> branch
+in order to organize things and later create the new stable releases.</p>
+<p>In about one month we have closed 50 issues. Kudos to all people help on this!</p>
+<p>In evidence some of the issues resolved by our team in the last period:</p>
+<ul>
 <li>
-<p>Will be our first priority to complete the first rewrite of the <code>anise-build</code> (luet-build)
-tool and improve our building process to complete the rebranding of our Package Manager.</p>
+<p><em>sys-apps/usbutils-018</em> now uses Meson for compilation. The autogen now follow this new way (<em>Thanks @borisp</em>)</p>
 </li>
 <li>
-<p>Starting setup of <code>labs</code> repository</p>
+<p><em>app-crypt/xca</em> is been fixed (<em>Thanks @cuantor</em>)</p>
 </li>
 <li>
-<p>Continue the improvement of our documentation</p>
+<p><em>app-emulation/incus</em> autogen is been reviewed</p>
 </li>
-</ol>
-<h1 id="we-are-waiting-for-you">We are waiting for you</h1>
-<p>We waiting for you in our <a href="https://discord.gg/AMuVCRZEvG">Discord Server</a>.</p>
+<li>
+<p>new packages available: <code>app-backup/backrest</code>, <code>x11-themes/papirus-icon-theme</code>, <code>x11-themes/gnome-orchis-theme</code>, <code>dev-util/volk</code>.</p>
+</li>
+<li>
+<p><em>sys-power/cpupower</em> autogen is been fixed</p>
+</li>
+<li>
+<p>the packages <em>sys-apps/baselayout</em> and <em>sys-apps/lsb-release</em> are been rebranding</p>
+</li>
+<li>
+<p>the old GCC ebuilds are been removed</p>
+</li>
+<li>
+<p>the XFCE Kit is now managed inside <code>kit-fixups</code> repository directly</p>
+</li>
+<li>
+<p>the Debian kernel ebuild are now autogen! See <a href="https://github.com/macaroni-os/kit-fixups/pull/158">PR#158</a> (<em>Thanks @cuantar</em>)</p>
+</li>
+<li>
+<p>Go autogen is been pinned to version 1.22.7 and 1.23.1 (<em>Thanks @siris</em>)</p>
+</li>
+<li>
+<p>the <code>intel64-tremont</code> subarch is been added (<em>Thanks @cuantor</em>)</p>
+</li>
+</ul>
+<p>And a lot of other PR are been closed. See our repository for <a href="https://github.com/macaroni-os/kit-fixups/pulls?page=3&amp;q=is%3Apr+is%3Aclosed">details</a>.</p>
 <h1 id="thanks">Thanks</h1>
-<p>Many thanks to all Funtoo devs that are the sap of all this and to all
+<p>Many thanks to all Developers and Contributors that are the sap of all this and to all
 people that helps us with testing and donations.</p>
 <h1 id="support-us">Support Us</h1>
 <p>Any user that wants to support our work for Macaroni could do this through the
