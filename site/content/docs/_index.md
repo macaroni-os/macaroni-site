@@ -53,7 +53,7 @@ different releases:
 | :----            |     :---:              | :---        |
 | *Phoenix* | Next | The core release based on OpenRC/SysVinit for Server and Desktop |
 | *Eagle*   | Next + patches | A Funtoo/MARK SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
-| *Terragon* | Next | The next release based on OpenRC/SysVinit Funtoo/MARK system with Container oriented use flags. |
+| *Terragon* | mark-testing | The next release based on OpenRC/SysVinit Funtoo/MARK system with Container oriented use flags. |
 
 ## Macaroni OS Phoenix
 
@@ -113,7 +113,7 @@ server-oriented and X-less use flags.
 
 Based on MARK Next some core packages are:
 
-    * GCC 11.3.0
+    * GCC 12.3.0
     * Glibc 2.33
     * Python 3.9
 
