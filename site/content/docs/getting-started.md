@@ -28,7 +28,9 @@ If the download is correct the hash will be the same.
 ## 2.Flash your USB drive
 
 To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool
-[Balena Etcher](https://etcher.download/) that validates the written bytes before sharing the result.
+[Balena Etcher](https://etcher.balena.io/)
+([Github](https://github.com/balena-io/etcher/releases)) that validates the
+written bytes before sharing the result.
 
 **NOTE**: At the moment the `ventoy` USB Solution is not supported.
 
