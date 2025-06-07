@@ -717,7 +717,7 @@ Enjoy!
 `}),e.add({id:21,href:"/docs/getting-started/",title:"Getting Started",section:"Macaroni OS",content:` Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page.
 1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download with our SHA256 hash:
 $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
-2.Flash your USB drive # To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool Balena Etcher that validates the written bytes before sharing the result.
+2.Flash your USB drive # To write an ISO there are different tools and ways. My suggestion is to use the wonderful tool Balena Etcher ( Github) that validates the written bytes before sharing the result.
 NOTE: At the moment the ventoy USB Solution is not supported.
 3.Check your BIOS # At the moment, the Macaroni ISOs don\u0026rsquo;t support an EFI-signed bootstrap. So, before bootstrapping your USB drive just check and disable EFI security check.
 Hereinafter is an example of how to setup the right options:
