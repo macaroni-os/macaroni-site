@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2024-10-27
 linktitle: Phoenix 24.08.01 Released!
 title: Phoenix 24.08.01 Released!
-menu:
-  main:
 tags:
   - mark
   - macaroni

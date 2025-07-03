@@ -75,7 +75,7 @@ a:hover {
   --bs-badge-border-radius: 0.375rem;
 }
 
-.badge-funtoo {
+.badge-mark {
   color: #fff !important;
   background-color: RGBA(198,22,198,var(--bs-bg-opacity,1)) !important;
   --bs-badge-padding-x: 0.65em;

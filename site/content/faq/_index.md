@@ -3,8 +3,8 @@ author: "Daniele Rondina"
 linktitle: FAQ
 title: Frequently Asked Questions
 type: contact
-menu:
-    main:
+#menu:
+#    main:
 weight: 4
 ---
 
@@ -133,6 +133,7 @@ app-admin/macaronictl-thin-0.6.2
 macaroni/anise-portage-converter-0.11.2
 ```
 
+<<<<<<< Updated upstream
 ### **4. `luet` or `anise`? What is the difference?**
 
 The tool `anise` is the Macaroni OS Package Manager that previously
@@ -140,3 +141,8 @@ was called `luet`. We will definitively rename it when we have
 completed the refactor of `anise-build` tool.
 
 
+=======
+### **4. Upgrade old systems**
+
+When weight
+>>>>>>> Stashed changes
