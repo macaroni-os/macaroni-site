@@ -83,7 +83,7 @@ $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.cb3ab1bea0b163ee5c929f6c51f200b31f602693c66efe6e87c958f8b005b6a9.js" integrity="sha256-yzqxvqCxY&#43;5ckp9sUfIAsx9gJpPGbv5uh8lY&#43;LAFtqk="></script>
+<script defer src="/en.search.min.808c0aff8e9da34d73d748a2e016aba2d02c78ff59b9029fdc65e03be66d1ddc.js" integrity="sha256-gIwK/46do01z10ii4BarotAseP9ZuQKf3GXgO&#43;ZtHdw="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -131,13 +131,6 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/faq/">FAQ</a>
-							</li>
-							
-							
-							
-							<li class="nav-item">
-								<a class="nav-link"
 									href="https://www.macaronios.org/iso/">Download</a>
 							</li>
 							
@@ -145,7 +138,7 @@ https://github.com/alex-shpak/hugo-book
 							
 							<li class="nav-item">
 								<a class="nav-link"
-									href="https://www.macaronios.org/blog/phoenix-24.08.01/">Phoenix 24.08.01 Released!</a>
+									href="https://www.macaronios.org/blog/phoenix-25.06/">Phoenix 25.06 Released!</a>
 							</li>
 							
 							
@@ -220,6 +213,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
 <li>
   <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-incus-containers">Install Macaroni Incus Containers</a></li>
 <li>
   <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a></li>
 <li>
@@ -704,6 +699,17 @@ with <code>incus</code> too:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
 </span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or</span>
 </span></span><span style="display:flex;"><span>$&gt; incus image list macaroni:
+</span></span></code></pre></div><h1 id="install-macaroni-incus-containers">
+  Install Macaroni Incus Containers
+  <a class="anchor" href="#install-macaroni-incus-containers">#</a>
+</h1>
+<p>Macaroni OS supply their Incus images over a Simplestreams Server with help of the
+
+  <a href="https://github.com/MottainaiCI/simplestreams-builder">simplestreams-builder</a> tool.</p>
+<p>To configure your Incus system to download Macaroni OS images you need to add the <code>macaroni</code> remote:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+</span></span></code></pre></div><p>The images are visible with the command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus image list macaroni:
 </span></span></code></pre></div><h1 id="install-macaroni-docker-containers">
   Install Macaroni Docker Containers
   <a class="anchor" href="#install-macaroni-docker-containers">#</a>

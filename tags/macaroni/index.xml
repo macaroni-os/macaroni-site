@@ -6,7 +6,17 @@
     <description>Recent content in macaroni on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/macaroni/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phoenix 25.06 Released!</title>
+      <link>https://www.macaronios.org/blog/phoenix-25.06/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-25.06/</guid>
+      <description>The Phoenix is reborn! We are excited to share the new release of Phoenix 25.06 now based on MARK stack, in particular based on mark-iii branch.
+A long time is passed from the previous release, but because the team is been busy with the big work done in the last year of the M.A.R.K. stack that have a lot to improve but set the base of new features and characteristics that will permit to the Macaroni OS to improve in the next years.</description>
+    </item>
+    
     <item>
       <title>Phoenix 24.08.01 Released!</title>
       <link>https://www.macaronios.org/blog/phoenix-24.08.01/</link>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phoenix 25.06 Released!</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><body><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-25.06/">Phoenix 25.06 Released!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="global-page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Phoenix 25.06 Released!</h2>
+					<div class="portfolio-meta">
+						<span>Thursday, Jul 3, 2025</span>|
+						<span> Tags:
+							mark, macaroni, release, phoenix, eagle, terragon
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="single-post">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="post-content">
+					<h1 id="the-phoenix-is-reborn">The Phoenix is reborn!</h1>
+<p>We are excited to share the new release of Phoenix 25.06 now based on MARK stack,
+in particular based on <code>mark-iii</code> branch.</p>
+<p>A long time is passed from the previous release, but because the team is been busy
+with the big work done in the last year of the M.A.R.K. stack that have a lot to
+improve but set the base of new features and characteristics that will permit to
+the Macaroni OS to improve in the next years.</p>
+<p>So, we are sorry for this log waiting but also if the evolution is not so visible,
+a lot is changed in core services and our infrastructure that now use the lovely
+CDN77 Object Storage with a better integration with the CD/CI tasks.</p>
+<p>We are also happy to have reached <strong>1.7Milion</strong> requests and <strong>1.5 TB</strong> of data
+in May 2025. Really, <em>thanks to CDN77 Sponsor and GARR to keep this possible</em>.</p>
+<p>So, without lose other time in words, this new release come with GCC 12.3.0 and
+LLVM 16.0.6 and due to this change all the packages are been recompiled to get
+new optimizations from these new compilers.</p>
+<p>Thanks to the work done in MARK, this release supply the releases of QT 5.15.16
+and 6.8.3 but a lot must be done to upgrade at KDE 6, but stay tuned!</p>
+<h1 id="new-mark-repository">New <code>mark</code> repository</h1>
+<p>In order to begin a better integration between MARK and Anise is been created the
+<code>mark</code> repository that contains the Macaroni main tools and <em>anise</em> itself
+compiled from the ebuild in order to install Portage metadata if the subset is enabled.</p>
+<p>In the previous release, the <em>anise</em> binary is available through the <code>mottainai-stable</code>
+repository as package build from scratch and with a different name.</p>
+<p>So, to have a better integration with MARK new ISOs using <code>mark</code> repository instead
+of <code>mottainai-stable</code>.</p>
+<p>The current limitations are that the packages <code>utils/yq</code> (based on yq version 3.x) and
+the <code>mottainai-cli</code> are not available and it&rsquo;s needed install <code>mottainai-stable</code> repo to
+install these two packages and all Mottainai tools. We will resolve these limitations
+soon.</p>
+<p>To existing system these the steps to install the new repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise repo update
+</span></span><span style="display:flex;"><span>$&gt; anise i repository/mark -y
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Disable mottainai-stable repo</span>
+</span></span><span style="display:flex;"><span>$&gt; anise repo disable mottainai-stable
+</span></span></code></pre></div><h1 id="phoenix-2506">Phoenix 25.06</h1>
+<p>The Phoenix 25.06 release is now supplied with kernel 6.12 and Nvidia Driver 565.</p>
+<p>We will supply in the next months new flavor of our ISOs in order to using new
+Nvidia Open Driver instead of proprietary as first installation.</p>
+<p>Like in the past, also with the last releases of NVIDIA drivers things are always
+near the unstability. I&rsquo;m been surprised to see that new releases 570.x and 575.x
+are broken on setting only hdmi output as primary output and poweroff the laptop
+screen. At least for my laptop the only release that seems work correctly is the 565
+choiced for the new releases of Phoenix. So, my adventure on supplies the
+<code>gpu-configurator</code> tool and help users on find the right configuration pattern seems
+that will continue. Unluckly, also with NVIDIA Open Driver this doesn&rsquo;t change.</p>
+<h3 id="new-isos-naming-convention">New ISOs naming convention</h3>
+<p>In the past release we have used the term <em>Devel</em> related to the subset defined at <em>anise</em> level to identify ISOs contain includes files.</p>
+<p>This is not always so clear to the users and for this reason I used the term <em>Mark</em>
+in the new ISOs to better identify this type of ISOs. This will help users that want have
+access to both Sambuca and MARK stacks to identify correctly the right ISOs. Obviously,
+considering the limitations described in the Documentation page of this two worlds.</p>
+<h3 id="changes-on-using-virtualbox">Changes on using Virtualbox</h3>
+<p>After upgrading to last Virtualbox it&rsquo;s possible that the VM will not start correctly.</p>
+<p>It seems that there are conflicts on using VBox kernel driver together with the <code>kvm</code> and
+<code>kvm_amd</code> driver. In order to correctly bootstrap the VM you need to remove KVM kernel
+module with:</p>
+<pre tabindex="0"><code>modprobe -r kvm_amd kvm
+</code></pre><p>or add these modules in blacklist.</p>
+<h3 id="back-to-the-past-with-compiz-style-window">Back to the past with Compiz style window</h3>
+<p>The new Gnome ISOs are configured with the Gnome Shell extension <code>Compiz windows effect</code>
+to remember past years when the Compiz WM is born.</p>
+<p>Users with an old installation could install it with:</p>
+<pre tabindex="0"><code>$&gt; # Install the Compiz gnome shell extension
+$&gt; anise i gnome-shell-extension-compiz-windows-effect
+</code></pre><p>and later enable the extension.</p>
+<h3 id="upgrade-steps">Upgrade steps</h3>
+<p>Considering that the full tree is been rebuilt, it&rsquo;s possible that inside the upgrade
+process some post install hooks fail but this is not critical in this case.</p>
+<p>But, in order to avoid break of the upgrade process it&rsquo;s better to add the flag
+<code>--force</code> and follow these steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Disable mottainai-stable repository, we use mark repo packages.</span>
+</span></span><span style="display:flex;"><span>$&gt; anise repo disable mottainai-stable
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Install mark repository</span>
+</span></span><span style="display:flex;"><span>$&gt; anise i repository/mark
+</span></span><span style="display:flex;"><span>$&gt; anise repo update
+</span></span><span style="display:flex;"><span>$&gt; anise upgrade --force --deep
+</span></span></code></pre></div><p>and later the classic post install commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; macaronictl etc-update
+</span></span><span style="display:flex;"><span>$&gt; macaronictl env-update
+</span></span><span style="display:flex;"><span>$&gt; macaronictl kernel geninitrd --all --set-links --purge --grub
+</span></span></code></pre></div><p>This the command to migrate existing system with kernel 6.1 to kernel 6.12:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; macaronictl kernel switch macaroni@6.12 --from 6.1
+</span></span></code></pre></div><h3 id="phoenix-2506-major-updates">Phoenix 25.06 major updates</h3>
+<p>In additional to the points described before, in evidence we have:</p>
+<ul>
+<li>
+<p>GCC 12.3.0</p>
+</li>
+<li>
+<p>LLVM 16.0.6</p>
+</li>
+<li>
+<p>Incus 6.12</p>
+</li>
+<li>
+<p>Virtualbox 7.1.8.168469</p>
+</li>
+<li>
+<p>Blender 4.4.3</p>
+</li>
+<li>
+<p>Firefox 135.0</p>
+</li>
+<li>
+<p>Grafana 12.0.0</p>
+</li>
+<li>
+<p>Google Chrome 136.0.7103.113</p>
+</li>
+<li>
+<p>ZFS 2.3.0</p>
+</li>
+<li>
+<p>Go 1.22, 1.23.8, 1.24.2</p>
+</li>
+<li>
+<p>Nodejs 20.19.1, 22.14.0</p>
+</li>
+<li>
+<p>Deno 2.2.11</p>
+</li>
+<li>
+<p>Minio 2025.04.22</p>
+</li>
+<li>
+<p>Prometheus 3.4.0</p>
+</li>
+<li>
+<p>Apache 2.4.63</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v25.06-phoenix">Phoenix 25.06 release</a>.</p>
+<hr>
+<h1 id="terragon-2503-is-out">Terragon 25.03 is out!</h1>
+<p>The release Terragon 25.03 is now based on branch <code>mark-xl</code>, the testing repository of
+MARK used for server/container images.</p>
+<p>In evidence:</p>
+<ul>
+<li>
+<p>LLVM 16.0.6</p>
+</li>
+<li>
+<p>Upx 5.0.0</p>
+</li>
+<li>
+<p>Go 1.22.12, 1.23.7, 1.24.1</p>
+</li>
+<li>
+<p>Apache 2.4.63</p>
+</li>
+<li>
+<p>OpenSSH 9.9</p>
+</li>
+<li>
+<p>MySQL Community 8.0.41</p>
+</li>
+<li>
+<p>Grafana 11.6.0</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v25.03-terragon">Terragon 25.03 release</a>.</p>
+<hr>
+<h1 id="eagle-2504-is-out">Eagle 25.04 is out!</h1>
+<p>The release Eagle 25.04 is now based on branch <code>mark-xl</code>, the testing repository of
+MARK used for server/container images.</p>
+<p>In evidence:</p>
+<ul>
+<li>
+<p>Incus 6.11</p>
+</li>
+<li>
+<p>HaProxy 2.9.15</p>
+</li>
+<li>
+<p>Nodejs 20.19.0, 22.14.0</p>
+</li>
+<li>
+<p>Go 1.22.12, 1.23.7, 1.24.1</p>
+</li>
+<li>
+<p>PHP 8.1.32, 8.2.28</p>
+</li>
+<li>
+<p>Rust 1.85.0</p>
+</li>
+<li>
+<p>LLVM 16.0.6</p>
+</li>
+<li>
+<p>Openssh 9.9</p>
+</li>
+</ul>
+<p>See the complete changelog of <a href="https://github.com/macaroni-os/macaroni-funtoo/releases/tag/v25.04-eagle">Eagle 25.04 release</a>.</p>
+<hr>
+<h1 id="mark-updates">M.A.R.K. Updates</h1>
+<p>Following the wish of the creator of Funtoo we have started the replace of all
+Funtoo tools and. In particular, the <code>metatools</code> is been replaced by the tool <code>mark-devkit</code>
+better described in the next months together with the M.A.R.K. documentation.
+The next step will be replace <code>ego</code> and have something more aligned to the new
+branches pattern available in MARK.</p>
+<div style="text-align: center; margin-bottom: 40px">
+<img src="../../images/mark/mark-stack-2025.png" width="900">
+</div>
+<h1 id="thanks">Thanks</h1>
+<p>Many thanks to all Developers and Contributors that are the sap of all this and to all
+people that helps us with testing and donations.</p>
+<h1 id="support-us">Support Us</h1>
+<p>Any user that wants to support our work for Macaroni could do this through the
+Github <a href="https://github.com/sponsors/geaaru">Sponsor</a>.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Call To Action Section Start -->
+<section id="call-to-action">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h2 class="title wow fadeInDown" data-wow-delay=".3s"
+            data-wow-duration="500ms">WHAT DO YOU THINK?</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+              Do you think I could integrate more features?</p>
+            <a href="https://www.macaronios.org/contact" class="btn btn-default btn-contact wow fadeInDown"
+              data-wow-delay=".7s" data-wow-duration="500ms">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call To Action Section End -->
+
+
+
+<!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>
