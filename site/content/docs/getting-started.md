@@ -460,6 +460,24 @@ $> # or
 $> incus image list macaroni:
 ```
 
+# Install Macaroni Incus Containers
+
+Macaroni OS supply their Incus images over a Simplestreams Server with help of the
+[simplestreams-builder](https://github.com/MottainaiCI/simplestreams-builder) tool.
+
+To configure your Incus system to download Macaroni OS images you need to add the `macaroni` remote:
+
+```shell
+$> incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+```
+
+The images are visible with the command:
+
+```shell
+$> incus image list macaroni:
+```
+
+
 # Install Macaroni Docker Containers
 
 The official Docker Hub user is [macaronios](https://hub.docker.com/repositories/macaronios).
