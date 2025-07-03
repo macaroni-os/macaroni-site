@@ -6,7 +6,7 @@ type: docs
 # Why Macaroni OS?
 
 Supply a binary distro that follow the Sabayon OS ideas and
-permit to convert the rootfs to a pure Funtoo/MARK rootfs in a fast way if
+permit to convert the rootfs to a pure MARK rootfs in a fast way if
 it's needed for specific customizations or to help the distro fix issues.
 
 You know, the world is buggy, it's better to have a way to check and
@@ -51,9 +51,9 @@ different releases:
 
 | Release Codename | MARK Release | Description |
 | :----            |     :---:              | :---        |
-| *Phoenix* | Next | The core release based on OpenRC/SysVinit for Server and Desktop |
-| *Eagle*   | Next + patches | A Funtoo/MARK SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
-| *Terragon* | mark-testing | The next release based on OpenRC/SysVinit Funtoo/MARK system with Container oriented use flags. |
+| *Phoenix* | mark-iii | The core release based on OpenRC/SysVinit for Server and Desktop |
+| *Eagle*   | mark-xl + patches | A MARK SystemD release. The idea is to use it only for Server target and as experimental base rootfs where we will develop an alternative tool that will replace SystemD probably written in Golang but that will be compatible with part of SystemD files. In this moment, this release has only Container based targets and Server services. |
+| *Terragon* | mark-xl | The next release based on OpenRC/SysVinit MARK system with Container oriented use flags. |
 
 ## Macaroni OS Phoenix
 
@@ -69,10 +69,10 @@ dream, with the commitment it's possible reborn and goes ahead.
 In **phoenix** it's used the OpenRC as an init system, it's based on
 MARK Next (previously was based on 1.4-prime) and so:
 
-    * GCC 11.3.0
+    * GCC 12.3.0
     * Glibc 2.33
     * Python 3.9
-    * LLVM 13
+    * LLVM 16.0.6
 
 The desktop environments available in this release are:
 
@@ -97,10 +97,10 @@ packages fewer dependencies and more optimized for containers.
 
 Like *phoenix* also *eagle* is based on MARK next and so:
 
-    * GCC 11.3.0
+    * GCC 12.3.0
     * Glibc 2.33
     * Python 3.9
-    * LLVM 13
+    * LLVM 16.0.6
 
 
 ## Macaroni OS Terragon
@@ -128,6 +128,7 @@ Hereinafter, a summary of our repositories and the packages related.
 | ---------- |  :---: | :---: | :---: |
 | *macaroni-commons* | repository/macaroni-commons | repository/macaroni-commons-testing | repository/macaroni-commons-dev |
 | *mottainai* | repository/mottainai-stable | repository/mottainai-testing | repository/mottainai-dev |
+| *mark* | repository/mark | repository/mark-testing | repository/mark-dev |
 | *macaroni-phoenix (ex macaroni-funtoo)*| repository/macaroni-phoenix | repository/macaroni-phoenix-testing | repository/macaroni-phoenix-dev |
 | *macaroni-eagle (ex macaroni-funtoo-systemd)* | repository/macaroni-eagle | repository/macaroni-eagle-testing | repository/macaroni-eagle-dev |
 | *macaroni-terragon* | repository/macaroni-terragon | repository/macaroni-terragon-testing | repository/macaroni-terragon-dev |
