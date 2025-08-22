@@ -12,7 +12,7 @@ shutdown itself give me a new idea of the targets of distro.
 
 In this years where the AI technology from one side permits
 to find details that was been hidden before from the other
-side risk to automatize things and loose of same details to
+side risk to automatize things and loose of some details to
 users; we need to evolve but have an eye about past and how
 things are started in order to continue to have a full
 control of everythings. Inside this, trying to reboot from
@@ -20,7 +20,6 @@ scratch a system we can see details that before are been
 developed in a way that was fine in the time where are been
 created but that could be reviewed with new technologies
 continuing to have a full control of the system.
-
 
 In order to respect this idea, Macaroni OS want to be not
 just a distro but a set di tecnologies to create an

@@ -5,6 +5,7 @@ headless: true
 
 - [**The Project**]({{< relref "/docs/" >}})
   - [Macaroni Releases]({{< relref "/docs/#macaroni-releases" >}})
+- [**M.A.R.K.**]({{< relref "/docs/mark" >}})
 - [**Sambuca Anise Stack**]({{< relref "/docs/sambuca" >}})
   - [Phoenix]({{< relref "/docs/sambuca#macaroni-os-phoenix" >}})
   - [Eagle]({{< relref "/docs/sambuca#macaroni-os-eagle" >}})
@@ -30,11 +31,6 @@ headless: true
     - [Show orphans Packages]({{< relref "/docs/pms#93-show-orphans-packages" >}})
     - [Local Database Operations]({{< relref "/docs/pms#10-local-database-operations" >}})
     - [Masking Packages]({{< relref "/docs/pms#11-masking-packages" >}})
-- [**Funtoo Zone**]({{< relref "/docs/funtoo" >}})
-    - [Main differences between Funtoo and Macaroni OS]({{< relref "/docs/funtoo#main-differences-between-funtoo-and-macaroni-os" >}})
-    - [Upgrade Funtoo 1.4 to Funtoo Next with Macaroni]({{< relref "/docs/funtoo#upgrade-funtoo-14-to-funtoo-next-with-macaroni" >}})
-    - [Integrate Funtoo Next with Macaroni]({{< relref "/docs/funtoo#integrate-funtoo-next-rootfs-with-macaroni" >}})
-    - [Using Funtoo Kits in Macaroni]({{< relref "/docs/funtoo#using-funtoo-kits-in-macaroni" >}})
 <br />
 
 <br />
