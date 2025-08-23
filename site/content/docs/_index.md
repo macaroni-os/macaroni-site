@@ -129,6 +129,12 @@ alternative of the packages available in Phoenix.
 A similar approach is used for the Terragon and Eagle releases
 that instead using the *mark-xl* release.
 
+<div style="text-align: center; margin-bottom: 30px">
+
+<img src="../../images/mark/mark-terragon-flow.png" width="900">
+
+</div>
+
 
 The build process is like a circle that permits to create the
 full system from scratch and the final node of the chain became

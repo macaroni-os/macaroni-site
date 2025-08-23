@@ -6,6 +6,7 @@ headless: true
 - [**The Project**]({{< relref "/docs/" >}})
   - [Macaroni Releases]({{< relref "/docs/#macaroni-releases" >}})
 - [**M.A.R.K.**]({{< relref "/docs/mark" >}})
+  - [Stability Levels]({{< relref "/docs/mark#stability-levels" >}})
 - [**Sambuca Anise Stack**]({{< relref "/docs/sambuca" >}})
   - [Phoenix]({{< relref "/docs/sambuca#macaroni-os-phoenix" >}})
   - [Eagle]({{< relref "/docs/sambuca#macaroni-os-eagle" >}})
