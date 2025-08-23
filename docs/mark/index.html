@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.ff43ec55442abb3eadc135831adf9d3ae64bf7eb286692091f26e4e99db7df0b.js" integrity="sha256-/0PsVUQquz6twTWDGt&#43;dOuZL9&#43;soZpIJHybk6Z233ws="></script>
+<script defer src="/en.search.min.be5453c90ff467432d14ff4919dd179ef68918b118c33e65ab322db49f3c06db.js" integrity="sha256-vlRTyQ/0Z0MtFP9JGd0XnvaJGLEYwz5lqzIttJ88Bts="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/mark/index.xml" title="Macaroni OS" />
@@ -188,7 +188,12 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 <li>
-  <a href="/docs/mark/"class=active><strong>M.A.R.K.</strong></a></li>
+  <a href="/docs/mark/"class=active><strong>M.A.R.K.</strong></a>
+<ul>
+<li>
+  <a href="/docs/mark/#stability-levels">Stability Levels</a></li>
+</ul>
+</li>
 <li>
   <a href="/docs/sambuca/"><strong>Sambuca Anise Stack</strong></a>
 <ul>
@@ -430,7 +435,7 @@ in order to help users from these distro to understand the differences:</p>
 <td><strong>Ebuild generator</strong></td>
 <td>-</td>
 <td>metatools</td>
-<td><code>mark-devkit autogen</code>, <code>mark-devkit kit merge</code></td>
+<td><code>mark-devkit autogen</code>, <code>mark-devkit kit merge</code>, <code>mark-devkit kit bump-release</code></td>
 </tr>
 <tr>
 <td><strong>Stage tarballs generator</strong></td>
@@ -448,20 +453,127 @@ in order to help users from these distro to understand the differences:</p>
 <td><strong>Installer</strong></td>
 <td>manual</td>
 <td>manual</td>
-<td>calamares</td>
+<td>manual or calamares</td>
 </tr>
 </tbody>
 </table>
-<h3 id="portage">
-  Portage
-  <a class="anchor" href="#portage">#</a>
+<h1 id="-stability-levels">
+  💂 Stability Levels
+  <a class="anchor" href="#-stability-levels">#</a>
+</h1>
+<h3 id="-containerserver-releases">
+  🐳 Container/Server releases
+  <a class="anchor" href="#-containerserver-releases">#</a>
 </h3>
-<p>At the moment, it uses a forked version of Portage with patches from Funtoo as main package
+<p>For support MARK releases containers and servers oriented don&rsquo;t require necessary tons
+of packages for Desktop stuff, and following this idea we have created the release
+<code>mark-xl</code> and <code>mark-v</code> with a subset of the packages. In addition, having less desktop
+packages with a lot of constraints and cross dependencies between permit to simplify
+the life of the solver, speedup the dependencies calculation and permit to experiment
+new new libraries, compiler, etc. reducing issues with the upgrade for ABI change not
+yet supported. So, this permits to experiment and move ahead packages on this releases
+without the pain on broken desktop softwares that are updates with less periodicity.</p>
+<div style="text-align: center; margin-bottom: 30px">
+<img src="../../images/mark/mark-containers-branches.png" width="930">
+</div>
+<p>As visible from the schema, on <code>mark-unstable</code> the <em>mark-bot</em> automatically create
+new PR for the packages with autogen specs (through <code>mark-devkit autogen</code> command).
+But it&rsquo;s also possible receive PR directly from contributors and/or developers.
+After a testing period the new versions pushed with other PRs to the <code>mark-xl</code> branch
+could be merged and moved to testing environment.</p>
+<p>The <code>mark-devkit kit bump-release</code> is used to update the JSON files of the
+
+  <a href="https://github.com/macaroni-os/meta-repo">meta-repo</a> repository in the
+branch related to the release that is later used by <code>ego</code> to fetch the Portage
+tree splitted in kits. This behaviour is also a protection about errors done in the
+kits that could be fastly reverted because until a new bump is done users will be
+synced to the git hash of the last bump in the kit updated. Cons is that until a
+new bump is done new updates will be not visible to users. Normally, an automatic
+task run every day in our CD/CI that try to bump a new update the align the JSON
+files to last commit of every kits.</p>
+<p>The <code>mark-devkit kit clean</code> instead is used to generate PRs to remove versions
+of the packages exceeded the max number of version admitted by the YAML specs.
+Also in this case, the mark-bot task running for this is executed periodically
+from our CD/CI chain.</p>
+<p>So, the <code>mark-unstable</code> release is the <em>world of the chaos</em>. We can push PR to upgrade and
+break everything. But better in an organized mode if it&rsquo;s possible. It&rsquo;s easy that this
+branch will be often broken because is where we do experiment with new versions and releases
+of the packages.</p>
+<p>When a new package is been merged on <code>mark-unstable</code> the mark-bot checking for updates in
+the <code>mark-xl</code> branch creates new PRs for the testing branch that could be leave there until
+a testing phase is been done or just merged directly. If the mark-bot&rsquo;s task is executed
+again and the PR for a specific package and version is already present, it just ignore
+the upgrade because already in the queue for a validation.</p>
+<p>Depending of the level of upgrade, for example for patch release version (I mean following
+the semver paradigm) we could merge new versions with less attention because at the end
+also <code>mark-xl</code> is a testing branch and it&rsquo;s possible that sometime a specific version could
+be broken. In that case, the developers can choice to fix the issue or just create a PR that
+revert the previous and waiting for a fix from mark-unstable.</p>
+<p>At the end, after a testing period of the <code>mark-xl</code> branch, normally, this is also been with
+the creation of the new versions over the Macaroni Terragon and Eagle releases that
+automatically test the existing tree a manual task is fired over our CD/CI to execute
+<code>mark-devkit kit merge</code> that doesn&rsquo;t use PR but just merge versions as a commits. Potentially,
+could be used PRs also on mark-v but we prefer using directly commit because when the new
+release is tagged through goreleaser tool we generate the ChangeLog automatically with the
+list of the new versions availables.</p>
+<p>The upgrade of the core packages (GCC, Glibc, etc.) will be always done before in these
+releases and later to the Desktop releases.</p>
+<h3 id="-desktop-releases">
+  💻 Desktop releases
+  <a class="anchor" href="#-desktop-releases">#</a>
+</h3>
+<p>The Desktop Linux world is something complex with tons of packages that
+are connected between them and is not easy planning specific upgrade without
+break the tree. For this reason we prefer keep a separated tree for Desktop respect
+the Container/Server and like describe before, it keeps a simple life for the solver with
+less packages.</p>
+<p>Having multiple releases take more effort but we think that could be a choice right
+that permits to experiment in different way the upgrades.</p>
+<p>For now, the only shared branch between the Desktop world and the Container/Server world
+is <code>mark-unstable</code> that share a common place where define the autogen specifications and
+later choice with <code>mark-devkit kit merge</code> of the upper branches what packages go where.
+It&rsquo;s not excluded that in the future will not change.</p>
+<p>The logic describes in the previous chapter are pretty equal for the Desktop world,
+the difference is only that the testing branch of Desktop is <code>mark-iii</code> and the stable
+tree of the Desktop is <code>mark-i</code>.</p>
+<div style="text-align: center; margin-bottom: 30px">
+<img src="../../images/mark/mark-desktop-branches.png" width="930">
+</div>
+<h3 id="-embedded-releases">
+  🔬 Embedded releases
+  <a class="anchor" href="#-embedded-releases">#</a>
+</h3>
+<p>Not ready yet for end users we have started in August 2025 the branch
+<code>mark-31</code> with the target to support ARM/ARM64 arches. We consider it
+experimental for now but when will be ready we will add testing and stable
+branches too.</p>
+<div style="text-align: center; margin-bottom: 30px">
+<img src="../../images/mark/mark-embedded-branches.png" width="930">
+</div>
+<p>So, the <code>mark-31</code> branch could be considered like an unstable branch for embedded
+that receive incoming PRs from <code>mark-unstable</code> too.</p>
+<p>Our target is to supply in the near future SD images for these devices as starting point:</p>
+<pre><code>- Raspberry PI4
+- Banana PI
+- Orange Pi
+- Pine64
+</code></pre>
+<p>Stay tuned!</p>
+<h2 id="-portage">
+  📦 Portage
+  <a class="anchor" href="#-portage">#</a>
+</h2>
+<p>At the moment, Macaroni OS uses a forked version of Portage with patches from Funtoo as main package
 manager system but with an eye for improve integration with <code>anise</code> and the Macaroni binary
 layer.</p>
 <p>The Macaroni Portage fork follow the Funtoo/Gentoo paradigm where is used the ebuild to describe
 the steps to compile and install a package and different repositories (the <em>kits</em>) where aggregate specific
-packages for example about server services, networking, etc.</p>
+packages for example about server services, networking, etc.
+Like described in 
+  <a href="/docs/story/">The Story</a> we love the core concepts used
+in FreeBSD, Gentoo and Funtoo about <em>knobs</em>/<em>USE</em> in order to customize easily a source-based
+distribution. These concepts will be always core elements also in the future when w will replace Portage
+itself.</p>
 <p>Using different branches ensure different levels of stability already and so the behaviour of the
 <em>KEYWORDS</em> variable used in Gentoo is less important, indeed, normally we use the value
 <code>*</code> and in the future could be probably removed.</p>
