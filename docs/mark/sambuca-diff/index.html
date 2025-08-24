@@ -81,7 +81,7 @@ It is possible to see the list of the available uid/gid with the following comma
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.cd5b9254f094e465861a5e1339e6f9ae23d8b9b9d24dd224c2d296e5b0b6a7af.js" integrity="sha256-zVuSVPCU5GWGGl4TOeb5riPYubnSTdIkwtKW5bC2p68="></script>
+<script defer src="/en.search.min.aad50de7e1dc99d6bb07c5bfa578712eedf848a6d51c588633d776a7eceec139.js" integrity="sha256-qtUN5&#43;Hcmda7B8W/pXhxLu34SKbVHFiGM9d2p&#43;zuwTk="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -501,6 +501,24 @@ The <em>provides</em> was also present in the past in Portage as PROVIDES but la
 <p>Third, the default behavior of the solver in the upgrading process is to select only
 packages with a greater version for speedup reasons. The downgrade is possible on
 adding <code>--deep</code> flag on <code>upgrade</code> command.</p>
+<h2 id="9-kernel-initrd-and-extra-modules">
+  9. Kernel, initrd and extra modules
+  <a class="anchor" href="#9-kernel-initrd-and-extra-modules">#</a>
+</h2>
+<p>The kernel packages from <em>anise</em> are based on vanilla or Zen kernel, compiled over the
+Macaroni Terragon Release system but without generating Portage metadata.
+The kernels could be managed through <code>macaronictl</code> tool but are not visible to Portage
+but we follow a versioning logic that use the kernel release (5.10, 6.1, etc.) as a
+SLOT where the category contains the kernel release and the string <em>kernel-</em>.
+So, the package <em>kernel-5.10/macaroni-full-5.10.198</em> will be upgraded by the package
+<em>kernel-5.10/macaroni-full-5.10.199</em>, etc.</p>
+<p>In a similar way, the extra kernel modules will be managed with the same logic the category
+but with the version of the module used, for example, for ZFS, the package will be
+<em>kernel-5.10/zfs-kmod-2.2.0</em> and for new kernel release we will bump a new build version of
+the same package, for example, <em>kernel-5.10/zfs-kmod-2.2.0+1</em>.</p>
+<p>About <em>initrd</em>, at the moment we use a custom initrd based of Golang <code>u-root</code> for the
+Macaroni ISO, and instead it&rsquo;s used Dracut for the generation of the initrd images in the
+installed rootfs (Desktop and Server).</p>
 </article>
  
       
