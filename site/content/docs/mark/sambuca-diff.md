@@ -192,3 +192,23 @@ The *provides* was also present in the past in Portage as PROVIDES but later rem
 Third, the default behavior of the solver in the upgrading process is to select only
 packages with a greater version for speedup reasons. The downgrade is possible on
 adding `--deep` flag on `upgrade` command.
+
+## 9. Kernel, initrd and extra modules
+
+The kernel packages from *anise* are based on vanilla or Zen kernel, compiled over the
+Macaroni Terragon Release system but without generating Portage metadata.
+The kernels could be managed through `macaronictl` tool but are not visible to Portage
+but we follow a versioning logic that use the kernel release (5.10, 6.1, etc.) as a
+SLOT where the category contains the kernel release and the string *kernel-*.
+So, the package *kernel-5.10/macaroni-full-5.10.198* will be upgraded by the package
+*kernel-5.10/macaroni-full-5.10.199*, etc.
+
+In a similar way, the extra kernel modules will be managed with the same logic the category
+but with the version of the module used, for example, for ZFS, the package will be
+*kernel-5.10/zfs-kmod-2.2.0* and for new kernel release we will bump a new build version of
+the same package, for example, *kernel-5.10/zfs-kmod-2.2.0+1*.
+
+About *initrd*, at the moment we use a custom initrd based of Golang `u-root` for the
+Macaroni ISO, and instead it's used Dracut for the generation of the initrd images in the
+installed rootfs (Desktop and Server).
+
