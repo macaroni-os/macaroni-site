@@ -75,6 +75,8 @@ in order to help users from these distro to understand the differences:
 | **Ebuild generator** | - | metatools | `mark-devkit autogen`, `mark-devkit kit merge`, `mark-devkit kit bump-release` |
 | **Stage tarballs generator** | `catalyst` | `metro` | `mark-devkit metro` |
 | **Stability level assurance** | single tree where using KEYWORDS and portage.mask | single tree fully autogen with KEYWORDS and portage.mask | multiple versions for every package, portage.mask and different branches with different stability levels |
+| **Config files manager** | `etc-update` | `etc-update` | `macaronictl etc-update` |
+| **Environment Settings manager** | `env-update` | `env-update` | `macaronictl env-update` |
 | **Installer** | manual | manual | manual or calamares |
 
 
