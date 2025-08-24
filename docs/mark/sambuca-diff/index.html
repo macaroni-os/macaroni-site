@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Differences between MARK and Sambuca</title>
+  <link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+  
+	<!-- Custom stylesheet - for your changes -->
+	
+  <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen">
+  
+</head><head>
+  <meta name="generator" content="Hugo 0.110.0">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Macaroni">
+  <meta name="author" content="Geaaru">
+  <meta name="generator" content="Hugo 0.110.0">
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differences between MARK and Sambuca</title>
+<link rel="icon" href="https://www.macaronios.org/images/favicon.ico">
+
+<!-- Twitter Bootstrs CSS -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.css">
+<!-- Ionicons Fonts Css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/ionicons/ionicons.min.css">
+<!-- animate css -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/animate-css/animate.css">
+<!-- Hero area slider css-->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slider/slider.css">
+<!-- slick slider -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/slick/slick.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.css">
+<!-- hover -->
+<link rel="stylesheet" href="https://www.macaronios.org/plugins/hover/hover-min.css">
+<!-- template main css file -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/style.min.css" media="screen">
+
+  
+<!-- Custom stylesheet - for your changes -->
+
+<link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Differences between MARK and Sambuca" />
+<meta property="og:description" content="Main differences between MARK and Sambuca # 1. Static UID/GID # The system UID (user ID) and GID (group ID) of the major services are statically allocated and managed through the entities tool and his catalog. This helps to have a more linear installation between systems and help on share network filesystems like NFS.
+It is possible to see the list of the available uid/gid with the following commands:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.macaronios.org/docs/mark/sambuca-diff/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="Macarani OS" />
+<title>Differences between MARK and Sambuca | Macaroni OS</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
+<script defer src="/en.search.min.cd5b9254f094e465861a5e1339e6f9ae23d8b9b9d24dd224c2d296e5b0b6a7af.js" integrity="sha256-zVuSVPCU5GWGGl4TOeb5riPYubnSTdIkwtKW5bC2p68="></script>
+
+<script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head><section class="top-bar animated-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="https://www.macaronios.org/">
+						<img src="https://www.macaronios.org/images/logo.png" alt="Macaroni OS">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+						aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navigation">
+						<ul class="navbar-nav ml-auto">
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/">Home</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/contact">Contacts</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog">Blog</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/iso/">Download</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/blog/phoenix-25.06/">Phoenix 25.06 Released!</a>
+							</li>
+							
+							
+							
+							<li class="nav-item">
+								<a class="nav-link"
+									href="https://www.macaronios.org/docs">Documentation</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section><body dir="ltr">
+
+  <div style="margin-top: 60px;">
+
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/"><strong>The Project</strong></a>
+<ul>
+<li>
+  <a href="/docs/#macaroni-releases">Macaroni Releases</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/mark/"><strong>M.A.R.K.</strong></a>
+<ul>
+<li>
+  <a href="/docs/mark/#-stability-levels">Stability Levels</a></li>
+<li>
+  <a href="/docs/mark/sambuca-diff/"class=active>MARK vs Sambuca</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/sambuca/"><strong>Sambuca Anise Stack</strong></a>
+<ul>
+<li>
+  <a href="/docs/sambuca/#macaroni-os-phoenix">Phoenix</a></li>
+<li>
+  <a href="/docs/sambuca/#macaroni-os-eagle">Eagle</a></li>
+<li>
+  <a href="/docs/sambuca/#macaroni-os-terragon">Terragon</a></li>
+<li>
+  <a href="/docs/sambuca/#macaroni-repositories">Anise Repositories</a></li>
+<li>
+  <a href="/docs/sambuca/#macaroni-tags">Macaroni Tags</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/story/"><strong>The Story</strong></a></li>
+<li>
+  <a href="/docs/getting-started/"><strong>Getting Started</strong></a>
+<ul>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-iso">Install Macaroni ISO</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-lxd-containers">Install Macaroni LXD Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-incus-containers">Install Macaroni Incus Containers</a></li>
+<li>
+  <a href="/docs/getting-started/#install-macaroni-docker-containers">Install Macaroni Docker Containers</a></li>
+<li>
+  <a href="/docs/networking/">Networking</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/pms/"><strong>Anise</strong></a>
+<ul>
+<li>
+  <a href="/docs/pms/#1-repositories-or-wagons">Repositories or Wagons</a></li>
+<li>
+  <a href="/docs/pms/#2-subsets">Subsets</a></li>
+<li>
+  <a href="/docs/pms/#3-search-packages">Search Packages</a></li>
+<li>
+  <a href="/docs/pms/#4-install-packages">Install Packages</a></li>
+<li>
+  <a href="/docs/pms/#6-uninstall-packages">Uninstall Packages</a></li>
+<li>
+  <a href="/docs/pms/#7-upgrade-the-system">Upgrade System</a></li>
+<li>
+  <a href="/docs/pms/#91-show-files-owned-by-a-specific-package">Show files owned by a specific package</a></li>
+<li>
+  <a href="/docs/pms/#92-resolve-what-package-a-file-belongs-to">Resolve what package a file belongs to</a></li>
+<li>
+  <a href="/docs/pms/#93-show-orphans-packages">Show orphans Packages</a></li>
+<li>
+  <a href="/docs/pms/#10-local-database-operations">Local Database Operations</a></li>
+<li>
+  <a href="/docs/pms/#11-masking-packages">Masking Packages</a>
+<br /></li>
+</ul>
+</li>
+</ul>
+<br />
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/blog/" >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/macaroni-os" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page" >
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Differences between MARK and Sambuca</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="main-differences-between-mark-and-sambuca">
+  Main differences between MARK and Sambuca
+  <a class="anchor" href="#main-differences-between-mark-and-sambuca">#</a>
+</h1>
+<h2 id="1-static-uidgid">
+  1. Static UID/GID
+  <a class="anchor" href="#1-static-uidgid">#</a>
+</h2>
+<p>The system UID (user ID) and GID (group ID) of the major services are statically
+allocated and managed through the <code>entities</code> tool and his catalog. This helps
+to have a more linear installation between systems and help on share network
+filesystems like NFS.</p>
+<p>It is possible to see the list of the available uid/gid with the following
+commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all groups availables in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list groups --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all users available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list users --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all shadow available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list shadow --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all gshadow available in our catalog</span>
+</span></span><span style="display:flex;"><span>$&gt; entities list gshadow --specs-dir /usr/share/macaroni/entities/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all groups configured in the current rootfs</span>
+</span></span><span style="display:flex;"><span>$&gt;  entities list groups
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Show list of all users configured in the current rootfs</span>
+</span></span><span style="display:flex;"><span>$&gt;  entities list users
+</span></span></code></pre></div><p>The <code>entities</code> tool is a replacement of the classic <code>adduser</code>, <code>gpasswd</code>, etc.</p>
+<p>This will not be a real difference when the issue 
+  <a href="https://github.com/macaroni-os/mark-issues/issues/27">#27</a>
+will be completed but at the moment, MARK uses the <code>user.eclass</code> available in
+the tree to dynamically create new users/groups.
+We don&rsquo;t follow the Gentoo behaviour with <code>acct-*</code> packages.</p>
+<h2 id="2-use-flags-not-aligned-to-mark-profiles">
+  2. USE flags not aligned to MARK Profiles
+  <a class="anchor" href="#2-use-flags-not-aligned-to-mark-profiles">#</a>
+</h2>
+<p>In order to have binary packages to support different DEs and different
+features is needed mix different profiles, mix-in and USEs.
+To reach this target means that a lot of USE flags must be enabled
+but without trying to inject unnecessary dependencies when possible.
+So, for this reason, the control of the use flags selected for every
+package is done by the <code>anise-portage-converter</code> tool on build phase,
+that permits to override existing dependencies and/or elaborate
+dependencies based on the use flags defined in the <code>anise-portage-converter</code>
+specs. This permits great control of the compilation process but
+unfortunately, doesn&rsquo;t permit it to maintain compatibility with the MARK
+profiles that are used to configure the use flags based on the needs
+of the users and their choice. This means that installing Macaroni&rsquo;s
+packages and just using <code>emerge</code> could be not managed with a simple
+configuration of the MARK profiles and instead it&rsquo;s highly probable
+that just trying to emerge the <em>world</em> will ask for changes of the
+use flags used instead by Sambuca stack.</p>
+<p>If the users prefer to use more the binary stack and keep MARK to apply
+particular patch, recompile specific packages with additional
+CFLAGS, LDFLAGS, etc. it&rsquo;s needed force definition of USE under
+<code>/etc/portage/package.use/</code>. This behaviour override the normal MARK
+logic but could be later customized by the users. To help users in this
+join it&rsquo;s available the tool <code>pkgs-checker</code> that permits to generate
+the file with all USE of the installed packages. So, a possible workflow
+could be, install all binary packages needed and later executed these
+commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Install pkgs-checker if not available</span>
+</span></span><span style="display:flex;"><span>$&gt; anise i -y pkgs-checker <span style="color:#75715e"># or `emerge pkgs-checker`</span>
+</span></span><span style="display:flex;"><span>$&gt; mkdir -p /etc/portage/package.use
+</span></span><span style="display:flex;"><span>$&gt; pkgs-checker portage gen-pkgs-uses --filter-opts <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    /usr/share/pkgs-checker/gen-uses-filter.yaml  &gt; /etc/portage/package.use/99-pkgs-checker.use
+</span></span></code></pre></div><p>Normally, this operation could be executed after every <em>anise</em>
+upgrade or a new packages installed. The <code>pkgs-checker</code> reads the
+directory <code>/var/db/pkg</code> and retrieve all used USE flags and write them
+to the stdout.</p>
+<h2 id="3-split-packages">
+  3. Split packages
+  <a class="anchor" href="#3-split-packages">#</a>
+</h2>
+<p>In order to support multiple use cases but with fewer dependencies
+injected we have some packages that have been split without having a 1:1 map
+with an ebuild. For example, the <em>pinentry</em> package installs additional binary
+when <code>gtk</code>/<code>gnome</code> use flag is enabled with the <code>pinetry-gnome</code> binary or with
+the <code>qt</code> use flag the <code>pinentry-qt</code>, etc.
+Thanks to our build process it&rsquo;s very easy to assign the specific file to
+a specific package, but this package will be without portage metadata and
+instead, the use flags of the main <em>pinentry</em> package will be minimal.</p>
+<p>Probably, in the near future we will split also the MARK packages in order
+to avoid these differences and keep more aligned the Sambuca stack to MARK.</p>
+<h2 id="4-packages-from-scratch">
+  4. Packages from scratch
+  <a class="anchor" href="#4-packages-from-scratch">#</a>
+</h2>
+<p>Sambuca stack doesn&rsquo;t depend strictly from MARK. <code>anise-build</code> can be used
+to compiles packages from scratch (this is what we will do with MFS). For
+this packages the users can retrieve installed files only with <em>anise</em> and
+not from Portage tools.
+This is a good example that Sambuca could be also a gate between different
+worlds.</p>
+<h2 id="5-portage-metadata-optional">
+  5. Portage metadata optional
+  <a class="anchor" href="#5-portage-metadata-optional">#</a>
+</h2>
+<p>The installation of the Portage metadata and the include files are optional,
+they are installed only when the <em>subsets</em> <code>devel</code> and <code>portage</code> are enabled.
+This permits users without the need to compile software to reduce space used
+in their filesystem. Normally, the ISOs with <em>Mark</em> suffix are configured
+with both subsets.</p>
+<p>The Portage package database under the directory <code>/var/db/pkg</code> is then used by
+the <code>anise-portage-converter</code> tool to compare packages updates with emerge that
+will be added in the Macaroni database with the <code>scm</code> repository and will be
+part of the Macaroni upgrades if the installed version will be elder or will be
+the same version available in Macaroni repository. In particular, in order to
+automatically install missing runtime dependencies the <code>anise</code> tool creates a
+hash will the <em>requires</em> of the analyzed package and if this hash is different
+from the hash of the installed package will be queued for the upgrade with the
+asterisk in the version (for example, *1.1.1). It&rsquo;s possible that the injected
+package added from <code>anise-portage-converter</code> will have different <em>requires</em> of
+the Macaroni original specs; this is the reason because will be replaced.
+This could be avoided by masking the package.</p>
+<h2 id="6-etc-update-and-env-update-implementation">
+  6. etc-update and env-update implementation
+  <a class="anchor" href="#6-etc-update-and-env-update-implementation">#</a>
+</h2>
+<p>The Funtoo/Gentoo <code>etc-update</code> and <code>env-update</code> scripts are supplied by the
+<code>sys-apps/portage</code> package that requires Python to be installed with a lot
+of dependencies.</p>
+<p>In order to reduce the installation of the packages for a Macaroni&rsquo;s  minimal
+image where Python is not something needed, for example considering CD/CI
+tasks, Macaroni implements the <code>macaronictl etc-update</code> that supplies
+an <code>etc-update</code> compliant command and as a replacer. It has a few differences
+that are more related to the interactive shell but for the rest, it&rsquo;s
+pretty similar.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> To use <code>macaronictl etc-update</code> is needed <code>sys-apps/diffutils</code>.</p>
+</blockquote>
+<p>The same concept is applicable to the <code>macaronictl env-update</code> command that
+reimplements a Portage-compliant logic. The behavior is configurable, instead
+of updating every time the system and the (t)csh environment files, for these
+two the configuration is enabled respectively with the options <code>--systemd</code> and <code>--csh</code>.</p>
+<p>We suggest to use <code>macaronictl etc-update</code> and <code>macaronictl env-update</code>
+instead of using the Portage tools.</p>
+<h2 id="7-post-installpost-remove-commands">
+  7. Post-install/Post-remove commands
+  <a class="anchor" href="#7-post-installpost-remove-commands">#</a>
+</h2>
+<p>In the Funtoo/Gentoo world where every package is compiled the ebuild file
+contains the instructions about how to compile the package supply yet the
+steps for the post-installation and post-remove. Macaroni divides completely
+the build process from the runtime/install phase and as described in the
+previous chapters the Portage metadata could not be present, like the kits.
+In Macaroni, the post-install and post-remove operations are managed by the
+<code>finalizer</code> that could be added in the <code>anise</code> specs over the YAML file
+<code>finalize.yaml</code> of the package. Due to the complexity of this phase, and
+because sometimes could be helpful to re-run the post-install steps we have
+created the tool <strong>whip</strong> that collects the instructions about what runs as
+a specific hook. The hook is a scripted list of commands to run that will
+be used also in the <code>pkg_postinstall</code> and <code>pkg_postrm</code> phases of the ebuild
+in order to align the behaviour between MARK and Sambuca and to have a way
+to easily force rerun of the postinstall scripts.</p>
+<h2 id="8-anise-solver-logic">
+  8. Anise solver logic
+  <a class="anchor" href="#8-anise-solver-logic">#</a>
+</h2>
+<p>The Funtoo/Gentoo&rsquo;s Portage solver always considers RDEPEND (runtime dependencies) as
+mandatory dependencies for the compilation of a package. We understand this choice,
+for example, this is needed for <em>virtual</em> package, the consequence is the ebuilds have
+some dependencies added as RDEPEND when could be more correct to have them as DEPEND
+for Macaroni. So, for these use cases, we override the dependencies through the
+<code>anise-portage-converter</code> specs.</p>
+<p>Another big difference is that at the moment the <code>anise</code> solver doesn&rsquo;t support the
+OR condition needed to supply alternative packages supply the same feature.
+This is been a design choice to try to maintain things more simple for the solver,
+a similar functionality could be handled by the <em>provides</em> and the mask feature.
+But it&rsquo;s something that could be grown based on the use cases we need to support.
+The <em>provides</em> was also present in the past in Portage as PROVIDES but later removed.</p>
+<p>Third, the default behavior of the solver in the upgrading process is to select only
+packages with a greater version for speedup reasons. The downgrade is possible on
+adding <code>--deep</code> flag on <code>upgrade</code> command.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/macaroni-os/macaroni-site/edit/master/site/content/docs/mark/sambuca-diff.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span></span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+
+  </div><!-- Footer Section Start -->
+<footer id="footer">
+  <div class="container">
+    <div class="row content-justify-between">
+      <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+        <p class="copyright">Copyright:
+          <span>
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+          </span> Daniele Rondina All Rights Reserved
+        </p>
+      </div>
+      <div class="col-md-4 col-12">
+        <!-- Social Media -->
+        <ul class="social text-center text-md-right text-lg-right">
+          
+          <li><a href="https://github.com/macaroni-os"><i class="ion-social-github"></i></a></li>
+          
+          <li><a href="https://discord.gg/AMuVCRZEvG"><i class="ion-chatbox"></i></a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<script src="https://www.macaronios.org/plugins/jQurey/jquery.min.js"></script>
+<!-- slick slider -->
+<script src="https://www.macaronios.org/plugins/slick/slick.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://www.macaronios.org/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="https://www.macaronios.org/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="https://www.macaronios.org/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="https://www.macaronios.org/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+
+<script src="https://www.macaronios.org/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
