@@ -181,7 +181,7 @@ tree of the Desktop is `mark-i`.
 
 Not ready yet for end users we have started in August 2025 the branch
 `mark-31` with the target to support ARM/ARM64 arches. We consider it
-experimental for now but when will be ready we will add testing and stable
+*experimental* for now but when will be ready we will add testing and stable
 branches too.
 
 <div style="text-align: center; margin-bottom: 30px">
@@ -204,8 +204,8 @@ Stay tuned!
 
 ## 📦 Portage
 
-At the moment, Macaroni OS uses a forked version of Portage with patches from Funtoo as main package
-manager system but with an eye for improve integration with `anise` and the Macaroni binary
+At the moment, Macaroni OS uses a forked version of Portage with original patches from Funtoo as main package
+manager system in MARK but with an eye for improve integration with `anise` and the Macaroni binary
 layer.
 
 The Macaroni Portage fork follow the Funtoo/Gentoo paradigm where is used the ebuild to describe
@@ -213,7 +213,7 @@ the steps to compile and install a package and different repositories (the *kits
 packages for example about server services, networking, etc.
 Like described in [The Story]({{< relref "/docs/story" >}}) we love the core concepts used
 in FreeBSD, Gentoo and Funtoo about *knobs*/*USE* in order to customize easily a source-based
-distribution. These concepts will be always core elements also in the future when w will replace Portage
+distribution. These concepts will be always core elements also in the future when we will replace Portage
 itself.
 
 Using different branches ensure different levels of stability already and so the behaviour of the
@@ -234,5 +234,3 @@ $> for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i 
 
 This step is temporary and managed automatically in the near future from the replacer of
 the `ego` tool.
-
-

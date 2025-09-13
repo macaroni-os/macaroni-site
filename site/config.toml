@@ -62,7 +62,7 @@ content = "This distribution is here thanks the initial support of the <a href='
 [params.support]
 enable  = true
 title   = "SUPPORT US"
-content = "Maintaining a distribution requires effort, costs, and hardware. In the last period, a lot of communities and projects have been abandoned from too few contributions. If you use Macaroni OS or M.A.R.K. consider donating something to the Project to help us support the infra costs and to buy hardware for testing and building. You can donate over on our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a>."
+content = "Maintaining a distribution requires effort, costs, and hardware. In the last period, a lot of communities and projects have been abandoned from too few contributions. If you use Macaroni OS or M.A.R.K. consider donating something to the Project to help us support the infra costs and to buy hardware for testing and building. You can donate over on our Github <a href='https://github.com/sponsors/geaaru'>Sponsor</a> or through <a href='https://liberapay.com/geaaru/'>Liberapay</a>."
 
 # Portfolio Section On Homepage
 [params.portfolio]
