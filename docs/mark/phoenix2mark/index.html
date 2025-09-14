@@ -81,7 +81,7 @@ $&gt; anise subsets list 🍨 Subsets enabled: * portage Portage metadata and fi
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.37657ab69a6b3d8db8c6dc24d22eda8dfa0b6ad9f8b95cc106b919e9ef5da1d1.js" integrity="sha256-N2V6tpprPY24xtwk0i7ajfoLatn4uVzBBrkZ6e9dodE="></script>
+<script defer src="/en.search.min.6f50bd13d8ec1e30e2365819561f2139f6794cfeaa04cb093b70ace617a852a2.js" integrity="sha256-b1C9E9jsHjDiNlgZVh8hOfZ5TP6qBMsJO3Cs5heoUqI="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -193,11 +193,20 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mark/"><strong>M.A.R.K.</strong></a>
 <ul>
 <li>
+  <a href="/docs/mark/#-portage">Portage</a></li>
+<li>
   <a href="/docs/mark/#-stability-levels">Stability Levels</a></li>
 <li>
   <a href="/docs/mark/sambuca-diff/">MARK vs Sambuca</a></li>
 <li>
-  <a href="/docs/mark/phoenix2mark/"class=active>From Phoenix to MARK</a></li>
+  <a href="/docs/mark/phoenix2mark/"class=active>From Phoenix to MARK</a>
+<ul>
+<li>
+  <a href="/docs/mark/phoenix2mark/#using-anise-to-restore-system">Restore System</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/mark/phoenix2mark/"class=active>Became a Contributor</a></li>
 </ul>
 </li>
 <li>
@@ -550,6 +559,8 @@ packages in the anise database with <em>scm</em> as repository.</p>
 <p>If you want using <code>anise upgrade</code> to update your system remember that the Macaroni
 binary packages didn&rsquo;t follow a specific profile and USE flags could be different from
 your setup.</p>
+<p>We suggest to run always <code>anise-portage-converter sync</code> before running <code>anise upgrade</code>
+as best practice.</p>
 <p>So, if you have merged for example <em>htop</em> and other dependencies, running <em>anise upgrade</em>
 will show something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise upgrade
@@ -601,7 +612,168 @@ used <code>--deep</code> option.</p>
 <blockquote>
 <p><strong>NOTE:</strong> If you prefer use more <em>anise</em> keep attention of packages splitted in anise.</p>
 </blockquote>
-</article>
+<h2 id="using-anise-to-restore-system">
+  Using <code>anise</code> to restore system
+  <a class="anchor" href="#using-anise-to-restore-system">#</a>
+</h2>
+<p><em>Have you ever tried to restore a Portage broken system? Yes, you can!</em></p>
+<p>Obviously, if the system is broken and you can&rsquo;t enter on it <em>anise</em> doesn&rsquo;t magic.
+But if the system became broken while your upgrade process for bug or anything or you
+have used a live ISO to enter in the broken chroot you can use <em>anise</em> to restore it.</p>
+<p>In order to explain the behaviour we tried to use a container and break the system.</p>
+<h4 id="scenario-1-portage-is-dead">
+  Scenario 1: Portage is dead!
+  <a class="anchor" href="#scenario-1-portage-is-dead">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Considering that we can&#39;t just remove portage</span>
+</span></span><span style="display:flex;"><span>$&gt; emerge --unmerge portage 
+</span></span><span style="display:flex;"><span> * This action can remove important packages! In order to be safer, use
+</span></span><span style="display:flex;"><span> * <span style="color:#e6db74">`</span>emerge -pv --depclean &lt;atom&gt;<span style="color:#e6db74">`</span> to check <span style="color:#66d9ef">for</span> reverse dependencies before
+</span></span><span style="display:flex;"><span> * removing packages.
+</span></span><span style="display:flex;"><span> * Not unmerging package sys-apps/portage-3.0.14-r13 since there is no valid
+</span></span><span style="display:flex;"><span> * reason <span style="color:#66d9ef">for</span> Portage to unmerge itself.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; No packages selected <span style="color:#66d9ef">for</span> removal by unmerge
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># The fun begin....</span>
+</span></span><span style="display:flex;"><span>$&gt; rm -rf /usr/lib/portage/*
+</span></span></code></pre></div><p>and now :boom::</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; emerge portage -pv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>These are the packages that would be merged, in order:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calculating dependencies <span style="color:#ae81ff">\/</span>bin/bash: line 1: /usr/lib/portage/python3.9/ebuild.sh: No such file or directory
+</span></span><span style="display:flex;"><span>... <span style="color:#66d9ef">done</span>!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>!!! All ebuilds that could satisfy <span style="color:#e6db74">&#34;portage&#34;</span> have been masked.
+</span></span><span style="display:flex;"><span>!!! One of the following masked packages is required to complete your request:
+</span></span><span style="display:flex;"><span>- sys-apps/portage-3.0.14-r13::portage-kit <span style="color:#f92672">(</span>masked by: corruption<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>For more information, see the MASKED PACKAGES section in the emerge
+</span></span><span style="display:flex;"><span>man page or refer to the Gentoo Handbook.
+</span></span></code></pre></div><p>This scenario is pretty easy to recover:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise miner ri sys-apps/portage
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> sys-apps/portage::macaroni-phoenix-testing                        - 3.0.14+6        <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> sys-apps/portage::macaroni-phoenix-testing                        - 3.0.14+6        <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>Executing finalizer <span style="color:#66d9ef">for</span> sys-apps/portage-3.0.14+6
+</span></span><span style="display:flex;"><span>🐚  Executing finalizer on  / /bin/bash <span style="color:#f92672">[</span>-c eval <span style="color:#e6db74">&#39;mkdir -p /var/tmp/portage || true&#39;</span> <span style="color:#f92672">&amp;&amp;</span> entities merge --specs-dir /usr/share/macaroni/entities/ -e portage <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#e6db74">&#39;chown portage:portage /var/tmp/portage -R || true&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Merged users portage.
+</span></span><span style="display:flex;"><span>Merged group portage.
+</span></span><span style="display:flex;"><span>Merged shadow portage.
+</span></span><span style="display:flex;"><span>Merged gshadow portage.
+</span></span><span style="display:flex;"><span>All <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>and now Portage is back:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; emerge portage -pv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>These are the packages that would be merged, in order:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calculating dependencies... <span style="color:#66d9ef">done</span>!
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> sys-libs/libxcrypt-2.4::security-kit  <span style="color:#ae81ff">354</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> sys-apps/install-xattr-0.7::portage-kit  <span style="color:#ae81ff">16</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-util/gperf-3.1::dev-kit  1,188 KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-libs/popt-1.16-r2::dev-kit  USE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nls -static-libs&#34;</span> <span style="color:#ae81ff">687</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/installer-0.5.1-r1::python-modules-kit  USE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-test&#34;</span> PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -pypy3 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">900</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/commonmark-0.9.1::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">94</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/tomli-2.0.0::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">15</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> net-misc/rsync-3.4.1::net-kit  USE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;acl iconv ipv6 ssl xattr zstd -examples -libressl -lz4 -stunnel -system-zlib -xxhash&#34;</span> CPU_FLAGS_X86<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sse2&#34;</span> <span style="color:#ae81ff">865</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/gpep517-16::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">19</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  NS    <span style="color:#f92672">]</span> app-text/docbook-xml-dtd-4.5-r1:4.5::text-kit <span style="color:#f92672">[</span>4.2-r2:4.2::core-kit<span style="color:#f92672">]</span> <span style="color:#ae81ff">97</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/flit_core-3.11.0::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">51</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/wheel-0.45.1::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">106</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/markupsafe-3.0.2::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">21</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> dev-python/jinja-3.1.6::python-modules-kit  PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> <span style="color:#ae81ff">240</span> KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild  N     <span style="color:#f92672">]</span> sys-apps/systemd-tmpfiles-256::core-server-kit  USE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(-selinux)&#34;</span> 15,277 KiB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ebuild   R    <span style="color:#f92672">]</span> sys-apps/portage-3.0.14-r13::portage-kit <span style="color:#f92672">[</span>3.0.14-r13::core-kit<span style="color:#f92672">]</span> USE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(ipc) native-extensions xattr -apidoc -build -doc -gentoo-dev -rsync-verify (-selinux) -test&#34;</span> PYTHON_TARGETS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python3_9 -python3_10 -python3_7 -python3_8&#34;</span> 1,413 KiB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Total: <span style="color:#ae81ff">16</span> packages <span style="color:#f92672">(</span><span style="color:#ae81ff">14</span> new, <span style="color:#ae81ff">1</span> in new slot, <span style="color:#ae81ff">1</span> reinstall<span style="color:#f92672">)</span>, Size of downloads: 21,333 KiB
+</span></span></code></pre></div><p>If you have additional scenarios that could help users feel free to create a PR
+for this page!</p>
+<h4 id="scenario-2-break-glibc">
+  Scenario 2: Break glibc!
+  <a class="anchor" href="#scenario-2-break-glibc">#</a>
+</h4>
+<p>To simulate a glibc library broken we remove <em>glibc</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; emerge --unmerge glibc -pv
+</span></span><span style="display:flex;"><span> * This action can remove important packages! In order to be safer, use
+</span></span><span style="display:flex;"><span> * <span style="color:#e6db74">`</span>emerge -pv --depclean &lt;atom&gt;<span style="color:#e6db74">`</span> to check <span style="color:#66d9ef">for</span> reverse dependencies before
+</span></span><span style="display:flex;"><span> * removing packages.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; These are the packages that would be unmerged:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>!!! <span style="color:#e6db74">&#39;sys-libs/glibc&#39;</span> <span style="color:#f92672">(</span>virtual/libc<span style="color:#f92672">)</span> is part of your system profile.
+</span></span><span style="display:flex;"><span>!!! Unmerging it may be damaging to your system.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> sys-libs/glibc
+</span></span><span style="display:flex;"><span>    selected: 2.33-r4 
+</span></span><span style="display:flex;"><span>   protected: none 
+</span></span><span style="display:flex;"><span>     omitted: none 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>All selected packages: <span style="color:#f92672">=</span>sys-libs/glibc-2.33-r4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#e6db74">&#39;Selected&#39;</span> packages are slated <span style="color:#66d9ef">for</span> removal.
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#e6db74">&#39;Protected&#39;</span> and <span style="color:#e6db74">&#39;omitted&#39;</span> packages will not be removed.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test-phoenix ~ <span style="color:#75715e">#  emerge --unmerge glibc </span>
+</span></span><span style="display:flex;"><span> * This action can remove important packages! In order to be safer, use
+</span></span><span style="display:flex;"><span> * <span style="color:#e6db74">`</span>emerge -pv --depclean &lt;atom&gt;<span style="color:#e6db74">`</span> to check <span style="color:#66d9ef">for</span> reverse dependencies before
+</span></span><span style="display:flex;"><span> * removing packages.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>!!! <span style="color:#e6db74">&#39;sys-libs/glibc&#39;</span> <span style="color:#f92672">(</span>virtual/libc<span style="color:#f92672">)</span> is part of your system profile.
+</span></span><span style="display:flex;"><span>!!! Unmerging it may be damaging to your system.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> sys-libs/glibc
+</span></span><span style="display:flex;"><span>    selected: 2.33-r4 
+</span></span><span style="display:flex;"><span>   protected: none 
+</span></span><span style="display:flex;"><span>     omitted: none 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>All selected packages: <span style="color:#f92672">=</span>sys-libs/glibc-2.33-r4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#e6db74">&#39;Selected&#39;</span> packages are slated <span style="color:#66d9ef">for</span> removal.
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#e6db74">&#39;Protected&#39;</span> and <span style="color:#e6db74">&#39;omitted&#39;</span> packages will not be removed.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; Waiting <span style="color:#ae81ff">5</span> seconds before starting...
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#f92672">(</span>Control-C to abort<span style="color:#f92672">)</span>...
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; Unmerging in: <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; Unmerging <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> of 1<span style="color:#f92672">)</span> sys-libs/glibc-2.33-r4...
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/ld-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/ld-linux-x86-64.so.2
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libc-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libc.so.6
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libcrypt-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libcrypt.so.1
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libdl-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libdl.so.2
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libpthread-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libpthread.so.0
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libresolv-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libresolv.so.2
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/librt-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/librt.so.1
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   obj /lib64/libutil-2.33.so
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; needed   sym /lib64/libutil.so.1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;&lt;&lt;</span> !needed  obj /lib64/libresolv-2.33.so
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;&lt;&lt;</span> !needed  sym /lib64/libresolv.so.2
+</span></span><span style="display:flex;"><span>/usr/bin/python3.9: error <span style="color:#66d9ef">while</span> loading shared libraries: libm.so.6: cannot open shared object file: No such file or directory
+</span></span><span style="display:flex;"><span> * ERROR: sys-libs/glibc-2.33-r4::core-kit failed <span style="color:#f92672">(</span>postrm phase<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span> *   filter-bash-environment.py failed
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># Force remove of the libc library</span>
+</span></span><span style="display:flex;"><span>$&gt; rm /lib64/libc.so.6
+</span></span><span style="display:flex;"><span>$&gt; ls
+</span></span><span style="display:flex;"><span>ls: error <span style="color:#66d9ef">while</span> loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+</span></span><span style="display:flex;"><span>$&gt; bash
+</span></span><span style="display:flex;"><span>bash: error <span style="color:#66d9ef">while</span> loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+</span></span></code></pre></div><p><em>anise</em> is built statically, this permit to execute the command and install packages
+also when the rootfs became unusable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise miner ri glibc
+</span></span><span style="display:flex;"><span>📦 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> sys-libs-2.2/glibc::macaroni-phoenix-testing                      - 2.33+5          <span style="color:#75715e"># downloaded ✔ </span>
+</span></span><span style="display:flex;"><span>🍰 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   1<span style="color:#f92672">]</span> sys-libs-2.2/glibc::macaroni-phoenix-testing                      - 2.33+5          <span style="color:#75715e"># installed ✔ </span>
+</span></span><span style="display:flex;"><span>$&gt; ls -l
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></article>
  
       
 
