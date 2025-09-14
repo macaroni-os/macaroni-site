@@ -286,6 +286,9 @@ If you want using `anise upgrade` to update your system remember that the Macaro
 binary packages didn't follow a specific profile and USE flags could be different from
 your setup.
 
+We suggest to run always `anise-portage-converter sync` before running `anise upgrade`
+as best practice.
+
 So, if you have merged for example *htop* and other dependencies, running *anise upgrade*
 will show something like this:
 
@@ -350,3 +353,188 @@ version available on Phoenix repository *anise* will keep the *scm* version if i
 used `--deep` option.
 
 > **NOTE:** If you prefer use more *anise* keep attention of packages splitted in anise.
+
+
+## Using `anise` to restore system
+
+*Have you ever tried to restore a Portage broken system? Yes, you can!*
+
+Obviously, if the system is broken and you can't enter on it *anise* doesn't magic.
+But if the system became broken while your upgrade process for bug or anything or you
+have used a live ISO to enter in the broken chroot you can use *anise* to restore it.
+
+In order to explain the behaviour we tried to use a container and break the system.
+
+#### Scenario 1: Portage is dead!
+
+```shell
+$> # Considering that we can't just remove portage
+$> emerge --unmerge portage 
+ * This action can remove important packages! In order to be safer, use
+ * `emerge -pv --depclean <atom>` to check for reverse dependencies before
+ * removing packages.
+ * Not unmerging package sys-apps/portage-3.0.14-r13 since there is no valid
+ * reason for Portage to unmerge itself.
+
+>>> No packages selected for removal by unmerge
+$> # The fun begin....
+$> rm -rf /usr/lib/portage/*
+```
+
+and now :boom::
+
+```shell
+$> emerge portage -pv
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies \/bin/bash: line 1: /usr/lib/portage/python3.9/ebuild.sh: No such file or directory
+... done!
+
+!!! All ebuilds that could satisfy "portage" have been masked.
+!!! One of the following masked packages is required to complete your request:
+- sys-apps/portage-3.0.14-r13::portage-kit (masked by: corruption)
+
+For more information, see the MASKED PACKAGES section in the emerge
+man page or refer to the Gentoo Handbook.
+```
+
+This scenario is pretty easy to recover:
+
+```shell
+$> anise miner ri sys-apps/portage
+📦 [  1 of   1] sys-apps/portage::macaroni-phoenix-testing                        - 3.0.14+6        # downloaded ✔ 
+🍰 [  1 of   1] sys-apps/portage::macaroni-phoenix-testing                        - 3.0.14+6        # installed ✔ 
+Executing finalizer for sys-apps/portage-3.0.14+6
+🐚  Executing finalizer on  / /bin/bash [-c eval 'mkdir -p /var/tmp/portage || true' && entities merge --specs-dir /usr/share/macaroni/entities/ -e portage && eval 'chown portage:portage /var/tmp/portage -R || true']
+Merged users portage.
+Merged group portage.
+Merged shadow portage.
+Merged gshadow portage.
+All done.
+
+```
+
+and now Portage is back:
+
+```shell
+$> emerge portage -pv
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild  N     ] sys-libs/libxcrypt-2.4::security-kit  354 KiB
+[ebuild  N     ] sys-apps/install-xattr-0.7::portage-kit  16 KiB
+[ebuild  N     ] dev-util/gperf-3.1::dev-kit  1,188 KiB
+[ebuild  N     ] dev-libs/popt-1.16-r2::dev-kit  USE="nls -static-libs" 687 KiB
+[ebuild  N     ] dev-python/installer-0.5.1-r1::python-modules-kit  USE="-test" PYTHON_TARGETS="python3_9 -pypy3 -python3_10 -python3_7 -python3_8" 900 KiB
+[ebuild  N     ] dev-python/commonmark-0.9.1::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 94 KiB
+[ebuild  N     ] dev-python/tomli-2.0.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 15 KiB
+[ebuild  N     ] net-misc/rsync-3.4.1::net-kit  USE="acl iconv ipv6 ssl xattr zstd -examples -libressl -lz4 -stunnel -system-zlib -xxhash" CPU_FLAGS_X86="sse2" 865 KiB
+[ebuild  N     ] dev-python/gpep517-16::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 19 KiB
+[ebuild  NS    ] app-text/docbook-xml-dtd-4.5-r1:4.5::text-kit [4.2-r2:4.2::core-kit] 97 KiB
+[ebuild  N     ] dev-python/flit_core-3.11.0::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 51 KiB
+[ebuild  N     ] dev-python/wheel-0.45.1::python-modules-kit  PYTHON_TARGETS="python3_9 -pypy3 -python2_7 -python3_10 -python3_7 -python3_8" 106 KiB
+[ebuild  N     ] dev-python/markupsafe-3.0.2::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 21 KiB
+[ebuild  N     ] dev-python/jinja-3.1.6::python-modules-kit  PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 240 KiB
+[ebuild  N     ] sys-apps/systemd-tmpfiles-256::core-server-kit  USE="(-selinux)" 15,277 KiB
+[ebuild   R    ] sys-apps/portage-3.0.14-r13::portage-kit [3.0.14-r13::core-kit] USE="(ipc) native-extensions xattr -apidoc -build -doc -gentoo-dev -rsync-verify (-selinux) -test" PYTHON_TARGETS="python3_9 -python3_10 -python3_7 -python3_8" 1,413 KiB
+
+Total: 16 packages (14 new, 1 in new slot, 1 reinstall), Size of downloads: 21,333 KiB
+```
+
+
+If you have additional scenarios that could help users feel free to create a PR
+for this page!
+
+#### Scenario 2: Break glibc!
+
+To simulate a glibc library broken we remove *glibc*:
+
+```shell
+$> emerge --unmerge glibc -pv
+ * This action can remove important packages! In order to be safer, use
+ * `emerge -pv --depclean <atom>` to check for reverse dependencies before
+ * removing packages.
+
+>>> These are the packages that would be unmerged:
+
+
+!!! 'sys-libs/glibc' (virtual/libc) is part of your system profile.
+!!! Unmerging it may be damaging to your system.
+
+
+ sys-libs/glibc
+    selected: 2.33-r4 
+   protected: none 
+     omitted: none 
+
+All selected packages: =sys-libs/glibc-2.33-r4
+
+>>> 'Selected' packages are slated for removal.
+>>> 'Protected' and 'omitted' packages will not be removed.
+
+test-phoenix ~ #  emerge --unmerge glibc 
+ * This action can remove important packages! In order to be safer, use
+ * `emerge -pv --depclean <atom>` to check for reverse dependencies before
+ * removing packages.
+
+
+!!! 'sys-libs/glibc' (virtual/libc) is part of your system profile.
+!!! Unmerging it may be damaging to your system.
+
+
+ sys-libs/glibc
+    selected: 2.33-r4 
+   protected: none 
+     omitted: none 
+
+All selected packages: =sys-libs/glibc-2.33-r4
+
+>>> 'Selected' packages are slated for removal.
+>>> 'Protected' and 'omitted' packages will not be removed.
+
+>>> Waiting 5 seconds before starting...
+>>> (Control-C to abort)...
+>>> Unmerging in: 5 4 3 2 1
+>>> Unmerging (1 of 1) sys-libs/glibc-2.33-r4...
+>>> needed   obj /lib64/ld-2.33.so
+>>> needed   sym /lib64/ld-linux-x86-64.so.2
+>>> needed   obj /lib64/libc-2.33.so
+>>> needed   sym /lib64/libc.so.6
+>>> needed   obj /lib64/libcrypt-2.33.so
+>>> needed   sym /lib64/libcrypt.so.1
+>>> needed   obj /lib64/libdl-2.33.so
+>>> needed   sym /lib64/libdl.so.2
+>>> needed   obj /lib64/libpthread-2.33.so
+>>> needed   sym /lib64/libpthread.so.0
+>>> needed   obj /lib64/libresolv-2.33.so
+>>> needed   sym /lib64/libresolv.so.2
+>>> needed   obj /lib64/librt-2.33.so
+>>> needed   sym /lib64/librt.so.1
+>>> needed   obj /lib64/libutil-2.33.so
+>>> needed   sym /lib64/libutil.so.1
+<<< !needed  obj /lib64/libresolv-2.33.so
+<<< !needed  sym /lib64/libresolv.so.2
+/usr/bin/python3.9: error while loading shared libraries: libm.so.6: cannot open shared object file: No such file or directory
+ * ERROR: sys-libs/glibc-2.33-r4::core-kit failed (postrm phase):
+ *   filter-bash-environment.py failed
+...
+$> # Force remove of the libc library
+$> rm /lib64/libc.so.6
+$> ls
+ls: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+$> bash
+bash: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+```
+
+*anise* is built statically, this permit to execute the command and install packages
+also when the rootfs became unusable:
+
+```shell
+$> anise miner ri glibc
+📦 [  1 of   1] sys-libs-2.2/glibc::macaroni-phoenix-testing                      - 2.33+5          # downloaded ✔ 
+🍰 [  1 of   1] sys-libs-2.2/glibc::macaroni-phoenix-testing                      - 2.33+5          # installed ✔ 
+$> ls -l
+total 0
+```
