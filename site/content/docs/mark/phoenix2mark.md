@@ -60,6 +60,7 @@ a) using the `meta-repo` package from Phoenix that download the mark
 ```shell
 $> anise i meta-repo
 $> rm -rf /var/git/meta-repo/kits/
+# Avoid this command if you want to use the tree used in Phoenix
 $> ego sync
 ```
 
@@ -242,5 +243,110 @@ $> anise-portage-converter sync --dry-run
 
 any new package (and not re-emerged) will be added in the anise database with the special *scm* repository.
 
+About working with anise and emerge together read also this [chapter]({{< relref "/docs/mark/sambuca-diff#2-use-flags-not-aligned-to-mark-profiles" >}}).
+
+## Add an anise package to Portage world file
+
+At the moment, the installation of a package with *anise` doesn't update Portage world file.
+
+So, if you want to keep these things aligned you can run this command:
+
+```
+$> anise-portage-converter portage add-world  --help
+Add one or more packages to Portage world file.
+
+Add a package with category and name:
+$> anise-portage-converter portage add-world cat/foo
+
+Add a package with slot (when != 0):
+$> anise-portage-converter portage aw cat/foo:2
+
+Add a package with repository:
+$> anise-portage-converter portage aw cat/foo::core-kit
+
+Add a package with slot and repository:
+$> anise-portage-converter portage aw cat/foo:2::core-kit
+
+NOTE: The command automatically avoid to add duplicate.
+
+Usage:
+  anise-portage-converter portage add-world [package1] ... [packageN] [flags]
+```
+
+This step is not mandatory but update files used by Portage to identify
+packages no more needed after a particular upgrade.
 
 
+## Upgrade a MARK synced system with `anise`
+
+As described in the previous chapter running *anise-portage-converter* add the emerged
+packages in the anise database with *scm* as repository.
+
+If you want using `anise upgrade` to update your system remember that the Macaroni
+binary packages didn't follow a specific profile and USE flags could be different from
+your setup.
+
+So, if you have merged for example *htop* and other dependencies, running *anise upgrade*
+will show something like this:
+
+```shell
+$> anise upgrade
+🚀 Luet 0.41.1-geaaru-gc4815024d03bc88794c76a165ba4018ae07296a3 2025-01-23 01:05:15 UTC - go1.23.1
+🏠 Repository:              geaaru-repo-index Revision:   15 - 2025-01-04 18:10:44 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision:  280 - 2025-09-08 23:25:57 +0000 UTC
+🏠 Repository:       macaroni-phoenix-testing Revision: 1738 - 2025-09-13 16:48:10 +0000 UTC
+🏠 Repository:                           mark Revision:   66 - 2025-09-06 08:54:42 +0000 UTC
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🍬 [  1 of   5] [U] dev-util/meson::macaroni-phoenix-testing                      - 1.7.0+1 [1.7.0::scm]
+🍬 [  2 of   5] [U] dev-util/re2c::macaroni-phoenix-testing                       - 1.1.1+2 [1.1.1::scm]
+🍬 [  3 of   5] [U] sys-devel-2.69/autoconf::macaroni-phoenix-testing             - 2.69+3 [2.69::scm]
+🍬 [  4 of   5] [U] sys-libs/ncurses::macaroni-phoenix-testing                    - 6.5+2 [6.5::scm]
+🍬 [  5 of   5] [U] sys-process/htop::macaroni-phoenix-testing                    - *3.4.1 [3.4.1::scm]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 217813 µs).
+Do you want to continue with this operation? [y/N]: 
+```
+
+Where the *scm* package will be normally replaced by anise because the hash of the metadata
+will be different from the metadata added with *anise-portage-converter*.
+
+In order to avoid the upgrade of *htop* package you need to mask the package with these commands:
+
+```
+$> mkdir -p /etc/luet/mask.d
+$> echo "
+enabled: true
+rules:
+- sys-process/htop::macaroni-phoenix-testing # or just sys-process/htop
+" > /etc/luet/mask.d/00-my.yml
+```
+
+The result will be:
+
+```shell
+$> anise upgrade
+🚀 Luet 0.41.1-geaaru-gc4815024d03bc88794c76a165ba4018ae07296a3 2025-01-23 01:05:15 UTC - go1.23.1
+🏠 Repository:              geaaru-repo-index Revision:   15 - 2025-01-04 18:10:44 +0000 UTC
+🏠 Repository:       macaroni-commons-testing Revision:  280 - 2025-09-08 23:25:57 +0000 UTC
+🏠 Repository:       macaroni-phoenix-testing Revision: 1738 - 2025-09-13 16:48:10 +0000 UTC
+🏠 Repository:                           mark Revision:   66 - 2025-09-06 08:54:42 +0000 UTC
+🤔 Computing upgrade, please hang tight... 💤 
+🎉 Upgrades:
+🍬 [  1 of   4] [U] dev-util/meson::macaroni-phoenix-testing                      - 1.7.0+1 [1.7.0::scm]
+🍬 [  2 of   4] [U] dev-util/re2c::macaroni-phoenix-testing                       - 1.1.1+2 [1.1.1::scm]
+🍬 [  3 of   4] [U] sys-devel-2.69/autoconf::macaroni-phoenix-testing             - 2.69+3 [2.69::scm]
+🍬 [  4 of   4] [U] sys-libs/ncurses::macaroni-phoenix-testing                    - 6.5+2 [6.5::scm]
+💂 Checking for file conflicts...
+✔️  No conflicts found (executed in 26751 µs).
+Do you want to continue with this operation? [y/N]:
+```
+
+As visible the htop will be not replaced by the binary version available on *macaroni-phoenix-testing*
+repository.
+
+In addition, if an emerged version of the package will have a version major of the
+version available on Phoenix repository *anise* will keep the *scm* version if it's not
+used `--deep` option.
+
+> **NOTE:** If you prefer use more *anise* keep attention of packages splitted in anise.
