@@ -81,7 +81,7 @@ $&gt; anise subsets list 🍨 Subsets enabled: * portage Portage metadata and fi
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.25dfc1cddac2ba1547a349ca2f71b638621536ffd5bfa5471cce0406be961086.js" integrity="sha256-Jd/BzdrCuhVHo0nKL3G2OGIVNv/Vv6VHHM4EBr6WEIY="></script>
+<script defer src="/en.search.min.37657ab69a6b3d8db8c6dc24d22eda8dfa0b6ad9f8b95cc106b919e9ef5da1d1.js" integrity="sha256-N2V6tpprPY24xtwk0i7ajfoLatn4uVzBBrkZ6e9dodE="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -366,6 +366,7 @@ case, if it&rsquo;s used later the <code>ego sync</code> command it&rsquo;s bett
 the kits directory before run the <em>sync</em>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise i meta-repo
 </span></span><span style="display:flex;"><span>$&gt; rm -rf /var/git/meta-repo/kits/
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Avoid this command if you want to use the tree used in Phoenix</span>
 </span></span><span style="display:flex;"><span>$&gt; ego sync
 </span></span></code></pre></div><p>b) setup a fresh meta-repo installation without using Phoenix package:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; mkdir -p /var/git
@@ -511,6 +512,95 @@ with <em>anise</em> you need to run this command:</p>
 </span></span></code></pre></div><p>or just to see what packages will be added:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise-portage-converter sync --dry-run
 </span></span></code></pre></div><p>any new package (and not re-emerged) will be added in the anise database with the special <em>scm</em> repository.</p>
+<p>About working with anise and emerge together read also this 
+  <a href="/docs/mark/sambuca-diff/#2-use-flags-not-aligned-to-mark-profiles">chapter</a>.</p>
+<h2 id="add-an-anise-package-to-portage-world-file">
+  Add an anise package to Portage world file
+  <a class="anchor" href="#add-an-anise-package-to-portage-world-file">#</a>
+</h2>
+<p>At the moment, the installation of a package with *anise` doesn&rsquo;t update Portage world file.</p>
+<p>So, if you want to keep these things aligned you can run this command:</p>
+<pre tabindex="0"><code>$&gt; anise-portage-converter portage add-world  --help
+Add one or more packages to Portage world file.
+
+Add a package with category and name:
+$&gt; anise-portage-converter portage add-world cat/foo
+
+Add a package with slot (when != 0):
+$&gt; anise-portage-converter portage aw cat/foo:2
+
+Add a package with repository:
+$&gt; anise-portage-converter portage aw cat/foo::core-kit
+
+Add a package with slot and repository:
+$&gt; anise-portage-converter portage aw cat/foo:2::core-kit
+
+NOTE: The command automatically avoid to add duplicate.
+
+Usage:
+  anise-portage-converter portage add-world [package1] ... [packageN] [flags]
+</code></pre><p>This step is not mandatory but update files used by Portage to identify
+packages no more needed after a particular upgrade.</p>
+<h2 id="upgrade-a-mark-synced-system-with-anise">
+  Upgrade a MARK synced system with <code>anise</code>
+  <a class="anchor" href="#upgrade-a-mark-synced-system-with-anise">#</a>
+</h2>
+<p>As described in the previous chapter running <em>anise-portage-converter</em> add the emerged
+packages in the anise database with <em>scm</em> as repository.</p>
+<p>If you want using <code>anise upgrade</code> to update your system remember that the Macaroni
+binary packages didn&rsquo;t follow a specific profile and USE flags could be different from
+your setup.</p>
+<p>So, if you have merged for example <em>htop</em> and other dependencies, running <em>anise upgrade</em>
+will show something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise upgrade
+</span></span><span style="display:flex;"><span>🚀 Luet 0.41.1-geaaru-gc4815024d03bc88794c76a165ba4018ae07296a3 2025-01-23 01:05:15 UTC - go1.23.1
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">15</span> - 2025-01-04 18:10:44 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">280</span> - 2025-09-08 23:25:57 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1738</span> - 2025-09-13 16:48:10 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                           mark Revision:   <span style="color:#ae81ff">66</span> - 2025-09-06 08:54:42 +0000 UTC
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                      - 1.7.0+1 <span style="color:#f92672">[</span>1.7.0::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> dev-util/re2c::macaroni-phoenix-testing                       - 1.1.1+2 <span style="color:#f92672">[</span>1.1.1::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-devel-2.69/autoconf::macaroni-phoenix-testing             - 2.69+3 <span style="color:#f92672">[</span>2.69::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-libs/ncurses::macaroni-phoenix-testing                    - 6.5+2 <span style="color:#f92672">[</span>6.5::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">5</span> of   5<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-process/htop::macaroni-phoenix-testing                    - *3.4.1 <span style="color:#f92672">[</span>3.4.1::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">217813</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>: 
+</span></span></code></pre></div><p>Where the <em>scm</em> package will be normally replaced by anise because the hash of the metadata
+will be different from the metadata added with <em>anise-portage-converter</em>.</p>
+<p>In order to avoid the upgrade of <em>htop</em> package you need to mask the package with these commands:</p>
+<pre tabindex="0"><code>$&gt; mkdir -p /etc/luet/mask.d
+$&gt; echo &#34;
+enabled: true
+rules:
+- sys-process/htop::macaroni-phoenix-testing # or just sys-process/htop
+&#34; &gt; /etc/luet/mask.d/00-my.yml
+</code></pre><p>The result will be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise upgrade
+</span></span><span style="display:flex;"><span>🚀 Luet 0.41.1-geaaru-gc4815024d03bc88794c76a165ba4018ae07296a3 2025-01-23 01:05:15 UTC - go1.23.1
+</span></span><span style="display:flex;"><span>🏠 Repository:              geaaru-repo-index Revision:   <span style="color:#ae81ff">15</span> - 2025-01-04 18:10:44 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-commons-testing Revision:  <span style="color:#ae81ff">280</span> - 2025-09-08 23:25:57 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:       macaroni-phoenix-testing Revision: <span style="color:#ae81ff">1738</span> - 2025-09-13 16:48:10 +0000 UTC
+</span></span><span style="display:flex;"><span>🏠 Repository:                           mark Revision:   <span style="color:#ae81ff">66</span> - 2025-09-06 08:54:42 +0000 UTC
+</span></span><span style="display:flex;"><span>🤔 Computing upgrade, please hang tight... 💤 
+</span></span><span style="display:flex;"><span>🎉 Upgrades:
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">1</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> dev-util/meson::macaroni-phoenix-testing                      - 1.7.0+1 <span style="color:#f92672">[</span>1.7.0::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">2</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> dev-util/re2c::macaroni-phoenix-testing                       - 1.1.1+2 <span style="color:#f92672">[</span>1.1.1::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">3</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-devel-2.69/autoconf::macaroni-phoenix-testing             - 2.69+3 <span style="color:#f92672">[</span>2.69::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>🍬 <span style="color:#f92672">[</span>  <span style="color:#ae81ff">4</span> of   4<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>U<span style="color:#f92672">]</span> sys-libs/ncurses::macaroni-phoenix-testing                    - 6.5+2 <span style="color:#f92672">[</span>6.5::scm<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>💂 Checking <span style="color:#66d9ef">for</span> file conflicts...
+</span></span><span style="display:flex;"><span>✔️  No conflicts found <span style="color:#f92672">(</span>executed in <span style="color:#ae81ff">26751</span> µs<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Do you want to <span style="color:#66d9ef">continue</span> with this operation? <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>:
+</span></span></code></pre></div><p>As visible the htop will be not replaced by the binary version available on <em>macaroni-phoenix-testing</em>
+repository.</p>
+<p>In addition, if an emerged version of the package will have a version major of the
+version available on Phoenix repository <em>anise</em> will keep the <em>scm</em> version if it&rsquo;s not
+used <code>--deep</code> option.</p>
+<blockquote>
+<p><strong>NOTE:</strong> If you prefer use more <em>anise</em> keep attention of packages splitted in anise.</p>
+</blockquote>
 </article>
  
       
