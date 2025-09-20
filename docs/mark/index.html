@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.6f50bd13d8ec1e30e2365819561f2139f6794cfeaa04cb093b70ace617a852a2.js" integrity="sha256-b1C9E9jsHjDiNlgZVh8hOfZ5TP6qBMsJO3Cs5heoUqI="></script>
+<script defer src="/en.search.min.8991288bffd76d239dc7599f24e4606a5f1fcec84d18e008ef5819a73de34b85.js" integrity="sha256-iZEoi//XbSOdx1mfJORgal8fzshNGOAI71gZpz3jS4U="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/mark/index.xml" title="Macaroni OS" />
@@ -612,6 +612,302 @@ with the execution of the command:</p>
 $&gt; for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i ; done
 </code></pre><p>This step is temporary and managed automatically in the near future from the replacer of
 the <code>ego</code> tool.</p>
+<h3 id="the-bridge-between-bashing-and-solver">
+  The Bridge between Bashing and Solver
+  <a class="anchor" href="#the-bridge-between-bashing-and-solver">#</a>
+</h3>
+<p>As a core element fo the integration between Portage and <code>anise-portage-converter</code> tool, it
+seems a good idea describe the changes originally done by Funtoo and later used in MARK to have
+a better integration and used by <code>mark-devkit</code> and before from <code>metatools</code>.</p>
+<p>Portage, like a lot of Gentoo/Funtoo users know, uses the files <code>.ebuild</code> and <code>.eclass</code> to describe
+the build steps of a package. These files are elaborated using Bash through the core file <code>ebuild.sh</code>
+supplied inside the Portage:</p>
+<pre tabindex="0"><code>$&gt; anise q files portage | grep ebuild.sh
+/usr/lib/portage/python3.9/ebuild.sh
+</code></pre><p>This file is the main script that implements the ebuild engine:</p>
+<ol>
+<li>
+<p><em>it’s written in Bash and used by Portage to manage a package’s lifecycle.</em></p>
+</li>
+<li>
+<p><em>provides all the standard functions that an ebuild can use, such as src_unpack, src_compile,
+src_install, etc.</em></p>
+</li>
+<li>
+<p><em>handles the phases of an ebuild: unpack, prepare, configure, compile, test, install, package,
+merge, etc.</em></p>
+</li>
+<li>
+<p><em>loads eclasses and applies shared logic across multiple ebuilds.</em></p>
+</li>
+<li>
+<p><em>sets up the environment in which an ebuild runs (variables like S, WORKDIR, D, ED,
+PORTAGE_BUILDDIR, etc.).</em></p>
+</li>
+<li>
+<p><em>essentially, it is the “skeleton” that translates ebuild syntax into concrete actions
+executed by the package manager.</em></p>
+</li>
+</ol>
+<p>The reason it’s under <em>python3.9/</em> is that Portage itself is written in Python, but ebuilds are shell
+scripts. So Portage calls this ebuild.sh as a bridge between the Python world (Portage) and
+the Bash world (ebuilds).</p>
+<p>In particolar, the file <code>ebuild.sh</code> when used with the variable <code>EBUILD_PHASE</code> with value <code>DEPEND</code>,
+and with <code>PORTAGE_PIPE_FD</code> with value <code>1</code> permits to obtain from stdout the description of a specific
+package where is been executed the bash code. The output is splitted in multiple lines where every line
+has a specific meaning. The same output is the same written in the metadata cache files.</p>
+<p>This the list of positional lines generated with the specific meaning:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    DEPEND RDEPEND SLOT SRC_URI RESTRICT HOMEPAGE LICENSE
+</span></span><span style="display:flex;"><span>    DESCRIPTION KEYWORDS INHERITED IUSE REQUIRED_USE PDEPEND BDEPEND
+</span></span><span style="display:flex;"><span>    EAPI PROPERTIES DEFINED_PHASES HDEPEND _PY_COMPAT
+</span></span><span style="display:flex;"><span>    UNUSED_03 UNUSED_02 UNUSED_01<span style="color:#e6db74">&#34;
+</span></span></span></code></pre></div><p>where:</p>
+<ol>
+<li>
+<p><em>DEPEND</em>: this line contains the list of dependencies needed only for the build of a package</p>
+</li>
+<li>
+<p><em>RDEPEND</em>: this line contains the list of dependencies needed at runtime</p>
+</li>
+<li>
+<p><em>SLOT</em>: this line contains the SLOT of the package</p>
+</li>
+<li>
+<p><em>SRC_URI</em>: this line contains the list of the sources needed for build a package.</p>
+</li>
+<li>
+<p><em>RESTRICT</em>: this line contains the list of restriction applied in the building, for example,
+RESTRICT=&ldquo;test&rdquo; to avoid execution of the tests, etc.</p>
+</li>
+<li>
+<p><em>HOMEPAGE</em>: this line contains a list of URL with the homepage of the website related to the
+analyzed package.</p>
+</li>
+<li>
+<p><em>LICENSE</em>: this line contains the list of licenses of the package</p>
+</li>
+<li>
+<p><em>DESCRIPTION</em>: this line contains the description of the package</p>
+</li>
+<li>
+<p><em>KEYWORDS</em>: this line contains the arches enabled for the package. In Macaroni, like before
+in Funtoo normally is used <code>*</code>.</p>
+</li>
+<li>
+<p><em>INHERITED</em>: this line contains the list of the <em>eclass</em> used by the ebuild of the package</p>
+</li>
+<li>
+<p><em>IUSE</em>: this line contains the list of USE flags supported by the package</p>
+</li>
+<li>
+<p><em>REQUIRED_USE</em>: this line contains the condition used by the USE flags, for example
+<code>REQUIRED_USE=&quot;gtk? ( gstreamer )&quot;</code> means that if the <code>gtk</code> USE flag is enable also the
+USE flag <em>gstreamer</em> must be set.</p>
+</li>
+<li>
+<p><em>PDEPEND</em>: this line contains the list of the optional dependencies that could be installed
+after the installation of the package</p>
+</li>
+<li>
+<p><em>BDEPEND</em>: this line contains the list of the dependencies strictly needed for build the package.</p>
+</li>
+<li>
+<p><em>EAPI</em>: this line contains the version of the Ebuild API used.</p>
+</li>
+<li>
+<p><em>PROPERTIES</em>: this line contains the properties of the package.</p>
+</li>
+<li>
+<p><em>DEFINED_PHASES</em>: this line contains the list of the phases defined and/or overrided in the ebuild,
+for example <code>src_unpack</code>, <code>src_compile</code>, etc.</p>
+</li>
+<li>
+<p><em>HDEPEND</em>: this line contains the list of hard dependencies for specific eclasses / helper packages.</p>
+</li>
+<li>
+<p><em>_PY_COMPAT</em>: this line contains the values of the PYTHON_COMPAT variable.</p>
+</li>
+<li>
+<p><em>UNUSED_03</em>, <em>UNUSED_02</em>, <em>UNUSED_01</em>: available for future changes.</p>
+</li>
+</ol>
+<p>The line/variable _PY_COMPAT is the change added in Funtoo where is reported the values of <code>PYTHON_COMPAT</code>
+variable defined in the analyzed ebuild and not present in Gentoo.</p>
+<p>So, the Portage solver uses these information to elaborate dependencies and later start the <em>emerge</em>
+process.</p>
+<p>The <code>anise-portage-converter</code> tool uses the <em>ebuild.sh</em> script (like visible 
+  <a href="https://github.com/macaroni-os/anise-portage-converter/blob/master/pkg/reposcan/generator.go#L526">here</a>)
+to generate the JSON file with all the packages available in a specific kit and later used to generate
+<em>anise</em> spec files and/or used by <code>mark-devkit</code> to compare different branches.</p>
+<p>The structure of the JSON file is pretty similar to the structure originally created by Daniel Robbins
+for the <code>reposcan</code> tool to support Macaroni OS bootstrap. For now we have keep the same structure for compatibility
+of the other Macaroni tools used to generate <em>anise</em> specs file but it could change in the near future.</p>
+<p>Here, an example about how generate the JSON file of a specific kit to stdout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise-portage-converter  reposcan-generate --kit ai-kit --branch mark-unstable <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --eclass-dir /var/git/meta-repo/kits/core-kit/ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        ~/dev/macaroni/kits/ai-kit/ --concurrency <span style="color:#ae81ff">20</span> |  jq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;cache_data_version&#34;</span>: <span style="color:#e6db74">&#34;1.0.6&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;atoms&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app-ai/llama-cpp-0.0.6327&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;atom&#34;</span>: <span style="color:#e6db74">&#34;app-ai/llama-cpp-0.0.6327&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;app-ai&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;package&#34;</span>: <span style="color:#e6db74">&#34;llama-cpp&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;revision&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;catpkg&#34;</span>: <span style="color:#e6db74">&#34;app-ai/llama-cpp&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;eclasses&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;toolchain-funcs&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;24921b57d6561d87cbef4916a296ada4&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;multilib&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;d410501a125f99ffb560b0c523cd3d1e&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;multiprocessing&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;cac3169468f893670dac3e7cb940e045&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;ninja-utils&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;e7575bc4a90349d76e72777013b2bbc2&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;eutils&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;6e6c2737b59a4b982de6fb3ecefd87f8&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;flag-o-matic&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;d0939f99dd528dd0c5ec25284877bf5c&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;xdg-utils&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;14d00d009167652b1fa363e55effe213&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;cmake&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;ac7cb516f6a288b6a82bc0649ce49878&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;kit&#34;</span>: <span style="color:#e6db74">&#34;ai-kit&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;branch&#34;</span>: <span style="color:#e6db74">&#34;mark-unstable&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;relations&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dev-util/vulkan-headers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dev-util/ninja&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dev-util/cmake&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;x11-drivers/nvidia-drivers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dev-util/vulkan-tools&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;media-libs/vulkan-layers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;media-libs/vulkan-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;media-libs/shaderc&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;sci-libs/gsl&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;virtual/blas&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;virtual/lapack&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;relations_by_kind&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;BDEPEND&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;dev-util/vulkan-headers&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;dev-util/ninja&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;dev-util/cmake&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;DEPEND&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;x11-drivers/nvidia-drivers&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;dev-util/vulkan-tools&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/vulkan-layers&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/vulkan-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/shaderc&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;sci-libs/gsl&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;virtual/blas&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;virtual/lapack&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;RDEPEND&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;x11-drivers/nvidia-drivers&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;dev-util/vulkan-tools&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/vulkan-layers&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/vulkan-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;media-libs/shaderc&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;sci-libs/gsl&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;virtual/blas&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;virtual/lapack&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;metadata&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;BDEPEND&#34;</span>: <span style="color:#e6db74">&#34;vulkan? ( dev-util/vulkan-headers ) dev-util/ninja dev-util/cmake&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;DEFINED_PHASES&#34;</span>: <span style="color:#e6db74">&#34;compile configure install prepare test&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;DEPEND&#34;</span>: <span style="color:#e6db74">&#34;cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;DESCRIPTION&#34;</span>: <span style="color:#e6db74">&#34;LLM inference in C/C++&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EAPI&#34;</span>: <span style="color:#e6db74">&#34;7&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;HDEPEND&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;HOMEPAGE&#34;</span>: <span style="color:#e6db74">&#34;https://github.com/ggml-org/llama.cpp&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;INHERITED&#34;</span>: <span style="color:#e6db74">&#34;toolchain-funcs multilib multiprocessing ninja-utils eutils flag-o-matic xdg-utils cmake&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;IUSE&#34;</span>: <span style="color:#e6db74">&#34;static blas cuda vulkan&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;KEYWORDS&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;LICENSE&#34;</span>: <span style="color:#e6db74">&#34;MIT&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PDEPEND&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROPERTIES&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PYTHON_COMPAT&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;RDEPEND&#34;</span>: <span style="color:#e6db74">&#34;cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;REQUIRED_USE&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;RESTRICT&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SLOT&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SRC_URI&#34;</span>: <span style="color:#e6db74">&#34;https://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327 -&gt; llama-cpp-0.0.6327-4d74393.tar.gz&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;metadata_out&#34;</span>: <span style="color:#e6db74">&#34;cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )\ncuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )\n0\nhttps://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327 -&gt; llama-cpp-0.0.6327-4d74393.tar.gz\n\nhttps://github.com/ggml-org/llama.cpp\nMIT\nLLM inference in C/C++\n*\ntoolchain-funcs multilib multiprocessing ninja-utils eutils flag-o-matic xdg-utils cmake\nstatic blas cuda vulkan\n\n\nvulkan? ( dev-util/vulkan-headers ) dev-util/ninja dev-util/cmake\n7\n\ncompile configure install prepare test\n\n\n\n\n\n&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;manifest_md5&#34;</span>: <span style="color:#e6db74">&#34;524cff112b1038d03d32c97cbda0a829&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;md5&#34;</span>: <span style="color:#e6db74">&#34;eb27bb05670f95f1dd860d03b0dabd7b&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;files&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;src_uri&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;https://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;size&#34;</span>: <span style="color:#e6db74">&#34;25625309&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;hashes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;blake2b&#34;</span>: <span style="color:#e6db74">&#34;562e1245ff03a8f4b33375bcff07b7eb8016d271d3afdab69096fd9e4e10bcffca270e8d4293f62cb9d44fab01afb92c1697c328f6b298c2cd5178808c0bbe12&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;sha512&#34;</span>: <span style="color:#e6db74">&#34;095aa4964b7eee946d600f63546f2ba4a4e61841ab21e9bf1778d1c8e641e164385ceca275080f9a272882c5c7eaba09e7a2df6fc2e53b4d9174c11b57df1b7d&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;llama-cpp-0.0.6327-4d74393.tar.gz&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app-ai/llama-cpp-0.0.6402&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span></code></pre></div><p>or to a specific file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; anise-portage-converter  reposcan-generate --kit ai-kit --branch mark-unstable <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --eclass-dir /var/git/meta-repo/kits/core-kit/ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        ~/dev/macaroni/kits/ai-kit/ --concurrency <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        -o file -f /tmp/ai-kit-mark-unstable
+</span></span></code></pre></div><p>where the convention of the target file is <em>&lt;kit-name&gt;-&lt;kit-branch&gt;</em>.</p>
+<blockquote>
+<p>The ebuild.sh script is an important point where will be possible to integrate new technologies
+without replace totally Portage at the begin.</p>
+</blockquote>
+<h3 id="impacts-on-upgrading-python-release">
+  Impacts on upgrading Python release
+  <a class="anchor" href="#impacts-on-upgrading-python-release">#</a>
+</h3>
+<p>Considering that Portage engine is written in Python and a lot of packages using PYTHON_COMPAT
+through the evoluted syntax introduced by Funtoo about <em>python3+</em> to automatically support all available Python
+versions we share expecially for <em>staff</em> developers a list of important points to verify on
+upgrading Python release:</p>
+<ol>
+<li>
+<p><em>anise-portage-converter</em>: as a core tool of the Macaroni workflow this tool must be
+updated to support a new release on expand <em>python3+</em> string.
+So, it&rsquo;s important check the supported 
+  <a href="https://github.com/macaroni-os/anise-portage-converter/blob/master/pkg/reposcan/generator.go#L80">implementations</a>.</p>
+</li>
+<li>
+<p><em>python-utils-r1.eclass</em>: another core eclass used in the Portage engine to expand <em>python3+</em>
+string. It&rsquo;s needed check the 
+  <a href="https://github.com/macaroni-os/core-kit/blob/mark-unstable/eclass/python-utils-r1.eclass#L146">_python_set_impls</a> function and update it with new Python releases</p>
+</li>
+<li>
+<p><em>python-kit profile</em>: modify the 
+  <a href="https://github.com/macaroni-os/kit-fixups/blob/mark-unstable/core-kit/profiles/funtoo/kits/python-kit/mark/make.defaults">make.defaults</a> file with the correct value for the variables
+<code>PYTHON_TARGETS</code> and <code>PYTHON_SINGLE_TARGET</code>.</p>
+</li>
+</ol>
 </article>
  
       
