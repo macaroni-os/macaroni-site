@@ -78,7 +78,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.8991288bffd76d239dc7599f24e4606a5f1fcec84d18e008ef5819a73de34b85.js" integrity="sha256-iZEoi//XbSOdx1mfJORgal8fzshNGOAI71gZpz3jS4U="></script>
+<script defer src="/en.search.min.75705f820fe10cae83469d776272b7906842cda2ee70ad06739b94a2c250668e.js" integrity="sha256-dXBfgg/hDK6DRp13YnK3kGhCzaLucK0Gc5uUosJQZo4="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://www.macaronios.org/docs/mark/index.xml" title="Macaroni OS" />
@@ -355,7 +355,7 @@ available through Git repositories. The updates could be sent through direct com
 or through Github PR.</p>
 </li>
 <li>
-<p><em>dynamicity</em>: one of the pros of Gentoo and Funtoo is the easy way to add patches to
+<p><em>dynamism</em>: one of the pros of Gentoo and Funtoo is the easy way to add patches to
 upstream sources, at the same way we want follow this pattern and try to share an OS
 that is a good place for developers.</p>
 </li>
@@ -363,7 +363,7 @@ that is a good place for developers.</p>
 <p><em>reproducibility</em>: share technologies, how to configure it and using Opensource is one
 of the core and more important key of MARK OS. Without sharing the knowledge this world
 will never grow. So, another important point a bit complex, for a lot of reason and just
-for for the volume of the documentation will be sharing our <em>Distro from Scratch</em> steps
+for the volume of the documentation will be sharing our <em>Distro from Scratch</em> steps
 used in MARK.</p>
 </li>
 </ol>
@@ -373,7 +373,7 @@ how the magic is started and how will be improved.</p>
 developers decides to start a new adventure to keep the system independent from other distro
 in order to have a better control of the system and avoid that external changes could be
 dangerous in the Macaroni OS itself. Obviously, starting from zero was not possible, and so,
-based of the expirience get in Funtoo we have applied the first changed to the <em>metatools</em>,
+based of the experience get in Funtoo we have applied the first changed to the <em>metatools</em>,
 <em>ego</em> needed to create the base for what is been developed in one year and that will be evolved
 again in the future. But having a clear target, trying to join the two worlds and create a gate
 between the Anise/binary stack and the sourced-based world of MARK. But not only this, the
@@ -381,7 +381,7 @@ Portage itself it&rsquo;s a software created in Gentoo that will be replaced too
 least we hope on this. Working on our free time doesn&rsquo;t permit to share specific dates and/or
 milestone so what we can share is at least the plan.</p>
 <p>Through this vision we are been really lucky to find our Sponsors, really thanks always for their
-support, and thourgh them we also oriented the development of our tools to be more connected to
+support, and through them we also oriented the development of our tools to be more connected to
 their technologies in order to share the better experience possible to our users.</p>
 <p>For this reason, the <code>mark-devkit</code> tool that is the main (but not the only) module used to keep
 the distfiles server updated is been developed to have a better integration with Object Store S3
@@ -510,8 +510,8 @@ could be merged and moved to testing environment.</p>
 
   <a href="https://github.com/macaroni-os/meta-repo">meta-repo</a> repository in the
 branch related to the release that is later used by <code>ego</code> to fetch the Portage
-tree splitted in kits. This behaviour is also a protection about errors done in the
-kits that could be fastly reverted because until a new bump is done users will be
+tree split in kits. This behaviour is also a protection about errors done in the
+kits that could be quickly reverted because until a new bump is done users will be
 synced to the git hash of the last bump in the kit updated. Cons is that until a
 new bump is done new updates will be not visible to users. Normally, an automatic
 task run every day in our CD/CI that try to bump a new update the align the JSON
@@ -540,7 +540,7 @@ automatically test the existing tree a manual task is fired over our CD/CI to ex
 <code>mark-devkit kit merge</code> that doesn&rsquo;t use PR but just merge versions as a commits. Potentially,
 could be used PRs also on mark-v but we prefer using directly commit because when the new
 release is tagged through goreleaser tool we generate the ChangeLog automatically with the
-list of the new versions availables.</p>
+list of the new versions available.</p>
 <p>The upgrade of the core packages (GCC, Glibc, etc.) will be always done before in these
 releases and later to the Desktop releases.</p>
 <h3 id="-desktop-releases">
@@ -605,18 +605,18 @@ itself.</p>
 <p>In a different way respect Gentoo and Funtoo, MARK doesn&rsquo;t generate the overlay metadata cache
 directly in the exposed repository. The main reason is that is more simple to manage in an
 upgrade workflow based on Github PR that could be merged, reverted, etc. without introduce jobs
-to update costantly the same repository that receive the update of the package, etc.
+to update constantly the same repository that receive the update of the package, etc.
 Without the metadata the <em>emerge</em> solver could be slow, but this could be solved
 with the execution of the command:</p>
 <pre tabindex="0"><code>$&gt; # As root user
 $&gt; for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i ; done
-</code></pre><p>This step is temporary and managed automatically in the near future from the replacer of
+</code></pre><p>This step is temporary and managed automatically in the near future by the replacement of
 the <code>ego</code> tool.</p>
 <h3 id="the-bridge-between-bashing-and-solver">
   The Bridge between Bashing and Solver
   <a class="anchor" href="#the-bridge-between-bashing-and-solver">#</a>
 </h3>
-<p>As a core element fo the integration between Portage and <code>anise-portage-converter</code> tool, it
+<p>As a core element of the integration between Portage and <code>anise-portage-converter</code> tool, it
 seems a good idea describe the changes originally done by Funtoo and later used in MARK to have
 a better integration and used by <code>mark-devkit</code> and before from <code>metatools</code>.</p>
 <p>Portage, like a lot of Gentoo/Funtoo users know, uses the files <code>.ebuild</code> and <code>.eclass</code> to describe
@@ -652,9 +652,9 @@ executed by the package manager.</em></p>
 <p>The reason it’s under <em>python3.9/</em> is that Portage itself is written in Python, but ebuilds are shell
 scripts. So Portage calls this ebuild.sh as a bridge between the Python world (Portage) and
 the Bash world (ebuilds).</p>
-<p>In particolar, the file <code>ebuild.sh</code> when used with the variable <code>EBUILD_PHASE</code> with value <code>DEPEND</code>,
+<p>In particular, the file <code>ebuild.sh</code> when used with the variable <code>EBUILD_PHASE</code> with value <code>DEPEND</code>,
 and with <code>PORTAGE_PIPE_FD</code> with value <code>1</code> permits to obtain from stdout the description of a specific
-package where is been executed the bash code. The output is splitted in multiple lines where every line
+package where is been executed the bash code. The output is split into multiple lines where every line
 has a specific meaning. The same output is the same written in the metadata cache files.</p>
 <p>This the list of positional lines generated with the specific meaning:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    DEPEND RDEPEND SLOT SRC_URI RESTRICT HOMEPAGE LICENSE
@@ -718,7 +718,7 @@ after the installation of the package</p>
 <p><em>PROPERTIES</em>: this line contains the properties of the package.</p>
 </li>
 <li>
-<p><em>DEFINED_PHASES</em>: this line contains the list of the phases defined and/or overrided in the ebuild,
+<p><em>DEFINED_PHASES</em>: this line contains the list of the phases defined and/or over-ridden in the ebuild,
 for example <code>src_unpack</code>, <code>src_compile</code>, etc.</p>
 </li>
 <li>
@@ -888,7 +888,7 @@ without replace totally Portage at the begin.</p>
 </h3>
 <p>Considering that Portage engine is written in Python and a lot of packages using PYTHON_COMPAT
 through the evoluted syntax introduced by Funtoo about <em>python3+</em> to automatically support all available Python
-versions we share expecially for <em>staff</em> developers a list of important points to verify on
+versions we share especially for <em>staff</em> developers a list of important points to verify on
 upgrading Python release:</p>
 <ol>
 <li>
