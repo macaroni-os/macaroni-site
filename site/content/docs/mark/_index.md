@@ -234,3 +234,288 @@ $> for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i 
 
 This step is temporary and managed automatically in the near future from the replacer of
 the `ego` tool.
+
+### The Bridge between Bashing and Solver
+
+As a core element fo the integration between Portage and `anise-portage-converter` tool, it
+seems a good idea describe the changes originally done by Funtoo and later used in MARK to have
+a better integration and used by `mark-devkit` and before from `metatools`.
+
+Portage, like a lot of Gentoo/Funtoo users know, uses the files `.ebuild` and `.eclass` to describe
+the build steps of a package. These files are elaborated using Bash through the core file `ebuild.sh`
+supplied inside the Portage:
+
+```
+$> anise q files portage | grep ebuild.sh
+/usr/lib/portage/python3.9/ebuild.sh
+```
+
+This file is the main script that implements the ebuild engine:
+
+1. *it’s written in Bash and used by Portage to manage a package’s lifecycle.*
+
+2. *provides all the standard functions that an ebuild can use, such as src_unpack, src_compile,
+   src_install, etc.*
+
+3. *handles the phases of an ebuild: unpack, prepare, configure, compile, test, install, package,
+   merge, etc.*
+
+4. *loads eclasses and applies shared logic across multiple ebuilds.*
+
+5. *sets up the environment in which an ebuild runs (variables like S, WORKDIR, D, ED,
+   PORTAGE_BUILDDIR, etc.).*
+
+6. *essentially, it is the “skeleton” that translates ebuild syntax into concrete actions
+   executed by the package manager.*
+
+The reason it’s under *python3.9/* is that Portage itself is written in Python, but ebuilds are shell
+scripts. So Portage calls this ebuild.sh as a bridge between the Python world (Portage) and
+the Bash world (ebuilds).
+
+In particolar, the file `ebuild.sh` when used with the variable `EBUILD_PHASE` with value `DEPEND`,
+and with `PORTAGE_PIPE_FD` with value `1` permits to obtain from stdout the description of a specific
+package where is been executed the bash code. The output is splitted in multiple lines where every line
+has a specific meaning. The same output is the same written in the metadata cache files.
+
+This the list of positional lines generated with the specific meaning:
+
+```bash
+    DEPEND RDEPEND SLOT SRC_URI RESTRICT HOMEPAGE LICENSE
+    DESCRIPTION KEYWORDS INHERITED IUSE REQUIRED_USE PDEPEND BDEPEND
+    EAPI PROPERTIES DEFINED_PHASES HDEPEND _PY_COMPAT
+    UNUSED_03 UNUSED_02 UNUSED_01"
+```
+
+where:
+
+1. *DEPEND*: this line contains the list of dependencies needed only for the build of a package
+
+2. *RDEPEND*: this line contains the list of dependencies needed at runtime
+
+3. *SLOT*: this line contains the SLOT of the package
+
+4. *SRC_URI*: this line contains the list of the sources needed for build a package.
+
+5. *RESTRICT*: this line contains the list of restriction applied in the building, for example,
+   RESTRICT="test" to avoid execution of the tests, etc.
+
+6. *HOMEPAGE*: this line contains a list of URL with the homepage of the website related to the
+   analyzed package.
+
+7. *LICENSE*: this line contains the list of licenses of the package
+
+8. *DESCRIPTION*: this line contains the description of the package
+
+9. *KEYWORDS*: this line contains the arches enabled for the package. In Macaroni, like before
+   in Funtoo normally is used `*`.
+
+10. *INHERITED*: this line contains the list of the *eclass* used by the ebuild of the package
+
+11. *IUSE*: this line contains the list of USE flags supported by the package
+
+12. *REQUIRED_USE*: this line contains the condition used by the USE flags, for example
+    `REQUIRED_USE="gtk? ( gstreamer )"` means that if the `gtk` USE flag is enable also the
+    USE flag *gstreamer* must be set.
+
+13. *PDEPEND*: this line contains the list of the optional dependencies that could be installed
+    after the installation of the package
+
+14. *BDEPEND*: this line contains the list of the dependencies strictly needed for build the package.
+
+15. *EAPI*: this line contains the version of the Ebuild API used.
+
+16. *PROPERTIES*: this line contains the properties of the package.
+
+17. *DEFINED_PHASES*: this line contains the list of the phases defined and/or overrided in the ebuild,
+    for example `src_unpack`, `src_compile`, etc.
+
+18. *HDEPEND*: this line contains the list of hard dependencies for specific eclasses / helper packages.
+
+19. *_PY_COMPAT*: this line contains the values of the PYTHON_COMPAT variable.
+
+20. *UNUSED_03*, *UNUSED_02*, *UNUSED_01*: available for future changes.
+
+
+The line/variable \_PY_COMPAT is the change added in Funtoo where is reported the values of `PYTHON_COMPAT`
+variable defined in the analyzed ebuild and not present in Gentoo.
+
+So, the Portage solver uses these information to elaborate dependencies and later start the *emerge*
+process.
+
+
+The `anise-portage-converter` tool uses the *ebuild.sh* script (like visible [here](https://github.com/macaroni-os/anise-portage-converter/blob/master/pkg/reposcan/generator.go#L526))
+to generate the JSON file with all the packages available in a specific kit and later used to generate
+*anise* spec files and/or used by `mark-devkit` to compare different branches.
+
+The structure of the JSON file is pretty similar to the structure originally created by Daniel Robbins
+for the `reposcan` tool to support Macaroni OS bootstrap. For now we have keep the same structure for compatibility
+of the other Macaroni tools used to generate *anise* specs file but it could change in the near future.
+
+
+Here, an example about how generate the JSON file of a specific kit to stdout:
+
+```bash
+$> anise-portage-converter  reposcan-generate --kit ai-kit --branch mark-unstable \
+        --eclass-dir /var/git/meta-repo/kits/core-kit/ \
+        ~/dev/macaroni/kits/ai-kit/ --concurrency 20 |  jq
+
+{
+  "cache_data_version": "1.0.6",
+  "atoms": {
+    "app-ai/llama-cpp-0.0.6327": {
+      "atom": "app-ai/llama-cpp-0.0.6327",
+      "category": "app-ai",
+      "package": "llama-cpp",
+      "revision": "0",
+      "catpkg": "app-ai/llama-cpp",
+      "eclasses": [
+        [
+          "toolchain-funcs",
+          "24921b57d6561d87cbef4916a296ada4"
+        ],
+        [
+          "multilib",
+          "d410501a125f99ffb560b0c523cd3d1e"
+        ],
+        [
+          "multiprocessing",
+          "cac3169468f893670dac3e7cb940e045"
+        ],
+        [
+          "ninja-utils",
+          "e7575bc4a90349d76e72777013b2bbc2"
+        ],
+        [
+          "eutils",
+          "6e6c2737b59a4b982de6fb3ecefd87f8"
+        ],
+        [
+          "flag-o-matic",
+          "d0939f99dd528dd0c5ec25284877bf5c"
+        ],
+        [
+          "xdg-utils",
+          "14d00d009167652b1fa363e55effe213"
+        ],
+        [
+          "cmake",
+          "ac7cb516f6a288b6a82bc0649ce49878"
+        ]
+      ],
+      "kit": "ai-kit",
+      "branch": "mark-unstable",
+      "relations": [
+        "dev-util/vulkan-headers",
+        "dev-util/ninja",
+        "dev-util/cmake",
+        "x11-drivers/nvidia-drivers",
+        "dev-util/vulkan-tools",
+        "media-libs/vulkan-layers",
+        "media-libs/vulkan-loader",
+        "media-libs/shaderc",
+        "sci-libs/gsl",
+        "virtual/blas",
+        "virtual/lapack"
+      ],
+      "relations_by_kind": {
+        "BDEPEND": [
+          "dev-util/vulkan-headers",
+          "dev-util/ninja",
+          "dev-util/cmake"
+        ],
+        "DEPEND": [
+          "x11-drivers/nvidia-drivers",
+          "dev-util/vulkan-tools",
+          "media-libs/vulkan-layers",
+          "media-libs/vulkan-loader",
+          "media-libs/shaderc",
+          "sci-libs/gsl",
+          "virtual/blas",
+          "virtual/lapack"
+        ],
+        "RDEPEND": [
+          "x11-drivers/nvidia-drivers",
+          "dev-util/vulkan-tools",
+          "media-libs/vulkan-layers",
+          "media-libs/vulkan-loader",
+          "media-libs/shaderc",
+          "sci-libs/gsl",
+          "virtual/blas",
+          "virtual/lapack"
+        ]
+      },
+      "metadata": {
+        "BDEPEND": "vulkan? ( dev-util/vulkan-headers ) dev-util/ninja dev-util/cmake",
+        "DEFINED_PHASES": "compile configure install prepare test",
+        "DEPEND": "cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )",
+        "DESCRIPTION": "LLM inference in C/C++",
+        "EAPI": "7",
+        "HDEPEND": "",
+        "HOMEPAGE": "https://github.com/ggml-org/llama.cpp",
+        "INHERITED": "toolchain-funcs multilib multiprocessing ninja-utils eutils flag-o-matic xdg-utils cmake",
+        "IUSE": "static blas cuda vulkan",
+        "KEYWORDS": "*",
+        "LICENSE": "MIT",
+        "PDEPEND": "",
+        "PROPERTIES": "",
+        "PYTHON_COMPAT": "",
+        "RDEPEND": "cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )",
+        "REQUIRED_USE": "",
+        "RESTRICT": "",
+        "SLOT": "0",
+        "SRC_URI": "https://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327 -> llama-cpp-0.0.6327-4d74393.tar.gz"
+      },
+      "metadata_out": "cuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )\ncuda? ( x11-drivers/nvidia-drivers ) vulkan? ( dev-util/vulkan-tools media-libs/vulkan-layers media-libs/vulkan-loader media-libs/shaderc sci-libs/gsl ) blas? ( virtual/blas virtual/lapack )\n0\nhttps://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327 -> llama-cpp-0.0.6327-4d74393.tar.gz\n\nhttps://github.com/ggml-org/llama.cpp\nMIT\nLLM inference in C/C++\n*\ntoolchain-funcs multilib multiprocessing ninja-utils eutils flag-o-matic xdg-utils cmake\nstatic blas cuda vulkan\n\n\nvulkan? ( dev-util/vulkan-headers ) dev-util/ninja dev-util/cmake\n7\n\ncompile configure install prepare test\n\n\n\n\n\n",
+      "manifest_md5": "524cff112b1038d03d32c97cbda0a829",
+      "md5": "eb27bb05670f95f1dd860d03b0dabd7b",
+      "files": [
+        {
+          "src_uri": [
+            "https://api.github.com/repos/ggml-org/llama.cpp/tarball/b6327"
+          ],
+          "size": "25625309",
+          "hashes": {
+            "blake2b": "562e1245ff03a8f4b33375bcff07b7eb8016d271d3afdab69096fd9e4e10bcffca270e8d4293f62cb9d44fab01afb92c1697c328f6b298c2cd5178808c0bbe12",
+            "sha512": "095aa4964b7eee946d600f63546f2ba4a4e61841ab21e9bf1778d1c8e641e164385ceca275080f9a272882c5c7eaba09e7a2df6fc2e53b4d9174c11b57df1b7d"
+          },
+          "name": "llama-cpp-0.0.6327-4d74393.tar.gz"
+        }
+      ]
+    },
+    "app-ai/llama-cpp-0.0.6402": {
+    ...
+
+```
+
+or to a specific file:
+
+```bash
+$> anise-portage-converter  reposcan-generate --kit ai-kit --branch mark-unstable \
+        --eclass-dir /var/git/meta-repo/kits/core-kit/ \
+        ~/dev/macaroni/kits/ai-kit/ --concurrency 20 \
+        -o file -f /tmp/ai-kit-mark-unstable
+```
+
+where the convention of the target file is *\<kit-name\>-\<kit-branch\>*.
+
+
+> The ebuild.sh script is an important point where will be possible to integrate new technologies
+> without replace totally Portage at the begin.
+
+### Impacts on upgrading Python release
+
+Considering that Portage engine is written in Python and a lot of packages using PYTHON_COMPAT
+through the evoluted syntax introduced by Funtoo about *python3+* to automatically support all available Python
+versions we share expecially for *staff* developers a list of important points to verify on
+upgrading Python release:
+
+1. *anise-portage-converter*: as a core tool of the Macaroni workflow this tool must be
+   updated to support a new release on expand *python3+* string.
+   So, it's important check the supported [implementations](https://github.com/macaroni-os/anise-portage-converter/blob/master/pkg/reposcan/generator.go#L80).
+
+2. *python-utils-r1.eclass*: another core eclass used in the Portage engine to expand *python3+*
+   string. It's needed check the [\_python_set_impls](https://github.com/macaroni-os/core-kit/blob/mark-unstable/eclass/python-utils-r1.eclass#L146) function and update it with new Python releases
+
+3. *python-kit profile*: modify the [make.defaults](https://github.com/macaroni-os/kit-fixups/blob/mark-unstable/core-kit/profiles/funtoo/kits/python-kit/mark/make.defaults) file with the correct value for the variables
+   `PYTHON_TARGETS` and `PYTHON_SINGLE_TARGET`.
+
