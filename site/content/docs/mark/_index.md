@@ -24,14 +24,14 @@ So, the main keys of MARK are:
    available through Git repositories. The updates could be sent through direct commits
    or through Github PR.
 
-2. *dynamicity*: one of the pros of Gentoo and Funtoo is the easy way to add patches to
+2. *dynamism*: one of the pros of Gentoo and Funtoo is the easy way to add patches to
    upstream sources, at the same way we want follow this pattern and try to share an OS
    that is a good place for developers.
 
 3. *reproducibility*: share technologies, how to configure it and using Opensource is one
 of the core and more important key of MARK OS. Without sharing the knowledge this world
 will never grow. So, another important point a bit complex, for a lot of reason and just
-for for the volume of the documentation will be sharing our *Distro from Scratch* steps
+for the volume of the documentation will be sharing our *Distro from Scratch* steps
 used in MARK.
 
 Now the we have described the main principles under this stack it's time to describe
@@ -42,7 +42,7 @@ After the Funtoo shutdown in August 2024, Macaroni OS thanks to the support of t
 developers decides to start a new adventure to keep the system independent from other distro
 in order to have a better control of the system and avoid that external changes could be
 dangerous in the Macaroni OS itself. Obviously, starting from zero was not possible, and so,
-based of the expirience get in Funtoo we have applied the first changed to the *metatools*,
+based of the experience get in Funtoo we have applied the first changed to the *metatools*,
 *ego* needed to create the base for what is been developed in one year and that will be evolved
 again in the future. But having a clear target, trying to join the two worlds and create a gate
 between the Anise/binary stack and the sourced-based world of MARK. But not only this, the
@@ -51,7 +51,7 @@ least we hope on this. Working on our free time doesn't permit to share specific
 milestone so what we can share is at least the plan.
 
 Through this vision we are been really lucky to find our Sponsors, really thanks always for their
-support, and thourgh them we also oriented the development of our tools to be more connected to
+support, and through them we also oriented the development of our tools to be more connected to
 their technologies in order to share the better experience possible to our users.
 
 For this reason, the `mark-devkit` tool that is the main (but not the only) module used to keep
@@ -109,8 +109,8 @@ could be merged and moved to testing environment.
 The `mark-devkit kit bump-release` is used to update the JSON files of the
 [meta-repo](https://github.com/macaroni-os/meta-repo) repository in the
 branch related to the release that is later used by `ego` to fetch the Portage
-tree splitted in kits. This behaviour is also a protection about errors done in the
-kits that could be fastly reverted because until a new bump is done users will be
+tree split in kits. This behaviour is also a protection about errors done in the
+kits that could be quickly reverted because until a new bump is done users will be
 synced to the git hash of the last bump in the kit updated. Cons is that until a
 new bump is done new updates will be not visible to users. Normally, an automatic
 task run every day in our CD/CI that try to bump a new update the align the JSON
@@ -145,7 +145,7 @@ automatically test the existing tree a manual task is fired over our CD/CI to ex
 `mark-devkit kit merge` that doesn't use PR but just merge versions as a commits. Potentially,
 could be used PRs also on mark-v but we prefer using directly commit because when the new
 release is tagged through goreleaser tool we generate the ChangeLog automatically with the
-list of the new versions availables.
+list of the new versions available.
 
 The upgrade of the core packages (GCC, Glibc, etc.) will be always done before in these
 releases and later to the Desktop releases.
@@ -223,7 +223,7 @@ Using different branches ensure different levels of stability already and so the
 In a different way respect Gentoo and Funtoo, MARK doesn't generate the overlay metadata cache
 directly in the exposed repository. The main reason is that is more simple to manage in an
 upgrade workflow based on Github PR that could be merged, reverted, etc. without introduce jobs
-to update costantly the same repository that receive the update of the package, etc.
+to update constantly the same repository that receive the update of the package, etc.
 Without the metadata the *emerge* solver could be slow, but this could be solved
 with the execution of the command:
 
@@ -232,12 +232,12 @@ $> # As root user
 $> for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i ; done
 ```
 
-This step is temporary and managed automatically in the near future from the replacer of
+This step is temporary and managed automatically in the near future by the replacement of
 the `ego` tool.
 
 ### The Bridge between Bashing and Solver
 
-As a core element fo the integration between Portage and `anise-portage-converter` tool, it
+As a core element of the integration between Portage and `anise-portage-converter` tool, it
 seems a good idea describe the changes originally done by Funtoo and later used in MARK to have
 a better integration and used by `mark-devkit` and before from `metatools`.
 
@@ -272,9 +272,9 @@ The reason it’s under *python3.9/* is that Portage itself is written in Python
 scripts. So Portage calls this ebuild.sh as a bridge between the Python world (Portage) and
 the Bash world (ebuilds).
 
-In particolar, the file `ebuild.sh` when used with the variable `EBUILD_PHASE` with value `DEPEND`,
+In particular, the file `ebuild.sh` when used with the variable `EBUILD_PHASE` with value `DEPEND`,
 and with `PORTAGE_PIPE_FD` with value `1` permits to obtain from stdout the description of a specific
-package where is been executed the bash code. The output is splitted in multiple lines where every line
+package where is been executed the bash code. The output is split into multiple lines where every line
 has a specific meaning. The same output is the same written in the metadata cache files.
 
 This the list of positional lines generated with the specific meaning:
@@ -326,7 +326,7 @@ where:
 
 16. *PROPERTIES*: this line contains the properties of the package.
 
-17. *DEFINED_PHASES*: this line contains the list of the phases defined and/or overrided in the ebuild,
+17. *DEFINED_PHASES*: this line contains the list of the phases defined and/or over-ridden in the ebuild,
     for example `src_unpack`, `src_compile`, etc.
 
 18. *HDEPEND*: this line contains the list of hard dependencies for specific eclasses / helper packages.
@@ -506,7 +506,7 @@ where the convention of the target file is *\<kit-name\>-\<kit-branch\>*.
 
 Considering that Portage engine is written in Python and a lot of packages using PYTHON_COMPAT
 through the evoluted syntax introduced by Funtoo about *python3+* to automatically support all available Python
-versions we share expecially for *staff* developers a list of important points to verify on
+versions we share especially for *staff* developers a list of important points to verify on
 upgrading Python release:
 
 1. *anise-portage-converter*: as a core tool of the Macaroni workflow this tool must be
