@@ -197,6 +197,16 @@ GARR network is designed and managed by Consortium GARR, a non-profit associatio
     </item>
     
     <item>
+      <title>Became a Contributor</title>
+      <link>https://www.macaronios.org/docs/mark/contributors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/mark/contributors/</guid>
+      <description>🏄 Became a Contributor # Macaroni OS is here thanks to the hard work done in the free time from all Macaroni team, time that is limited and without the support of contributors through PR will be hard keep the OS updated and improve.
+Any help is welcome, so, if you want support us also just testing the tree will be helpful. Instead, if you want to help the development and the evolution of Macaroni you can start with contribute to our kit-fixups repository where are present the specs of our autogen for mark-devkit tool.</description>
+    </item>
+    
+    <item>
       <title>Contacts</title>
       <link>https://www.macaronios.org/contact/main/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -241,10 +251,20 @@ It is possible to see the list of the available uid/gid with the following comma
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/getting-started/</guid>
-      <description>Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page.
+      <description>Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page. If you want to use MARK remember to download images with Mark in the suffix.
 1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download with our SHA256 hash:
-$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
-2.Flash your USB drive # To write an ISO there are different tools and ways.</description>
+$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.</description>
+    </item>
+    
+    <item>
+      <title>MARK Devkit</title>
+      <link>https://www.macaronios.org/docs/mark/markdevkit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/docs/mark/markdevkit/</guid>
+      <description>🚀 MARK Development Kit # Autogen # The autogen command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at metatools before but with a better integration for our CD/CI chain and for a CDN / Object Store integration.
+These the major differences:
+it doesn&amp;rsquo;t follow a monolitic process on autogen ebuilds. It permits defined different YAML files with a specific target Kit. The defined YAML could be elaborated in parallel on different distributed nodes.</description>
     </item>
     
     <item>

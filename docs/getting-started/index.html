@@ -71,10 +71,9 @@
 <!-- Custom stylesheet - for your changes -->
 
 <link rel="stylesheet" href="https://www.macaronios.org/css/custom.min.css" media="screen"><meta property="og:title" content="Getting Started" />
-<meta property="og:description" content="Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page.
+<meta property="og:description" content="Getting Started # Install Macaroni ISO # Choose the right ISO for your requirements from our Download page. If you want to use MARK remember to download images with Mark in the suffix.
 1.Validate downloaded ISO # After the you have downloaded the ISOs file, I suggest to verify the quality of the download with our SHA256 hash:
-$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same.
-2.Flash your USB drive # To write an ISO there are different tools and ways." />
+$ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso $ cat Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso.sha256 8637d8c6ba72f8694aabd631f038473acaadd0fbb8fc9fa7cec7bb0d495f1f54 If the download is correct the hash will be the same." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.macaronios.org/docs/getting-started/" /><meta property="article:section" content="docs" />
 
@@ -83,7 +82,7 @@ $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.a53864ade531fdceb8434320eade6221566dbc51e0d6f8b2eac6c1080c27a7df.js" integrity="sha256-pThkreUx/c64Q0Mg6t5iIVZtvFHg1viy6sbBCAwnp98="></script>
+<script defer src="/en.search.min.7de5850197f3d1afcb21c1f2afb638beb18dd80986ad17bbcca987b50001f041.js" integrity="sha256-feWFAZfz0a/LIcHyr7Y4vrGN2AmGrRe7zKmHtQAB8EE="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -208,7 +207,9 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 <li>
-  <a href="/docs/mark/phoenix2mark/">Became a Contributor</a></li>
+  <a href="/docs/mark/contributors/">Became a Contributor</a></li>
+<li>
+  <a href="/docs/mark/markdevkit/">mark-devkit</a></li>
 </ul>
 </li>
 <li>
@@ -344,7 +345,8 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#install-macaroni-iso">#</a>
 </h1>
 <p>Choose the right ISO for your requirements from our 
-  <a href="https://www.macaronios.org/iso/">Download</a> page.</p>
+  <a href="https://www.macaronios.org/iso/">Download</a> page.
+If you want to use MARK remember to download images with <code>Mark</code> in the suffix.</p>
 <h2 id="1validate-downloaded-iso">
   1.Validate downloaded ISO
   <a class="anchor" href="#1validate-downloaded-iso">#</a>
@@ -692,22 +694,21 @@ driver fixes the problem. Hereinafter, is an example of a possible solution:</st
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> &gt; /etc/X11/xorg.conf.d/50-vmmouse.conf
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$&gt; /etc/init.d/xdm restart
-</span></span></code></pre></div><h1 id="install-macaroni-lxdincus-containers">
-  Install Macaroni LXD/Incus Containers
-  <a class="anchor" href="#install-macaroni-lxdincus-containers">#</a>
+</span></span></code></pre></div><h1 id="install-macaroni-lxd-containers">
+  Install Macaroni LXD Containers
+  <a class="anchor" href="#install-macaroni-lxd-containers">#</a>
 </h1>
 <p>Macaroni OS supplies LXD/Incus images over a Simplestreams Server with help of the
 
   <a href="https://github.com/MottainaiCI/simplestreams-builder">simplestreams-builder</a> tool.</p>
 <p>To configure your LXD system to download Macaroni OS images you need to add the <code>macaroni</code> remote:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
-</span></span></code></pre></div><p>Our Simplestreams Server works correctly with both LXD and Incus, so you can add the remote
-with <code>incus</code> too:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or as fallback/secondary mirror</span>
+</span></span><span style="display:flex;"><span>$&gt; lxc remote add macaroni-fallback https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>The images are visible with the command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; lxc image list macaroni:
 </span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or</span>
-</span></span><span style="display:flex;"><span>$&gt; incus image list macaroni:
+</span></span><span style="display:flex;"><span>$&gt; lxc image list macaroni-fallback:
 </span></span></code></pre></div><h1 id="install-macaroni-incus-containers">
   Install Macaroni Incus Containers
   <a class="anchor" href="#install-macaroni-incus-containers">#</a>
@@ -716,9 +717,13 @@ with <code>incus</code> too:</p>
 
   <a href="https://github.com/MottainaiCI/simplestreams-builder">simplestreams-builder</a> tool.</p>
 <p>To configure your Incus system to download Macaroni OS images you need to add the <code>macaroni</code> remote:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or as fallback/secondary mirror</span>
+</span></span><span style="display:flex;"><span>$&gt; incus remote add macaroni-fallback https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 </span></span></code></pre></div><p>The images are visible with the command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus image list macaroni:
+</span></span><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># or</span>
+</span></span><span style="display:flex;"><span>$&gt; incus image list macaroni-fallback:
 </span></span></code></pre></div><h1 id="install-macaroni-docker-containers">
   Install Macaroni Docker Containers
   <a class="anchor" href="#install-macaroni-docker-containers">#</a>
@@ -835,6 +840,41 @@ available:</p>
 <td style="text-align:left">macaronios/terragon-dev-minimal</td>
 <td style="text-align:center"><em>Terragon</em></td>
 <td style="text-align:left">The minimal image of the Terragon release with develop repositories.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-i</td>
+<td style="text-align:center"><em>MARK-I</em></td>
+<td style="text-align:left">The minimal image of MARK-I with X and btrfs mix-in.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-i-gnome</td>
+<td style="text-align:center"><em>MARK-I</em></td>
+<td style="text-align:left">The minimal image of MARK-I with Gnome packages.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-i-kde</td>
+<td style="text-align:center"><em>MARK-I</em></td>
+<td style="text-align:left">The minimal image of MARK-I with KDE packages.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-iii</td>
+<td style="text-align:center"><em>MARK-III</em></td>
+<td style="text-align:left">The minimal image of MARK-III.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-unstable</td>
+<td style="text-align:center"><em>MARK-Unstable</em></td>
+<td style="text-align:left">The minimal image of MARK-Unstable.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-v</td>
+<td style="text-align:center"><em>MARK-V</em></td>
+<td style="text-align:left">The minimal image of MARK-V.</td>
+</tr>
+<tr>
+<td style="text-align:left">macaronios/mark-xl</td>
+<td style="text-align:center"><em>MARK-XL</em></td>
+<td style="text-align:left">The minimal image of MARK-XL.</td>
 </tr>
 </tbody>
 </table>
