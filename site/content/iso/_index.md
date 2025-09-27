@@ -136,6 +136,17 @@ The password of the `macaroni` user is `macaroni`.
       </td>
     </tr>
     <tr>
+      <td>Macaroni Phoenix KDE Live</td>
+      <td>
+        <span class="badge-label badge-blue">newbie</span>
+        <span class="badge-label badge-blue-light">student</span>
+        <span class="badge-label badge-orange">tester</span>
+      </td>
+      <td>Ready to use ISO with different tools for Office/School/Graphic using KDE DE and Calamares installer.
+          It contains both Wayland and X11 server selectable at the login.
+      </td>
+    </tr>
+    <tr>
       <td>Macaroni Phoenix XFCE</td>
       <td>
         <span class="badge-label badge-blue">newbie</span>
@@ -256,7 +267,7 @@ The password of the `macaroni` user is `macaroni`.
   </tbody>
 </table>
 
-Our latest release is <b>`25.06`</b> and it uses kernel *6.1.141* for Server ISOs and *6.12.33* for the others.
+Our latest release is <b>`25.09`</b> and it uses kernel *6.1.150* for Server ISOs and *6.12.45* for the others.
 
 <div id="isos"></div>
 
