@@ -8,6 +8,7 @@ type: docs
 # Install Macaroni ISO
 
 Choose the right ISO for your requirements from our [Download](https://www.macaronios.org/iso/) page.
+If you want to use MARK remember to download images with `Mark` in the suffix.
 
 ## 1.Validate downloaded ISO
 
@@ -434,7 +435,7 @@ $> /etc/init.d/xdm restart
 
 
 
-# Install Macaroni LXD/Incus Containers
+# Install Macaroni LXD Containers
 
 Macaroni OS supplies LXD/Incus images over a Simplestreams Server with help of the
 [simplestreams-builder](https://github.com/MottainaiCI/simplestreams-builder) tool.
@@ -442,14 +443,9 @@ Macaroni OS supplies LXD/Incus images over a Simplestreams Server with help of t
 To configure your LXD system to download Macaroni OS images you need to add the `macaroni` remote:
 
 ```shell
-$> lxc remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
-```
-
-Our Simplestreams Server works correctly with both LXD and Incus, so you can add the remote
-with `incus` too:
-
-```shell
-$> incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+$> lxc remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+$> # or as fallback/secondary mirror
+$> lxc remote add macaroni-fallback https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 ```
 
 The images are visible with the command:
@@ -457,7 +453,7 @@ The images are visible with the command:
 ```shell
 $> lxc image list macaroni:
 $> # or
-$> incus image list macaroni:
+$> lxc image list macaroni-fallback:
 ```
 
 # Install Macaroni Incus Containers
@@ -468,13 +464,17 @@ Macaroni OS supply their Incus images over a Simplestreams Server with help of t
 To configure your Incus system to download Macaroni OS images you need to add the `macaroni` remote:
 
 ```shell
-$> incus remote add macaroni https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
+$> incus remote add macaroni https://images.macaronios.org/lxd-images --protocol simplestreams --public
+$> # or as fallback/secondary mirror
+$> incus remote add macaroni-fallback https://macaronios.mirror.garr.it/images/lxd-images --protocol simplestreams --public
 ```
 
 The images are visible with the command:
 
 ```shell
 $> incus image list macaroni:
+$> # or
+$> incus image list macaroni-fallback:
 ```
 
 
@@ -547,3 +547,10 @@ available:
 | macaronios/terragon-minimal | *Terragon* | The minimal image of the Terragon release without subsets. |
 | macaronios/terragon-minimal-devel | *Terragon* | The minimal image of the Terragon release with *portage* and *devel* subsets. |
 | macaronios/terragon-dev-minimal | *Terragon* | The minimal image of the Terragon release with develop repositories. |
+| macaronios/mark-i | *MARK-I* | The minimal image of MARK-I with X and btrfs mix-in. |
+| macaronios/mark-i-gnome | *MARK-I* | The minimal image of MARK-I with Gnome packages. |
+| macaronios/mark-i-kde | *MARK-I* | The minimal image of MARK-I with KDE packages. |
+| macaronios/mark-iii | *MARK-III* | The minimal image of MARK-III. |
+| macaronios/mark-unstable | *MARK-Unstable* | The minimal image of MARK-Unstable. |
+| macaronios/mark-v | *MARK-V* | The minimal image of MARK-V. |
+| macaronios/mark-xl | *MARK-XL* | The minimal image of MARK-XL. |
