@@ -62,7 +62,7 @@ Macaroni ARM64 incoming! Thanks to the work of our developer Raphael Bastos aka 
 The stage3 could be downloaded using anise through the macaroni-distfiles repository:
 $\u0026gt; anise i --sync-repos repository/macaroni-distfiles $\u0026gt; anise i --sync-repos mark-31/stage3-arm64 The mark-31 branch is pretty experimental, but we will work to stabilize things and prepare SD images ready to be used on different embedded devices. Stay tuned!
 Thanks Many thanks to all Developers and Contributors that are the sap of all this and to all people that helps us with testing and donations.
-Support Us Any user that wants to support our work for Macaroni could do this through the Github Sponsor or through the Liberay.
+Support Us Any user that wants to support our work for Macaroni could do this through the Github Sponsor or through the Liberay page.
 `}),e.add({id:3,href:"/blog/phoenix-25.06/",title:"Phoenix 25.06 Released!",section:"Blog",content:`The Phoenix is reborn! We are excited to share the new release of Phoenix 25.06 now based on MARK stack, in particular based on mark-iii branch.
 A long time is passed from the previous release, but because the team is been busy with the big work done in the last year of the M.A.R.K. stack that have a lot to improve but set the base of new features and characteristics that will permit to the Macaroni OS to improve in the next years.
 So, we are sorry for this log waiting but also if the evolution is not so visible, a lot is changed in core services and our infrastructure that now use the lovely CDN77 Object Storage with a better integration with the CD/CI tasks.
