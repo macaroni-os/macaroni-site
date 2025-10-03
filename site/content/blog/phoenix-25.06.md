@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2025-07-03
 linktitle: Phoenix 25.06 Released!
 title: Phoenix 25.06 Released!
-menu:
-  main:
 tags:
   - mark
   - macaroni

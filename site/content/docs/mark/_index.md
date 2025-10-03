@@ -230,6 +230,7 @@ with the execution of the command:
 ```
 $> # As root user
 $> for i in $(ls -1 /var/git/meta-repo/kits/) ; do egencache --update --repo=$i ; done
+$> chown portage:portage -R /var/git/meta-repo/kits/
 ```
 
 This step is temporary and managed automatically in the near future by the replacement of

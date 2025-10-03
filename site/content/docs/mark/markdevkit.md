@@ -5,6 +5,9 @@ type: docs
 
 # 🚀 MARK Development Kit
 
+The `mark-devkit` tool is one of the core module in the MARK OS.
+
+
 # Autogen
 
 The `autogen` command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at
