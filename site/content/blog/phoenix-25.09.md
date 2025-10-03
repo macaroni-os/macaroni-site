@@ -233,5 +233,5 @@ people that helps us with testing and donations.
 
 Any user that wants to support our work for Macaroni could do this through the
 Github [Sponsor](https://github.com/sponsors/geaaru) or through the
-[Liberay](https://liberapay.com/geaaru/).
+[Liberay](https://liberapay.com/geaaru/) page.
 
