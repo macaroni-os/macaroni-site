@@ -6,20 +6,11 @@
     <description>Recent content in Tags on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>eagle</title>
-      <link>https://www.macaronios.org/tags/eagle/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.macaronios.org/tags/eagle/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sun, 28 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macaroni</title>
       <link>https://www.macaronios.org/tags/macaroni/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/macaroni/</guid>
       <description></description>
@@ -28,7 +19,7 @@
     <item>
       <title>mark</title>
       <link>https://www.macaronios.org/tags/mark/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/mark/</guid>
       <description></description>
@@ -37,7 +28,7 @@
     <item>
       <title>phoenix</title>
       <link>https://www.macaronios.org/tags/phoenix/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/phoenix/</guid>
       <description></description>
@@ -46,9 +37,18 @@
     <item>
       <title>release</title>
       <link>https://www.macaronios.org/tags/release/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/tags/release/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eagle</title>
+      <link>https://www.macaronios.org/tags/eagle/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/tags/eagle/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,18 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phoenix 25.09 and MARK-I 25.09 Released!</title>
+      <link>https://www.macaronios.org/blog/phoenix-25.09/</link>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-25.09/</guid>
+      <description>MARK-I 25.09 is here! We are excited to share that the first release of MARK-I 25.09 is been released!
+The mark-i release is the stable source-based release for Desktop. I&amp;rsquo;m pretty sure that is not perfect but it&amp;rsquo;s an important milestone for us that sign the start point of the MARK era also for Desktop.
+This release is been pretty tested over the Phoenix pipeline in the mark-iii but there are few packages not yet available in Phoenix that are not integrated in the build chain that could be have issues, but normally, the core packages are all in the build chain and we can consider the tree pretty stable for end users.</description>
+    </item>
+    
     <item>
       <title>Phoenix 25.06 Released!</title>
       <link>https://www.macaronios.org/blog/phoenix-25.06/</link>
@@ -262,9 +273,10 @@ $ sha256sum Macaroni-Funtoo-Phoenix-Gnome-23.03.02.iso 8637d8c6ba72f8694aabd631f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/mark/markdevkit/</guid>
-      <description>🚀 MARK Development Kit # Autogen # The autogen command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at metatools before but with a better integration for our CD/CI chain and for a CDN / Object Store integration.
+      <description>🚀 MARK Development Kit # The mark-devkit tool is one of the core module in the MARK OS.
+Autogen # The autogen command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at metatools before but with a better integration for our CD/CI chain and for a CDN / Object Store integration.
 These the major differences:
-it doesn&amp;rsquo;t follow a monolitic process on autogen ebuilds. It permits defined different YAML files with a specific target Kit. The defined YAML could be elaborated in parallel on different distributed nodes.</description>
+it doesn&amp;rsquo;t follow a monolitic process on autogen ebuilds. It permits defined different YAML files with a specific target Kit.</description>
     </item>
     
     <item>

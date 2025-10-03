@@ -42,9 +42,10 @@ $&amp;gt; anise subsets list 🍨 Subsets enabled: * portage Portage metadata an
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/docs/mark/markdevkit/</guid>
-      <description>🚀 MARK Development Kit # Autogen # The autogen command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at metatools before but with a better integration for our CD/CI chain and for a CDN / Object Store integration.
+      <description>🚀 MARK Development Kit # The mark-devkit tool is one of the core module in the MARK OS.
+Autogen # The autogen command is used by M.A.R.K. workflow to autogen new ebuilds in a similar way at metatools before but with a better integration for our CD/CI chain and for a CDN / Object Store integration.
 These the major differences:
-it doesn&amp;rsquo;t follow a monolitic process on autogen ebuilds. It permits defined different YAML files with a specific target Kit. The defined YAML could be elaborated in parallel on different distributed nodes.</description>
+it doesn&amp;rsquo;t follow a monolitic process on autogen ebuilds. It permits defined different YAML files with a specific target Kit.</description>
     </item>
     
   </channel>

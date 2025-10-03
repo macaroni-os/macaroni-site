@@ -6,7 +6,18 @@
     <description>Recent content in Blog on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phoenix 25.09 and MARK-I 25.09 Released!</title>
+      <link>https://www.macaronios.org/blog/phoenix-25.09/</link>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/phoenix-25.09/</guid>
+      <description>MARK-I 25.09 is here! We are excited to share that the first release of MARK-I 25.09 is been released!
+The mark-i release is the stable source-based release for Desktop. I&amp;rsquo;m pretty sure that is not perfect but it&amp;rsquo;s an important milestone for us that sign the start point of the MARK era also for Desktop.
+This release is been pretty tested over the Phoenix pipeline in the mark-iii but there are few packages not yet available in Phoenix that are not integrated in the build chain that could be have issues, but normally, the core packages are all in the build chain and we can consider the tree pretty stable for end users.</description>
+    </item>
+    
     <item>
       <title>Phoenix 25.06 Released!</title>
       <link>https://www.macaronios.org/blog/phoenix-25.06/</link>
