@@ -6,7 +6,19 @@
     <description>Recent content in mark on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/mark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/mark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MARK-V, Terragon and Eagle 25.10 Released!</title>
+      <link>https://www.macaronios.org/blog/mark-v-25.10/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/mark-v-25.10/</guid>
+      <description>A fast post just to share the new releases in the Container area.
+MARK-V 25.10 is here! We are excited to share that the second release of mark-v is been completed.
+A lot of CVEs are been fixed and thanks to our Docker Sponsor we easily check that core packages are now CVE free.
+The two new python-build-tools-kit, ai-kit kits are been added to the tree and a lot of new packages will be added in the next future.</description>
+    </item>
+    
     <item>
       <title>Phoenix 25.09 and MARK-I 25.09 Released!</title>
       <link>https://www.macaronios.org/blog/phoenix-25.09/</link>
