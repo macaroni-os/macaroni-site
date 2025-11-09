@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2025-09-28
 linktitle: Phoenix 25.09 and MARK-I 25.09 Released!
 title: Phoenix 25.09 and MARK-I 25.09 Released!
-menu:
-  main:
 tags:
   - mark
   - macaroni
