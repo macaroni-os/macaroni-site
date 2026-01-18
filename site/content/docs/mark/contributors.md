@@ -50,7 +50,7 @@ First, create the local or remote container:
 
 
 ```shell
-$> incus launch -p default macaroni:macaroni/mark-unstable my-mark-unstable -p default
+$> incus launch -p default macaroni:macaroni/mark-unstable my-mark-unstable
 ```
 
 In the example, is used the `mark-unstable` image but you can use `mark-xl` or any other MARK images
