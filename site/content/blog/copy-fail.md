@@ -12,37 +12,38 @@ tags:
 weight: 5
 ---
 
-A little detail about last security issues in Linux world
-and the impact in the Macaroni OS world.
+A little detail about recent security issues in the Linux world
+and their impact on the Macaroni OS ecosystem.
 
 # Copy Fail on Macaroni OS
 
-In the last period a lot of important CVEs (CVE-2026-31431, CVE-2026-43500, etc.)
-in the Linux world that have shaken all Linux distros.
-We speak about *Copy Fail*, *Dirty Frag* and derived exploits.
+Recently, several important CVEs (CVE-2026-31431, CVE-2026-43500, etc.)
+have shaken the Linux world.
+We are talking about *Copy Fail*, *Dirty Frag*, and related exploits.
 
 We are surprised that an important mitigation strategy is not yet
-been shared and analyzed by the Macaroni OS Team. This strategy doesn't
-resolve the security issue but at least give to the OS administrator
-a bit more time to organize structured upgrade process.
+been shared and we want instead share what is been analyzed by the Macaroni OS
+Team.
+This strategy does not fully resolve the security issue, but it at least
+gives OS administrators more time to organize a structured upgrade process.
 
 So, this article wants share what is been discovery in order to be usable
 not only in Macaroni OS but in all distros where possible.
 
-We was titubante to share or not this informations, because share them means
-also give a new means to attacker but we think that is something interesting
-that need to be shared considering that the fixes of the security issues are
-now available.
+We were hesitant about sharing this information because publishing it also
+means giving attackers additional ideas. However, we believe this is something
+important that should be shared, especially considering that fixes for these
+security issues are now available.
 
-The security issues related to the *Copy Fail* exploit uses a Linux kernel
-bug on page cache that permits root escalation where the files with *suid*
-have readable permissions.
+The security issues related to the *Copy Fail* exploit rely on a Linux kernel
+page-cache bug that permits privilege escalation when *suid* files are readable.
 
-Before enter in the detail we share a real example did in the `macaroni/mark-unstable` LXD/Incus
-container using the Golang [copyfail-go](https://github.com/badsectorlabs/copyfail-go)
-tool now available in our `forensics-kit` to show the exploit and the mitigation.
+Before going into the details,  we want to share a real example performed in the
+`macaroni/mark-unstable` LXD/Incus container using the Golang [copyfail-go](https://github.com/badsectorlabs/copyfail-go)
+tool now available in our `forensics-kit`, to demonstrate both the exploit
+and the mitigation.
 
-So, the first step is create the testing container:
+So, the first step is to create the testing container:
 
 ```bash
 $> incus launch -p default macaroni:macaroni/mark-unstable test-cve
@@ -95,9 +96,9 @@ ssh-keygen: generating new host keys: RSA ECDSA ED25519
 test-cve / $ passwd geaaru
 ```
 
-
-The `copyfail-go` could be downloaded from the website, compiled locally or directly
-in the container through `emerge`. We use SSH connection with a unprivileged user *geaaru* to test
+The `copyfail-go` tool can be downloaded from the website, compiled locally,
+or installed directly inside the container through `emerge`.
+We use an SSH connection with an unprivileged user named *geaaru* to test
 the exploit.
 
 This is what happens in the container:
@@ -112,12 +113,11 @@ geaaru@test-cve ~ $  copyfail-go --backup /tmp/su-original
 
 ```
 
-The exploit doesn't work because by default the `/bin/su` binary has 4711 as
-file permissions while a lot of distro install it with 4755.
+The exploit does not work because, by default, the `/bin/su` binary has permissions
+set to 4711, while many distributions install it with 4755.
 
-Here, the dimostration: as root (through `incus exec` for example), we
-change the permissions of the /bin/su binary with 4755:
-
+Here is the demonstration: as root (through `incus exec`, for example),
+we change the permissions of the `/bin/su` binary to 4755:
 
 ```bash
 test-cve ~ $ ls -l /bin/su
@@ -144,11 +144,13 @@ root
 
 ```
 
-💥 the exploit works and the user has root privileges!
+💥 the exploit works and the user obtains root privileges!
 
-Any setuid-root binary readable by the user works, so the mitigation
-needs to be applied to all binary. This is an example of a simple script usable
-for non-macaroniOS systems to mitigate the security issue:
+Any setuid-root binary readable by the user is vulnerable, so the mitigation
+needs to be applied to all such binaries.
+
+This is an example of a simple script that can also be used on non-Macaroni OS
+systems to mitigate the security issue:
 
 ```
 for bin in passwd chsh chfn mount sudo pkexec; do
@@ -157,15 +159,16 @@ for bin in passwd chsh chfn mount sudo pkexec; do
 done
 ```
 
-In conclusion, for `copy-fail` setting 4711 as permission to all suid-root binary mitigate the exploit.
+In conclusion, for `copy-fail`, setting permission 4711 on all suid-root
+binaries mitigates the exploit.
 
 # Dirty frag on Macaroni OS
 
-Following the Page-Cache Write described for the Copy Fail exploit there is 
-another security issue that permits root escalation: *Dirty frag*.
+Following the page-cache write issue described for the *Copy Fail* exploit,
+there is another security issue that permits privilege escalation: *Dirty Frag*.
 
-Using the same container created before, this is what happens
-in our MARK container:
+Using the same container created earlier, this is what happens
+inside our MARK container:
 
 ```bash
 geaaru@test-cve ~ $ git clone https://github.com/V4bel/dirtyfrag.git
@@ -183,46 +186,70 @@ geaaru@test-cve ~/dirtyfrag $ ./exp
 dirtyfrag: failed (rc=0)
 ```
 
-Before describe the reason we suggest to use the mitigation process
-already described in Internet:
+Before describing the reason, we suggest applying the mitigation process
+already described online:
 
 ```bash
 $> sh -c "printf 'install esp4 /bin/false\ninstall esp6 /bin/false\ninstall rxrpc /bin/false\n' > /etc/modprobe.d/dirtyfrag.conf; rmmod esp4 esp6 rxrpc 2>/dev/null; true"
 ```
 
-My special thanks to our developer `cuantar` for this precise description
-of the exploit and the analysis that I report.
+My special thanks to our developer `cuantar` for the precise description
+and analysis of the exploit, which I report below.
 
 
 In the test program there are two exploits:
 
-1) try to poison the page cache version of *su* so that it starts a root shell, by exploiting the suid root.
-   This fails on Macaroni due to our o-r permissions on suid root binaries.
+1) It attempts to poison the page-cache version of *su* so that it starts a root shell,
+   by exploiting the suid-root binary.
+   This fails on Macaroni because our suid-root binaries are not world-readable.
 
-2) try to poison the page cache version of `/etc/passwd` to re-write the root entry so that root no longer has a shadow password,
-   and make the password blank. It fails on Macaroni because our root line isn't at the top of the file, and the GECOS field doesn't just
-   say root like the test program assumes. The `/etc/passwd` is generated by `entities` tool and the root user is created later
-   in the `markdev-kit metro` process.
-   Related to this, since we use `wheel` group for `su` automatically in our PAM configuration, that's another reason the `/etc/passwd`
-   file modification doesn't work on Macaroni.  Even if the attacker succeeds at setting the password for root to be blank, he can't use the
-   regular unmodified `su` to switch to it unless he's in wheel group but we're still vulnerable to an attack on a different binary like `df`.
+2) It attempts to poison the page-cache version of `/etc/passwd` in order to rewrite
+   the root entry so that root no longer has a shadow password, leaving the password blank.
+   This fails on Macaroni because our root entry is not at the top of the file,
+   and the GECOS field does not simply contain `root`, as the test program assumes.
 
-It's important to understand that point 2 is still a problem on Macaroni. A clever attacker with local access can
-just tailor the exploit to the target system, instead of hard-coding wrong strings in it.
+   The `/etc/passwd` file is generated by the `entities` tool and the root user
+   is created later during the `markdev-kit metro` process.
 
-Although point 1 fails on Macaroni to get root, the attacker could still use the same procedure to modify some other binary,
-like `df`, and wait for an admin to log in as root and run it. The exploit allows to change the cached version of a binary into
-something else, by replacing the beginning of it with an ELF executable.  Suppose instead of a shell, the executable spawns a child
-process that makes an outgoing connection to a server the attacker controls, connects it to a shell, and then disowns the child;
-when the admin logs in as root and runs df, a backdoor will be created.
+   Additionally, since we automatically enforce the `wheel` group for `su`
+   through our PAM configuration, this is another reason why modifying
+   `/etc/passwd` does not work on Macaroni.
 
-So, we are still vulnerable to point 1 and 2 in the hands of a clever attacker but we have a good temporary mitigation until the
-new kernel will be upgraded.
+   Even if an attacker succeeds in setting the root password to blank,
+   they still cannot use the regular unmodified `su` command to switch to root
+   unless they belong to the `wheel` group.
 
+   However, we are still vulnerable to attacks against different binaries,
+   such as `df`.
 
-Again, my special thanks to `cuantar` and `coffnix` for monitoring security vulnerabilities and share details.
+It is important to understand that point 2 is still a problem on Macaroni.
+A skilled attacker with local access could tailor the exploit specifically
+for the target system instead of relying on hard-coded incorrect strings.
 
-We hope that these informations will help other distro and OS administrator in their jobs.
+Although point 1 fails on Macaroni when attempting to obtain root directly,
+an attacker could still use the same technique to modify another binary,
+such as `df`, and wait for an administrator to execute it as root.
+
+The exploit allows the attacker to replace the cached version of a binary
+with a malicious one by overwriting its beginning with another ELF executable.
+
+For example, instead of spawning a shell directly, the malicious executable
+could start a child process that establishes an outgoing connection to a
+server controlled by the attacker, attaches it to a shell, and then detaches
+the child process.
+
+When the administrator later logs in as root and executes `df`,
+a backdoor connection would be created.
+
+Therefore, we are still vulnerable to points 1 and 2 in the hands of a skilled attacker,
+but we currently have a reasonable temporary mitigation until updated kernels
+are deployed.
+
+Again, my special thanks to `cuantar` and `coffnix` for monitoring security
+vulnerabilities and sharing technical details.
+
+We hope this information will help other distributions and OS administrators
+in their work.
 
 # Phoenix - WIP
 
