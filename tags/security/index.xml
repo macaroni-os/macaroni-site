@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>security on Macaroni OS</title>
+    <link>https://www.macaronios.org/tags/security/</link>
+    <description>Recent content in security on Macaroni OS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Copy Fail and Dirty Frag on Macaroni OS</title>
+      <link>https://www.macaronios.org/blog/copy-fail/</link>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/copy-fail/</guid>
+      <description>A little detail about last security issues in Linux world and the impact in the Macaroni OS world.
+Copy Fail on Macaroni OS In the last period a lot of important CVEs (CVE-2026-31431, CVE-2026-43500, etc.) in the Linux world that have shaken all Linux distros. We speak about Copy Fail, Dirty Frag and derived exploits.
+We are surprised that an important mitigation strategy is not yet been shared and analyzed by the Macaroni OS Team.</description>
+    </item>
+    
+  </channel>
+</rss>

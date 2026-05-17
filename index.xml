@@ -6,7 +6,18 @@
     <description>Recent content on Macaroni OS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.macaronios.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Copy Fail and Dirty Frag on Macaroni OS</title>
+      <link>https://www.macaronios.org/blog/copy-fail/</link>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.macaronios.org/blog/copy-fail/</guid>
+      <description>A little detail about last security issues in Linux world and the impact in the Macaroni OS world.
+Copy Fail on Macaroni OS In the last period a lot of important CVEs (CVE-2026-31431, CVE-2026-43500, etc.) in the Linux world that have shaken all Linux distros. We speak about Copy Fail, Dirty Frag and derived exploits.
+We are surprised that an important mitigation strategy is not yet been shared and analyzed by the Macaroni OS Team.</description>
+    </item>
+    
     <item>
       <title>MARK-V, Terragon and Eagle 25.10 Released!</title>
       <link>https://www.macaronios.org/blog/mark-v-25.10/</link>
