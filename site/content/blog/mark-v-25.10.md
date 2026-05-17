@@ -3,8 +3,6 @@ author: "Daniele Rondina"
 date: 2025-11-08
 linktitle: MARK-V, Terragon and Eagle 25.10 Released!
 title: MARK-V, Terragon and Eagle 25.10 Released!
-menu:
-  main:
 tags:
   - mark
   - macaroni
