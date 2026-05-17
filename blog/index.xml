@@ -13,9 +13,9 @@
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       
       <guid>https://www.macaronios.org/blog/copy-fail/</guid>
-      <description>A little detail about last security issues in Linux world and the impact in the Macaroni OS world.
-Copy Fail on Macaroni OS In the last period a lot of important CVEs (CVE-2026-31431, CVE-2026-43500, etc.) in the Linux world that have shaken all Linux distros. We speak about Copy Fail, Dirty Frag and derived exploits.
-We are surprised that an important mitigation strategy is not yet been shared and analyzed by the Macaroni OS Team.</description>
+      <description>A little detail about recent security issues in the Linux world and their impact on the Macaroni OS ecosystem.
+Copy Fail on Macaroni OS Recently, several important CVEs (CVE-2026-31431, CVE-2026-43500, etc.) have shaken the Linux world. We are talking about Copy Fail, Dirty Frag, and related exploits.
+We are surprised that an important mitigation strategy is not yet been shared and we want instead share what is been analyzed by the Macaroni OS Team.</description>
     </item>
     
     <item>
