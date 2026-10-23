@@ -81,7 +81,7 @@ Any help is welcome, so, if you want support us also just testing the tree will 
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.1164f56a049b54b057c0a24366cd57b4a691497d1205f14555b9193616d34af1.js" integrity="sha256-EWT1agSbVLBXwKJDZs1XtKaRSX0SBfFFVbkZNhbTSvE="></script>
+<script defer src="/en.search.min.edea23bf9b5c16097814aef117076da35e006b8754d36596ab90533721c9b60e.js" integrity="sha256-7eojv5tcFgl4FK7xFwdto14Aa4dU02WWq5BTNyHJtg4="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -384,7 +384,18 @@ could be used for all solutions.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus launch -p default macaroni:macaroni/mark-unstable my-mark-unstable
 </span></span></code></pre></div><p>In the example, is used the <code>mark-unstable</code> image but you can use <code>mark-xl</code> or any other MARK images
 based on your requirements.</p>
-<p>Second, setup your MARK tree:</p>
+<blockquote>
+<p>If the freshly launched container has no IPv4 address (<code>incus list</code> shows it empty and <code>ego sync</code>
+fails cloning the kits) in most cases the firewall of the host is blocking the traffic of the
+Incus/LXD bridge (the DHCP/DNS request to the bridge gateway and the forwarding). Keep in mind
+that, in this scenario, the <code>netif.eth0</code> service inside the image remains in <code>started</code> state also
+when the lease fails, so it could be hard to spot. On hosts using <code>ufw</code> permit the bridge with:</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; <span style="color:#75715e"># As root user on the host (with firewalld, instead, add the bridge to the trusted zone)</span>
+</span></span><span style="display:flex;"><span>$&gt; ufw allow in on incusbr0
+</span></span><span style="display:flex;"><span>$&gt; ufw route allow in on incusbr0
+</span></span><span style="display:flex;"><span>$&gt; ufw route allow out on incusbr0
+</span></span></code></pre></div><p>Second, setup your MARK tree:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; incus exec my-mark-unstable bash
 </span></span><span style="display:flex;"><span>my-mark-unstable / <span style="color:#75715e"># ego sync</span>
 </span></span><span style="display:flex;"><span>...
@@ -595,6 +606,13 @@ and push to <em>Fork</em> button and later you will redirect to the <em>Create a
 <p>We suggest to add an SSH Key to work easily with your fork and you need
 to have a Github token to work with <code>mark-devkit</code>. To create a Github token
 you need to go on your Github Profile <em>Settings</em> → <em>Developer settings</em> → <em>Personal access tokens</em> → <em>Tokens</em>.</p>
+<blockquote>
+<p>Note that the MARK container images, by design, don&rsquo;t ship the <code>/root</code> home directory (it avoids
+to keep the history of the commands executed as root) and every tool that writes on <code>$HOME</code>, like
+<code>ssh-keygen</code>, fails until it&rsquo;s missing. Create it with <code>mkdir -m 700 /root</code> before this step or,
+better, work with a dedicated user entering the container with
+<code>incus exec --user &lt;uid&gt; --group &lt;gid&gt; &lt;container-name&gt; -- bash</code>.</p>
+</blockquote>
 <p>To generate your ssh key for this task:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>my-mark-unstable / <span style="color:#75715e"># ssh-keygen -t ed25519</span>
 </span></span><span style="display:flex;"><span>Generating public/private ed25519 key pair.
