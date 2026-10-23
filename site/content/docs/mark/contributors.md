@@ -56,6 +56,19 @@ $> incus launch -p default macaroni:macaroni/mark-unstable my-mark-unstable
 In the example, is used the `mark-unstable` image but you can use `mark-xl` or any other MARK images
 based on your requirements.
 
+> If the freshly launched container has no IPv4 address (`incus list` shows it empty and `ego sync`
+> fails cloning the kits) in most cases the firewall of the host is blocking the traffic of the
+> Incus/LXD bridge (the DHCP/DNS request to the bridge gateway and the forwarding). Keep in mind
+> that, in this scenario, the `netif.eth0` service inside the image remains in `started` state also
+> when the lease fails, so it could be hard to spot. On hosts using `ufw` permit the bridge with:
+
+```shell
+$> # As root user on the host (with firewalld, instead, add the bridge to the trusted zone)
+$> ufw allow in on incusbr0
+$> ufw route allow in on incusbr0
+$> ufw route allow out on incusbr0
+```
+
 
 Second, setup your MARK tree:
 
@@ -303,6 +316,12 @@ Push on *Create fork* button and your fork will be ready in few seconds.
 We suggest to add an SSH Key to work easily with your fork and you need
 to have a Github token to work with `mark-devkit`. To create a Github token
 you need to go on your Github Profile *Settings* → *Developer settings* → *Personal access tokens* → *Tokens*.
+
+> Note that the MARK container images, by design, don't ship the `/root` home directory (it avoids
+> to keep the history of the commands executed as root) and every tool that writes on `$HOME`, like
+> `ssh-keygen`, fails until it's missing. Create it with `mkdir -m 700 /root` before this step or,
+> better, work with a dedicated user entering the container with
+> `incus exec --user <uid> --group <gid> <container-name> -- bash`.
 
 To generate your ssh key for this task:
 
