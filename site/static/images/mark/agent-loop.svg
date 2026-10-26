@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 780" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arrO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8930c"/>
+    </marker>
+  </defs>
+
+  <rect width="1240" height="780" fill="#fdfaf4"/>
+  <text x="620" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#2b2b2b">Agent-contributor loop: issues → verified PRs → review → merged</text>
+  <text x="620" y="66" text-anchor="middle" font-size="14" fill="#777">OpenCode orchestrator + sequential subagents · Incus sandbox · macaroni-os, Oct 2026</text>
+
+  <!-- Zone: Host -->
+  <rect x="30" y="100" width="360" height="440" rx="14" fill="#fff7e8" stroke="#e8b34b" stroke-width="2"/>
+  <text x="210" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#8a5a00">Workstation (host)</text>
+  <text x="210" y="146" text-anchor="middle" font-size="12" fill="#8a5a00">never builds packages</text>
+
+  <rect x="58" y="162" width="304" height="70" rx="8" fill="#fff" stroke="#d9a441"/>
+  <text x="210" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#333">OpenCode orchestrator</text>
+  <text x="210" y="204" text-anchor="middle" font-size="11" fill="#666">queue policy · feedback sweep ·</text>
+  <text x="210" y="219" text-anchor="middle" font-size="11" fill="#666">house-rule knowledge fold-in</text>
+
+  <rect x="58" y="248" width="304" height="56" rx="8" fill="#fff" stroke="#d9a441"/>
+  <text x="210" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Subagent per issue (serial)</text>
+  <text x="210" y="288" text-anchor="middle" font-size="11" fill="#666">dense briefing: env pattern + rules</text>
+
+  <rect x="58" y="320" width="304" height="56" rx="8" fill="#fff" stroke="#d9a441"/>
+  <text x="210" y="342" text-anchor="middle" font-size="13" font-weight="700" fill="#333">gh CLI (OAuth) · git forks/branches</text>
+  <text x="210" y="360" text-anchor="middle" font-size="11" fill="#666">force-with-lease · token never echoed</text>
+
+  <rect x="58" y="392" width="304" height="56" rx="8" fill="#fff" stroke="#d9a441"/>
+  <text x="210" y="414" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Evidence desk</text>
+  <text x="210" y="432" text-anchor="middle" font-size="11" fill="#666">reports/ · issue drafts · reply texts</text>
+
+  <rect x="58" y="464" width="304" height="56" rx="8" fill="#fff" stroke="#d9a441" stroke-dasharray="5 3"/>
+  <text x="210" y="486" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Human reviewer (Boris)</text>
+  <text x="210" y="504" text-anchor="middle" font-size="11" fill="#666">reads PRs → catches public hiccups ✓</text>
+
+  <!-- Zone: Container -->
+  <rect x="440" y="100" width="360" height="440" rx="14" fill="#eef6ff" stroke="#5b9bd5" stroke-width="2"/>
+  <text x="620" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#1f4e79">Incus container “mark-contrib”</text>
+  <text x="620" y="146" text-anchor="middle" font-size="12" fill="#1f4e79">macaroni/mark-unstable image · snapshot-revertible</text>
+
+  <rect x="468" y="162" width="304" height="56" rx="8" fill="#fff" stroke="#5b9bd5"/>
+  <text x="620" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#333">/var/git/meta-repo (live kits)</text>
+  <text x="620" y="202" text-anchor="middle" font-size="11" fill="#666">fix ebuild → ebuild manifest → emerge</text>
+
+  <rect x="468" y="234" width="304" height="56" rx="8" fill="#fff" stroke="#5b9bd5"/>
+  <text x="620" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Reproduce first, always</text>
+  <text x="620" y="274" text-anchor="middle" font-size="11" fill="#666">gcc-16 errors captured verbatim</text>
+
+  <rect x="468" y="306" width="304" height="56" rx="8" fill="#fff" stroke="#5b9bd5"/>
+  <text x="620" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#333">mark-devkit autogen-thin</text>
+  <text x="620" y="346" text-anchor="middle" font-size="11" fill="#666">🍕 version · SRC_URI · post_src_unpack</text>
+
+  <rect x="468" y="378" width="304" height="56" rx="8" fill="#fff" stroke="#5b9bd5"/>
+  <text x="620" y="400" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Build + functional proof</text>
+  <text x="620" y="418" text-anchor="middle" font-size="11" fill="#666">qlist · runtests.sh · -V banners · consumers</text>
+
+  <rect x="468" y="450" width="304" height="56" rx="8" fill="#fff" stroke="#5b9bd5"/>
+  <text x="620" y="472" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Clean state discipline</text>
+  <text x="620" y="490" text-anchor="middle" font-size="11" fill="#666">git checkout -- kit/ · snapshots · /root/*.log</text>
+
+  <!-- Zone: GitHub -->
+  <rect x="850" y="100" width="360" height="440" rx="14" fill="#f0fff2" stroke="#57bb6d" stroke-width="2"/>
+  <text x="1030" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#1d6b32">github.com/macaroni-os</text>
+  <text x="1030" y="146" text-anchor="middle" font-size="12" fill="#1d6b32">kit-fixups · kits · mark-issues</text>
+
+  <rect x="878" y="162" width="304" height="56" rx="8" fill="#fff" stroke="#57bb6d"/>
+  <text x="1030" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Issue queue (label: mark-unstable)</text>
+  <text x="1030" y="202" text-anchor="middle" font-size="11" fill="#666">top-down · dup-check before anything</text>
+
+  <rect x="878" y="234" width="304" height="56" rx="8" fill="#fff" stroke="#57bb6d"/>
+  <text x="1030" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#333">PR: [kit] title · Fixes #N · evidence</text>
+  <text x="1030" y="274" text-anchor="middle" font-size="11" fill="#666">single squashed commit</text>
+
+  <rect x="878" y="306" width="304" height="56" rx="8" fill="#fff" stroke="#57bb6d"/>
+  <text x="1030" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Review (geaaru)</text>
+  <text x="1030" y="346" text-anchor="middle" font-size="11" fill="#666">per-thread replies with fresh proof</text>
+
+  <rect x="878" y="378" width="304" height="56" rx="8" fill="#fff" stroke="#57bb6d"/>
+  <text x="1030" y="400" text-anchor="middle" font-size="13" font-weight="700" fill="#333">✅ MERGED → new house rules</text>
+  <text x="1030" y="418" text-anchor="middle" font-size="11" fill="#666">encoded into next subagent prompt</text>
+
+  <rect x="878" y="450" width="304" height="56" rx="8" fill="#fff" stroke="#57bb6d" stroke-dasharray="5 3"/>
+  <text x="1030" y="472" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Upstream outreach</text>
+  <text x="1030" y="490" text-anchor="middle" font-size="11" fill="#666">thom311/libnl#463 · cython#7997 cited</text>
+
+  <!-- Arrows between zones -->
+  <line x1="390" y1="270" x2="462" y2="270" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="426" y="258" text-anchor="middle" font-size="11" fill="#555">exec</text>
+  <line x1="462" y1="410" x2="390" y2="410" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="426" y="428" text-anchor="middle" font-size="11" fill="#555">logs</text>
+
+  <line x1="770" y1="270" x2="872" y2="270" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="822" y="258" text-anchor="middle" font-size="11" fill="#555">push+PR</text>
+  <line x1="872" y1="410" x2="770" y2="410" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="822" y="428" text-anchor="middle" font-size="11" fill="#555">review</text>
+
+  <!-- Big loop arrow: merged rules → orchestrator -->
+  <path d="M 1030 560 C 1030 660, 210 660, 210 548" fill="none" stroke="#e8930c" stroke-width="3" stroke-dasharray="9 5" marker-end="url(#arrO)"/>
+  <text x="620" y="668" text-anchor="middle" font-size="14" font-weight="700" fill="#b06f00">learned conventions fold back into every next briefing — the 8th fix took a fraction of the 1st</text>
+
+  <!-- Bottom stats strip -->
+  <rect x="30" y="694" width="1180" height="62" rx="10" fill="#fff" stroke="#e0d6c3"/>
+  <text x="620" y="718" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Two days: 17 merged PRs · ~15 issues processed · 3 new issues filed (#841 #842 #845) · 1 upstream fix (libnl#463) · 2 public hiccups, both caught by human review and fixed transparently</text>
+  <text x="620" y="740" text-anchor="middle" font-size="11" fill="#777">every claim in a PR comment backed by a captured command output — or explicitly marked as unverifiable</text>
+</svg>
