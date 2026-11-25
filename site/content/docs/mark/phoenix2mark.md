@@ -84,6 +84,35 @@ $> which cc gcc
 /usr/bin/gcc
 ```
 
+## The Portage world file after conversion
+
+> ⚠️ **WARNING**: on a Phoenix rootfs every package is installed by *anise*, so
+> after the conversion the Portage world file (`/var/lib/portage/world`) is
+> empty or missing while hundreds of packages are registered in the vdb.
+
+This has two consequences that are easy to miss:
+
+- `emerge -auDN @world` silently resolves the empty world to `@system` only, so
+  it updates just a fraction of the installed packages without any warning.
+- `emerge --depclean` **becomes destructive**: with an empty world it only
+  protects the `@system`/profile sets and proposes to remove the vast majority
+  of the installed system. Never run it in this state.
+
+To make Portage aware of the installed packages, seed the world file from the
+vdb:
+
+```shell
+$> ls -d1 /var/db/pkg/*/*/ \
+  | sed -E 's|/var/db/pkg/||; s|/$||; s/-[0-9].*$//' \
+  | sort -u > /var/lib/portage/world
+```
+
+Note that a seeded world contains every installed package - including plain
+dependencies - so `@world` updates will consider all of them. Alternatively
+keep the world file empty and update the bulk of the system with
+`anise upgrade`, using *emerge* only for packages you install explicitly, but
+then also keep `emerge --depclean` off the table.
+
 Ensure that the `/etc/ego.conf` file contains the mark branch
 correct:
 
