@@ -49,11 +49,11 @@ profile every Portage build fails in configure with:
 configure: error: no acceptable cc found in $PATH
 ```
 
-So, if `gcc` is missing on the rootfs, install the toolchain too (gcc is slotted
-by its version, `sys-devel-latest` picks the current one):
+So, if `gcc` is missing on the rootfs, install the toolchain too (*anise*
+resolves the bare name when only one category provides it):
 
 ```shell
-$> anise i sys-devel-latest/gcc
+$> anise i gcc
 ```
 
 then check whether a profile is active:
@@ -99,7 +99,14 @@ This has two consequences that are easy to miss:
   of the installed system. Never run it in this state.
 
 To make Portage aware of the installed packages, seed the world file from the
-vdb:
+installed database:
+
+```shell
+$> anise-portage-converter portage add-world $(qlist -ICS)
+```
+
+If `qlist` (from *app-portage/portage-utils*) is not installed yet, the vdb can
+be listed directly:
 
 ```shell
 $> ls -d1 /var/db/pkg/*/*/ \
