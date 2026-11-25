@@ -81,7 +81,7 @@ $&gt; anise subsets list 🍨 Subsets enabled: * portage Portage metadata and fi
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.1fa4b21f1061359ab29228c2f50810cb1387835c4b00cab20e445806bb35b02e.css" integrity="sha256-H6SyHxBhNZqykijC9QgQyxOHg1xLAMqyDkRYBrs1sC4=">
-<script defer src="/en.search.min.474109dd430ae6ec5abc8970edb1755fb7beb0b36f4c80641e99d8b0cb8c8023.js" integrity="sha256-R0EJ3UMK5uxavIlw7bF1X7e&#43;sLNvTIBkHpnYsMuMgCM="></script>
+<script defer src="/en.search.min.0f61a7d6f44e90be0deeeef4bb30e9559bf76a32ba38a9f4fd7f3a13281dfc6c.js" integrity="sha256-D2Gn1vROkL4N7u70uzDpVZv3ajK6OKn0/X86Eygd/Gw="></script>
 
 <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk="></script>
 <!--
@@ -372,7 +372,65 @@ zero.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  sys-apps/whip-catalog whip virtual/base git <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  ca-certificates linux-headers unzip pkgconf <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  virtual/pkgconfig
-</span></span></code></pre></div><p>Ensure that the <code>/etc/ego.conf</code> file contains the mark branch
+</span></span></code></pre></div><h2 id="activate-the-toolchain">
+  Activate the toolchain
+  <a class="anchor" href="#activate-the-toolchain">#</a>
+</h2>
+<p>The list above installs <code>gcc-config</code>, <code>binutils</code> and <code>make</code>, but not the compiler
+itself, and <em>anise</em> never activates a default compiler profile. Without an active
+profile every Portage build fails in configure with:</p>
+<pre tabindex="0"><code>configure: error: no acceptable cc found in $PATH
+</code></pre><p>So, if <code>gcc</code> is missing on the rootfs, install the toolchain too (<em>anise</em>
+resolves the bare name when only one category provides it):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise i gcc
+</span></span></code></pre></div><p>then check whether a profile is active:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; gcc-config -l
+</span></span><span style="display:flex;"><span> * gcc-config: No gcc profile is active!
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> x86_64-pc-linux-gnu-12.3.0
+</span></span></code></pre></div><p>If no entry is marked with <code>*</code>, activate the installed profile and refresh the
+environment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; gcc-config x86_64-pc-linux-gnu-12.3.0
+</span></span><span style="display:flex;"><span>$&gt; macaronictl env-update
+</span></span><span style="display:flex;"><span>$&gt; source /etc/profile
+</span></span></code></pre></div><blockquote>
+<p>NOTE: prefer <code>macaronictl env-update</code> over the plain <code>env-update</code> command, it
+also takes care of the Macaroni-specific environment setup.</p>
+</blockquote>
+<p>Verify that the compiler is now reachable before running the first <em>emerge</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; which cc gcc
+</span></span><span style="display:flex;"><span>/usr/bin/cc
+</span></span><span style="display:flex;"><span>/usr/bin/gcc
+</span></span></code></pre></div><h2 id="the-portage-world-file-after-conversion">
+  The Portage world file after conversion
+  <a class="anchor" href="#the-portage-world-file-after-conversion">#</a>
+</h2>
+<blockquote>
+<p>⚠️ <strong>WARNING</strong>: on a Phoenix rootfs every package is installed by <em>anise</em>, so
+after the conversion the Portage world file (<code>/var/lib/portage/world</code>) is
+empty or missing while hundreds of packages are registered in the vdb.</p>
+</blockquote>
+<p>This has two consequences that are easy to miss:</p>
+<ul>
+<li><code>emerge -auDN @world</code> silently resolves the empty world to <code>@system</code> only, so
+it updates just a fraction of the installed packages without any warning.</li>
+<li><code>emerge --depclean</code> <strong>becomes destructive</strong>: with an empty world it only
+protects the <code>@system</code>/profile sets and proposes to remove the vast majority
+of the installed system. Never run it in this state.</li>
+</ul>
+<p>To make Portage aware of the installed packages, seed the world file from the
+installed database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; anise-portage-converter portage add-world <span style="color:#66d9ef">$(</span>qlist -ICS<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>If <code>qlist</code> (from <em>app-portage/portage-utils</em>) is not installed yet, the vdb can
+be listed directly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$&gt; ls -d1 /var/db/pkg/*/*/ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | sed -E <span style="color:#e6db74">&#39;s|/var/db/pkg/||; s|/$||; s/-[0-9].*$//&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | sort -u &gt; /var/lib/portage/world
+</span></span></code></pre></div><p>Note that a seeded world contains every installed package - including plain
+dependencies - so <code>@world</code> updates will consider all of them. Alternatively
+keep the world file empty and update the bulk of the system with
+<code>anise upgrade</code>, using <em>emerge</em> only for packages you install explicitly, but
+then also keep <code>emerge --depclean</code> off the table.</p>
+<p>Ensure that the <code>/etc/ego.conf</code> file contains the mark branch
 correct:</p>
 <pre tabindex="0"><code>$&gt; cat /etc/ego.conf
 [global]
