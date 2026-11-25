@@ -39,6 +39,87 @@ $> anise i elt-patches patch autoconf-archive gcc-config \
 
 ```
 
+## Activate the toolchain
+
+The list above installs `gcc-config`, `binutils` and `make`, but not the compiler
+itself, and *anise* never activates a default compiler profile. Without an active
+profile every Portage build fails in configure with:
+
+```
+configure: error: no acceptable cc found in $PATH
+```
+
+So, if `gcc` is missing on the rootfs, install the toolchain too (*anise*
+resolves the bare name when only one category provides it):
+
+```shell
+$> anise i gcc
+```
+
+then check whether a profile is active:
+
+```shell
+$> gcc-config -l
+ * gcc-config: No gcc profile is active!
+ [1] x86_64-pc-linux-gnu-12.3.0
+```
+
+If no entry is marked with `*`, activate the installed profile and refresh the
+environment:
+
+```shell
+$> gcc-config x86_64-pc-linux-gnu-12.3.0
+$> macaronictl env-update
+$> source /etc/profile
+```
+
+> NOTE: prefer `macaronictl env-update` over the plain `env-update` command, it
+> also takes care of the Macaroni-specific environment setup.
+
+Verify that the compiler is now reachable before running the first *emerge*:
+
+```shell
+$> which cc gcc
+/usr/bin/cc
+/usr/bin/gcc
+```
+
+## The Portage world file after conversion
+
+> ⚠️ **WARNING**: on a Phoenix rootfs every package is installed by *anise*, so
+> after the conversion the Portage world file (`/var/lib/portage/world`) is
+> empty or missing while hundreds of packages are registered in the vdb.
+
+This has two consequences that are easy to miss:
+
+- `emerge -auDN @world` silently resolves the empty world to `@system` only, so
+  it updates just a fraction of the installed packages without any warning.
+- `emerge --depclean` **becomes destructive**: with an empty world it only
+  protects the `@system`/profile sets and proposes to remove the vast majority
+  of the installed system. Never run it in this state.
+
+To make Portage aware of the installed packages, seed the world file from the
+installed database:
+
+```shell
+$> anise-portage-converter portage add-world $(qlist -ICS)
+```
+
+If `qlist` (from *app-portage/portage-utils*) is not installed yet, the vdb can
+be listed directly:
+
+```shell
+$> ls -d1 /var/db/pkg/*/*/ \
+  | sed -E 's|/var/db/pkg/||; s|/$||; s/-[0-9].*$//' \
+  | sort -u > /var/lib/portage/world
+```
+
+Note that a seeded world contains every installed package - including plain
+dependencies - so `@world` updates will consider all of them. Alternatively
+keep the world file empty and update the bulk of the system with
+`anise upgrade`, using *emerge* only for packages you install explicitly, but
+then also keep `emerge --depclean` off the table.
+
 Ensure that the `/etc/ego.conf` file contains the mark branch
 correct:
 
