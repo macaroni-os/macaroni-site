@@ -39,6 +39,51 @@ $> anise i elt-patches patch autoconf-archive gcc-config \
 
 ```
 
+## Activate the toolchain
+
+The list above installs `gcc-config`, `binutils` and `make`, but not the compiler
+itself, and *anise* never activates a default compiler profile. Without an active
+profile every Portage build fails in configure with:
+
+```
+configure: error: no acceptable cc found in $PATH
+```
+
+So, if `gcc` is missing on the rootfs, install the toolchain too (gcc is slotted
+by its version, `sys-devel-latest` picks the current one):
+
+```shell
+$> anise i sys-devel-latest/gcc
+```
+
+then check whether a profile is active:
+
+```shell
+$> gcc-config -l
+ * gcc-config: No gcc profile is active!
+ [1] x86_64-pc-linux-gnu-12.3.0
+```
+
+If no entry is marked with `*`, activate the installed profile and refresh the
+environment:
+
+```shell
+$> gcc-config x86_64-pc-linux-gnu-12.3.0
+$> macaronictl env-update
+$> source /etc/profile
+```
+
+> NOTE: prefer `macaronictl env-update` over the plain `env-update` command, it
+> also takes care of the Macaroni-specific environment setup.
+
+Verify that the compiler is now reachable before running the first *emerge*:
+
+```shell
+$> which cc gcc
+/usr/bin/cc
+/usr/bin/gcc
+```
+
 Ensure that the `/etc/ego.conf` file contains the mark branch
 correct:
 
